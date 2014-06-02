@@ -8,15 +8,324 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 
 
 
 
-d
+\section*{Introduction}
+
+The goal is to compute character tables for ``finite groups of Lie type.'' Let 
+$G$ be a connected reductive (linear algebraic) group over $\dF_q$. Then 
+$G(\dF_q)$ is a finite group. 
+
+\begin{problem}
+Compute the (complex) character table of $G(\dF_q)$. 
+\end{problem}
+
+There are two difficulties here. First, we need to classify isomorphism classes 
+of irreducible representations $\rho:G(\dF_q) \to \generallinear(V)$, where $V$ 
+is a finite-dimensional $\dC$-vector space. Then, we need to compute the values 
+(on conjugacy classes) of $\chi_\rho:G(\dF_q) \to \dC$ given by 
+$g\mapsto \trace(\rho(g))$. 
+\begin{center}
+\begin{tabular}{cccc}
+date & result & persons & tools \\ \hline
+1905 & $\generallinear_2(\dF_q)$, $\speciallinear_2(\dF_q)$ & Jordan and Schur \\
+1955 & $\generallinear_n(\dF_q)$ & Green & combinatorics \\
+1976 & general $G$ & Deligne-Lusztig & $\ell$-adic cohomology \\
+1981--1990 & character-sheaf theory & Lusztig & perverse sheaves \\
+1995 & Lusztig conjecture if $Z=Z^\circ$ & Shoji \\
+2001 & for $\specialorthogonal_n$ and $\symplectic_{2 n}$ & Waldspurger \\
+2003 & for $\speciallinear_n$ & Bonnal\'e 
+\end{tabular}
+\end{center}
+Green's computation was highly combinatorial. On the other hand, Deligne and 
+Lusztig constructed the representations ``directly'' using $\ell$-adic 
+\'etale cohomology. Lusztig conjectured that there was a relation between 
+``character sheaves'' and irreducible characters of $G(\dF_q)$. 
+
+We will illustrate the general machinery using the specific example of 
+$\generallinear_n$. 
 
 
 
 
+
+\section{Combinatorial background}
+
+A good combinatorial reference for all of this is \cite{m95}. 
+
+
+\subsection{The ring of symmetric functions}
+
+For $r\geqslant 1$, put 
+$\Lambda_r = \dZ[x_1,\dots,x_r]^{S_r} = \bigoplus_{k\geqslant 0} \Lambda_r^k$, 
+where $\Lambda_r^k$ is the set of homogeneous symmetric polynomials of degree 
+$k$. For $m\geqslant r$, we have a map 
+$\rho_r^m:\dZ[x_1,\dots,x_m] \to \dZ[x_1,\dots,x_r]$, given by 
+\[
+  x_i \mapsto \begin{cases} x_i & i\leqslant r \\ 0 & i>r \end{cases}
+\]
+This induces a map $\rho_r^m:\Lambda_m^k \to \Lambda_r^k$. Put 
+$\Lambda^k = \varprojlim_r \Lambda_r^k$ and 
+$\Lambda = \bigoplus_{k\geqslant 0} \Lambda^k$. We call $\Lambda$ the 
+\emph{ring of symmetric functions in infinitely many variables}. Elements of 
+$\Lambda$ look like e.g.\ $P_2(x) = x_1^2 + x_2^2 + \cdots$. 
+
+A \emph{partition} is an infinite non-increasing sequence 
+$\lambda=(\lambda_1,\lambda_2,\dots)$ of non-negative integers, with finitely 
+many nonzero terms. We put $|\lambda| = \sum \lambda_i$ and 
+$\ell(\lambda) = \max\{i:\lambda_i\ne 0\}$. Let $\cP$ be the set of all 
+partitions, and $\cP_n$ the set of partitions of size $n$. 
+
+
+\subsection{Monomial symmetric functions}
+
+For $\lambda=(\lambda_1,\dots,\lambda_r,0,\dots)$, let 
+\[
+  m_\lambda(x_1,\dots,x_r) = \sum x_1^{\alpha_1} \dotsm x_r^{\alpha_r} ,
+\]
+where the sum runs over all distinct permutations $(\alpha_1,\dots,\alpha_r)$ of 
+$(\lambda_1,\dots,\lambda_r)$. For example, 
+\begin{equation}\label{eq:m-poly}
+  m_{(2,2,1)}(x_1,x_2,x_3) = x_1^2 x_2^2 x_3 + x_1^2 x_2 x_3^2 + x_1 x_2^2 x_3^2 .
+\end{equation}
+This defines an element $m_\lambda\in \Lambda$ such that 
+$m_\lambda(x_1,\dots,x_r)$ is the right-hand side of \eqref{eq:m-poly} if 
+$\ell(\lambda)\leqslant r$, and $0$ otherwise. If $\lambda=0$, put 
+$m_\lambda=1$. Then $\{m_\lambda:\lambda\in \cP\}$ is a $\dZ$-basis for 
+$\Lambda$. 
+
+
+\subsection{Elementary symmetric functions}
+
+For each $n\geqslant 0$, define $e_n\in \Lambda$ by 
+\[
+  e_n = \begin{cases} m_{(1^n)} & n\geqslant 1 \\ 1 & n=0 \end{cases} 
+\] 
+For $\lambda=(\lambda_1,\lambda_2,\dots)\in \cP$, we define 
+$e_\lambda = e_{\lambda_1} e_{\lambda_2} \cdots$. It turns out that 
+$\{e_\lambda:\lambda\in \cP\}$ is a $\dZ$-basis for $\Lambda$, and 
+$\Lambda=\dZ[e_1,e_2,\dots]$. 
+
+
+\subsection{Power-sums}
+
+For $n\geqslant 0$, define $p_n\in \Lambda$ by 
+\[
+  p_n = \begin{cases} m_{(n^1)} & n\geqslant 1 \\ 1 & n=0 \end{cases}
+\]
+For example, 
+\[
+  p_3 = x_1^3 + x_2^3 + x_3^3 + x_4^3 + \cdots .
+\]
+For $\lambda=(\lambda_1,\lambda_2,\dots)$, put 
+$p_\lambda = p_{\lambda_1} p_{\lambda_2} \dotsm$. The $p_\lambda$ form 
+a $\dQ$-basis of $\Lambda_\dQ = \Lambda\otimes \dQ$. Thus 
+$\Lambda_\dQ=\dQ[p_1,p_2,\dots]$. 
+
+
+\subsection{Shur functions}
+
+Given $r$ variables $x_1,\dots,x_r$, put $\delta_r = (r-1,r-2,\dots,1,0)$. For 
+any $\lambda=(\lambda_1,\lambda_2,\dots)$, put 
+\[
+  a_{\lambda+\delta_r} = \det
+  \begin{pmatrix}
+    x_1^{\lambda_1+\delta_1} & x_2^{\lambda_2 + \delta_2} & \cdots & x_1^{\lambda_r} \\ 
+    \vdots & \vdots & & \vdots \\ 
+    x_r^{\lambda_1 + \delta_1} & x_r^{\lambda_2 + \delta_2} & \cdots & x_r^{\lambda_r}  
+  \end{pmatrix}
+  = \sum_{w\in S_r} \varepsilon(w) w(x_1^{\lambda_1+\delta_1} \dotsm x_r^{\lambda_r+\delta_r}) .
+\]
+This is skew-symmetric, and we have $a_{\delta_r} \mid a_{\lambda+\delta_r}$ in 
+$\dZ[x_1,\dots,x_r]$. The \emph{Schur function} is 
+\begin{equation}\label{eq:schur-poly}
+  S_\lambda(x_1,\dots,x_r) = \frac{a_\lambda+\delta_r}{a_{\delta_r}} \in \dZ[x_1,\dots,x_r]^{S_r} .
+\end{equation}
+
+This defines an element $S_\lambda\in \Lambda$, determined by 
+\[
+  S_\lambda(x_1,\dots,x_r) = \begin{cases} \text{right-hand side of \eqref{eq:schur-poly}} & \ell(\lambda) \leqslant r \\ 0 & \text{otherwise} \end{cases}
+\]
+Moreover, $\{S_\lambda:\lambda\in \cP\}$ is a $\dZ$-basis for $\Lambda$. 
+
+
+\subsection{Relationship with representations of the symmetric group}
+
+There is a natural bijection 
+\[
+  S_n^\natural = \{\text{conjugacy classes in }S_n\} \isomorphism \cP_n ,
+\]
+sending a conjugacy class $c$ to the partition coming from lengths of cycles in 
+the decomposition of an element of $c$ into disjoint cycles. For example, an 
+$n$-cycle maps to the partition $(n,0,0,\dots)$, and the identity maps to 
+$(1^n,0,\dots)$. Let $\mu\mapsto c_\mu$ be the inverse of this bijection. 
+So we have a bijection $\cP_n \isomorphism \irreducible(S_n)$, 
+written $\lambda\mapsto \chi^\lambda$. One has 
+\[
+  S_\lambda = \sum_\mu \frac{1}{z_\mu} \chi_\mu^\lambda p_\mu , 
+\]
+where $z_\mu = \# C_{S_n}(\sigma_\mu)$, and 
+$\chi_\mu^\lambda$ is the value of $\chi^\lambda$ at $c_\mu$. A trivial 
+corollary is that 
+\[
+  \chi^\lambda = \sum_\mu \frac{1}{z_\mu} \chi_\mu^\lambda 1_{c\mu} .
+\]
+So $\{\chi^\lambda\}$ and $\{1_{c_\mu}\}$ are both $\dC$-bases for 
+$\hom(S_n^\natural,\dC)$. 
+
+We would like to do something similar for $\generallinear_n(\dF_q)$. 
+
+
+\subsection{Hall-Littlewood symmetric functions}
+
+Let $t$ be an extra variable. Consider the ring 
+$\Lambda_{\dZ[t]} = \Lambda[t] = \Lambda\otimes \dZ[t]$. For $\lambda\in \cP$ 
+with $\ell(\lambda)\leqslant r$, put 
+\begin{align*}
+  R_\lambda(x_1,\dots,x_r;t) 
+    &= \sum_{w\in S_r} w\left(x_1^{\lambda_1} \dotsm x_r^{\lambda_r} \prod_{i<j} \frac{x_i - t x_j}{x_i - x_j}\right) \\
+    &= \frac{1}{a_{\delta_r}} \sum_{w\in S_r} \varepsilon(w) w\left(x_1^{\lambda_1} \dotsm x_r^{\lambda_r} \prod_{i<j} x_i - t x_j\right) .
+\end{align*}
+These are elements of $\Lambda_r[t]$. Unfortunately, 
+$R_\lambda(x_1,\dots,x_r,0;t)\ne R_\lambda(x_1,\dots,x_r;t)$ as elements of 
+$\Lambda_{r+1}[t]$, so we need to ``fudge things'' a bit to get a well-defined 
+element of $\Lambda[t]$. For $m\geqslant 1$, put 
+\[
+  v_m(t) = \sum_{w\in S_m} w\left(\prod_{i<j} \frac{x_i-t x_j}{x_i - x_j}\right) .
+\]
+For $\lambda=(\lambda_1,\dots,\lambda_r,0,\dots)$, denote by $m_i$ the multiplicity 
+of $i$ in $\lambda$ if $i\geqslant 1$, and by 
+$m_0 = \#\{i\leqslant r:\lambda_i = 0\}$. Note that $m_0$ depends heavily on $r$. 
+Define 
+\[
+  v_{\lambda,r}(t) = \prod_{i\geqslant 0} v_{m_i}(t) .
+\]
+Then 
+\[
+  R_\lambda(x_1,\dots,x_r;t) = v_\lambda(t) \sum_{w\in S_r/S_r^\lambda} w\left(x_1^{\lambda_1} \dots x_r^{\lambda_r} \prod_{\lambda_i>\lambda_j} \frac{x_i-t x_j}{x_i-x_j}\right) ,
+\]
+where as before 
+$S_r^\lambda = \{w\in S_r:\lambda_{w(i)} = \lambda_i\text{ for }1\leqslant i\leqslant r\} \simeq \prod_{i\geqslant 0} S_{m_i}$. Define 
+\[
+  P_\lambda(x_1,\dots,x_r;t) = \frac{1}{v_\lambda(t)} R_\lambda(x_1,\dots,x_r;t) ; 
+\]
+this is the \emph{Hall-Littlewood symmetric function}. 
+
+\begin{proposition}
+1. $P_\lambda(x_1,\dots,x_r;0) = S_\lambda(x_1,\dots,x_r)$. 
+
+2. $P_\lambda(x_1,\dots,x_r;1) = m_\lambda(x_1,\dots,x_r)$. 
+
+3. $P_\lambda(x_1,\dots,x_r,0;t) = P_\lambda(x_1,\dots,x_r;t)$. 
+\end{proposition}
+
+By 3, we have a well-defined element $P_\lambda\in \Lambda[t]$. Moreover, 
+$\{P_\lambda:\lambda\in \cP\}$ is a $\dZ[t]$-basis for $\Lambda[t]$. 
+
+The \emph{Kostka-Foulkes polynomials} $\{K_{\lambda\mu}(t)\}$ are by 
+the relation 
+\[
+  S_\lambda = \sum_\mu K_{\lambda\mu}(t) P_\mu .
+\]
+
+\begin{theorem}[Lascoux-Sch\"utzenberger, Lusztig]
+$K_{\lambda\mu}(t)\in \dZ_{\geqslant 0}[t]$. 
+\end{theorem}
+
+
+
+
+
+\section{The character table of \texorpdfstring{GLnFq}{$\generallinear_n(\dF_q)$}}
+
+
+\subsection{The conjugacy classes}
+
+Fix $n\geqslant 1$. Let $M=\overline{\dF_q}^\times$, considered as an abstract 
+group. Let 
+\[
+  \widetilde\dT_n = \left\{\varphi:M\to \cP:\|\varphi\| := \sum_{m\in M} |\varphi(m)| = n\right\} . 
+\]
+We claim that $\generallinear_n(\overline{\dF_q})^\natural \isomorphism \widetilde\dT_n$. 
+We illustrate this with an example. If $n=3$, then the conjugacy class of 
+\[
+  \begin{pmatrix} \alpha & 1 \\ & \alpha \\ & & \beta \\ & & & \beta \end{pmatrix}
+\]
+is sent to the map $M\to \cP$ given by 
+\[
+  \gamma\mapsto 
+  \begin{cases}
+    (2,0,0,\dots) & \gamma = \alpha \\ 
+    (1,1,0,0,\dots) & \gamma = \beta \\
+    0 & \text{otherwise} 
+  \end{cases}
+\]
+For the general case, let $F:\overline{\dF_q} \to \overline{\dF_q}$ be the Frobenius 
+$x\mapsto x^q$, and let $\Phi=\{\text{$F$-orbits of $M$}\}$. Every $F$-orbit is 
+of the form $\{x,x^q,\dots,x^{q^{d-1}}\}$, for the minimal $d$ with 
+$x^{q^d} = x$. If $f\in \Phi$, put 
+$d(f) = \# f$ (cardinality of $f$ as an orbit set). 
+
+\begin{proposition}
+Put $\dT_n = \{\varphi:\Phi\to \cP:\|\varphi\| = \sum_{f\in \Phi} d(f)|\varphi(f)| = n\}$. 
+Then $\generallinear_n(\dF_q)^\natural \isomorphism \dT_n$. 
+\end{proposition}
+\begin{proof}
+Write $\generallinear_n = \generallinear_n(\overline{\dF_q})$, and 
+let $F:\generallinear_n\to \generallinear_n$ be the Frobenius 
+$(a_{i j})\mapsto (a_{i j}^q)$. We will show that 
+\[
+  \{\text{$F$-stable conjugacy classes of $\generallinear_n$}\}\isomorphism \dT_n .
+\]
+Indeed, in any conjugacy class $C$, there is an element of the form 
+\[
+  \begin{pmatrix} \Delta_1 \\ & \Delta_2 \\ & & \ddots \end{pmatrix} ,
+\]
+where 
+\[
+  \Delta_i = \begin{pmatrix} \alpha_i & 1 \\ & \alpha_i & 1 \\ \end{pmatrix}
+\]
+If $F(C)=C$, then $\Delta$ and $F(\Delta)$ are $\generallinear_n$-conjugate. Thus 
+$F$ permutes the blocks $\Delta_i$, so $F(\alpha_i) = \alpha_j$ for some $j$. Thus 
+$\Delta_i$ and $\Delta_j$ have the same Jordan form. 
+\end{proof}
+
+We claim that 
+\[
+  \generallinear_n(\dF_q)^\natural\isomorphism \{\text{$F$-stable conjugacy classes of $\generallinear_n$}\} . 
+\]
+Note that this fails for general algebraic groups. In general, suppose $G$ 
+is a connected affine algebraic group acting on an algebraic variety $X$ (all 
+over $\overline{\dF_q}$). Assume $G$, $X$, and the action of $G$ on $X$ are all 
+defined over $\dF_q$. Let $F:G\to G$ and $F:X\to X$ be the relative Frobenii. 
+Since the action of $G$ on $X$ is defined over $\dF_q$, we have 
+$F(g\cdot x) = F(g) \cdot F(x)$. 
+\begin{enumerate}
+  \item If $O$ is an $F$-stable $G$-orbit of $X$, then 
+    $O^F=\{x\in O:F(x)=x\}=O(\dF_q)$ is not empty (this uses the fact that 
+    $g\mapsto g^{-1} F(g)$, $G\to G$ is surjective). Thus the above map is 
+    surjective for any $G$. 
+  \item If $x\in X^F=X(\dF_q)$ and $\stabilizer_G(x) = \stabilizer_G(x)^\circ$, 
+    then $(G\cdot x)^F = G^F\cdot x$. 
+\end{enumerate}
+
+In $\generallinear_n$, the stabilizers $\stabilizer_{\generallinear_n}(x)$ are 
+\emph{always} connected. 
+
+\begin{exercise}
+Prove that $\stabilizer_{\speciallinear_2}\smat{1}{1}{}{1}$ has two connected 
+components if $2\nmid q$. 
+\end{exercise}
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{lyon-sources}
 
 \end{document}
