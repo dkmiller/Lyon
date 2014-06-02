@@ -8,12 +8,345 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 
 
 
 
-d
+\section{Introduction}
+
+Our main goal is Derkson and Weyman's proof of the following ``saturation 
+theorem'' for $\generallinear(n)$. Throughout, all vector spaces, matrices, 
+etc.\ are over the field of complex numbers $\dC$. 
+
+\begin{theorem}
+Let $\lambda$, $\mu$, $\nu$ be three partitions of length $n$. Let 
+$V(\lambda)$, $V(\mu)$, $V(\nu)$ be the corresponding irreducible 
+representations of $\generallinear(n)$. If there is $k>0$ such that 
+$V(k\nu)\subset V(k\lambda)\otimes V(k\mu)$, then 
+$V(\nu)\subset V(\lambda)\otimes V(\mu)$. 
+\end{theorem}
+
+
+
+
+
+\section{The category \texorpdfstring{$\representations(Q)$}{Rep(Q)}}
+
+Recall that a \emph{quiver} is a finite oriented graph $Q=(Q_0,Q_1)$, where 
+$Q_0$ is the set of vertices and $Q_1$ is the set of arrows. These sets are 
+accompanied by maps $t,h:Q_1 \to Q_0$, which we think of as assigning to each 
+arrow $a$ its ``head'' $h a$ and ``tail'' $t a$, as in the picture 
+\[\xymatrix{
+  t a \ar[r]^-a 
+    & h a
+}\]
+
+\begin{example}
+The following are graphical representations of quivers: 
+\[\xymatrix{
+  \bullet \ar[r] 
+    & \bullet
+}\]
+\end{example}
+
+A \emph{representation} of a quiver $Q$ is the data consisting of vector 
+spaces $(V_x)_{x\in Q_0}$ and linear maps $(V(a))_{a\in Q_1}$, where 
+$V(a):V(t a)\to V(h a)$ is an element of 
+$\hom(V(t a),V(h a))$. 
+
+\begin{example}
+A representation of $\circlearrowright$ consists of a vector space together 
+with an endomorphism. 
+\end{example}
+
+\begin{example}
+A representation of $\bullet \to \bullet$ consists of a linear map between two 
+vector spaces. 
+\end{example}
+
+A \emph{morphism} $V\to W$ between representations consists of linear maps 
+$(\varphi_x)_{x\in Q_0}$ from $V(x)$ to $W(x)$, such that the following 
+diagrams commute:
+\[\xymatrix{
+  V(t a) \ar[r]^-a \ar[d]^-{\varphi(t a)} 
+    & V(h a) \ar[d]^-{\varphi(h a)} \\
+  W(t a) \ar[r]^-a 
+    & W(h a) 
+}\]
+
+The category $\representations(Q)$ has as objects representations of $Q$, and 
+morphisms as just defined. 
+
+\begin{example}
+The isomorphism classes of objects in $\representations(\circlearrowright)$ 
+consist of conjugacy classes of matrices. 
+\end{example}
+
+\begin{example}
+Isomorphism classes of $\representations(\bullet \to \bullet)$ consist of 
+matrices up to direct sum. 
+\end{example}
+
+
+
+
+
+\section{Path algebra \texorpdfstring{$\dC Q$}{C Q}}
+
+Let $Q$ be a quiver. A \emph{path} $p$ in $Q$ is either 
+\begin{enumerate}
+  \item a sequence $a_1,\dots,a_n$ such that $t a_i = h a_{i+1}$ (we draw such 
+    a sequence as 
+    \[\xymatrix{
+      \bullet \ar[r]^-{a_n} 
+        & \bullet \ar[r] 
+          & \cdots \ar[r] 
+          & \bullet \ar[r]^-{a_1} 
+          & \bullet )
+    }\]
+    where we put $t p = t a_n$ and $h p = h a_1$ 
+  \item a path $e_x$ (the ``trivial path'') for each $x\in Q_0$, where we put 
+    $t e_x = h e_x = x$. 
+\end{enumerate}
+
+Put $\dC Q = \bigoplus_{p\text{ path}} \dC p$. The product is given by 
+concatenation (in the obvious way). Put $p p'=0$ if $h p'\ne t p$. 
+
+\begin{example}
+Consider $Q=\circlearrowright$. We have 
+$\dC Q = \bigoplus_{n\geqslant 0} \dC x^n$, where 
+$x^n = \overbrace{a \cdots a}^n$. In other words, $\dC Q$ is isomorphic to the 
+polynomial ring $\dC[x]$. 
+\end{example}
+
+\begin{example}
+Let $Q=1\xrightarrow a 2$. Then $\dC Q = \dC e_1 \oplus \dC e_2 \oplus \dC a$. 
+Our multiplication table is 
+\begin{center}
+\begin{tabular}{c|ccc}
+        & $e_1$ & $e_2$ & $a$ \\ \hline
+  $e_1$ & $e_1$ & 0 \\
+  $e_2$ \\
+  $a$
+\end{tabular}
+\end{center}
+One can easily check that $\dC Q$ is isomorphic to the matrix algebra 
+$\smat{\ast}{}{\ast}{\ast}$. 
+\end{example}
+
+\begin{proposition}
+There is an exact equivalence of categories 
+$\representations(Q) \simeq \modules(\dC Q)$. 
+\end{proposition}
+\begin{proof}
+Send a $Q$-representation $V$ to the module $\bigoplus_{x\in Q_0} V(x)$, where 
+``simple paths'' $t a \xrightarrow a h a$ act via $V(a)$, and general paths act 
+via composition of simple paths. It is easy to check that this functor has the 
+required properties. 
+\end{proof}
+
+
+% simple modules
+
+Since $\representations(Q)$ is a $\dC$-enriched abelian category, it makes 
+sense to talk about submodules, direct sums, simple modules, \ldots. 
+
+\begin{example}
+Let $x\in Q_0$. Define 
+\[
+  S^x(y) = \begin{cases} \dC & y=x \\ 0 & \text{otherwise} \end{cases} 
+\]
+and $S^x(a) = 0$ for all $a\in Q_1$. It is trivial that $S^x$ is a simple 
+representation of $Q$. 
+\end{example}
+
+\begin{proposition}
+If $Q$ has no cycle, then the $S^x$ are the only simple modules over $\dC Q$. 
+\end{proposition}
+\begin{proof}
+We can filter $\dC Q$ by length. The subspace 
+$(\dC Q)_{\geqslant 1} = \bigoplus_{\ell(p)\geqslant 1} \dC p$ of 
+$\dC Q$ is actually an ideal. If $Q$ has no cycles, then 
+$(\dC Q)_{\geqslant 1}^m = 0$ for $m\gg 0$. Let $S$ be a simple $Q$-module.
+We cannot have $(\dC Q)_{\geqslant 1} S=S$ (non-commutative Nakayama 
+lemma) so $(\dC Q)_{\geqslant 1} S = 0$. Thus $S$ is a 
+$\dC Q/(\dC Q)_{\geqslant 1}=\dC^{Q_0}$-representation, whence the result.  
+\end{proof}
+
+\emph{Warning}: this does not imply that $\representations(Q)$ is a 
+semisimple category. 
+
+
+% indecomposable modules
+
+Since the category $\representations(Q)$ is not generally semisimple, 
+the class of indecomposable modules may be much bigger than the class of 
+irreducible modules. 
+
+\begin{example}
+Let $Q=\circlearrowright$. Then for any $n\geqslant 1$ and 
+$\lambda\in \dC$, the representation corresponding to the $n\times n$ matrix 
+\[
+  J_\lambda(n) = 
+  \begin{pmatrix}
+    \lambda & 1 & \cdots & 0\\
+    & & \ddots & \vdots \\
+    & & & 1 \\
+    & & & \lambda
+  \end{pmatrix} .
+\]
+\end{example}
+
+\begin{lemma}\label{lem:inv-nil}
+A representation $V$ of $Q$ is indecomposable if and only if its endomorphisms 
+are either invertible or nilpotent. So $\End_Q(V) = \dC\oplus I$, where $I$ is 
+the ideal of nilpotents. 
+\end{lemma}
+\begin{proof}
+If $\varphi\in \End_Q(V)$, then $\varphi(x)\in \End(V(x))$ for each $x$. 
+We have a decomposition 
+$V(x) = V^{\lambda_1}(x) \oplus \cdots \oplus V^{\lambda_s}(x)$, where 
+$V^{\lambda_i} = \ker(\varphi-\lambda_s\cdot 1)$. One can check that each 
+$V^{\lambda_i}$  is a representation of $Q$. Since $V$ is indecomposable, 
+$s=1$. Either $\lambda=0$ ($\varphi$ is nilpotent) or $\lambda\ne 0$ 
+($\varphi$ is invertible). 
+\end{proof}
+
+\begin{exercise}
+Show that $\bullet \to \bullet$ has exactly three indecomposable 
+representations. 
+\end{exercise}
+
+\begin{theorem}[Krull-Schmidt]\label{thm:krull-schmidt}
+Any representation of $Q$ can be decomposed uniquely as a direct sum of 
+indecomposable representations. 
+\end{theorem}
+
+\begin{corollary}[Jordan]
+Any matrix is conjugate to a unique one of the form 
+\[
+  \begin{pmatrix}
+    J_{\lambda_1}(n_1) & & 0\\
+    & \ddots \\
+    0 & & J_{\lambda_s}(n_s) 
+  \end{pmatrix} .
+\]
+\end{corollary}
+
+\begin{example}
+The only irreducible representations of $\bullet \to \bullet$ are 
+$\dC \to 0$, $0 \to \dC$, and $\dC \xrightarrow 1 \dC$. From the Krull-Schmidt 
+theorem we see that for all matrices $M\in M_{p,q}(\dC)$, there exist 
+invertible $P,Q$ such that 
+\[
+  M = P 
+  \begin{pmatrix} 
+    1 \\
+    & \ddots \\
+    & & 1 \\
+    & & & 0 \\
+    & & & & \ddots \\
+    & & & & & 0
+  \end{pmatrix} Q .
+\]
+\end{example}
+
+
+% projective modules
+
+Recall that a representation $P$ of $Q$ is \emph{projective} if the functor 
+$\hom_Q(P,-)$ is exact. This is equivalent to the more familiar definition 
+involving lifts of morphisms as in the following diagram:
+\[\xymatrix{
+  & V \ar@{->>}[d]^-\pi \\
+  P \ar[r]^-\varphi \ar@{.>}[ur]^-{\widetilde\varphi}
+    & W .
+}\]
+
+\begin{example}
+For any $x\in Q_0$, then $P^x = \dC Q\cdot e_x = \bigoplus_{t p=x} \dC p$ is a 
+projective $Q$-module. 
+\end{example}
+
+Note that $P^x(y) = \bigoplus_{p:x\to y} \dC p$, i.e.\ $P^x(y)$ has as basis 
+the paths from $x$ to $y$. The map $P^x(a):P^x(t a) \to P^x(h a)$ is just 
+``concatenate with $a$.'' For any 
+$V\in \representations(Q)$, there is a natural isomorphism of vector spaces 
+$\hom_Q(P^x,V)\isomorphism V(x)$ given by $\varphi\mapsto \varphi(e_x)$. From 
+this we can show that $P^x$ is projective. Indeed, suppose 
+$0 \to Z \to V \to W \to 0$ is an exact sequence. It trivially follows that 
+in $0 \to \hom(P,Z) \to \hom(P,V) \to \hom(P,W) \to 0$ is exact on the 
+left, so the only hard part is to show that 
+$\hom(P,V) \to \hom(P,W)$ is surjective. But all we need to do is show that 
+$V(x) \to W(x)$ is surjective, and this is easy. 
+
+Alternatively, we could have used the fact that 
+$\dC Q=\bigoplus_{x\in Q_0} P^x$. 
+
+\begin{proposition}
+The modules $\{P^x:x\in Q_0\}$ are exactly the indecomposable projective 
+modules over $Q$. 
+\end{proposition}
+\begin{proof}
+We have already checked that the $P^x$ are projective. To show that they are 
+indecomposable, we apply Lemma \ref{lem:inv-nil} to the fact 
+$\End_Q(P^x) = P^x(x) = \dC e_x$. Clearly the $P^x$ are pairwise 
+non-isomorphic, so all that remains is to show that an arbitrary 
+indecomposable projective $P$ is one of the $P^x$. Consider the map 
+$\bigoplus_{x\in Q_0} \dC Q\otimes P(x) \twoheadrightarrow P$ given by 
+$p\otimes v\mapsto p v$. But 
+$\bigoplus_{x\in Q_0} \dC Q\otimes P(x) = (\dC Q)^{\oplus N}$ for some $N$. 
+Consider the exact sequence 
+\[\xymatrix{
+  0 \ar[r] 
+    & Z \ar[r] 
+    & (\dC Q)^{\oplus N} \ar[r] 
+    & P \ar[r] 
+    & 0 .
+}\]
+Since $P$ is projective, this sequence splits. So as a representation of $Q$, 
+$(\dC Q)^{\oplus N} = P\oplus Z$. But 
+$\dC Q^{\oplus N} = \bigoplus_{x\in Q_1} (P^x)^{\oplus N}$. By the Krull-Schmidt 
+Theorem \ref{thm:krull-schmidt}, we conclude that $P=P^x$ for some $x$. 
+\end{proof}
+
+
+% projective resolutions
+
+Let $V\in \representations(Q)$. There is an exact sequence 
+\[\xymatrix{
+  0 \ar[r] 
+    & \displaystyle\bigoplus_{a\in Q_1} P^{h a} \otimes V(t a) \ar[r] 
+    & \displaystyle\bigoplus_{x\in Q_0} P^x\otimes V(x) \ar[r] 
+    & V \ar[r] 
+    & 0 ,
+}\]
+in which the first map is 
+$e^{h a}\otimes v\mapsto e^{ha}\otimes a  - a\otimes v$, and the second is 
+$p\otimes v\mapsto p v$. We often write this as 
+$0 \to P_1 \to P_0 \to P \to 0$, or $P_\bullet \to P$. This is the 
+``standard projective resolution'' of $P$. 
+
+For $W\in \representations(Q)$, we can apply $\hom_Q(-,W)$ to 
+$P_\bullet \to P$, yielding a sequence 
+\[
+  0 \to \hom_Q(V,W) \to \hom_Q(P_0,W) \to \hom_Q(P_1,W) .
+\]
+We put $\extensions^1(V,W) = \hom(P_1,W) / \image(\hom(P_0,W))$. 
+Recall that $\extensions^1(V,W)$ has an interpretation in terms of ``extensions.'' An 
+\emph{extension} of $V$ by $W$ is an exact sequence 
+\[
+  0 \to W \to F \to V \to 0 
+\]
+of $Q$-modules. There is an obvious notion of isomorphism of extensions of 
+$V$ by $W$. For any such extension, we can choose isomorphisms 
+$F(x) = W(x)\oplus V(x)$. The structure of a $Q$-representation on $F$ is given 
+by an element of $\bigoplus_{a\in Q_1} \hom(V(t ),W(h a)) = \hom(P_1,W)$. It is 
+an easy exercise to check that two elements of $\hom(P_1,W)$ give equivalent 
+extensions if and only if they differ by an element of $\image(\hom(P_0,W))$. 
+In other words, $\extensions^1(V,W)$ classifies extensions of $V$ by $W$. 
 
 
 

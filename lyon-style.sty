@@ -2,6 +2,7 @@
   amsmath,
   amssymb,
   amsthm,
+  extarrows,
   fullpage,
   mathpazo,
   mathrsfs
@@ -10,9 +11,14 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[all]{xy}
 
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\extensions}{Ext}
 \DeclareMathOperator{\generallinear}{GL}
-\DeclareMathOperator{\speciallinear}{SL}
 \DeclareMathOperator{\h}{H}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\modules}{\mathsf{Mod}}
+\DeclareMathOperator{\representations}{\mathsf{Rep}}
+\DeclareMathOperator{\speciallinear}{SL}
 
 \newcommand{\dC}{\mathbf{C}}
 \newcommand{\dF}{\mathbf{F}}
@@ -28,8 +34,16 @@
 \newcommand{\sN}{\mathscr{N}}
 \newcommand{\sO}{\mathscr{O}}
 
-\newtheorem{corollary}[subsubsection]{Corollary}
-\newtheorem{definition}[subsubsection]{Definition}
-\newtheorem{lemma}[subsubsection]{Lemma}
-\newtheorem{proposition}[subsubsection]{Proposition}
-\newtheorem{theorem}[subsubsection]{Theorem}
+\newcommand{\isomorphism}{\xlongrightarrow\sim}
+\newcommand{\smat}[4]{\bigl(\begin{smallmatrix} #1 & #2 \\ #3 & #4 \end{smallmatrix} \bigr)}
+
+\newtheorem{corollary}[subsection]{Corollary}
+\newtheorem{definition}[subsection]{Definition}
+\newtheorem{lemma}[subsection]{Lemma}
+\newtheorem{proposition}[subsection]{Proposition}
+\newtheorem{theorem}[subsection]{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{example}[subsection]{Example}
+\newtheorem{exercise}[subsection]{Exercise}
+
