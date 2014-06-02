@@ -314,12 +314,21 @@ $F(g\cdot x) = F(g) \cdot F(x)$.
 \end{enumerate}
 
 In $\generallinear_n$, the stabilizers $\stabilizer_{\generallinear_n}(x)$ are 
-\emph{always} connected. 
+\emph{always} connected ($x\in \generallinear_n$). 
 
 \begin{exercise}
 Prove that $\stabilizer_{\speciallinear_2}\smat{1}{1}{}{1}$ has two connected 
 components if $2\nmid q$. 
 \end{exercise}
+
+Each $g\in \generallinear_n(\dF_q)$ defines an $\dF_q[t]$-structure on 
+$V=(\dF_q)^n$ as follows: $t\cdot v = g(v)$ for all $v\in V$. This structure 
+depends only on the conjugacy class of $g$. If 
+$C\subset \generallinear_n(\dF_q)$ is a conjugacy class corresponding to 
+$\varphi:\Phi \to \cP$, denote by $V_\varphi$ the corresponding 
+$\dF_q[t]$-structure on $V$. From commutative algebra, we know that 
+$V_\varphi \simeq \bigoplus_{f\in \Phi} \bigoplus_{i\geqslant 1} \dF_q[t] / (P_f)^{\varphi(f)_i}$, and 
+$P_f = \prod_{i=1}^{d-1} (t-x^{q^i})$. 
 
 
 
