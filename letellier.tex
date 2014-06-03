@@ -33,10 +33,10 @@ $g\mapsto \trace(\rho(g))$.
 \begin{tabular}{cccc}
 date & result & persons & tools \\ \hline
 1905 & $\generallinear_2(\dF_q)$, $\speciallinear_2(\dF_q)$ & Jordan and Schur \\
-1955 & $\generallinear_n(\dF_q)$ & Green & combinatorics \\
-1976 & general $G$ & Deligne-Lusztig & $\ell$-adic cohomology \\
+\cite{g55} & $\generallinear_n(\dF_q)$ & Green & combinatorics \\
+\cite{dl76} & general $G$ & Deligne-Lusztig & $\ell$-adic cohomology \\
 1981--1990 & character-sheaf theory & Lusztig & perverse sheaves \\
-1995 & Lusztig conjecture if $Z=Z^\circ$ & Shoji \\
+\cite{s95} & Lusztig conjecture if $Z=Z^\circ$ & Shoji \\
 2001 & for $\specialorthogonal_n$ and $\symplectic_{2 n}$ & Waldspurger \\
 2003 & for $\speciallinear_n$ & Bonnal\'e 
 \end{tabular}
@@ -240,7 +240,7 @@ $K_{\lambda\mu}(t)\in \dZ_{\geqslant 0}[t]$.
 
 
 
-\section{The character table of \texorpdfstring{GLnFq}{$\generallinear_n(\dF_q)$}}
+\section{The character table of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
 
 
 \subsection{The conjugacy classes}
@@ -329,6 +329,223 @@ $\varphi:\Phi \to \cP$, denote by $V_\varphi$ the corresponding
 $\dF_q[t]$-structure on $V$. From commutative algebra, we know that 
 $V_\varphi \simeq \bigoplus_{f\in \Phi} \bigoplus_{i\geqslant 1} \dF_q[t] / (P_f)^{\varphi(f)_i}$, and 
 $P_f = \prod_{i=1}^{d-1} (t-x^{q^i})$. 
+
+\begin{example}[$\generallinear_2(\dF_q)$]
+Consider the following table, in which $\varphi(f)=0$ unless it is defined to 
+be otherwise:
+\begin{center}
+\begin{tabular}{c|ccc}
+conjugacy class & $\varphi:\Phi\to \cP$ \\ \hline
+$\smat{a}{}{}{a}$, $a\in \dF_q^\times$ & $\{a\}\mapsto (1,1,0,\ldots)$ \\
+$\smat{a}{}{}{b}$, $a\ne b\in \dF_q^\times$ & $\{a\},\{b\}\mapsto (1,0,\dots)$ \\
+$\smat{a}{1}{}{a}$, $a\in \dF_q^\times$ & $\{a\}\mapsto (2,0,\dots)$ \\
+$\smat{x}{}{}{x^q}$, $x\in \dF_{q^2}\smallsetminus \dF_q^\times$ & $\{x,x^q\}\mapsto (1,0,\dots)$
+\end{tabular}
+\end{center}
+\end{example}
+
+\begin{example}[$\generallinear_3(\dF_q)$]
+Conventions here are the same. [do this]
+\end{example}
+
+
+
+
+
+\subsection{Parabolic induction}
+
+For any finite group $H$, write $\cC H=\dC^{H^\natural}$ for the space of 
+functions $H\to \dC$ that are constant on conjugacy classes. 
+
+Let $\lambda=(n_1,n_2,\dots,n_r,0,\dots)$ be a partition of $n$. 
+Let $\generallinear_\lambda\subset \generallinear_n$ be the group consisting of 
+matrices of the form $A_1\oplus \cdots \oplus A_r$, with each $A_i$ an 
+invertible $n_i\times n_i$ matrix. Note that 
+$\generallinear_\lambda\simeq \prod_i \generallinear_{n_i}$. If we write 
+$L=\generallinear_\lambda$, we will define functions 
+$R_L^{\generallinear_n}:\cC(L(\dF_q)) \to \cC(\generallinear_n(\dF_q))$. 
+
+Let $P$ be the standard parabolic of ``block upper-triangular matrices'' 
+associated to $\lambda$, and let $U_P$ be the unipotent radical of $P$. 
+One has $P=\generallinear_\lambda \cdot U_P$. If 
+$f\in \cC(L(\dF_q))$, define 
+$R_L^{\generallinear_n}(f)=\induce_P^{\generallinear_n}(\widetilde f)$, 
+where $\widetilde f:P(\dF_q) \to \dC$ is given by 
+$\ell u\mapsto f(\ell)$ for $\ell\in L$, $u\in U_P$. If 
+$f\in \dN[\irreducible(L(\dF_q))]$, then 
+$R_L^{\generallinear_n}(f)\in \dN[\irreducible(\generallinear_n(\dF_q))]$. 
+It turns out that $R_L^{\generallinear_n}(f)$ does not depend on the choice of 
+a rational $P$ having $L$ as a Levi factor. 
+
+Put $A_n = \cC(\generallinear_n(\dF_q)$ and $A=\bigoplus_{n\geqslant 0} A_n$. 
+We define an inner product on $A$: if 
+$f\in A_{n_1}$ and $g\in A_{n_2}$, put 
+\[
+  f\circ g = R_{\generallinear(n_1)\times \generallinear(n_2)}^{\generallinear(n_1+n_2)}(f,g) .
+\]
+This is commutative and associative.  
+
+Let $\varphi:\Phi\to \cP$ have finite support. Denote by 
+$\pi_\varphi\in \cC(\generallinear_{\|\varphi\|}(\dF_q))$ the characteristic 
+function of the associated conjugacy class $c_\varphi$. Then 
+$\{\pi_\varphi\}$ is a $\dC$-basis for $A$, and $\pi_0$ is the multiplicative 
+unit of $A$. 
+
+\begin{lemma}
+If $\|\varphi\| = \sum \| \varphi_i\|$, then 
+$\pi_{\varphi_1}\circ \pi_{\varphi_2} \circ \cdots \circ \pi_{\varphi_r}(c_\varphi)$ 
+is the number of sequences $0=W^{(0)}\subset W^{(1)} \subset \cdots \subset W^{(r)}=V_\varphi$ 
+of submodules of $V_\varphi$ such that $W^{(i)}/W^{(i-1)} \simeq V_{\varphi_i}$. 
+\end{lemma}
+
+Here $V_\varphi$ is the $\dF_q[t]$-structure on $(\dF_q)^n$ defined by 
+$\varphi$. 
+
+
+
+
+
+\subsection{The characteristic map}
+
+For each $f\in \Phi$, let $\{x_{1,f},x_{2,f},\dots\}$ be infinitely many 
+variables. Let $x=\{x_1,x_2,\dots\}$ be a set of infinitely many variables. 
+Put $\Lambda_{\dQ(q)} = \Lambda(x)\otimes \dQ(q)$. If 
+$u\in \Lambda_{\dQ(q)}$, we denote by 
+$u(f)$ the corresponding function in 
+$\Lambda_{\dQ(q)}(x_f)$. 
+
+Put $B=\dC[e_n(f):n\geqslant 0, f\in \Phi]$. Then 
+$B\subset \dQ(q)\otimes \bigotimes_{f\in \dQ} \Lambda(x_f)$. The Hall pairing on 
+$\Lambda(x)$ makes the Schur functions an orthonormal basis. We grade $B$ by 
+$\deg(x_i,f) = d(f)$. For $\lambda\in \cP$, $f\in \Phi$, put 
+$\widetilde P_\lambda(f) = q^{-n(\lambda) d(f)} P_\lambda(f; q^{-d(f)})$. Recall 
+that $n(\lambda) = \sum_{i\geqslant 1} (i-1) \lambda_i$. 
+For $\varphi:\Phi \to \cP$ with finite support, we put 
+\[
+  \widetilde P_\varphi = \prod_{f\in \Phi} \widetilde P_{\varphi(f)} (f) \in B .
+\]
+Since the Hall-Littlewood symmetric functions form a $\dZ$-basis of 
+$\Lambda(x)$, the $\widetilde P_\varphi$ form a $\dC$-basis of $B$. 
+
+The \emph{characteristic map} $\characteristic:A\to B$, given by 
+$\pi_\varphi\mapsto \widetilde P_\varphi$, is an (isometric) isomorphism of 
+graded $\dC$-algebras. 
+
+
+\subsection{Construction of the irreducible characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
+
+Let $M_n=\dF_{q^n}^\times$. Let $\widehat{M_n} = \hom(M_n,\dC^\times)$, and let 
+$L=\varinjlim_n \widehat{M_n}$ and $L_n=\image(\widehat{M_n} \to L)$. The 
+Frobenius $F$ acts on $L$; let $\Theta$ be the set of $F$-orbits in $L$. 
+We want $\irreducible(\generallinear_n(\dF_q))$ to be in bijection with 
+\[
+  \left\{\psi:\Theta\to \cP\text{ such that }\|\psi\| := \sum_{\theta\in \Theta} d(\theta) \cdot |\psi(\theta)| = n\right\} .
+\]
+The set $\irreducible(\generallinear_n(\dF_q))$ is an orthonormal basis for 
+$\langle \cdot,\cdot\rangle$. We look for an orthonormal basis of $B$. For 
+$\chi\in \irreducible(\generallinear_n(\dF_q))$, we expect 
+$\characteristic(\chi)$ to be ``related to'' Schur functions. 
+
+For $f\in \Phi$ and $x\in f$, put 
+\[
+  \widetilde P_n(x) = \begin{cases} P_{n/d}(f) & d=d(f)\mid n \\ 0 & \text{otherwise} \end{cases}
+\]
+Then for each $\xi\in L$, define 
+\[
+  \widetilde P_n(\xi) = 
+  \begin{cases}
+    (-1)^{n-1} \sum_{x\in M_n} \langle x,\xi\rangle_n \widetilde P_n(x) & \xi\in L_n \\ 0 & \text{otherwise} 
+  \end{cases}
+\]
+Note that $\widetilde P_n(\xi)$ depends only on the $F$-orbit of $\xi$. For 
+$\theta\in \Theta$, put $\widetilde P_r(\theta) = \widetilde P_{rd}(\xi)$, for 
+any $\xi\in \theta$, and $d=d(\theta)$. 
+
+\begin{example}
+If $\xi=1\in L$ and $n=2$, then 
+\[
+  \widetilde P_n(\xi) = - \sum_{\substack{f\in \Phi \\ d(f)=1}} \sum_i x_{i,f}^2 - 2 \sum_{\substack{f\in \Phi \\ d(f) = 2}} \sum_i x_{i,f} .
+\]
+Make the change of variables $\{x_{i,f}\} \to \{y_{i,\theta}\}$, such that 
+$\widetilde P_r(\theta)$ are power-sums in $\{y_{i,\theta}\}$. 
+\end{example}
+
+For $\lambda\in \cP$, put 
+$\widetilde P_\lambda(\theta) = P_{\lambda_1}(\theta) P_{\lambda_2}(\theta) \dotsm$ and 
+$S_\lambda(\theta) = \sum_\mu \frac{1}{z_\mu} \chi_\mu^{-1} \widetilde P_\mu(\theta)$. 
+For $\psi:\Theta \to \cP$ with finite support, put 
+$S_\psi = \prod_{\theta\in \Theta} S_{\psi(\theta)}(\theta)$. 
+
+\begin{proposition}
+1. $\{S_\psi\}$ is an orthornormal $\dC$-basis of $B$. 
+
+2. Assume that $|\lambda|=|\mu|$. Then 
+\[
+  S_\lambda(1) = \sum_\mu \widetilde K_{\lambda\mu}(q) \widetilde P_\mu(1) .
+\]
+Here we are using the definition 
+$\widetilde K_{\lambda\mu}(q) = q^{n(\mu)} K_{\lambda\mu}(q^{-1})$. 
+\end{proposition}
+
+
+\begin{theorem}
+The map $A\to B$ induces 
+$\irreducible(\generallinear_n(\dF_q)) \to\{S_\psi:\|\psi\| = n\}$. 
+\end{theorem}
+\begin{proof}
+If $\theta\in \Theta$ and $n\geqslant 0$, then $e_n(\theta)$ is the characteristic 
+function of a character of $\generallinear_{nd(\theta)}(\dF_q)$.For 
+$\psi:\Theta\to \cP$, the $S_\psi$ are polynomials in the $e_n(\theta)$, hence 
+have coefficients in $\dZ$. This implies that 
+$S_\psi=\characteristic(\text{virtual character})$, say $\sX^\psi$. One has 
+$\langle S_\psi,S_\psi\rangle = \langle \sX^\psi,\sX^\psi\rangle$, so 
+$\sX^\psi$ or $-\sX^\psi$ is irreducible. Thus $\sX^\psi(1)>0$. 
+\end{proof}
+
+To conclude, call ``unipotent character'' the irreducible characters 
+$\sX^\psi$ with $\psi\in \{\Theta\xrightarrow\psi\cP:\text{support of }\psi=1\}$. 
+
+For the rest of these notes, we will give a geometric construction of the 
+$\sX^\psi$. 
+
+
+
+
+
+\section{\texorpdfstring{$\ell$}{l}-adic sheaves and perverse sheaves}
+
+The $\widetilde K_{\lambda\mu}(q)$ can be realized as Khazdan-Lusztig polynomials 
+using perverse sheaves. 
+
+
+\subsection{Sheaves on topological spaces}
+
+Let $X$ be a topological space. A \emph{presheaf} on $X$ is a (contravariant) 
+functor $F:\open(X) \to \cC$, where $\cC$ is the category of groups, sets, 
+rings, modules, \ldots. Morphisms of presheaves are natural transformations of 
+functors. A presheaf is a \emph{sheaf} if for any family $\{U_i\}$ of open 
+subsets of $X$, and any family $\{s_i\in F U_i\}$ such that 
+$s_i|_{U_i\cap U_j} = s_j|_{U_i\cap U_j}$, there exists a unique 
+$s\in F U$ such that $s|_{U_i} = s_i$. We often use script letters for sheaves, 
+e.g.\ $\sF$, $\sG$, \ldots. If $\sF$ is a sheaf on $X$ and $x\in X$, write 
+$\sF_x=\varinjlim_{U\ni x} \sF(U)$ for the \emph{stalk} of $\sF$ at $x$. 
+
+[\ldots I know what sheaves are\ldots]
+
+
+\subsection{\texorpdfstring{$\ell$}{l}-adic analogue}
+
+If $X$ is a variety over $\dC$, we can give $X(\dC)$ the structure of a topological 
+space using the topology on $\dC$. In characteristic $p$, a variety has no natural 
+topology that gives a good sheaf theory. Fortunately, a very deep theory of 
+Grothendieck gives us something called the ``\'etale topology,'' so we can talk 
+about sheaves on $X_\etale$. 
+
+We would like to use the \'etale topology to define spaces $\h^i(X_\etale,k)$ ($k$ a 
+field of characteristic zero) for $X$ over $\dF_q$. Unfortunately, if we try to 
+define $\h^i(X_\etale, k)$ in the naive manner, we get trivial cohomology. 
+
+[\ldots Grothendieck's insight $\to\h^i(X_\etale, \dQ_\ell)$\ldots]
 
 
 
