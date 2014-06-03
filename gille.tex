@@ -8,12 +8,232 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 
 
 
 
-d
+\section*{Introduction}
+
+Everything to be discussed is classical, in the sense that it can (probably) be 
+found in [Demazure and Gabriel], or [Milne]. 
+
+The classical theory of affine algebraic groups over $\dC$ treats such groups 
+as (Zariski-closed) subgroups of various $\generallinear_n(\dC)$. This theory 
+is closely connected to that of compact Lie groups. For example, the torus 
+$\dG_\mult=\generallinear_1=\spectrum(\dC[t^{\pm 1}])$ corresponds to the 
+one-dimensional real torus $S^1$. Everything can be treated as varieties over 
+$\dC$. 
+
+Let $k$ be an arbitrary field, e.g.\ $\dF_q$, $\dF_q(t)$, $\dR$, \ldots. The 
+natural approach to algebraic groups over $k$ is a ``schematic'' one, i.e.\ 
+using schemes. For fields of positive characteristics, there are some recent 
+improvements to the theory of algebraic groups over $k$. On the one hand, there 
+is theory of [Conrad-Gabber-Prasad] on so-called pseudo-reductive groups, and 
+for commutative groups, there is recent work of Brion and Titano(sp?). 
+
+New phenomenon occur even over $k=\overline{\dF_p}$. For example, 
+$\generallinear_2$ is no longer ``linearly reductive.'' In other words, its 
+category of representations is \emph{not} semisimple. Also, there are 
+``extensions'' of $\dG_\additive=\spectrum(k[t])$ by itself which are not 
+split (coming from Witt vectors). For example, one could put 
+$(x_0,x_1)+(y_0,y_1) = (x_0+y_0, x_1+y_1-S_1(x_0,y_0))$, where 
+\[
+  S_1(x,y) = \frac{(x+y)^p - x^p-y^p}{p} \in \dZ[x,y] .
+\]
+This is the group $W_2$ of ``additive Witt vectors of length two.'' It fits 
+into an exact sequence $0 \to \dG_\additive \to W_2 \to \dG_\additive \to 0$ 
+which is not split. Indeed, evaluated at $\dF_p$, the sequence is 
+$0 \to \dZ/p \to \dZ/p^2 \to \dZ/p \to 0$. 
+
+Also, in positive characteristic, the intersection of (smooth) groups is not 
+necessarily smooth! For example, let $G_1=\{x^p+x=y\}$ and 
+$G_2=\{x=y\}$ as subgroups of $\dG_\additive^2$. The intersection 
+$G_1\times_{\dG_\additive^2} G_2 = \{x^p=0, x=y\}$, which is not even reduced. 
+
+Over non-perfect fields of characteristic $p$ (for example function fields or 
+local fields) things can be even worse. The following example over 
+$k=\dF_p(t)$ is due to Tits. Let 
+$G=\{x+t x^p+y^p=0\}\subset (\dG_{\additive,k})^2$. One can check that $G$ is 
+smooth and connected. However, if $p\geqslant 3$, then 
+$G(k)=\{(0,0)\}$. In contrast, over an infinite perfect field $F$, the set 
+$G(F)$ is Zariski dense in $G$ for all affine connected $G$. To see that 
+$G$ is smooth, base-change to $k(\sqrt[p] t)=\dF_p(t')$. In that field, 
+\[
+  x+t x^p+y^p = x+(t'x)^p + y^p = x+(t'x+y)^p ,
+\]
+so $\dG_{k(\sqrt[p] t)}\simeq \dG_{\additive,k(\sqrt[p] t)}$. Now we show 
+that $G(k)=1$. If there is $(x,y)\in G(k)$ with $x=0$, then one easily sees 
+that $y=0$. Suppose $x(t)=\frac{P(t)}{Q(t)}$. We can assume $P$ and $Q$ are 
+relatively prime. Some simple algebra gives $P' Q-P Q' + P^p Q^{2-P} = 0$, 
+which cannot be. 
+
+
+
+
+
+\section{Generalities}
+
+The theory over positive characteristic is already complicated enough to make 
+it no additional effort to work over an arbitrary commutative ring. For 
+example, if $k'/k$ is a purely inseparable extension of the form 
+$k(\sqrt[p] a)$, then $k'\otimes_k k' = k'[t]/(t-\sqrt[p] a)^p$ is not even 
+a product of fields. But it is an Artinian local ring. One could restrict to 
+this (as is done in [SGA 3 6a]). 
+
+For the rest of this section, fix a (commutative, unital) ring $R$. An 
+\emph{$R$-functor} is a covariant functor 
+$F:R\algebras\to \mathsf{Set}$. If $X$ is an affine scheme over $R$, we write 
+$R[X]=\Gamma(X)$; note that $X=\spectrum(R[X])$. Let 
+$h_X(S)=X(S)=\hom_{R\algebras}(R[X],S)$. We say that an $R$-functor $F$ is 
+\emph{representable} by an affine scheme $X$ over $R$ if there is an 
+equivalence $h_X \isomorphism F$. The Yoneda Lemma tells us that such an $X$ is 
+unique up to unique isomorphism. Even better, 
+
+\begin{lemma}[Yoneda]
+The map $\hom_{R\text{-}\mathsf{Fun}}(h_X,F) \to F(X)$ that sends 
+$\eta$ to $\eta_X(1_X)$ is a bijection. 
+\end{lemma}
+
+In light of this, we will usually define group schemes via their functor of 
+points. It makes sense to speak of ``group-valued $R$-functors,'' and we can 
+define an \emph{affine group scheme over $R$} to be an affine scheme $X$, 
+together with the structure of a group-valued functor on $h_X$. In other words, 
+for each $S$, we have a ``multiplication'' $X(S)\times X(S) \to X(S)$, 
+``inverse'' $X(S) \to X(S)$, and ``identity'' $1\in X(S)$. These are required 
+to be compatible with maps $S\to S'$ in the obvious way. To give $X$ the 
+structure of a group scheme is equivalent to giving $R[X]$ the structure of a 
+Hopf algebra. 
+
+\begin{example}[constant groups]
+Let $\Gamma$ be a finite (abstract) group. Let 
+$G=\coprod_{\sigma\in \Gamma}\spectrum R$, with multiplication induced by 
+$\Gamma$. People sometimes write $G=\Gamma_R$, or $G=\underline\Gamma_R$. The 
+same definition works if $\Gamma$ is not finite, but $\underline\Gamma$ will no 
+longer be affine. 
+\end{example}
+
+\begin{example}[vector groups]
+For $N$ an $R$-module, define $\dV(N)(S)=\hom_S(N\otimes_R S,S)$. This is 
+clearly a $R$-group functor, represented by 
+$\spectrum(\symmetric_R(N^\vee))$. 
+\end{example}
+
+\begin{example}
+If $M$ is an $R$-module, we put $\dW(M)(S)=M\otimes_R S$. This is not always 
+representable. If $R$ is noetherian, $\dW(M)$ is representable if and only if 
+$M$ is locally free. 
+\end{example}
+
+\begin{example}[linear groups]
+Let $A$ be an (associative) $R$-algebra. We define 
+$\generallinear_1(A)(S) = (A\otimes_R S)^\times$. This functor is not always 
+representable. However, if $A$ is finitely-generated, locally free (as an 
+$R$-module), then $\generallinear_1(A)$ is representable. Sometimes we will 
+just write $A^\times$ for $\generallinear_1(A)$ (especially if $A$ is a 
+division ring over a field). 
+\end{example}
+
+\begin{example}[diagonalizable groups]
+Let $M$ be an (abstract) commutative group. Let $R[M]$ be the corresponding 
+group ring. This is naturally a Hopf algebra via 
+$\Delta(m)=m\otimes m$. Put
+$\diagonal_R(M)=\spectrum(R[M])$. For example, if $M=\dZ$, then 
+$R[M]=R[t^{\pm 1}]$, so $\diagonal_R(M)=\dG_{\mult, R}$. If 
+$M=\dZ/n$, then $R[M]=R[t]/(t^n-1)$, so 
+$\diagonal_R(M)=\mu_{n,R}$. A homomorphism 
+$f:M_1 \to M_2$ induces $f_\ast:R[M_1] \to R[M_2]$, hence 
+$f^\ast:\diagonal_R(M_2) \to \diagonal_R(M_1)$. 
+\end{example}
+
+\begin{exercise}
+The functor 
+$\diagonal_R:\mathsf{Ab}^\circ \to \{\text{diagonalisable groups over }R\}$ is 
+an equivalence of categories. [See SGA 3, exp.8]
+\end{exercise}
+
+If $D$ is a group scheme, put $\widehat D=\hom(D,\dG_\mult)$; this is the group 
+of \emph{characters} of $D$. 
+
+\begin{exercise}
+Show that $\hom(\diagonal(M), \dG_{\additive,R}) = 0$ for all $M$. 
+\end{exercise}
+
+If $R=k$ is a field, then any closed subgroup $G\subset \diagonal(M)$ is of 
+the form $\diagonal_k(M/M')$ for some $M'\subset M$. In other words, over a 
+field, subgroups (and qotients, in fact) of diagonalisable groups are 
+diagonalisable. 
+
+
+
+
+
+\section{Basic facts on affine groups over \texorpdfstring{$k$}{k}}
+
+Throughout, let $k$ be a field. 
+
+\begin{definition}
+An \emph{affine algebraic group over $k$} is a group scheme $G$ over $k$, such 
+that $G$ is affine of finite type. 
+\end{definition}
+
+\begin{definition}
+An affine algebraic group over $k$ is \emph{linear} if it is also smooth. 
+\end{definition}
+
+It is a non-trivial fact that if $G$ is an affine group over $k$, then there is 
+a closed embedding $G\hookrightarrow \generallinear_n$. There is a paper by 
+[Godeles, Popov, 2003]. Supposing $k$ is infinite and $G$ is smooth, there 
+exists $G\hookrightarrow \generallinear(V)$ and 
+$f\in V^\vee\otimes_k V^\vee\otimes_k V$, such that 
+$G=\{g\in \generallinear(V):g^\vee\circ f = f\}$. Moreover, there exists a 
+(possibly non-associative, non-unital) $k$-algebra $A$ such that 
+$G=\automorphism(A)\subset \generallinear_k(A)$. (The two statements are the 
+clearly equivalent.) 
+
+If $G$ an affine algebraic group over $k$, then the associated reduced scheme 
+$G_\reduced$ is not necessarily a $k$-group. Essentially, the problem is that 
+$(-)_\reduced$ does not commute with products. If $k$ is perfect, then 
+$G_\reduced\times_k G_\reduced$, and $G_\reduced\subset G$ is a closed 
+$k$-subgroup of $G$. 
+
+\begin{example}
+Let $G=\mu_3\rtimes \dZ/2$ over $\dF_3$, the action being via inversion. Then 
+$G_\reduced=\dZ/2$ is not a normal subgroup. 
+\end{example}
+
+\begin{lemma}
+Let $G$ be an affine $k$-group. Then the following are equivalent: 
+\begin{enumerate}
+  \item $G$ is smooth 
+  \item $G$ is geometrically reduced 
+  \item $\sO_{G,e}\otimes \bar k$ is reduced 
+  \item $G$ admits a nonempty smooth open $U\subset G$. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The only nontrivial part is 4$\Rightarrow$1g. But one can base-change to 
+$\bar k$, and note that $G_{\bar k}=\bigcup_{g\in G(\bar k)} g U_{\bar k}$. 
+\end{proof}
+
+\begin{proposition}
+Let $G$ be an affine $k$-group. Let $\{f_i:V\to G\}$ be morphisms from 
+geometrically reduced affine $k$-schemes. Then there is a unique smallest 
+closed $k$-subgroup, written $\Gamma_G(\{f_i\})$, such that the $f_i$ 
+factor through $\Gamma_G(\{f_i\})$. 
+\end{proposition}
+\begin{proof}
+First we suppose we have a single $f:H\to G$, where $H$ is a smooth group. 
+Then the schematic image $\image(f)\subset G$ works. 
+
+Next, we suppose that $G$ admits a maximal smooth $k$-subgroup $G^+$. (If 
+$k$ is perfect, then $G^+=G_\reduced$.) 
+\end{proof}
+
+If $f:G\times G\to G$ is 
+$(g,h)\mapsto [g,h]$, then $\Gamma_G(f) = \sD G$, the derived subgroup of 
+$G$. 
 
 
 
