@@ -128,8 +128,8 @@ Our multiplication table is
 \begin{tabular}{c|ccc}
         & $e_1$ & $e_2$ & $a$ \\ \hline
   $e_1$ & $e_1$ & 0 \\
-  $e_2$ \\
-  $a$
+  $e_2$ & 0     & $e_2$ & $a$ \\
+  $a$   & $a$   & 0     & 0
 \end{tabular}
 \end{center}
 One can easily check that $\dC Q$ is isomorphic to the matrix algebra 
@@ -347,6 +347,247 @@ by an element of $\bigoplus_{a\in Q_1} \hom(V(t ),W(h a)) = \hom(P_1,W)$. It is
 an easy exercise to check that two elements of $\hom(P_1,W)$ give equivalent 
 extensions if and only if they differ by an element of $\image(\hom(P_0,W))$. 
 In other words, $\extensions^1(V,W)$ classifies extensions of $V$ by $W$. 
+
+For $\alpha,\beta\in \dZ^{Q_0}$, define 
+\[
+  \langle \alpha,\beta\rangle = \sum_{x\in Q_0} \alpha(x) \beta(x) - \sum_{a\in Q_1} \alpha(t a) \beta(h a) .
+\]
+If $V$ and $W$ are representations of $Q$, one has 
+\[
+  \langle \dim V,\dim W\rangle = \dim \hom_Q(V,W) - \dim \extensions_Q^1(V,W) .
+\]
+
+
+
+
+
+\section{Gabriel's theorem}
+
+Fix a dmension vector $\beta\in \dN^{Q_0}$. For all $x\in Q_0$, put 
+$V(x)=\dC^{\beta(x)}$; this is a vector space of dimension $\beta(x)$. Define 
+$\representations(Q,\beta) = \bigoplus_{a\in Q_1} \hom(V(t a),V(h a))$. A point 
+in $\representations(Q,\beta)$ gives a representation of $Q$. There is an 
+action of $G(Q,\beta) = \prod_{x\in Q_0} \generallinear(V(x))$ on 
+$\representations(Q,\beta)$ by 
+$(\varphi\cdot R)(a) = \varphi(h a)\circ R(a)\circ \varphi(t a)^{-1}$. Note 
+that $R_1$ and $R_2$ induce isomorphic representations if and only if they 
+belong to the same orbit in $\representations(Q,\beta)$. Moreover, 
+$\langle \beta,\beta\rangle = \dim G(Q,\beta)-\dim \representations(Q,\beta)$. 
+
+Fix a point $R\in \representations(Q,\beta)$. Then the 
+$G(Q,\beta)_R$ is connected. Let 
+$\xi\in \lie(G(Q,\beta)_R) = \bigoplus_{x\in Q_0} \End(V(x))$. Then 
+$\xi\cdot R=0$ if and only if 
+$\xi(h a)\circ R(a)-R(a)\xi(h a) = 0$ for all $a$, which in turn is equivalent 
+to $\xi\in \End_Q(V)$. 
+
+Let's look at orbits. Put $\fg=\lie(G(Q,\beta)_R)$. There is an exact 
+sequence $0 \to \End_Q(V) \to \fg \to T_R (G\cdot R)\to 0$, so one can check 
+that $\extensions_Q^1(V,V) = \representations(Q,\beta)/T_R(G\cdot R)$. In 
+particular, the codimension of the orbit $G\cdot R$ is the dimension of 
+$\extensions_Q(V,V)$. 
+
+\begin{definition}
+A \emph{root lattice} is a pair $(\Lambda,\langle\cdot,\cdot\rangle)$ with 
+\begin{enumerate}
+  \item $\Lambda$ a finite free abelian group, 
+  \item $\langle\cdot,\cdot\rangle$ a Euclidean product on $\Lambda_\dR$ 
+  \item for all $\alpha\in \Lambda$, $\langle \alpha,\alpha\rangle\in 2\dZ$ 
+  \item $\Lambda=\dZ\cdot \{\alpha\in \Lambda:\langle \alpha,\alpha\rangle=2\}$. 
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Any simply laced root system $\Phi\subset E$ works. Fix the $W$-invariant 
+inner product $\langle\cdot,\cdot\rangle$ such that 
+$\langle\alpha,\alpha\rangle = 2$ for all $\alpha\in \Phi$. Then 
+$(\dZ\cdot \Phi,\langle\cdot,\cdot\rangle)$ is a root lattice. 
+\end{example}
+
+\begin{theorem}
+All root lattices come from a simply-laced root system of type $A$, $D$, or 
+$E$. 
+\end{theorem}
+
+We wish to understand how to go from a root lattice to a root system. Given 
+$(\Lambda,\langle\cdot,\cdot\rangle)$, put 
+$\Phi = \{\alpha\in \Lambda:\langle\alpha,\alpha\rangle = 2\}$. We also want to 
+recover the Dynkin diagram of $\Phi$. Let 
+$\Delta=\{\varepsilon_1,\dots,\varepsilon_n\}$ be a basis of $\Phi$. The 
+Dynkin diagram has $\Delta$ as vertices, with 
+$|\langle \varepsilon_i,\varepsilon_j\rangle|$ the number of edges between  
+$\varepsilon_i$ and $\varepsilon_j$. 
+
+\begin{example}
+The simply-laced Dynkin diagrams look like: 
+\begin{align*}\tag{A}
+\xymatrix@=0.5cm{
+  \bullet \ar@{-}[r] 
+    & \bullet \ar@{-}[r] 
+    & \cdots \ar@{-}[r] 
+    & \bullet \ar@{-}[r] 
+    & \bullet 
+} \\
+\tag{D}
+\xymatrix@=0.5cm{
+  \bullet \ar@{-}[r] 
+    & \bullet \ar@{-}[r] 
+    & \cdots \ar@{-}[r] 
+    & \bullet \ar@{-}[d] \ar@{-}[r] 
+    & \bullet \\
+    & & & \bullet
+}\\
+\tag{E6-E8}
+\xymatrix@=0.5cm{
+  \bullet \ar@{-}[r] 
+    & \cdots (\text{0 to 2})\cdots\ar@{-}[r] 
+    & \bullet \ar@{-}[d] \ar@{-}[r] 
+    & \bullet \ar@{-}[r] 
+    & \bullet \\
+    & & \bullet
+}
+\end{align*}
+\end{example}
+
+A quiver $Q$ is said to be of \emph{finite type} if it has only finitely many 
+indecomposable representations of any given dimension. 
+
+\begin{theorem}[Gabriel]
+A quiver $Q$ is of finite type if and only if each connected component of $Q$ 
+is a simply-laced Dynkin diagram. 
+\end{theorem}
+\begin{proof}
+$\Rightarrow$. We may assume that $Q$ is connected and of finite type. We put 
+$\langle \alpha,\beta\rangle_s = \langle \alpha,\beta\rangle + \langle \beta,\alpha\rangle$; 
+this is the symmetric part of our form on $\dZ^{Q_0}$. First, one checks that 
+$\langle\cdot,\cdot\rangle_s$ is Euclidean. Let $\alpha\in \dN^{Q_0}\smallsetminus \{0\}$. 
+Then $G(Q,\alpha)$ acting on $\representations(Q,\alpha)$ has infinitely 
+many orbits, so $\dim G(Q,\alpha) \geqslant \dim\representations(Q,\alpha)$. 
+Thus $2\langle \alpha,\alpha\rangle_s\geqslant 0$. We can further mod out by 
+the action of $\dC^\times$, obtaining $2\langle \alpha,\alpha\rangle_s>0$. 
+
+If $\beta\in \dZ^{Q_0}\smallsetminus \{0\}$, then 
+$\langle \beta,\beta\rangle_s\geqslant \langle |\beta|,|\beta|\rangle_s > 0$, so 
+$\langle\cdot,\cdot\rangle_s$ is indeed Euclidean. 
+
+We still need to check that for $\alpha\in \dZ^{Q_0}$, we have 
+$\langle \alpha,\alpha\rangle_s\in 2\dZ$. But this follows from the easy 
+fact that $\langle\varepsilon_s,\varepsilon_x\rangle_s = 2$, for 
+$\varepsilon_x(y) = \delta_{x y}$. 
+Thus $(\dZ^{Q_0}, \langle \cdot,\cdot\rangle_s)$ is a root lattice (often 
+called the \emph{Tits form} of our lattice). 
+
+Finally, we need to check that the Dynkin diagram associated to 
+$(\dZ^{Q_0}, \langle \cdot,\cdot\rangle_s)$ is $Q$. In other words, we need 
+that for $x\ne y$, 
+$\langle \varepsilon_x,\varepsilon_y\rangle = \pm \#\{\text{edges between $x$ and $y$}\}$. 
+This can be done directly. 
+
+The only thing missing is that we need to prove $(\varepsilon_x)_{x\in Q_0}$ is 
+a basis of $\Phi$. Some ``futsing around'' yields that for 
+$\beta\in \Phi$, $\langle \beta,\beta\rangle_s = 2$, whence 
+$\beta(t a) \beta(h a) \geqslant 0$ for all $a$. 
+\end{proof}
+
+In particular, ``having finite type'' does not depend on the orientation. 
+
+\begin{theorem}
+Let $Q$ be of type ADE. Set 
+$\Phi^+=\{\alpha\in \dZ^{Q_0}:\langle \alpha,\alpha\rangle_s = 2\}$. Then 
+\[
+  \Phi^+=\{\dim V:V\text{ an indecomposable representation of }Q\} .
+\] 
+\end{theorem}
+\begin{proof}
+Choose a bijection \(Q=\{1,\dots,m\}\) such that \(t a>h a\) for all 
+\(a\in Q_1\). Now consider the functor 
+\(C^+=C_n^+ \circ \cdots \circ C_1^+:\representations(Q) \to \representations(Q)\). 
+Let \(c=s_n\circ \cdots \circ s_1:\dZ^{Q_0}\to \dZ^{Q_0}\). One needs Lemma 
+\ref{lem:tech-dynkin}. 
+
+$\supset$. Let \(V\) be an indecomposable representation of \(Q\). Apply 
+\(C_1^+\), \(C_2^+\), \ldots,\(C_n^+\), \(C_1^+\),\ldots to \(V\) up to obtaining 
+\(0\) (this occurs because of the Lemma). Thus some 
+\(C_\ell^+(C_{\ell-1}^+ \circ \cdots \circ C_1^+ V)=0\), hence 
+\(C_{\ell-1}^+ \circ \cdots \circ C_1^+ = S^\ell\). Thus 
+\(W\cdot \dim V\ni \varepsilon_\ell\), hence 
+\(\dim V\in \Phi\). 
+
+\(\subset\). Let \(\alpha\in \Phi^+\). Apply \(s_1 s_2 \dotsm s_m s_1 s_2 \dotsm\) 
+to \(\alpha\) up to getting a negative root. So 
+\(s_\ell(s_{\ell-1} \dotsm s_1 \alpha)\in \Phi^-\), but 
+\(s_{\ell-1} \dotsm s_1 \alpha\in \Phi^+\). It follows that 
+\(s_{\ell-1} \dotsm s_1 \alpha=\varepsilon_\ell\). Define 
+\(V=C_1^- \dotsm C_{\ell-1}^- S^\ell\). 
+\end{proof}
+
+The main tool in the proof is Coxeter functor. The hard part here is constructing 
+the indecomposable representations corresponding to dimension vectors. Note that 
+$\varepsilon_x = \dim S^x$. Since the $\varepsilon_x$ are the simple roots, we 
+want to use the action of the Weyl group $W$ to deduce the general case from this 
+one. Set $s_x:\dZ^{Q_0} \to \dZ^{Q_0}$ (the simple reflection associated to $x$) 
+to be $\beta\mapsto \beta-\langle \beta,\varepsilon_x\rangle \varepsilon_x$. One 
+has 
+\[
+  s_x\beta(y) = 
+  \begin{cases}
+    \beta(y) & y\ne x \\
+    \sum_{t a=x} \beta(h a) + \sum_{h a=x} \beta(t a)-\beta(x) & y=x
+  \end{cases}
+\]
+Assume that $x$ is a \emph{sink}, i.e.\ that all arrows incident to $x$ point 
+to $x$. Then we define a map 
+$C_x^+:\representations(Q,\beta) \to \representations(Q,s_x\beta)$. 
+Let $V\in \representations(Q,\beta)$. We will define $W=C_x^+ V$. Put 
+$W(y)=V(y)$ if $y\ne x$. Let $W(x)$ be the kernel of 
+$\bigoplus_{h a=x} V(t a) \to V(x)$. Also, define 
+\[
+  W(a) = 
+  \begin{cases}
+    V(a) & t a\ne x\text{ and }h a\ne x \\
+    W(a) & ha =x
+  \end{cases}
+\]
+
+Now we want to define a functor $C_x^+:\representations(Q) \to \representations(s_x Q)$. 
+To do this, we first need to define $s_x Q$. First let $\Gamma$ be the undirected 
+graph associated to $Q$. Note that 
+$2^{\Gamma_1}=\{\text{quivers supported by }\Gamma\}$. 
+
+First define \(S_x:2^{\Gamma_1} \to 2^{\Gamma_1}\) by sending \(Q\) to the quiver 
+given by reversing arrows \(a\) with \(t a=x\) or \(h a=x\). 
+Assume that \(V\in \representations(Q)\) is indecomposable. We want to define 
+\(C_x^+ V\). First put \(V'(y)=V(y)\) if \(y\ne x\), and 
+\(V'(x) = \image(\bigoplus_{h a=x} V(t a) \to V(x))\). We know that 
+\(V=V'\oplus V_1\). If \(V'\ne 0\), then \(V=S^x\). 
+
+\begin{theorem}[Bernstein-Gelfand]
+Let \(x\in Q_0\) be a sink, \(V\) an indecomposable representation of \(Q\). 
+Then one of the following occurs:
+\begin{enumerate}
+  \item \(V\simeq S^x\) (which happens if and only if \(\dim V=\varepsilon_x\)), in which 
+    case \(C_x^+ V=0\). 
+  \item \(\dim V\ne \varepsilon_x\), whence \(C_x^+ V\) is an indecomposable 
+    representation of \(\dim S_x\beta\). 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+We have a kind of inverse of \(C_x^+\) that preserves direct sums. There exists 
+\(C_x^-:\representations(Q) \to \representations(s_xQ)\), so long as \(x\) is a 
+source. It is analogous (or a ``dual'') of \(C_x^+\). In case 2 above, we have 
+\(C_x^- C_x^+ V = V\). 
+\end{proof}
+
+\begin{lemma}\label{lem:tech-dynkin}
+For all \(\alpha\in \dN^{Q_0}\smallsetminus \{0\}\), there exists $k$ such that 
+\(c^k(\alpha)\not\in \dN^{Q_0}\smallsetminus \{0\}\). 
+\end{lemma}
+\begin{proof}
+Since \(c\) is an element of the Weyl group of \(\Phi\), there exists 
+\(k_0\) such that \(c^{k_0} = 1_{\dZ^{Q_0}}\). 
+Thus \(\alpha+c \alpha+ \cdots + c^{k_0-1}\alpha = 0 \), whence there is 
+\(1\leqslant k<k_0\) satisfying the lemma. 
+\end{proof}
 
 
 
