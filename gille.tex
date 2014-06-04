@@ -17,7 +17,7 @@
 \section*{Introduction}
 
 Everything to be discussed is classical, in the sense that it can (probably) be 
-found in [Demazure and Gabriel], or [Milne]. 
+found in \cite{dg80} or \cite{milneAGS}. 
 
 The classical theory of affine algebraic groups over $\dC$ treats such groups 
 as (Zariski-closed) subgroups of various $\generallinear_n(\dC)$. This theory 
@@ -30,7 +30,7 @@ Let $k$ be an arbitrary field, e.g.\ $\dF_q$, $\dF_q(t)$, $\dR$, \ldots. The
 natural approach to algebraic groups over $k$ is a ``schematic'' one, i.e.\ 
 using schemes. For fields of positive characteristics, there are some recent 
 improvements to the theory of algebraic groups over $k$. On the one hand, there 
-is theory of [Conrad-Gabber-Prasad] on so-called pseudo-reductive groups, and 
+is theory of \cite{cgp10} on so-called pseudo-reductive groups, and 
 for commutative groups, there is recent work of Brion and Titano(sp?). 
 
 New phenomenon occur even over $k=\overline{\dF_p}$. For example, 
@@ -80,7 +80,7 @@ it no additional effort to work over an arbitrary commutative ring. For
 example, if $k'/k$ is a purely inseparable extension of the form 
 $k(\sqrt[p] a)$, then $k'\otimes_k k' = k'[t]/(t-\sqrt[p] a)^p$ is not even 
 a product of fields. But it is an Artinian local ring. One could restrict to 
-this (as is done in [SGA 3 6a]). 
+this (as is done in \cite[VIa]{sga3}). 
 
 For the rest of this section, fix a (commutative, unital) ring $R$. An 
 \emph{$R$-functor} is a covariant functor 
@@ -227,8 +227,8 @@ factor through $\Gamma_G(\{f_i\})$.
 First we suppose we have a single $f:H\to G$, where $H$ is a smooth group. 
 Then the schematic image $\image(f)\subset G$ works. 
 
-Next, we suppose that $G$ admits a maximal smooth $k$-subgroup $G^+$. (If 
-$k$ is perfect, then $G^+=G_\reduced$.) 
+Next, we suppose that $G$ admits a maximal smooth $k$-subgroup $G^\dag$. (If 
+$k$ is perfect, then $G^\dag=G_\reduced$.) 
 \end{proof}
 
 If $f:G\times G\to G$ is 
@@ -236,7 +236,267 @@ $(g,h)\mapsto [g,h]$, then $\Gamma_G(f) = \sD G$, the derived subgroup of
 $G$. 
 
 
+\subsection{Maximal smooth subgroups}
+
+Let $k$ be a field, $A$ a $k$-algebra. Recall we say that $A$ is 
+\emph{geometrically reduced} (Bourbaki says \emph{separable}) if 
+$A\otimes_k K$ is reduced for all extensions $K/k$. If $A$ is of finite 
+type, one only needs $A\otimes_k \bar k$ to be reduced. 
+
+If $A$ is of finite type and geometrically reduced, then for $X=\spectrum A$, 
+\begin{enumerate}
+  \item $X$ is generically smooth over $k$ (i.e.\ there exists an 
+    affine dense open smooth subscheme of $X$ over $k$)
+  \item $X(k^s)$ is dense in $X$ 
+\end{enumerate}
+
+Now, as before, if $G$ is an affine algebraic $k$-group, then it admits a 
+maximal smooth $k$-subgroup $G^\dagger$. This subgroup enjoys the following 
+properties: 
+\begin{enumerate}
+  \item If $G$ is connected, so is $G^\dagger$. 
+  \item $G^\dagger$ is the largest geometrically reduced closed $k$-subscheme of $G$. 
+  \item $G^\dagger(k) = G(k)$. 
+  \item If $k$ is separably closed, $G^\dagger$ is the schematic closure of 
+    $G(k^s)$ in $G$. 
+  \item If $k$ is perfect, then $G^\dagger = G_\reduced$. 
+  \item If $K/k$ is a separable field extension, then 
+    $(G^\dagger)\times_k K \isomorphism (G_K)^\dagger$. 
+\end{enumerate}
+
+We will discuss 2 and 3 in greater depth. For 2, suppose 
+$i:X\hookrightarrow G$ and $X$ is affine and geometrically reduced. We can 
+attach to this data a smooth group $\Gamma_G(i)\subset G$. But 
+$\Gamma_G(i)\subset G^\dagger$, so $X\subset G^\dagger$. 
+
+Regarding 3: the inclusion $G^\dagger(k)\subset G(k)$ is obvious. Let 
+$g\in G(k)$. Then $X=g G^\dagger\subset G$ is also smooth, whence 
+$g G^\dagger\subset G^\dagger$, which yields $g\in G(k)$. 
+
+\begin{example}
+Here we show that $(-)^\dagger$ does not necessarily commute with inseparable 
+base-change. Let $k=\dF_p(t)$, $G=\{x^p+t y^p=0\}\subset (\dG_{\additive,k})^2$. 
+We claim that $G^\dagger=0$, but $(G_{k'})^\dagger = \dG_{\additive, k'}$ (hence 
+$(G_{k'})^\dagger \ne 0$) if $k'=k(\sqrt[p] t)$. 
+First we show that $G^\dagger=0$. It suffices to show that $G(k^s)=0$. Let 
+$(x,y)\in G(k^s)$ be nonzero. But $x^p+t y^p=0$ tells us that $t$ is a 
+$p$-power in $k^s$, a contradiction. Over $k'$, the equation defining $G$ 
+is $(x+t' y)^p=0$, which clearly has maximal smooth subscheme
+$\{x+t' y=0\} \simeq \dG_{\additive,k'}$. 
+\end{example}
 
 
+\begin{proposition}
+Let $f:H\to G$ be a homomorphism of affine algebraic $k$-groups. Assume that 
+$G$ is reduced. Then the following are equivalent:
+\begin{enumerate}
+  \item $f$ is faithfully flat
+  \item $f$ is surjective on $\bar k$-points
+  \item $f$ is dominant 
+\end{enumerate}
+\end{proposition}
+
+Recall that a ring homomorphism $f:A\to B$ is \emph{flat} (or that $B$ is flat 
+over $A$) if the tensor-product functor $-\otimes_A B$ is exact. We say that $B$ 
+is \emph{faithfully flat} if it is flat over $A$, and moreover the map 
+$\spectrum B \to \spectrum A$ is surjective. 
+
+\begin{proposition}
+Let $f:H\to G$ be a homomorphism of algebraic $k$-groups. Then the following are 
+equivalent: 
+\begin{enumerate}
+  \item $f$ is a closed immersion
+  \item $f$ is an immersion 
+  \item $f$ is a monomorphism (i.e.\ for all $A\in k\algebras$, the map 
+    $f_\ast:H(A) \to G(A)$ is injective)
+\end{enumerate}
+\end{proposition}
+
+This fails over rings that are not fields (e.g.\ the ring $\dZ_2$ of $2$-adic 
+integers). One might ask whether injectivity on $\bar k$-points suffices. The 
+answer is no. Let $F:\dG_\additive \to \dG_\additive$ be Frobenius over a field 
+of characteristic $p$. It is not an immersion, but is injective on 
+$\bar k$-valued points. If we take $\dF_p[t]/(t^p)$-valued points, then 
+Frobenius is no longer injective. One puts 
+$\boldsymbol\alpha_p = \spectrum(\dF_p[t]/t^p)$. 
+
+
+
+
+
+\section{Using group functors}
+
+Throughout, let $R$ be our base ring. We are given three $R$-group functors 
+$G_1$, $G_2$, $G_3$, and maps 
+$\alpha:G_1 \to G_2$, $\beta:G_2 \to G_3$. We say that the sequence of $R$-group 
+functors 
+\[
+  1 \to G_1 \to G_2 \to G_3 \to 1 
+\]
+is \emph{exact} if for all $S\in R\algebras$, the sequence 
+\[
+  1 \to G_1(S) \to G_2(S) \to G_3(S) \to 1 
+\]
+is exact as a sequence of abstract groups. 
+
+Let $f:G\to H$ be a morphism of $R$-group functors. We define an $R$-group 
+functor $\ker(f)$ by $\ker(f)(S)=\ker(G(S) \to H(S))$. There is an exact sequence 
+\[
+  1 \to \ker(f) \to G \to H .
+\]
+If $G$ and $H$ are (representable by) affine algebraic groups, so is $\ker(f)$. 
+
+\begin{example}[Witt vectors]
+Over $\dF_p$, we have seen that there is an exact sequence 
+$0 \to \dG_\additive \to W_2 \to \dG_\additive \to 0$. In fact, this sequence 
+splits on the right. 
+\end{example}
+
+Note that if $1 \to G_1 \to G_2 \xrightarrow f G_3 \to 1$ is an exact 
+sequence of affine algebraic groups, then $f:G_2 \to G_3$ admits a section. 
+To see this, just look at the surjection 
+$G_2(R[G_3]) \twoheadrightarrow G_3(R[G_2])$. 
+
+
+\subsection{Semidirect products of group schemes}
+
+Suppose $G$ and $H$ are affine $R$-group schemes, and 
+$\theta:G\to \automorphism(H)$ is a morphism of $R$-group functors. Here, 
+$\automorphism(H)$ is defined by 
+\[
+  \automorphism(H)(S) = \automorphism_{S\textnormal{-}\mathsf{gp}}(H_S) .
+\]
+So for each $S$, we have a homomorphism 
+$\theta_S:G(S) \to \automorphism(H_S)$. We can define the semidirect product 
+(on the scheme $H\times G$) by 
+$(h_1,g_1) \cdot (h_2,g_2) = (h_1 \theta(g) h_2, g_1 g_2)$ as usual. This 
+gives us a group scheme $H\rtimes^\theta G$ that fits into an exact sequence of 
+$R$-functors:
+\[
+  1 \to H \to H\rtimes^\theta G \to G \to 1 .
+\]
+For example, we earlier saw the scheme $\boldsymbol\mu_n\rtimes \dZ/2$. Also, 
+one can form $\dG_\additive^n\rtimes \generallinear_n$. 
+
+Let $A$ be a commutative affine $R$-group scheme, and $G$ an $R$-group scheme 
+with an action on $A$ via $\theta:G\to \automorphism(A)$. We wish to classify 
+$R$-group extensions of $G$ by $A$ with respect to this action. It turns out 
+that there is a group $\h^2(G,A)$ (second Hochschild cohomology) which does this. 
+
+Let's look at the special case where $A=\dV(N)$ for $N$ an $R$-module. 
+
+\begin{theorem}[Grothendieck]
+If $G=\diagonal_R(M)$ acts on $\dV(N)$, then $\h_0^i(G,\dV(N))=0$ for all 
+$i>0$. In particular, extensions of$G$ by $\dV(N)$ are split. 
+\end{theorem}
+
+
+\subsection{Actions, centralizers, etc.}
+
+Let $G$ be an affine $R$-group scheme, $X$ an affine $R$-scheme. An 
+\emph{action} of $G$ on $X$ is a homomorphism 
+$\theta:G\to \automorphism(X)$, where $\automorphism(X)$ is the $R$-group 
+functor defined by 
+\[
+  \automorphism(X)(S) = \automorphism_{S\textnormal{-}\mathsf{Sch}}(X_S) .
+\]
+In other words, for each $S$, we have a homomorphism 
+$\theta_S:G(S) \to \automorphism_{S\textnormal{-}\mathsf{Sch}}(X_S)$. 
+
+\emph{Warning}: the functor $\automorphism(X)$ is very rarely representable. 
+In characteristic zero, $\automorphism(\dG_\additive)$ is represented by 
+$\dG_\mult$, i.e.\ for all $\dQ$-algebras $S$, the natural map 
+$S^\times \to \automorphism_{S\textnormal{-}\mathsf{gp}}(\dG_{\additive,S})$ is 
+an isomorphism. But in characteristic $p>0$, 
+$\automorphism_{S\textnormal{-}\mathsf{gp}}(\dG_{a,S})$ consists of 
+non-commutative polynomials $a_0+a_1 t^p + \cdots + a_r t^{p^r}$, with 
+$a_0\in S^\times$ and the $a_i$ nilpotent. 
+
+Let $G$ act on $X$, and let $X_1,X_2\subset X$ be closed $R$-subschemes. We 
+define various functors: 
+\begin{align*}\tag{transporter}
+  \transporter_G(X_1,X_2)(S) &= \{g\in G(S):\theta(g)X_1(S')\subset X_2(S')\text{ for all }S'/S\} \\  \tag{strict transporter}
+  \stricttransporter_G(X_1,X_2)(S) &= \{g\in G(S):\theta(g)\text{ induces }X_{1,S}\isomorphism X_{2,S}\} \\ \tag{normalizer}
+  \normalizer_G(X_1) &= \transporter_G(X_1,X_1) \\ \tag{centralizer} 
+  \centralizer_G(X_1) &= \{g\in G(S):\theta(g) = 1\text{ on }X_{1,S}\} .
+\end{align*}
+
+\begin{theorem}[Grothendieck]
+Let $R=k$ be a field, $X$ an affine scheme, $G$ an affine algebraic $k$-group 
+acting on $X$, and $X_1,X_2\subset X$ closed $k$-subschemes. Then all the above 
+functors are representable by closed $k$-subschemes of $G$. 
+\end{theorem}
+
+\begin{example}
+Consider the action of $G$ on itself by inner automorphisms. We see that if 
+$H\subset G$ is a $k$-subgroup, then 
+$\normalizer_G(H)$ and $\centralizer_G(H)$ exist as subgroup schemes of $G$. 
+\end{example}
+
+The functors we have defined are the \emph{schematic} transporter, normalizer, 
+\ldots. These can be different from the classical objects of the same name. 
+
+Let $G$ be a reductive group, $P\subset G$ a parabolic subgroup, and 
+$U\subset P$ its unipotent radical. Classically, one says that 
+$P=N_G(U)$. This is true in the language of reduced varieties. 
+
+\begin{example}
+Let $k$ be a field of characteristic $2$ ($\overline{\dF_2}$ for example). 
+Let $G=\projectivegenerallinear(2)_k$, $B\subset G$ the standard Borel, and 
+$U\subset B$ the unipotent radical. We claim that 
+$B\subsetneq N_G(U)$. Indeed, writing $\smat a b c d$ for projective 
+coordinates of $G$, we have $B=\{c=0\}$. But $J=\{c^2=0\}$ is an 
+$R$-subgroup of $G$ strictly containing $B$, but $J\subset N_G(U)$. Indeed, 
+if $x^2=0$, then 
+\[
+  \smat{1}{}{x}{1} \smat{1}{b}{}{1} \smat{1}{}{x}{1} = \smat{1+b x}{b}{}{1+b x} = \smat{1}{b(1+x)}{}{1} 
+\]
+within $\projectivegenerallinear(2)$. 
+\end{example}
+
+
+\subsection{Weil restriction}
+
+Recall the extension $\dC/\dR$ given by adding a root of $z^2=2+i$. 
+Writing $(x+i y)^2 = 2+i$, we get two equations with coefficients in $\dR$. 
+This corresponds to Weil restriction. 
+
+Let $R\to S$ be a ring extension. Let $F$ be an $S$-functor. Following 
+Grothendieck (Weil writes $\operatorname{R}_{S/R}$) we define an $R$-functor 
+$\Pi_{S/R} F$ by 
+\[
+  (\Pi_{S/R} F)(R') = F(R'\otimes_R S) .
+\]
+If $F$ is representable, it is natural ask under what conditions the 
+restriction of scalars $\Pi_{S/R} F$ is representable. 
+
+\begin{theorem}
+Assume $R\to S$ is finite and locally free. Let $Y$ be an affine $S$-scheme. 
+Then $\Pi_{S/R} Y$ is representable by an affine $R$-scheme. Moreoveer, if 
+$Y$ is of finite presentation, so is $\prod_{S/R} Y$. 
+\end{theorem}
+
+\begin{example}[vector groups]
+If $N$ is an $S$-module, then recall $\dV(N)(T) = \hom(N\otimes_S T,T)$. Let 
+$M$ be the ``scalar restriction'' of $N$ to $R$ (i.e.\ $N$ considered as an 
+$R$-module). Then $\Pi_{S/R} \dV(N) = \dV(M)$. 
+\end{example}
+
+If $S=\overbrace{R\times \cdots \times R}^d$, then an $S$-scheme $Y$ is just a 
+$d$-tuple of $R$-schemes $Y_1,\dots,Y_d$. One has 
+$\Pi_{S/R} Y = Y_1\times_R \times \cdots \times_R Y_d$. 
+
+Weil restriction does not transform open covers into open covers! Consider 
+$G=\dG_{\additive, \dC\times \dC}$. Then 
+$\Pi_{\dC\times \dC/\dC} G = \dG_\additive \times \dG_\additive$. If 
+$U_0=\{t\ne 0\}$ and $U_1=\{t\ne 1\}$, then 
+$\{\Pi U_0,\Pi U_1\}$ is \emph{not} an open cover of $\dG_\additive^2$. 
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{lyon-sources}
 
 \end{document}
