@@ -593,4 +593,124 @@ Thus \(\alpha+c \alpha+ \cdots + c^{k_0-1}\alpha = 0 \), whence there is
 
 
 
+\section{Semi-invariants of quivers}
+
+
+\subsection{Motivation}
+
+Fix a quiver $Q$ without oriented cycles. Let $\beta\in \dN^{Q_0}$ be a dimenson 
+vector. We have seen that the set of isomorphism classes of $Q$-representations 
+with dimension vector $\beta$ is in bijection with 
+$\representations(Q,\beta)/\generallinear(Q,\beta)$. As a scheme, this should 
+have  coordinate ring $\dC[\representations(Q,\beta)]^{\generallinear(Q,\beta)}$, 
+but this fixed ring is $\dC$. Instead, suppose we have 
+$b_1/b_2\in \dC(\representations(Q,\beta))^{\generallinear(Q,\beta)}$. Then 
+there exists $\sigma\in X^\ast(\generallinear(Q,\beta))$ such that 
+$g b_1 = \sigma(g) b_1$ and $g b_2 = \sigma(g) b_2$. The set of 
+\emph{semi-invariants} of $Q$ is 
+\[
+  \semiinvariant(Q,\beta)_\sigma = \{b_1\in \dC[\representations(Q,\beta)]:g b_1 = \sigma(g)b_1\} .
+\]
+Define 
+\[
+  \semiinvariant(Q,\beta) = \bigoplus_{\sigma\in X^\ast} \semiinvariant(Q,\beta)_\sigma = \dC[\representations(R,\beta)]^{\speciallinear(Q,\beta)} ,
+\]
+where $\speciallinear(Q,\beta) = \prod_{x\in Q_0} \speciallinear(\beta(x),\dC)$. 
+Essentially, we are looking at the quotient 
+$\representations(Q,\beta) /\speciallinear(Q,\beta)$. 
+
+\begin{theorem}[Kac]\label{thm:kac}
+Fix a sink $x$ of $Q$. Assume $s_x \beta\in \dN^{(s_x Q)_0}$. Then 
+$\semiinvariant(Q,\beta) \simeq \semiinvariant(s_x Q,s_x \beta)$. 
+\end{theorem}
+\begin{proof}
+[I think that we are relating $V(x)$ and $V'(x)$, where $V$ lives in 
+$\semiinvariant(Q,\beta)$ and $V'$ lives in $\semiinvariant(s_x Q,s_x \beta)$.]
+
+Set $W(x) = \bigoplus_{h a=x} V(t a)$. 
+We have the following equalities:
+\begin{align*}
+  \representations(Q,\beta) &= \representations(Q\smallsetminus \{x\},\beta)\oplus \hom(W(x),V(x)) \\
+  \representations(s_x Q,s_x \beta) &= \representations(Q\smallsetminus \{x\},\beta)\oplus \hom(V'(x),W(x)) \\
+  \generallinear(Q,\beta) &= \generallinear(Q\smallsetminus \{x\},\beta) \times \generallinear(V(t a)) \\
+  \generallinear(s_x Q,s_x \beta) &= \generallinear(Q\smallsetminus \{x\},\beta) \times \generallinear(V'(x)) \\
+  \semiinvariant(Q,\beta) &= \left(\dC[\representations(Q\smallsetminus \{x\},\beta)]\otimes \dC[\hom(W(x),V(x))]^{\speciallinear(V(x))}\right)^{\speciallinear(Q\smallsetminus \{x\})} \\
+  \semiinvariant(s_x Q,s_x \beta) &= \left(\dC[\representations(Q\smallsetminus \{x\},\beta)\otimes \dC[\hom(V'(x),W(x))^{\speciallinear(V'(a))}\right)^{\speciallinear(Q\smallsetminus\{x\})} .
+\end{align*}
+This can be explained by the fact that 
+$\grassmannian(d,n) \simeq \grassmannian(n\cdot d,n)$. 
+
+Note that $X^\ast(\generallinear(Q,\beta))\simeq \dZ^{Q_0}$ naturally. Put 
+$s_x \sigma = y\mapsto \sigma(y) + \sigma(x) b_{x,y}$ if $y\ne x$, and 
+$s_x \sigma :x\mapsto -\sigma(x)$, where $b_{x,y}$ is the number of edges between 
+$x$ and $y$. 
+\end{proof}
+More precisely, we have 
+$\semiinvariant(Q,\beta)_\sigma \simeq \semiinvariant(s_x Q,s_x \beta)_{s_x \sigma}$. 
+
+
+\subsection{Schofield's semi-invariants}
+
+Fix $\alpha\in \dN^{Q_0}$ such that $\langle \alpha,\beta\rangle = 0$. We defined 
+a map 
+\[
+  P_0 = \bigoplus_{x\in Q_0} \hom(V(x),W(x)) \to \bigoplus_{a\in Q_1} \hom(V(t a), W(t a))= P_1 
+\]
+for any $V,W$ of dimension $\alpha$ and $\beta$. So we have 
+$\representations(Q,\alpha)\times \representations(Q,\beta) \to \hom(P_0,P_1)$. 
+Compose this with the determinant map to get 
+\[
+  C:\representations(Q,\alpha)\times \representations(Q,\beta) \to \textstyle\bigwedge^N P_0^\vee\otimes \bigwedge^N P_1\simeq \dC \qquad (V,W)\mapsto C_V^W ,
+\]
+where $N=\dim P_0=\dim P_1$. The map $C$ is 
+$\speciallinear(Q,\alpha)\times \speciallinear(Q,\beta)$-invariant. So for any 
+$V\in \representations(Q,\alpha)$, we have 
+$C_V\in \semiinvariant(Q,\beta)_{\langle \alpha,-\rangle}$. 
+
+The map $X^\ast(\generallinear(Q,\alpha))\times \dZ^{Q_0} \to \dZ$ given by 
+$(\sigma,\gamma)\mapsto \sum_x \sigma(x) \gamma(x)$ is a perfct pairing, 
+identifying $X^\ast(\generallinear(Q,\alpha))$ with $\hom(\dZ^{Q_0},\dZ)$. The 
+latter space has $\langle \alpha,-\rangle$ as an element. 
+
+\begin{theorem}[Derksen, Weyman]
+Fix $Q$, $\beta$, and $\sigma$ as before. Consider $\alpha\in \dZ^{Q_0}$ with 
+$\langle \alpha,-\rangle = \sigma$. Then $\semiinvariant(Q,\beta)_\sigma$ is 
+the $\dC$-span of $\{C_V:V\in \representations(Q,\alpha)\}$. 
+\end{theorem}
+\begin{proof}[Idea of proof]
+We use two reductions, and an explicit computation for the quiver $\Theta(m)$ with 
+only two vertices, and $m$ edges from one to the other. 
+
+Reduction 1. We aim to use Theorem \ref{thm:kac}. Define $\widetilde Q$ by adding 
+a source and a sink to $Q$. In other words, $\widetilde Q_0 = Q_0\cup \{x_\pm\}$. 
+We add an arrow $x_- \to y$ if $\sigma(y)<0$, and add an arrow 
+$y\to x_+$ if $\sigma(y)>0$. Set 
+\[
+  \widetilde\sigma(y) = 
+  \begin{cases}
+    0 & y\ne x \\
+    1 & y=x_- \\
+    -1 & y=x_+ 
+  \end{cases}
+\]
+We also define 
+\[
+  \widetilde\beta(x_\pm) = 
+  \begin{cases}
+    \sum_{\substack{y\in Q \\ \sigma(y)>0}} \sigma(y) \beta(y) & \text{if }+ \\
+    \sum_{\substack{y\in Q \\ \sigma(y)<0}} -\sigma(y) \beta(y) & \text{if }- 
+  \end{cases}
+\]
+and $y=\beta(y)$. Actually, 
+$\widetilde\beta=s_{x_+}s_{x_-} \beta$ and 
+$\widetilde\sigma=s_{x_+}s_{x_-} \sigma$. 
+
+[\ldots stopped taking notes\ldots]
+\end{proof}
+
+
+
+
+
+
 \end{document}
