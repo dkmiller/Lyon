@@ -503,9 +503,11 @@ $\sX^\psi$ or $-\sX^\psi$ is irreducible. Thus $\sX^\psi(1)>0$.
 \end{proof}
 
 To conclude, call ``unipotent character'' the irreducible characters 
-$\sX^\psi$ with $\psi\in \{\Theta\xrightarrow\psi\cP:\text{support of }\psi=1\}$. 
-
-For the rest of these notes, we will give a geometric construction of the 
+$\sX^\psi$ with 
+\[
+  \psi\in \{\Theta\xrightarrow\psi\cP:\text{support of }\psi=1\} .
+\]
+Later on, we will give a geometric construction of the 
 $\sX^\psi$. 
 
 
@@ -546,6 +548,344 @@ field of characteristic zero) for $X$ over $\dF_q$. Unfortunately, if we try to
 define $\h^i(X_\etale, k)$ in the naive manner, we get trivial cohomology. 
 
 [\ldots Grothendieck's insight $\to\h^i(X_\etale, \dQ_\ell)$\ldots]
+
+
+\subsection{\texorpdfstring{$\overline{\dQ_\ell}$}{barQl}-sheaves}
+
+Let $k$ be an algebraically closed field, $X$ a $k$-variety. Let $\ell$ be 
+a prime invertible in $k$. Start with a sheaf $\sF$ of 
+$\dZ/\ell^n$-modules on $X_\etale$. We say that $\sF$ is \emph{constructible} 
+if there is a finite partition $X=\bigsqcup X_\alpha$ of locally closed 
+subsets such that $\sF|_{X_\alpha}$ is locally constant, and moreover 
+the stalks $\sF_{\bar x}$ be finite for all geometric points $\bar x$ of $X$. 
+Denote by $\sheaf_c(X_\etale, \dZ/\ell^n)$ the category of constructible 
+$\dZ/\ell^n$-sheaves. 
+
+If $k=\dC$, then there is a morphism of topoi $\varepsilon:X(\dC) \to X_\etale$, 
+inducing an equivalence of categories 
+$\varepsilon^\ast:\sheaf_c(X_\etale,\dZ/\ell^n)\isomorphism \sheaf_c(X(\dC),\dZ/\ell^n)$. 
+
+A \emph{constructible sheaf of $\dZ_\ell$-modules} is a family 
+$(\sF_n,f_{n+1}:\sF_{n+1} \to \sF_n)$ such that 
+\begin{enumerate}
+  \item $\sF_n\in \sheaf_c(X_\etale,\dZ/\ell^n)$ 
+  \item $f_{n+1}$ induces an isomorphism $\sF_{n+1}\otimes \dZ/\ell^n \isomorphism \sF_n$ 
+\end{enumerate}
+Note that we could have just talked about sheaves of $\dZ_\ell$-modules, but 
+this does not give us an interesting category. [pro-\'etale topology lets you 
+avoid this] We define 
+\[
+  \hom_{\dZ_\ell}(\sF,\sG) = \varprojlim_n \hom(\sF_n,\sG_n) .
+\]
+This gives us a perfectly good category $\sheaf_c(X_\etale,\dZ_\ell)$. 
+
+Next we define a category of constructible $\dQ_\ell$-sheaves. Its objects are 
+constructible $\dZ_\ell$-sheaves, but morphisms are 
+\[
+  \hom_{\dQ_\ell}(\sF,\sG) = \hom_{\dZ_\ell}(\sF,\sG)\otimes \dQ .
+\]
+In other words, $\sheaf_c(X_\etale,\dQ_\ell)$ is the localization of 
+$\sheaf_c(X_\etale,\dZ_\ell)$ at all morphisms of the form ``multiply 
+$\ell$.'' 
+
+If $E$ is a finite extension of $\dQ_\ell$, we can repeat the whole process for 
+$E$ (start with $O_E/\fp^n$, take a projective limit, then tensor with $\dQ$). This 
+gives us a category $\sheaf_c(X_\etale,E)$. If $E\subset E'$ are finite extensions 
+of $\dQ_\ell$, we get a functor 
+$\sheaf_c(X_\etale,E) \to \sheaf_c(X_\etale,E')$, written 
+$\sF\mapsto \sF\otimes_E E'$. One has 
+\[
+  \hom_{E'}(\sF\otimes_E E',\sG\otimes_E E') = \hom(\sF,\sG)\otimes_E E' .
+\]
+
+Finally we construct the category of $\overline{\dQ_\ell}$-sheaves. Its 
+objects consist of constructible $E$-sheaves for varying finite extensions $E$ of 
+$\dQ_\ell$. If $\sF$ is an $E$-sheaf and $\sG$ is an $E'$-sheaf, choose a finite 
+extension $F$ containing $E$ and $E'$, and define 
+\[
+  \hom_{\overline{\dQ_\ell}}(\sF,\sG) = \hom(\sF\otimes_E F,\sG\otimes_{E'} F)\otimes_F \overline{\dQ_\ell} .
+\]
+Our category $\sheaf_c(X_\etale,\overline{\dQ_\ell})$ should be thought of the 
+analogue of the category of constructible $\dC$-sheaves on the space $X(\dC)$ for 
+$X$ a complex variety. When there is no danger of confusion, write $\sheaf_c(X)$ 
+instead of $\sheaf_c(X_\etale,\overline{\dQ_\ell})$. 
+
+If $\sF\in \sheaf_c(X)$, then $\sF$ is a \emph{local system} (or a smooth sheaf) if 
+each $\sF_n$ is locally constant. \emph{Warning}: $\sF$ is not necessarily globally 
+locally constant, i.e.\ there may not exist a partition that simultaneously 
+trivializes each $\sF_n$. If $\sF\in \sheaf_c(X)$ and $\bar x$ is a geometric point 
+of $X$, then we define the stalk of $\sF$ at $\bar x$ by 
+\[
+  \sF_{\bar x} = (\varprojlim_n \sF_{n,\bar x})\otimes \overline{\dQ_\ell} .
+\]
+These are finite-dimensional $\overline{\dQ_\ell}$-vector spaces. 
+
+As in the classical case, when can define a ``bounded derived category of 
+constructible sheaves'' $\derived_c^b(X)$. Its objects are complexes 
+$\sK^\bullet$ with $\sH^\bullet\sK^\bullet$ being constructible 
+$\overline{\dQ_\ell}$-sheaves. 
+For any morphism $f:X\to Y$, we have functors 
+\begin{align*}
+  f_\ast:\derived_c^b(X) &\to \derived_c^b(Y) \\
+  f_! : \derived_c^b(X) &\to \derived_c^b(Y) \\
+  f^\ast : \derived_c^b(Y) &\to \derived_c^b(X) \\
+  f^!:\derived_c^b(Y) &\to \derived_c^b(X) .
+\end{align*}
+If $f$ is proper, then $f_\ast=f_!$, and if $f$ is an open immersion, then 
+$f^\ast=f^!$. 
+
+
+\subsection{Analogy with functions}
+
+Let $f:E\to F$ be a map of finite sets. Let $k$ be a field, and write 
+$k^E$, $k^F$ for the spaces of functions $E\to k$, $F\to k$. We have functions 
+\begin{align*}
+  f^\ast:k^F &\to k^E && h\mapsto h\circ f \\
+  f_\ast:k^E &\to k^F && h\mapsto x\mapsto \sum_{y\in f^{-1}(x)} h(y)
+\end{align*}
+which should be thought of as analogies of our functors between derived 
+categories. 
+
+
+\subsection{Connection with cohomology}
+
+Let $X$ be a variety over an algebraically closed field $k$. Let 
+$p:X\to \{\mathrm{pt}\}$ be the unique morphism. For $\sK\in \derived_c^b(X)$, 
+we define 
+\begin{align*}
+  \hh^i(X,\sK) &= \sH^i(p_\ast \sK^\bullet) \\
+  \hh_c^i(X,\sK^\bullet) &= \sH^i(p_! \sK^\bullet) 
+\end{align*}
+In particular, for $\sK^\bullet = \cdots \to 0 \to \overline{\dQ_\ell} \to 0 \to \cdots$, 
+we put 
+\begin{align*}
+  \h^i(X,\overline{\dQ_\ell}) &= \hh^i(X,\sK^\bullet) \\
+  \h_c^i(X,\overline{\dQ_\ell}) &= \hh_c^i(X,\sK^\bullet) 
+\end{align*}
+More directly, one has 
+\[
+  \h_c^i(X,\overline{\dQ_\ell}) = \left(\varprojlim \h_c^i(X_\etale,\dZ/\ell^n)\right)\otimes \overline{\dQ_\ell} .
+\]
+
+
+\subsection{Verdier duality}
+
+We have a functor $D_X:\derived_c^b(X) \to \derived_c^b(X)$ such that 
+\begin{enumerate}
+  \item $D_X^2=1$
+  \item if $f:X\to Y$ is a morphism, then $D_Y f_! = f_\ast D_X$ and $f^! D_Y = D_X f^\ast$ 
+  \item $\hh_c^{-i}(X,\sK^\bullet) = \hh^i(X,D_X \sK^\bullet)$
+  \item if $\sE$ is a local system and $X$ is smooth, then 
+    $D_X(\sE[\dim X]) = \sE^\vee[\dim X]$
+\end{enumerate}
+In particular, if $\sE\simeq \sE^\vee$, then 
+$\h_c^i(X,\sE) \simeq \h^{2\dim X-i}(X,\sE)$. 
+
+
+\subsection{Intersection cohomology}
+
+Let $Y$ be an irreducible nonsingular locally closed subset of $X$. Goresky, 
+MacPherson and Deligne defined, for any local system $\sE$ on $Y$, a complex 
+$\intersectioncohomology(\overline Y,\sE)\in \derived_c^b(\overline Y)$ such 
+that 
+\[
+  D_{\overline Y}(\intersectioncohomology(\overline Y,\sE)[\dim Y]) \simeq \intersectioncohomology(\overline Y,\sE^\vee)[\dim Y] .
+\]
+The complex $\sK=\intersectioncohomology(\overline Y,\sE)[\dim Y]$ is 
+characterized by the following properties:
+\begin{enumerate}
+  \item $\sH^{-\dim Y} \sK^\bullet|_Y \simeq \sE$
+  \item $\sH^i\sK^\bullet=0$ if $i<-\dim Y$
+  \item $\dim(\support \sH^i\sK^\bullet)<-i$ for $i>-\dim Y$
+  \item $\dim(\support\sH^i D \sK^\bullet) < -i$ if $i>-\dim Y$
+\end{enumerate}
+
+If $Y$ is smooth, then $\intersectioncohomology(Y,\sE) \simeq \sE$. 
+
+\begin{exercise}
+Assume $Z$ is a nonsingular open subset of $\overline Y$. If $\sL$ is a local 
+system on $Z$ such that $\sL|_{Z\cap Y}\simeq \sE|_{Z\cap Y}$, then 
+$\intersectioncohomology(\overline Y,\sE) \simeq \intersectioncohomology(\overline Y,\sL)$. 
+\end{exercise}
+
+
+
+
+
+\subsection{Perverse sheaves}
+
+We define $\perverse(X)$ to be the full subcategory of 
+$\sK^\bullet\in \derived_c^b(X)$ such that 
+\begin{enumerate}
+  \item $\dim(\support \sH^i\sK^\bullet) \leqslant -i$ 
+  \item $\dim(\support \sH^i D \sK^\bullet)\leqslant -i$
+\end{enumerate}
+Clearly $\perverse(X)$ contains all $\intersectioncohomology(\overline Y,\sE)[\dim Y]$ 
+extended by zero on $X\smallsetminus \overline Y$. 
+
+\begin{theorem}[Beilinson, Bernstein, Deligne, Gabber]
+Any simple perverse sheaf is of the form 
+$\intersectioncohomology(\overline Y,\sE)[\dim Y]$ extended by zero on 
+$X\smallsetminus \overline Y$. 
+\end{theorem}
+
+As in the classical case, $\perverse(X)$ is a semisimple abelian category in 
+which all objects have finite length. The inclusion 
+$\perverse(X)\hookrightarrow \derived_b^c(X)$ induces an equivalence between 
+the derived category of $\perverse(X)$ and $\derived_b^c(X)$. 
+
+\emph{Warning}: The functors $f_!,f^!,f_\ast,f^\ast$ do not always carry 
+one category of perverse sheaves into another (i.e.\ they do not preserve 
+``perversity''). 
+
+
+\subsection{Stratifications}
+
+We say that $X=\bigsqcup X_\alpha$ is a \emph{stratification} of $X$ if it is a 
+finite partition of $X$ into equidimensional nonsingular locally closed subsets 
+of $X$, such that if $X_\beta\cap \overline{X_\alpha}$, then 
+$X_\beta\subset \overline{X_\alpha}$. 
+
+\begin{proposition}
+Let $f:X\to Y$ be a proper surjective map with $X$ irreducible (or just 
+equidimensional), and let $X=\bigsqcup X_\alpha$ be a stratification of $X$. 
+For $y\in Y$, put $f^{-1}(y)_\alpha = f^{-1}(y)\cap X_\alpha$. Assume that 
+\[
+  \dim\left\{y\in Y:\dim f^{-1}(y)_\alpha\geqslant \frac 1 2 (i-\codim X_\alpha)\right\} \leqslant \dim Y - i 
+\]
+for all $\alpha$ and $i$. Then $f_\ast:\perverse(X) \to \perverse(Y)$ is 
+well-defined. 
+\end{proposition}
+
+\begin{corollary}
+If $f:X\to Y$ is surjective, proper, and $X$ is nonsingular irreducible, then 
+if for all $i$, 
+\begin{equation}\label{eq:semi-small}
+  \dim\left\{y\in Y:\dim f^{-1}(y) \geqslant i\right\} \leqslant \dim Y- 2 i
+\end{equation}
+the functor $f_\ast:\perverse(X) \to\perverse(Y)$ is well-defined. 
+\end{corollary}
+
+A surjective proper map satisfying \eqref{eq:semi-small} is called 
+\emph{semi-small}. 
+
+\begin{exercise}
+Let $k$ be an algebraically closed field. Consider the varieties 
+\begin{align*}
+  \mathfrak{gl}_2(k) &= \text{affine space over }k\\
+  W &= \{\text{nilpotent matrices}\} \\
+  B &= \smat{\ast}{\ast}{}{\ast} 
+\end{align*}
+Let 
+\[
+  \widetilde W = \left\{(x,g B)\in \mathfrak{gl}_2 \times \generallinear_2/B:g^{-1} x g\in \smat{}{\ast}{}{}\right\} .
+\]
+Show that the map $\widetilde W \to W$, $(x,g B)\mapsto x$ is semi-small. 
+\end{exercise}
+
+\begin{theorem}[special case of the decomposition theorem]
+If $f:X\to Y$ is a proper smooth map, then 
+$f_\ast(\overline{\dQ_\ell})$ is semisimple. 
+\end{theorem}
+
+\begin{corollary}
+If $f:X\to Y$ is semi-small, $X$ nonsingular irreducible, then 
+\[
+  f_\ast(\overline{\dQ_\ell}[\dim X]) \simeq \intersectioncohomology(Y,\overline{\dQ_\ell})[\dim Y]\oplus \bigoplus_{\substack{(Z,\xi) \\ \overline Z\subsetneq Y}} V_{Z,\xi} \otimes \intersectioncohomology(\overline Z,\xi)[\dim Z] 
+\]
+\end{corollary}
+
+In terms of cohomology, this tells us that 
+\[
+  \h_c^i(X,\overline{\dQ_\ell}) \simeq \operatorname{IH}_c^i(\overline Y,\overline{\dQ_\ell}) \oplus \bigoplus_{(Z,\xi)} V_{Z,\xi} \otimes \operatorname{IH}_c^{i+\bullet}(\overline Z,\xi) .
+\]
+
+
+\subsection{\texorpdfstring{$F$}{F}-equivariance}
+
+Suppose $X$ is defined over $\dF_q$ with (relative) Frobenius 
+$F:X\to X$. We have a functor $F^\ast:\derived_c^b(X) \to \derived_c^b(X)$. 
+We say that $\sK\in \derived_c^b(X)$ is \emph{$F$-stable} if 
+$F^\ast \sK\simeq \sK$. An \emph{$F$-equivariant complex} on $X$ is a pair 
+$(\sK,\phi)$ with $\phi:F^\ast \sK\isomorphism \sK$. Morphisms 
+$\varphi:(\sK,\phi) \to (\sK',\phi')$ are defined via the commutative diagram 
+\[\xymatrix{
+  F^\ast \sK \ar[r]^-{F^\ast\varphi} \ar[d]^-\phi 
+    & F^\ast \sK' \ar[d]^-{\phi'} \\
+  \sK \ar[r]^-\varphi 
+    & \sK' 
+}\]
+Write $\derived_c^b(X)_F$ for the category of $F$-equivariant complexes. 
+
+
+\subsection{Characteristic function of \texorpdfstring{$(\sK,\phi)$}{(K,phi)}}
+
+We define $\chi_{\sK,\phi}:X^F=X(\dF_q) \to \overline{\dQ_\ell}$ by 
+\[
+  x\mapsto \sum_i (-1)^i \trace\left(\phi_x^i, \sH_x^i\sK\right) .
+\]
+
+\begin{lemma}
+If $\sK\simeq \sK'$ are simple perverse sheaves, and if 
+$\phi:F^\ast\sK \isomorphism \sK$ and $\phi':F^\ast \sK'\isomorphism \sK'$, 
+then there is a unique $c_{\phi\phi'}\in \overline{\dQ_\ell}$ such that 
+$\chi_{\sK,\phi} = c_{\phi\phi'} \chi_{\sK',\phi'}$. If 
+$c_{\phi\phi'}=1$, then $(\sK,\phi)\simeq (\sK',\phi')$. 
+\end{lemma}
+
+Any $\phi:F^\ast\sE\to \sE$, with $\sE$ a local system on $Y$ (an $F$-stable, 
+nonsingular, locally closed subset of $X$) induces a canonical 
+$\phi:F^\ast\intersectioncohomology(\overline Y,\sE)) \isomorphism \intersectioncohomology(\overline Y,\sE)$. 
+
+\begin{proposition}
+If $f:X\to Y$ commutes with Frobenius $F$, then 
+$f_!:\derived_c^b(X)_F \to \derived_c^b(Y)_F$ and 
+$f^\ast:\derived_c^b(Y)_F \to \derived_c^b(X)_F$. 
+\end{proposition}
+\begin{proof}
+Let $(\sK,\phi)\in \derived_c^b(X)_F$. From 
+$\phi:F^\ast\sK \isomorphism \sK$ we get 
+$f_! F^\ast \sK \xrightarrow{f_!\phi} f_! \sK$. We apply the proper base change 
+theorem to $f:X\to Y$ to get a canonical isomorphism 
+$F^\ast f_! \simeq f_! F^\ast$. From all this we get 
+$\widetilde\phi:F^\ast f_! \sK \isomorphism f_! \sK$. Our functor is 
+$(\sK,\phi)\mapsto (f_! \sK,\widetilde\phi)$. 
+\end{proof}
+
+\begin{theorem}[trace formula]
+Assume $f:X\to Y$ commutes with $F$. This gives $f:X^F \to Y^F$ between finite 
+sets. Then 
+\begin{enumerate}
+  \item $f_\ast \chi_{\sK,\phi} = \chi_{f_!(\sK,\phi)}$, i.e.\ the following 
+    diagram commutes:
+    \[\xymatrix{
+      \operatorname{Fun}(X^F,\overline{\dQ_\ell}) \ar[r]^-{f_!} 
+        & \operatorname{Fun}(Y^F,\overline{\dQ_\ell}) \\
+      \derived_c^b(X)_F \ar[r]^-{f_!} \ar[u]^-\chi 
+        & \derived_c^b(Y)_F \ar[u]^-\chi 
+    }\]
+  \item The following diagram commutes:
+    \[\xymatrix{
+      \operatorname{Fun}(Y^F,\overline{\dQ_\ell}) \ar[r]^-{f^\ast} 
+        & \operatorname{Fun}(X^F,\overline{\dQ_\ell}) \\
+      \derived_c^b(Y)_F \ar[r]^-{f^\ast} \ar[u]^-\chi 
+        & \derived_c^b(X)_F \ar[u]^-\chi 
+    }\]
+\end{enumerate}
+\end{theorem}
+
+The proof uses Grothendieck's trace formula. For any 
+$(\sK,\phi)\in \derived_c^b(X)_F$, $\phi$ gives us an action of Frobenius on 
+$\hh_c^i(X,\sK)$. The theorem is that 
+\[
+  \sum_{x\in X^F} \chi_{\sK,\phi}(x) = \sum_i (-1)^i \trace(F,\hh_c^i(X,\sK)) .
+\]
+In particular, if $\sK=\overline{\dQ_\ell}$ and 
+$\phi:F^\ast \overline{\dQ_\ell} \to \overline{\dQ_\ell}$ induces the identity 
+on stalks of $X^F$, then 
+\[
+  \# X^F = \sum (-1)^i \trace(F^\ast,\h_c^i(X,\overline{\dQ_\ell})) .
+\]
 
 
 
