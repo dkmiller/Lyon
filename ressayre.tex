@@ -712,5 +712,61 @@ $\widetilde\sigma=s_{x_+}s_{x_-} \sigma$.
 
 
 
+\section{Proof of saturation theorem for \texorpdfstring{$\generallinear(n)$}{GL(n)}}
+
+Let $Q$ be a quiver without oriented cycles, and $\beta\in \dN^{Q_0}$. For 
+convenience, write $X^\ast(Q,\beta)=X^\ast(\generallinear(Q,\beta))$ for the 
+character group of $\generallinear(Q,\beta)$. Let
+$\Sigma(Q,\beta)=\{\sigma \in X^\ast(Q,\beta):\semiinvariant(Q,\beta)_\sigma\ne 0\}$. 
+Note that $\Sigma(Q,\beta)$ is the set of weights of 
+$\generallinear(Q,\beta)/\speciallinear(Q,\beta)$ acting on 
+$\semiinvariant(Q,\beta)$. Hence $\Sigma(Q,\beta)$ is a finitely generated 
+semigroup in $\dZ^{Q_0}$. 
+
+\begin{theorem}[Derksen-Weyman]
+Write $\beta'\hookrightarrow \beta$ if for $W$ general in 
+$\representations(Q,\beta)$, there is a subrepresentation 
+$V\subset W$ of dimension $\beta'$. Then 
+\[
+  \Sigma(Q,\beta) = \left\{\sigma\in X^\ast(Q,\beta):\sigma(\beta)=0\text{ and }\sigma(\beta')\leqslant 0\text{ for all }\beta'\hookrightarrow \beta\right\} .
+\]
+\end{theorem}
+
+\begin{corollary}
+The set $\Sigma(Q,\beta)$ is characterized by finitely many linear inequalities. 
+\end{corollary}
+
+This corollary does not follow from the finite generation of $\Sigma(Q,\beta)$, 
+as is evidenced by the semigroup 
+$\dZ_{\geqslant 0}^2 \smallsetminus \{0,(0,1)\} = \langle (1,0),(1,1),(0,2)\rangle$. 
+
+\begin{corollary}
+Let $\sigma \in X^\ast(Q,\beta)$. If there exists $k>0$ such that 
+$k\sigma\in \Sigma(Q,\alpha)$, then $\sigma\in \Sigma(Q,\alpha)$. 
+\end{corollary}
+
+
+\subsection{Relation with Knutson-Tao's saturation theorem}
+
+Let 
+\[
+  \knutsontao(m) = \{(\lambda,\mu,\nu)\text{ partitions of length $\leqslant m-1$ such that }(S_\lambda \dC^m \otimes S_\mu \dC^m \otimes S_\nu \dC^m)^{\speciallinear(m)}\ne 0\} .
+\]
+Note that $(\lambda,\mu,\nu)\in \knutsontao(m)$ if and only if 
+$(S_\lambda\dC^m)^\vee\hookrightarrow S_\mu \dC^m\otimes S_\nu \dC^m$. 
+
+\begin{theorem}[Knutson, Tao]
+Let $(\lambda,\mu,\nu)$ be three partitions of $n$ such that 
+$n$ divides $|\lambda|+|\mu|+|\nu|$. If there exists $k$ such that 
+$(k\lambda,k\mu,k\nu)\in \knutsontao(n)$, then $(\lambda,\mu,\nu)\in \knutsontao(n)$. 
+\end{theorem}
+
+We will show that the Derksen-Weyman theorem implies the Knutson-Tao theorem. 
+
+[\ldots stopped taking notes\ldots]
+
+
+
+
 
 \end{document}
