@@ -492,6 +492,228 @@ $\Pi_{\dC\times \dC/\dC} G = \dG_\additive \times \dG_\additive$. If
 $U_0=\{t\ne 0\}$ and $U_1=\{t\ne 1\}$, then 
 $\{\Pi U_0,\Pi U_1\}$ is \emph{not} an open cover of $\dG_\additive^2$. 
 
+The Weil restriction functor takes affine group schemes to affine group 
+schemes. (That $\Pi_{S/R}$ preserves smoothness follows trivially once we 
+know that formally smooth $\Rightarrow$ smooth.) However, as we have seen, 
+it does \emph{not} preserve surjectivity. For example, let $k$ be a field 
+of characteristic $p>0$, and let $F:\dG_{\additive,k} \to \dG_{\additive,k}$ be the 
+Frobenius $x\mapsto x^p$. Let $k'/k$ be a purely inseparable extension. We have 
+an induced morphism $\Pi_{k'/k} \dG_\additive \to \Pi_{k'/k} \dG_\additive$. 
+Extend scalars once again via $k'\otimes_k k' \supset k'$. The ring 
+$k'\otimes_k k'$ is a local Artinian ring over $k$. In the 
+commutative diagram 
+\[\xymatrix{
+  \text{infinitesimal} \ar[r] \ar[d] 
+    & \Pi_{k'\otimes k' / k'} \dG_\additive \ar[r] \ar[d] 
+    & \dG_\additive \ar[d] \\
+  \text{infinitesimal} \ar[r] 
+    & \Pi_{k'\otimes k' / k'} \dG_\additive \ar[r] 
+    & \dG_\additive
+}\]
+The first vertical arrow is not surjective. 
+
+\begin{example}
+Let $p=2$, and let $k'=k(\sqrt a)$ be a purely inseparable extension. 
+Then $k'\otimes_k k'\simeq k'[t]/(t^2)$. Write $A=k[t]/t^2$. Then for 
+$X/k$ affine, $Y=\Pi_{A/k} X_A$ is the tangent bundle of $X$. 
+
+[\ldots more that I didn't understand\ldots ]
+\end{example}
+
+Again, let $k'/k$ be a purely inseparable extension. The functor 
+$\Pi_{k'/k}$ transforms affine covers into affine covers. Moreover, 
+$\Pi_{k'/k}$ extends to a functor on quasi-compact separated 
+$k'$-schemes. Let $G=\Pi_{k'/k} \dG_{\additive,k'}$; this is an 
+interesting group. If $[k':k]=p^r$, then $G$ embeds into 
+$\generallinear_{p^r} = \generallinear(k')$. This is one of the simplest 
+possible examples of a pseudo-reductive group. It is not a torus -- the 
+base-change $G_{k'}$ contains a unipotent part $\dG_{a,k'}$.
+
+
+
+
+
+\section{Descent and quotients}
+
+Throughout, we will use faithfully flat descent as a kind of ``black box'' to 
+prove certain results. Vistoli's notes are a fantastic reference to this 
+topic. 
+
+
+\subsection{Embedded descent}
+
+Let $k$ be a field, $K/k$ a field extension. Let $X_0$ be an affine $k$-scheme 
+of finite type. Write $X=X_0\times_k K$. We are given a closed subscheme 
+$Z\hookrightarrow X$. We say that $Z$ \emph{descends} to $k$ if there is a closed 
+subscheme $Z_0\subset X_0$ such that $Z=Z_0\times_k K$. If such a $Z_0$ exists, 
+it is unique. Indeed, to define $Z_0\subset X_0$, it is equivalent to 
+define the associated ideal $I_{Z_0}\subset k[X_0]$. If $Z_0$ and $Z_0'$ are 
+both descents of $Z$ to $k$, then we have $I_{Z_0}$ and $I_{Z_0'}$, ideals 
+in $k[X_0]$ such that $I_{Z_0}\otimes_k K=I_{Z_0'}\otimes_k K$. This implies 
+$I_{Z_0} = I_{Z_0'}$ (special case of faithfully flat descent). 
+
+
+\subsection{The Galois case}
+
+Suppose $K/k$ is a (possibly infinite) Galois extension. Then $Z$ descends to 
+$k$ if and only if for all $\gamma\in \galois(K/k)$, we have 
+$^\gamma(I_Z) = I_Z$ in $K[X_0] = K\otimes_k k[X_0]$. One direction is easy, 
+and for the other one uses Galois descent (via Speiser's lemma). Define 
+$I_0=\h^0(k, I_Z)$. Speiser's lemma tells us that $K\otimes_k I_0 = I_Z$. 
+
+\begin{corollary}[Galois case]
+There exists a minimal ``field of definition'' of $Z$.
+\end{corollary}
+\begin{proof}
+The field of definition $F$ is by definition the field $F\subset K$ for which 
+$\galois(K/F)=\{\gamma\in \galois(K/k):\gamma(I_Z)=I_Z\}$. 
+\end{proof}
+
+In [EGA 4, \S 4.8] there is a section called ``field of definition.'' It 
+depends on Bourbaki's Algebra II.8. Let $V_0$ be a $k$-vector space, 
+$V=K\otimes V_0$. Let $W\subset V$ be a $K$-vector space. Then there is a 
+minimal field of definition for $W$. The proof is an exercise in linear 
+algebra. 
+
+Back to a general field extension $K\supset k$. For $Z\subset X$, we have 
+a field of definition $F$ of the subspace $I_Z\subset K[X_0]$. If $F+k$, 
+then $I_Z=(I_0)\otimes_k K$ for a $k$-space $I_0$ which defines $Z_0$. 
+
+If $K^p\subset k\subset K$ (i.e.~$K$ is a height $\leqslant 1$ extension of 
+$k$) there are some tools, due to Cartan and Jacobson, to replace Galois theory. 
+
+
+\subsection{Flat sheaves}
+
+The notion of ``exact sequence of algebraic groups'' that we defined earlier is 
+too restrictive to be very useful. The correct context is that of flat 
+sheaves. 
+
+
+An fppf (or flat for short, from ``fid\`element plat de pr\'esantation finie,'' or 
+``faithfully flat of finite presentation'') cover is a ring map $R\to S$ which 
+is faithfully flat and of finite presentation. In other words, $S$ is the 
+form $R[t_1,\dots,t_n] / (g_1,\dots,g_m)$. We say that an $R$-functor 
+$F:R\algebras\to \mathsf{Set}$ is an \emph{fppf sheaf} if 
+\begin{enumerate}
+  \item $F(S_1\times S_2)\isomorphism F(S_1)\times F(S_2)$ 
+  \item For each flat cover $S\to S'$, the following sequence is exact: 
+    \[
+      F(S) \to F(S') \rightrightarrows F(S'\otimes_S S') .
+    \]
+    The two maps $F(S') \to F(S'\otimes_S S')$ come from the two 
+    maps $S'\to S'\otimes_S S'$. By ``exact'' we mean that the sequence is 
+    an equalizer. 
+\end{enumerate}
+
+Zariski covers (and \'etale covers as well) are fppf. Write 
+$\sheaf(R_\fppf)$ for the category of fppf sheaves over $R$. 
+
+\begin{example}
+Our groups $\dV(N)$ are fppf sheaves. More generally, for any affine $R$-scheme 
+$X$, the representable functor $h_X$ is fppf due to the following result. 
+\end{example}
+
+\begin{proposition}[Grothendieck]
+If $R\to S$ is faithfully flat, then the sequence 
+\[
+  0 \to R \to S \to S\otimes_R S \to S\otimes_R S \otimes_R S \to \cdots
+\]
+is exact. 
+\end{proposition}
+
+Just as with sheaves on topological spaces, there is an operation of 
+``fppf sheafification'' for $R$-functors. It is a functor 
+$R\textnormal{-}\mathsf{Fun}\to \sheaf(R_\fppf)$. 
+
+Let $f:F\to F'$ be a morphism of flat fppf sheaves (in groups). We can define 
+$\ker(f)$ ``pointwise'' as before: 
+\[
+  \ker(f)(S) = \ker(f_S:F(S) \to F(S')) .
+\]
+This is a flat sheaf. However, we also want to define the image 
+$\image(f)$ and coimage $\coimage(f)$. These are the sheafifications of 
+$S\mapsto \image(F(S)\to F'(S))$ and $S\mapsto F(S)/\ker(f)(S)$, 
+respectively. Fortunately, it is still the case that the natural map 
+$\coimage(f) \to \image(f)$ is an isomorphism. We say that a sequence 
+$1 \to F_1 \to F_2 \to F_3 \to 1$ of fppf sheaves (of groups) is \emph{exact} 
+if 
+\begin{enumerate}
+  \item for all $R\to S$, the sequence $1\to F_1(S) \to F_2(S)\to F_3(S)$ is exact 
+  \item for all $R\to S$ and all $\alpha\in F_3(S)$, there is a flat cover 
+    $S'/S$ such that $\alpha\in \image(F_2(S') \to F_3(S'))$. 
+\end{enumerate}
+
+Instead of property 2 we could have required that the natural map 
+$\image(F_2\to F_3) \to F_3$ be an isomorphism. 
+
+\begin{example}
+The sequence $1 \to \boldsymbol\mu_n \to \dG_m \xrightarrow n \dG_m \to 1$ is 
+not an exact sequence of $R$-functors for any $R$. However, it is fppf-exact. 
+This is easily seen via lifting over the fppf cover 
+$S\to S[\sqrt[n] s]$ for $s\in S^\times$. 
+\end{example}
+
+In other words, we have an ``equality of fppf sheaves'' 
+$\dG_m = \dG_m/\boldsymbol\mu_n$. 
+
+Let $H\subset G$ be a subgroup (as closed affine $R$-schemes). Using fppf 
+sheafification, we can talk about $Q=G/H$. This is, \emph{a priori}, simply 
+an fppf sheaf. Is it representable by an $R$-scheme? Unfortunately, this is 
+rarely the case. See \cite{r70} for a counterexample. 
+
+\begin{theorem}
+Let $k$ be a field. If $H\subset G$ are affine algebraic groups over $k$, then 
+the fppf sheaf $G/H$ is representable by a quasi-projective $k$-scheme. 
+\end{theorem}
+
+Note that $(G/H)\times_k R$ will be an fppf quotient for each $R/k$. 
+
+One annoying feature of fppf sheafification is that it is non-trivial to find 
+the points of a quotient $G/H$. Fortunately, if $H\subset G$ are over a field 
+$k$, then for $X=G/H$, we have $X(\bar k)) = G(\bar k)/H(\bar k)$. To see this, 
+use the fact that if $\bar k\to S$ is a flat cover, there is a section 
+$S\to \bar k$. Moreover, one has 
+\[
+  X(k) = \{[g]\in G(\bar k)/H(\bar k):d_{1,\ast}(g) = d_{2,\ast}(g)\mod H(\bar k\otimes_k \bar k)\} .
+\]
+If $k$ is perfect, then $X(K)=(G(k^s)/H(k^s))^{G_k}$. 
+
+\begin{proposition}
+Let $G$ be an affine algebraic group over $k$. Suppose $G$ acts on a separated 
+$k$-scheme $X$ of finite type. For $x\in X(k)$, let 
+$G_x=\centralizer_G(x)\subset G$ be the scheme-theoretic centralizer. Then the 
+fppf quotient $G/G_x$ is representable by a quasi-projective $k$-scheme, and 
+the orbit map $G\to X$, $g\mapsto g\cdot x$, induces an immersion 
+$G/G_x\hookrightarrow X$. 
+\end{proposition}
+
+That this proposition implies the theorem comes from the Chevalley construction. 
+Given $H\subset G$, Chevalley shows that there is a representation 
+$G\to \generallinear(V)$ such that there is a point 
+$x\in \dP(V)$ such that $G_x=H$. 
+
+One indication that this approach is ``correct'' is that it generalizes. 
+There is a generalization to the ring case by Grothendieck-Murre. This is 
+despite the fact that there is no Chevalley theorem over general base rings. 
+
+
+\subsection{Some properties}
+
+Let $X=G/H$. Then $X\times_X H_X\to G\times_X G$ is an isomorphism. In other 
+words, $G\to G/H$ is an $H$-torsor. If $G$ is smooth, so is $G/H$. Finally, 
+$G\to G/H$ is affine. If $H\subset G$ is normal, then $G/H$ has the natural 
+structure of a (affine) group scheme, and the sequence 
+$1\to H \to G \to G/H \to 1$ is exact (as fppf sheaves). 
+
+The converse is not true (i.e.\ if $G/H$ is affine, it is not necessarily the 
+case that $H$ is normal). For example, let $T\subset \generallinear(n)$ be a 
+maximal torus. The quotient $\generallinear(n)/T$ is affine, but $T$ is not 
+normal. 
+
+We call a \emph{$k$-orbit in $G=X/H$} a locally closed $k$-subscheme such that 
+$Z(\bar k)$ is an $H(\bar k)$-orbit in $G(\bar k)$. 
+
 
 
 
