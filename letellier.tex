@@ -887,6 +887,288 @@ on stalks of $X^F$, then
   \# X^F = \sum (-1)^i \trace(F^\ast,\h_c^i(X,\overline{\dQ_\ell})) .
 \]
 
+The website of Alberto Arabia has some great notes on all of this. The 
+following fixes an error. 
+
+\begin{proposition}
+Let $f:X\to Y$ be a surjective proper map with $X$ irreducible, and let 
+$X=\bigsqcup X_\alpha$ be a stratification of $X$. For 
+$y\in Y$, put $f^{-1}(y)_\alpha = X_\alpha\cap f^{-1}(y)$. Assume 
+\[
+  \dim\left\{y\in Y:\dim f^{-1}(y)_\alpha \geqslant \frac 1 2 (i-\codim X_\alpha)\right\} \leqslant \dim Y-i 
+\]
+for all $\alpha$ and $i$. Then 
+$f_\ast(\intersectioncohomology(X,\sE)[\dim X])\in \perverse(Y)$ for 
+$\sE$ a local system on $X_0$. 
+\end{proposition}
+
+Let $\sK\in \perverse(X)$ obtained as $\sK=i_\ast \sK'$ for 
+$\sK'\in \perverse(X')$, where $X'\subset X$ is closed. [\ldots stuff 
+I didn't understand\ldots] 
+
+\begin{example}
+Let $G=\generallinear_2(\dC)$, $B\subset G$ the standard Borel, and 
+$U\subset B$ the unipotent radical. Let $N$ be the ($2$-dimensional) variety of 
+nilpotent matrices in $\mathfrak{gl}_2$. Let 
+$\widetilde W = \{(x,g B)\in \mathfrak{gl}_2\times G/B:g^{-1} x g\in \lie(U)\}$. 
+There is a map $\widetilde W\to W$, called the Springer resolution. It fits into 
+a cartesian diagram 
+\[\xymatrix{
+  \dP^1\simeq G/N \ar[r]^-{\pi^0} \ar[d] 
+    & \{0\} \ar[d] \\
+  \widetilde W \ar[r]^\pi 
+    & W
+}\]
+The complex $\overline{\dQ_\ell}[1]$ is a pervrse sheaf on $G/B$. The Springer 
+resolution is semi-small. However, 
+$\pi^0(\overline{\dQ_\ell}[1]) = \overline{\dQ_\ell}\oplus \overline{\dQ_\ell}[2]$, 
+which is not perverse. On the other hand, 
+$\overline{\dQ_\ell}[2]\in \perverse(\widetilde M)$, and 
+$\pi_\ast \overline{\dQ_\ell}[2] = \intersectioncohomology(W,\overline{\dQ_\ell}) \oplus \intersectioncohomology(\{0\},\overline{\dQ_\ell})$. 
+In other words, 
+$\pi_\ast(\overline{\dQ_\ell}[2])|_{\{0\}} \simeq \pi_\ast^0(\overline{\dQ_\ell}[1])[1]$. 
+\end{example}
+
+
+
+
+
+\subsection{\texorpdfstring{$G$}{G}-equivariance}
+
+Let $G$ be a connected linear algebraic group defined over $\dF_q$. Let $X$ be a 
+variety defined over $\dF_q$. Assume we are given an action of $G$ on $X$, also 
+defined over $\dF_q$. Let $\pi:G\times X\to X$ be the projection map, and let 
+$\rho:G\times X\to X$ be the map encoding the action of $G$ on $X$. We say that 
+a perverse sheaf $\sK\in \perverse(X)$ is \emph{$G$-equivariant} if 
+$\pi^\ast \sK\simeq \rho^\ast \sK$. We would like to create a category 
+$\perverse_G(X)$ of ``$G$-equivariant perverse sheaves'' on $X$. Let 
+$\alpha:G\times G\to G$ be the multiplication morphism, let 
+$p_2:G\times G\to G$ be projection onto the second coordinate, and let 
+$i:X\to G\times X$ be the inclusion $x\mapsto (1,x)$.  
+
+\begin{lemma}
+Assume $\sK\in \perverse(X)$ is $G$-equivariant. Then there is a unique 
+isomorphism $\phi:\pi^\ast \sK \isomorphism \rho^\ast \sK$ such that 
+\begin{enumerate}
+  \item $i^\ast \phi = 1_\sK$ 
+  \item $(\alpha\times 1_X)^\ast \phi = (1_G\times \rho)^\ast \phi \circ (p_2\times 1_X)^\ast \phi$
+\end{enumerate}
+\end{lemma}
+
+With this under our belt, we can define the category $\perverse_G(X)$ to 
+be the subcategory of $\perverse(X)$ whose objects are $G$-equivariant 
+perverse sheaves on $X$. Morphisms in $\perverse_G(X)$ are isomorphisms 
+$\psi:\sK\to \sK'$ such that the following diagram commutes:
+\[\xymatrix{
+  \pi^\ast \sK \ar[r]^-{\pi^\ast \psi} \ar[d]^-{\phi_\sK} 
+    & \pi^\ast \sK' \ar[d]^-{\phi_{\sK'}} \\
+  \rho^\ast \sK \ar[r]^-{\rho^\ast \psi} 
+    & \rho^\ast \sK' 
+}\]
+
+\begin{lemma}
+The category $\perverse_G(X)$ is a full subcategory of $\perverse(X)$. 
+\end{lemma}
+
+\begin{proposition}
+1. The duality functor $D_X$ induces an auto-equivalence 
+$D_X:\perverse_G(X)\isomorphism \perverse_G(X)$. 
+
+2. If $\sK\in \perverse_G(X)$, then so are all subquotients of $\sK$. 
+
+3. The simple objects of $\perverse_G(X)$ are the 
+$\intersectioncohomology(\overline Y,\sE)[\dim Y]$, for $\sE$ a $G$-equivariant 
+local system on a $G$-stable closed subset $Z\subset Y$. 
+\end{proposition}
+
+If $\sK\in \perverse_G(X)$ is $F$-stable with $\phi:F^\ast \sK\isomorphism \sK$, 
+then the characteristic function $\chi_{\sK,\phi}:X(\dF_q) \to \overline{\dQ_\ell}$ 
+is constant on $G(\dF_q)$-orbits in $X(\dF_q)$. We will use this fact to construct 
+two natural bases for $\cC_{G^F}(X^F)$, the space of $G^F$-equivariant functions 
+$X^F \to \overline{\dQ_\ell}$. Consider pairs 
+$(O,\xi)$, where $O$ is a $G$-orbit in $X$, and $\xi$ is an irreducible $G$-equivariant 
+local system on $O$. We say that $(O,\xi)\simeq (O',\xi')$ if 
+$O=O'$ and $\xi\simeq \xi'$. Let $I$ be the set of isomorphism classes of 
+$F$-stable pairs $(O,\xi)$. For each $i\in I$, choose a representative 
+$(O_i,\xi_i)$, together with an isomorphism 
+$\phi_i:F^\ast \xi_i \to \xi_i$.  
+
+For each $i\in I$, define a functions $X_i,Y_i:X^F \to \overline{\dQ_\ell}$ by 
+$x\mapsto \chi_{\intersectioncohomology(\overline{O_i},\xi_i),\phi_i}$ and
+$x\mapsto \trace(\phi_i,(\xi_i)_x)$. Then 
+$\{X_i\}$ and $\{Y_i\}$ are $\overline{\dQ_\ell}$-bases of $\cC_{G^F}(X^F)$. 
+If $\stabilizer_G(O)=\stabilizer_G(O)^\circ$, then there is only one irreducible 
+$G$-equivariant local system (up to isomorphism) on $O$ -- namely 
+$\overline{\dQ_\ell}$. In that case, we can choose $\phi_i$ so that 
+$\phi_i:F^\ast \overline{\dQ_\ell}\to \overline{\dQ_\ell}$ induces the identity 
+on stalks. In that case, $Y_i=1_{O_i}$. In general, 
+$O_i^F$ is a disjoint union of $G^F$-orbits. 
+
+
+
+
+
+\section{Geometric realization of the unipotent characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
+
+
+\subsection{Parabolic induction}
+
+Throughout, everything lives over $\overline{\dF_q}$. 
+
+First we do this with functions. Let $L\subset \generallinear_n$ be a 
+standard Levi associated to a partition $\lambda\vdash n$. Let $P$ 
+be the associated parabolic; note that $P=L\ltimes U_P$, where 
+$U$ is the unipotent radical of $P$. Let 
+$F:\generallinear_n \to \generallinear_n$ be the Frobenius map (over 
+$\dF_q$). Then $\generallinear_n^F = \generallinear_n(\dF_q)$, and 
+$\cC(\generallinear_n^F)$ consists of functions 
+$\generallinear_n(\dF_q) \to \overline{\dQ_\ell}$ that are constant 
+on conjugacy classes. We define 
+$R_L^{\generallinear_n}:\cC(L^F) \to \cC(\generallinear_n^F)$ via 
+the following. Let $\pi_P:P \to L$ be the projection 
+$\ell u\mapsto u$. We define 
+$R_L^{\generallinear_n}$ to be the composite 
+\[\xymatrix{
+  \cC(L^F) \ar[r]^-{\pi_P^\ast} 
+    & \cC(P^F) \ar[r]^-{\induce_{P^F}^{\generallinear_n^F}} 
+    & \cC(\generallinear_n^F) .
+}\]
+We also define 
+\begin{align*}
+  V_1 &= \{(x,g)\in \generallinear_n^2:g^{-1} x g\in P\} \\
+  V_2 &= \{(x,g P)\in \generallinear_n\times \generallinear_n / P:g^{-1} x g\in P\} 
+\end{align*}
+We define maps 
+\begin{align*}
+  \pi:V_1 &\to L && (x,g)\mapsto \pi_P(g^{-1} x g) \\
+  \rho_1:V_1 &\to V_2 && (x,g) \mapsto (x, g P) \\
+  \rho_2:V_2 &\to \generallinear_n{} && (x, g P)\mapsto x .
+\end{align*}
+Note that $R_L^{\generallinear_n} = (\rho_2)+\ast \widetilde \rho_1 \pi^\ast$, 
+where 
+$\widetilde \rho_1:\cC_{\generallinear_n\times P}(V_1^F) \to \cC_{\generallinear_n}(V_2^F)$ 
+sends $f$ to the unique map $h$ on $V_2^F$ such that 
+$\rho_1^\ast h = f$. 
+
+Now we repeat the above, but with perverse sheaves instead of functions. 
+We will define a functor 
+$R_L^{\generallinear_n}:\perverse_L(L) \to \derived_c^b(\generallinear_n)$. 
+First, note that our morphism $\pi$ is smooth with connected fibers of dimension 
+$m=\dim \generallinear_n + \dim P$. Thus 
+$\pi^\ast[m]:\perverse_L(L) \to \perverse_{\generallinear(n)\times P}(V_1)$ is 
+well-defined, where $\generallinear(n)$ acts on $V_1$ by 
+$g\cdot (x,h) = (g x, g h)$. 
+
+The map $\rho_1$ is a ocally trivial fibration for the Zariski topology. Thus 
+$\rho_1^\ast[\dim P]:\perverse_{\generallinear(n)}(V_2) \isomorphism \perverse_{\generallinear(n)\times P}(V_1)$. It follows that for each 
+$\sK\in \perverse_L(L)$, there is a unique 
+$\widetilde\sK\in \perverse_{\generallinear(n)}(V_2)$ such that 
+$\rho_1^\ast[\dim P]\widetilde\sK \simeq \pi^\ast[m]\sK$. Define 
+$R_L^{\generallinear(n)}(\sK) = (\rho_2)_\ast \widetilde\sK$; note that this is 
+``exactly the same'' as our definition of $R_L^{\generallinear(n)}$ for 
+functions. Again, note that $R_L^{\generallinear(n)}\sK$ is \emph{not} 
+generally perverse, even when $\sK$ is. 
+
+For simplicity, write $G=\generallinear(n)_{\overline{\dF_q}}$. 
+
+If $\phi:F^\ast \sK\isomorphism \sK$, then $R_L^G$ induces a 
+canonical $\widetilde\phi:F^\ast R_L^G\sK \isomorphism R_L^G \sK$. 
+So the ``Harish-Chandra induction'' $R_L^G:\cC(L^F) \to \cC(G^F)$ has 
+an analogue $R_L^G:\perverse_L(L)_F \to \derived_c^b(G)_F$. If we 
+let $\chi$ denote ``take characteristic function'' then the following 
+diagram commutes:
+\[\xymatrix{
+  \perverse_L(L)_F \ar[r]^-{R_L^G} \ar[d]^-\chi 
+    & \derived_c^b(G)_F \ar[d]^-\chi \\
+  \cC(L^F) \ar[r]^-{R_L^G} 
+    & \cC(G^F) 
+}\]
+
+
+\subsection{Characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
+
+Let $R_{(1^n)}=\sum_{\lambda\in \cP_n} \chi_{(1^n)}^{\lambda'} \sX^\lambda = R_L^G(\textnormal{id})$. Here $\sX^\lambda$ is the unipotent character of 
+$\generallinear_n(\dF_q)$ associated to $\lambda$, and $\lambda'$ is the 
+dual partition of $\lambda$. For $\mu\in \cP_n$, let 
+$R_\mu = \sum_{\lambda\in \cP_n} \chi_\mu^{\lambda'} \sX^\lambda = \operatorname{Ch}^{-1}(P_\mu(\mathrm{id}))$. We can invert things to give 
+$\sX^\lambda = \sum_\mu \frac{1}{z_\mu} \chi_\mu^{\lambda'} R_\mu$. Recall that 
+$\{R_\mu\}$ and $\{\sX^\lambda\}$ are both bases of the same subspace of 
+$\cC(G^F)$. 
+
+
+\subsection{Induction picture for \texorpdfstring{$L=T$}{L=T}}
+
+Let $T\subset G$ be the standard maximal torus. We have maps 
+\[
+  T \leftarrow \{(g,h B)\in G\times G/B:h^{-1} g h \in B\} \to G .
+\]
+Note that 
+$R_L^G(\overline{\dQ_\ell}[\dim T]) = (\rho_2)_\ast \overline{\dQ_\ell}[\dim G]$. 
+
+\begin{theorem}
+The map $\rho_2$ is semi-small (small, in fact). Moreover 
+$(\rho_2)_\ast (\overline{\dQ_\ell}[\dim G])$ is a semisimple $G$-equivariant 
+perverse sheaf on $G$. 
+\end{theorem}
+
+In fact, we can prove that 
+$(\rho_2)_\ast (\overline{\dQ_\ell}[\dim G]) \simeq \intersectioncohomology(G,\xi)[\dim G]$. 
+We need to describe $\xi$. Note that $g\in G$ is semisimple regular if and only if 
+$C_G(g)$ is conjugate to $T$. Consider $G_\regular$, the subset of $G$ consisting 
+of semisimple regular elements. This is a nonsingular irreducible Zariski-open 
+subset of $G$. Let 
+\[
+  X_2 = \{(g, h T)\in G\times G/T:h^{-1} g h\in T_\regular\} .
+\]
+We have the following diagram: 
+\begin{equation}\label{eq:perv}
+\xymatrix{
+  V_2 \ar[r] 
+    & G \\
+  X_2 \ar[r]^-\alpha \ar[u] 
+    & G_\regular \ar[u] .
+}
+\end{equation}
+Recall that $S_n=N_G(T)/T$, and this acts on $X_2$ by 
+$w\cdot (g, h T) = (g, h w^{-1} T)$. The map $\alpha$ is a Galois covering 
+with Galois group $S_n$. One has 
+\[
+  \alpha_\ast \overline{\dQ_\ell} = \bigoplus_{\chi\in \irreducible(S_n)}\sL_\chi^{\chi(1)}
+\]
+It turns out that the diagram \eqref{eq:perv} is Cartesian. The base-change 
+theorem tells us that 
+$\rho_2(\overline{\dQ_\ell}[\dim G])|_{G_\regular} \simeq \alpha_\ast (\overline{\dQ_\ell}[\dim G])$. We know that 
+$\rho_2(\overline{\dQ_\ell}[\dim G]) \simeq \intersectioncohomology(G,\xi)[\dim G]$. 
+We can take $\xi$ to be $\alpha_\ast \overline{\dQ_\ell}$ on 
+$G_\regular$. As a result, we get 
+\[
+  (\rho_2)_\ast (\overline{\dQ_\ell}[\dim G]) \simeq \bigoplus_{\chi\in \irreducible(S_n)} V_\chi \otimes \intersectioncohomology(G,\sL_\chi)[\dim G] .
+\]
+Beause $S_n$ acts on $X-2$, we can define an action of $S_n$ on 
+$\alpha_\ast \overline{\dQ_\ell}$. For $w\in S_n$, we get 
+$\theta_w:R_T^G(\overline{\dQ_\ell}) \isomorphism R_T^G(\overline{\dQ_\ell})$ 
+and $F^\ast R_T^G\overline{\dQ_\ell} \xrightarrow{\widetilde\phi} R_T^G\overline{\dQ_\ell} \rightarrow{\theta_w} R_T^G\overline{\dQ_\ell}$. 
+
+\begin{theorem}[Lusztig, 1998]
+If $w\in S_n$ is of cycle type and $\mu\in \cP_n$, then 
+\[
+  (-1)^\ast X_{R_T^G(\overline{\dQ_\ell}), \theta_w\widetilde\phi} = R_\mu .
+\]
+\end{theorem}
+
+\begin{theorem}[Lusztig, 1981]
+1. $\intersectioncohomology(G, \sL_{X^\lambda})|_{G_\regular} \simeq \intersectioncohomology(\overline{C_\lambda}, \overline{\dQ_\ell})$. 
+
+2. $q^{n(\lambda)} X_{\intersectioncohomology(\overline{C_\lambda}, \overline{\dQ_\ell})}(c_\mu) = \widetilde K_{\lambda\mu}(q)$. 
+
+3. $X_{\intersectioncohomology(\overline{C_\chi},\overline{\dQ_\ell})}(c_\mu) = \sum_i \dim \sH_{c_\mu}^{2 i} \intersectioncohomology(\overline{C_\lambda}) q^i$. 
+\end{theorem}
+
+From 2 and 3, we get that $\widetilde K_{\lambda\mu}\in \dN[q]$. 
+
+[here I write $X_?$ instead of $\chi_?$ for the character associated to a sheaf 
+$?$]
+
 
 
 
