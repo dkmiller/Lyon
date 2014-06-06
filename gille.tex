@@ -714,6 +714,257 @@ normal.
 We call a \emph{$k$-orbit in $G=X/H$} a locally closed $k$-subscheme such that 
 $Z(\bar k)$ is an $H(\bar k)$-orbit in $G(\bar k)$. 
 
+\emph{Errata}: 1. We had $f:F_1\to F_2$ of flat sheaves. The map 
+$f:\coimage(f) \to \image(f)$ is an isomorphism a) if $f$ is monic or b) if 
+$f$ is epic. 
+
+2. If $G$ is an affine algebraic $k$-group, $G^\dagger$ was the largest smooth 
+$k$-subgroup. It is \emph{false} that $G$ connected implies $G^\dagger$ connected. 
+
+
+\subsection{Frobenius kernels and quotients}
+
+Let $k$ be a field of characteristic $p>0$. Let $F:k\to k$ be the Frobenius 
+$x\mapsto x^p$. If $X$ is a $k$-scheme, we can define 
+$X^{(p)}=X\times_k^F k$ -- the base change of $X$ to $k$ via $F:k\to k$. 
+One has $X^{(p)}(A) = X(A^{(p)})$,  where 
+$A^{(p)}$ has the same ring structure as $A$, but now $k$ acts via 
+$a\cdot x = a^p x$. We have a morphism $X\to X^{(p)}$ coming from the 
+ring map $A\to A^{(p)}$. If $G$ is a $k$-group, then $G\to G^{(p)}$ is a 
+group homomorphism. Write $\prescript{}{F}{G}=\ker(G\to G^{(p)})$, and 
+similarly for powers of $F$. There is an exact sequence 
+\[
+  1 \to \prescript{}{F^n}{G} \to G \to G/\prescript{}{F^n}{G} \to 1 .
+\]
+It turns out that for $n\gg 0$, th quotient $G/\prescript{}{F_n}{G}$ is 
+smooth. 
+
+
+
+
+
+\section{Unipotent radicals and Levi subgroups}
+
+Let $k$ be a field, $k^s$ (resp.\ $\bar k$) a choice of separable (resp.\ algebraic) 
+closure. 
+
+An affine algebraic $k$-group $U$ is \emph{unipotent} if $U_{\bar k}$ admits 
+a composition series over $\bar k$ for which each successive quotient is a subgroup 
+of $\dG_{\additive, \bar k}$. It is not hard to show that if $K/k$ is a field 
+extension, then $G$ is unipotent if and only if $G_K$ is unipotent. In 
+characteristic zero, then $\dG_{\additive,\bar k}$ has only itself and $0$ as 
+$\bar k$-subgroups. However, in characteristic $p$, each of the groups 
+$\dZ/p^n = \ker(x\mapsto x^{p^n}-x)$ and 
+$\boldsymbol\alpha_{p^n} = \prescript{}{F^n}{\dG_\additive}$ are subgroups of 
+$\dG_{\additive}$. 
+
+In the definition of a unipotent group, we could have equivalently required that 
+over $\bar k$, each successive quotient in the composition series to be one of 
+$\dG_{\additive,\bar k}$, $\dZ/p$, or $\boldsymbol\alpha_p$. 
+
+\begin{lemma}
+1. An extension of a unipotent group is unipotent. 
+
+2. Subgroups and quotients of unipotent groups are unipotent. 
+
+3. If $U$ is unipotent, then $\hom_{k\textnormal{-}\mathsf{gp}}(U,\dG_\mult) = 0$. 
+\end{lemma}
+
+If $k$ has characteristic $p$, then commutative unipotent $k$-groups are 
+actually quite interestin (e.g.\ Witt vectors of finite length). Classifying 
+these groups is essentially impossible. 
+
+\begin{proposition}
+Let $G$ be an affine algebraic $k$-group. Then the following are equivalent: 
+\begin{enumerate}
+  \item $G$ is unipotent 
+  \item $G$ can be embedded into the group of strictly upper-triangular 
+    matrices in some $\generallinear(n)$
+  \item for each representation $G\to \generallinear(V)$, $\h^0(G,V)\ne 0$
+\end{enumerate}
+Moreover, if $G$ is smoooth over $k$, then the following are equivalent:
+\begin{enumerate}
+  \item $G$ is unipotent
+  \item $G$ admits a central composition series with successive quotients 
+    $k$-forms of $\dG_\additive$. 
+\end{enumerate}
+\end{proposition}
+
+In general, we say that $G_0$ is a \emph{$k$-form} of $G$ if 
+$G_0\times_k \bar k\simeq G\times_k \bar k$. If $k$ is perfect, we know that 
+the only $k$-frms of $\dG_\additive^n$ are trivial. 
+
+Let $T\subset B\subset G$ be the ``standard setup'' with a reductive 
+$k$-group. Then not every unipotent subgroup of $G$ can be conjugated into 
+the unipotent radical $U\subset B$. 
+
+\begin{example}
+Let $k$ be a field of characteristic $2$. Let $k'=k(\sqrt a)$ be a nontrivial 
+extension. Let $u=\smat{}{a}{1}{}\in \projectivegenerallinear_2(k)$. Then 
+$u$ generates a subgroup $\dZ/2\hookrightarrow \projectivegenerallinear(2)$. But 
+this does not fit into any Borel subgroup. 
+\end{example}
+
+\begin{corollary}
+If $k$ is perfect and $G$ is smooth connected unipotent, then $G$ admits a 
+central decomposition series such that $G_{1+i}/G_i \simeq \dG_\additive^{m_i}$. 
+\end{corollary}
+
+We say that $G$ is a \emph{$k$-split unipotent group} if it has a filtration 
+such that $G_{i+1}/G_i\simeq \dG_\additive$. An extension of $k$-split 
+unipotent groups is $k$-split. Quotients (but not kernels) of $k$-split 
+unipotent groups are $k$-split. 
+
+
+\subsection{Commutative affine $k$-groups}
+
+We say that an affine algebraic $k$-group $G$ is of \emph{multipliative type} 
+if $G\times_k \bar k\simeq \diagonal_{\bar k}(M)$ for $M$ some abelian 
+group. We say that $G$ is a \emph{torus} if it is multiplicative type, and also 
+connected. 
+
+\begin{theorem}
+Let $G$ be a commutative affine algebraic $k$-group. 
+\begin{enumerate}
+  \item $G$ is of multiplicative type if and only if $\hom_{k\textnormal{-}\mathsf{gp}}(G,\dG_\additive)=0$ 
+  \item $G$ admits a largest $k$-subgroup of multiplicative type $G^\mult$, and 
+    the quotient $G/G^\mult$ is unipotent, 
+\end{enumerate}
+\end{theorem}
+
+So every commutative $k$-group $G$ fits into a canonical exact sequence 
+\[
+  0 \to G^\mult \to G \to G/G^\mult \to 0 ,
+\]
+i.e.\ it is the extension of a unipotent group by a multiplicative group. 
+Unfortunately, the subgroup $G^\mult\subset G$ is not characteristic. If $k$ 
+is split, the above sequence splits isn a canonical way. 
+
+We can deduce 2 from 1 in the above theorem by setting 
+$G^\mult=\bigcap \ker(G\to \text{unipotent})$. 
+
+\begin{exercise}
+Let $K=k(\sqrt[p] a)$ be a purely inseparable exxtension. Let 
+$G=\Pi_{K/k}\dG_\mult$. Show that $G^\mult = \dG_\mult \hookrightarrow \Pi_{K/k} \dG_\mult$. However, show that $G\to G/G^\mult$ does not split. 
+\end{exercise}
+
+To see this, assume $1 \to G^\mult \to G \to U=G/G^\mult\to 1$ splits. Then 
+\[
+  \hom_{k\textnormal{-}\mathsf{gp}}(U,\Pi_{K/k} \dG_\mult) \simeq \hom_{K\textnormal{-}\mathsf{gp}} U_K, \dG_{\mult,K}) = 0. 
+\]
+
+\begin{lemma}[unipotent radical]
+Let $G$ be a smooth affine connected $k$-group. Then 
+\begin{enumerate}
+  \item $G$ admits a largest smooth connected unipotent normal $k$-subgroup 
+  \item $G$ admits a largest smooth connected unipotent normal $k$-split 
+    subgroup 
+\end{enumerate}
+\end{lemma}
+
+Denote by $R_u(G)$ and $R_{u s}(G)$ the groups given by the Lemma. Clearly 
+$R_{us} G\subset R_u G$. One calls $R_u G$ the \emph{unipotent radical} of 
+$G$ and $R_{us} G$ the \emph{$k$-split unipotent radical} of $G$. 
+
+\begin{proof}
+We prove only part 1. Let $U_1,U_2$ be two maximal connected unipotent normal $k$-subgroups of 
+$G$. Consider the sequence $1 \to U_1 \to G \to G/U_1\to 1$. We claim that 
+$G/U_1$ has no normal unipotent subgroup. For if 
+$U_0\subset G/U_1$ was such a subgroup, then its preimage in 
+$G$ would be a unipotent normal $k$-subgroup strictly containing $U_1$. 
+This cannot be, so $R_u (G/U_1) = 1$. The group $U_1/(U_1\cap U_2)\subset G/U_1$ 
+is smooth (being the quotient of a smooth group) and must be trivial. This tells 
+us that $U_1=U_2=U$. 
+\end{proof}
+
+A corollary of our proof is that $R_u(G/R_u G)=1$. 
+
+\begin{lemma}
+The formation of $R_u G$ and $R_{u s} G$ commute with separable field extensions. 
+In particular, the ``geometric unipotent radical'' $R_u(G_{\bar k})$ is defined 
+over $k^{p^{-\infty}}$. 
+\end{lemma}
+
+\begin{example}\label{eg:pseudo-red}
+Let $K=k(\sqrt[p] a)$ be a purely inseparable field extension. Let 
+$G=\Pi_{K/k} \dG_\mult$. Then the field of definition of 
+$R_u G_{\bar k}$ is $K$, i.e.\ $R_u (G_{\bar k})$ is not defined over $k$. 
+\end{example}
+
+Let $G$ be a smooth connected affine $k$-group. We say that $G$ is 
+\emph{reductive} if $R_u(G_{\bar k})=1$. We say that $G$ is 
+\emph{pseudo-reductive} if $R_u G=1$. 
+
+Clearly reductive groups are pseudo-reductive. The converse holds over 
+perfect fields, but fails in general, as is witnessed by 
+Example \ref{eg:pseudo-red}. If $K/k$ is an arbitrary finite field 
+extension and $G$ is a reductive $K$-group, then the Weil restriction 
+$\Pi_{K/k} G$ is pseudo-reductive (but not necessarily reductive). 
+
+
+\subsection{Levi subgroups}
+
+Let $G$ be a smooth connected affine $k$-group. We say that a closed 
+$k$-subgroup $L\subset G$ is a \emph{Levi subgroup} if the composite 
+$L_{\bar k} \to G_{\bar k} \to G_{\bar k}/R_u(G_{\bar k})$ is an 
+isomorphism. Equivalently, 
+$R_u(G_{\bar k})\rtimes L\isomorphism G_{\bar k}$. 
+
+\begin{theorem}[Mostow]
+Suppose $k$ has characteristic zero. Then Levi subgroups exist and are 
+$(R_uG)(k)$-conjugate. 
+\end{theorem}
+
+This has a recent proof by Demarche which is very nice. 
+
+\begin{theorem}[SGA 3]
+An extension $1 \to U \to E\to T\to 1$ with $U$ smooth connected unipotent and 
+$T$ a $k$-torus is split. 
+\end{theorem}
+
+In other words, $\h^1(T,U)=0$ for such $U$ and $T$. We are interested in the 
+special case where $G=G_0\times_k K$ for a field extension $K/k$. 
+One has $G_0\hookrightarrow \Pi_{K/k} G_{0,K}$. 
+
+\begin{exercise}
+If $G$ is reductive over $k$, then $G_0\hookrightarrow \Pi_{K/k} G_{0,K}$ is a 
+Levi subgroup. 
+\end{exercise}
+
+
+Existence of Levi subgroups (in the general case) is a hard questions. Recent 
+papers of McNinch. It is possible for Levi subgroups to exist after a 
+separable extension, but still not be defined over the base field. Counterexamples 
+over algebraically closed fields are constructed using an analogue of Weil 
+restriction called the \emph{Greenberg functor}. There is $G/k$ such that 
+$G(k)=\speciallinear_2(W_2(k))$. The exact sequence 
+$0 \to k \to W_2(k) \to k$ gives us an exact sequence 
+\[
+  1 \to R_u G \to G \to \speciallinear_2 \to 1 ,
+\]
+but this sequence has no section on the right. For example, with 
+$k=\dF_p$, the map $\speciallinear_2(\dZ/p^2) \to \speciallinear_2(\dF_p)$ has 
+no section. 
+
+\subsection{Structure theorems}
+
+There are structure theorems (due to Tits) for smooth connected unipotent 
+$k$-groups. We have seen the ``split'' (``d\'eploy\'e'' in French) case with 
+each subquotient $\dG_\additive$. The ``ploy\'e'' case is when 
+$\hom(\dG_\additive,G)=1$. This notion is insensitive to separable field 
+extensions. [$k$-wand here (sp?)]
+
+\begin{theorem}[Tits]
+Let $G$ be a smooth unipotent connected $k$-group. Then 
+\begin{enumerate}
+  \item $G$ admits a largest normal $k$-wand unipotent subgroup $G_w$ 
+    and $G/G_w$ is unipotent $k$-split
+  \item if $G$ is $k$-wand, then $G$ admits a composition series 
+    $G_0=1\subset G_1\subset \cdots \subset G_n=G$ such that 
+      $G_{i+1}/G_i$ is $k$-wand, and ``$k$-fou'' of $\dG_\additive^{n_i}$. 
+\end{enumerate}
+\end{theorem}
+
 
 
 
