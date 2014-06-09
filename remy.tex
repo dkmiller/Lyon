@@ -8,15 +8,261 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 
 
 
 
-d
+\section*{Introduction}
+
+Bruhat-Tits theory is the non-archimedean analogue of the theory of symmetric 
+spaces for semisimple real Lie groups 
+
+\begin{example}
+Put $G=\speciallinear_2(\dR)$. This is a semisimple Lie group. To understand the 
+structure of $G$, it is useful to use the $G$-action on its symmetric space 
+$X=G/K$, where $K$ is a maximal compact subgroup. The symmetric space $X$ is 
+naturally a $C^\infty$ Riemannian manifold with nice metric properties. In 
+fact, it is non other than the well-known upper-half plane 
+$\{z\in \dC:\Im z>0\}$. 
+\end{example}
+
+The starting point for Bruhat-Tits theory is a non-archimedean valued field $k$ 
+(instead of the \emph{archimedean} valued field $\dR$) and $G$, a semisimple 
+algebraic $k$-group. We would like there to be a useful / interesting 
+$G(k)$-space $X$ such that the $G(k)$-action allows us to derive structure 
+properties for the group $G(k)$ of rational points. This action should have 
+certain properties:
+\begin{enumerate}
+  \item transitivity, or some reasonable weakening of it 
+  \item non-positive curvature properties for $X$
+\end{enumerate}
+
+The group $G(k)$ and its homogeneous spaces are all totally disconnected. 
+Usually, the maximal compact subgroups of $G(k)$ are \emph{not} all conjugate. 
+So we really need new ideas (rather than taking a homogeneous space) to attach 
+a nice metric space with $G(k)$-action to $G$. 
 
 
 
 
+
+\section{Euclidean buildings}
+
+
+\subsection{Simplicial definition}
+
+This definition is due to Jacques Tits, from the late 1950s. See Bourbaki's 
+exercises for [Lie IV]. A good general reference is the [A..., Brown]. 
+
+Roughly speaking, a Euclidean building is a simplicial complex covered by 
+subcomplexes isomorphic to a given Coxeter tiling, with some incidence 
+properties for the copies of the tiling. The ``slices'' in the building are 
+called Coxeter complexes. 
+
+Let $(W,S)$ be a Coxeter system. Then there (always) exists a polysimplicial 
+complex (product of simplicial complexes) $\Sigma$, on the maximal 
+cells of which $W$ acts freely and transitively. As an ordered set, 
+$\Sigma=\{w W_I:I\subset S,W_I=\langle I\rangle, w\in W\}$. 
+
+\begin{example}
+Let $W=D_\infty$, $S=\{s_0,s_1\}$ (reflections about $0$ and $1$). Then 
+$\Sigma$ is the real line tessellated by the integers. 
+\end{example}
+
+\begin{example}
+This is the $\widetilde A_2$ case. Here $\Sigma$ is $\dR^2$, tiled by regular 
+triangles. 
+\end{example}
+
+The complex $\Sigma$ can also be a spherical tiling (e.g.\ a tiling of the 
+circle by similar segments) or a hyperbolic tiling. Here, we will only be 
+interested in Euclidean tilings, and maybe spherical ones. 
+
+\begin{definition}
+Let $(W,S)$ be a Euclidean reflection group (i.e.\ an affine Coxeter group) with 
+Coxeter tiling $\Sigma\subset \dR^r$). Then $X$ is said to be a Euclidean 
+building of type $(W,S)$ if it is a polysimplicial complex covered by copies of 
+$\Sigma$ (called the \emph{apartments}) so that 
+\begin{enumerate}[\indent\bf SEB1)]
+  \item Any two cells (called \emph{facets}) are contained in a suitable apartment. 
+  \item Given any two apartments $\dA$, $\dA'$, there is a simplicial 
+    automorphism $\dA\simeq \dA'$ fixing $\dA\cap \dA'$. 
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Buildings of type $D_\infty$ correspond to trees in which all vertices have
+valence $\geqslant 2$. In other words, these are graphs without loops or 
+leaves. Apartments are bi-infinite geodesics in the tree. 
+\end{example}
+
+\begin{example}
+For $\widetilde A_2$, we now have the tiling of $\dR^2$ by regular hexagons. 
+Imagine gluings of half-tilings along codimension-$1$ walls. 
+\end{example}
+
+We will see that the group $\speciallinear_3(\dQ_p)$ acts on an 
+$\widetilde A_2$-tiling strongly transitively (i.e.\ the group action is 
+transitive on the inclusions of a chamber (maximal facet) into 
+apartments. In other words, for any $C\subset\dA$ and $C'\subset \dA'$, 
+chambers living in apartments, there is $g\in \speciallinear_2(\dQ_3)$ such 
+that $g \dA=\dA'$ and $g C=C'$. This is the substitute for homogeneity of 
+symmetric spaces. The main outcome of Bruhat-Tits theory is that ``to any 
+reductive group $G$ over a local field $k$, is attached a Euclidean building 
+$X$ on which $G(k)$ acts strongly transitively.'' (This is the so-called 
+\emph{geometric half} of Bruhat-Tits theory. There is another part, which 
+investigates models for $G$ over the valuation ring of $k$.) 
+
+
+\subsection{Non-simplicial version of Euclidean buildings}
+
+As a general convention, a \emph{local field} is a locally compact 
+topological field, endowed with a non-archimedean absolute value. Such 
+fields are classified: they are 
+\begin{itemize}
+  \item finite extensions of $\dQ_p$
+  \item $\dF_q\laurent t$ for $q$ a prime power
+\end{itemize}
+What happens if $k$ is not discretely valued? This case is also covered by 
+Bruhat-Tits theory. However, when the valuation is not discrete, the building 
+is no longer a simplicial complex. But it still admits a metric, and is still 
+a complete metric space with non-positive curvature whenever $k$ is complete. 
+Why should we care about the case where $k$ is not discretely valued?
+\begin{enumerate}
+  \item Bruhat and Tits did.
+  \item When studying the space of (linear) representations of a given finitely-generated 
+    discrete group $\Gamma$: 
+    $X_n(\Gamma)=\{\varphi:\Gamma \to \generallinear(\dR)\}/\text{conj}$, 
+    then $\varphi:\Gamma \to \generallinear_n(\dR)$ corresponds to an action of 
+    $\generallinear_n(\dR)/\specialorthogonal(n)=X$. There exists a compactification 
+    procedure for $X_n(\Gamma)$, such that the added points at $\infty$ 
+    correspond to $\Gamma$-actions on non-simplicial buildings. 
+  \item There is a connection between Bruhat-Tits theory over arbitrary valued 
+    fields and analytic geometry in the sense of Berkovich. 
+\end{enumerate}
+
+
+\subsection{Metric properties of buildings}
+
+We would like to motivate the axioms SEB1 and SEB2. Essentially, they 
+exist in order for us to be able to define a metric on the whole building. We 
+already have a natural Euclidean metric on each apartment (because they are, by 
+definition, subsets of Euclidean spaces). We want to have a metric on $X$ which 
+gives the Euclidean one by restriction to any apartment. Essentially, the 
+axioms SEB1-2 are ``desinged'' for the local metrics to patch together. For any 
+$x,x'\in X$, choose an apartment $\dA\ni x,x'$. We can define the distance 
+between $x$ and $x'$ from the metric on $\dA$. This is well-defined by the second 
+axiom (after some work). 
+
+\begin{theorem}[Bruhat-Tits]
+Any Euclidean building $X$ admits a distance $d$ such that $(X,d)$ is a 
+complete, $\cat(0)$ metric space. 
+\end{theorem}
+
+The property ``$\cat(0)$'' essentially captures ``non-positively curved and 
+simply connected.'' More precisely, a metric space $(X,d)$ is said to be 
+$\cat(0)$ if 
+\begin{enumerate}
+  \item it is \emph{geodesic} (for all $x,x'\in X$, there is a continuous 
+    path $\gamma:[0,d(x,x')] \to X$ such that $\gamma(0)=x$, $\gamma(d(x,x'))=x'$, 
+    and $d(\gamma(s),\gamma(t)) = |s-t|$) 
+  \item geodesic triangles as thin as in the Euclidean plane (if 
+    $x,y,z\in X$, draw the geodesic triangle in $\dR^2$. The length of the 
+    paths between a point and half-edge are $\leqslant$ what we get in the 
+    Euclidean case)
+\end{enumerate}
+
+The notion of a $\cat(0)$ space is due to Gromov. 
+
+\begin{lemma}[Bruhat-Tits fixed point]\label{lemma:cat0}
+Let $G$ act by isometries on a complete $\cat(0)$ metric space. If $G$ has a 
+bounded orbit, then it has a fixed point. 
+\end{lemma}
+\begin{proof}[Proof (Serre)]
+Any nonempty bounded subset in $X$ admits a \emph{unique} metrically characterized 
+barycenter. 
+\end{proof}
+
+For example, whenever a compact group acts by isometries on a complete 
+$\cat(0)$ space, then it admits a fixed point. 
+
+Why is this useful? If $G$ is a reductive $k$-group, we have a Euclidean building 
+$X$ with a strongly transitive action of $G(k)$. In the archimedean case, 
+all maximal compacts are conjugate. This was proved by Emil Cartan by convexity 
+arguments that amounted to the negative(?) curvature of the associated symmetric 
+space. We can use the action of $G(k)$ on $X$ to classify maximal compact 
+subgroups of $Gk$, which is useful for studying unitary representations of $G(k)$. 
+Also, Lemma \ref{lemma:cat0} is used to prove the geometric part of Bruhat-Tits 
+theory. 
+
+In general, if $G$ is an algebraic group over an arbitrary field $F$, in order 
+to understand $G(F)$, one looks at $G(F^s)$ with its $\galois(F^s/F)$-action. 
+In other words, $G(F)=\h^0(F,G)$. The idea to attach a Euclidean building to 
+$G(k)$ is 
+\begin{enumerate}
+  \item use a field extension $L/k$ which splits $G$
+  \item attach a building $X_L$ to $G(L)$
+  \item try to prove that $(X_L)^{\galois(L/k)}$ is a smaller building
+\end{enumerate}
+To show that the space $(X_L)^{\galois(L/k)}$ is ``large enough'' we use 
+Lemma \ref{lemma:cat0}. 
+
+For classical groups seen as fixed-point sets for involutions on linear 
+groups, suitable Bruhat-Tits buildings are often fixed-point sets on 
+the building of the ambient $\generallinear_n$ for the natural action of the 
+involution. 
+
+
+
+
+
+
+
+
+
+
+\section{Bruhat-Tits buildings for \texorpdfstring{$\generallinear(n)$}{GL(n)}}
+
+The spaces for $\generallinear(n)$ were introduced by Goldman and Iwahori 
+in \cite{gi63} before the general notion of a building existed. Start with 
+$\speciallinear_n(\dR)$. The Archimedean symmetric space is 
+$X=\speciallinear_n(\dR)/\specialorthogonal(n)$. To generalize this, we see 
+$X$ as the space of normalized scalar products on $\dR^n$. Now let $k$ be an 
+ultrametric field, and let $V$ be a $d$-dimensional $k$-vector space. Let 
+$\sN=\sN_V$ be the space of non-archimedean norms on $V$. Our goal is to 
+show that $\sN$ is a Bruhat-Tits building. 
+
+
+\subsection{Examples of norms}
+
+If we are willing to make choices, this is easy. Choose an ordered basis 
+$\boldsymbol e=(e_1,\dots,e_d)$ for $V$. Let $\boldsymbol c=(c_1,\dots,c_d)$ be 
+an ordered $d$-tuple of real numbers. Then we have an ultrametric norm 
+$\|\cdot\|_{\boldsymbol e,\boldsymbol c}$ on $V$ defined by 
+\[
+  \left\| \sum \lambda_i e_i \right\|_{\boldsymbol e, \boldsymbol c} = \max\{e^{c_i} |\lambda_i|:1\leqslant i\leqslant d\} .
+\]
+Given a norm $\|\cdot\|$ on $V$, we say that a basis $\boldsymbol e$ is 
+\emph{adapted to} (or \emph{diagonalizes} $\|\cdot\|$ if there is a 
+tuple $\boldsymbol c$ such that $\|\cdot\|=\|\cdot\|_{\boldsymbol e,\boldsymbol c}$. 
+
+Weil and Goldman-Iwahori proved that if $k$ is a local field, then given 
+any two norms $\|\cdot\|$, $\|\cdot\|'$, there is a basis $\boldsymbol e$ and 
+parameters $\boldsymbol c$, $\boldsymbol c'$ such that 
+\begin{align*}
+  \|\cdot\| &= \|\cdot\|_{\boldsymbol e,\boldsymbol c} \\
+  \|\cdot\|' &= \|\cdot\|_{\boldsymbol e, \boldsymbol c'} .
+\end{align*}
+The proof is similar to that of the classical Grahm-Schmidt theorem. Essentially, 
+one uses the compactness of $\dP^d(k)$. 
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{lyon-sources}
 
 \end{document}
