@@ -176,7 +176,7 @@ $\cat(0)$ if
 
 The notion of a $\cat(0)$ space is due to Gromov. 
 
-\begin{lemma}[Bruhat-Tits fixed point]\label{lemma:cat0}
+\begin{lemma}[Bruhat-Tits fixed point]\label{lem:cat0}
 Let $G$ act by isometries on a complete $\cat(0)$ metric space. If $G$ has a 
 bounded orbit, then it has a fixed point. 
 \end{lemma}
@@ -194,7 +194,7 @@ all maximal compacts are conjugate. This was proved by Emil Cartan by convexity
 arguments that amounted to the negative(?) curvature of the associated symmetric 
 space. We can use the action of $G(k)$ on $X$ to classify maximal compact 
 subgroups of $Gk$, which is useful for studying unitary representations of $G(k)$. 
-Also, Lemma \ref{lemma:cat0} is used to prove the geometric part of Bruhat-Tits 
+Also, Lemma \ref{lem:cat0} is used to prove the geometric part of Bruhat-Tits 
 theory. 
 
 In general, if $G$ is an algebraic group over an arbitrary field $F$, in order 
@@ -207,7 +207,7 @@ $G(k)$ is
   \item try to prove that $(X_L)^{\galois(L/k)}$ is a smaller building
 \end{enumerate}
 To show that the space $(X_L)^{\galois(L/k)}$ is ``large enough'' we use 
-Lemma \ref{lemma:cat0}. 
+Lemma \ref{lem:cat0}. 
 
 For classical groups seen as fixed-point sets for involutions on linear 
 groups, suitable Bruhat-Tits buildings are often fixed-point sets on 
@@ -257,6 +257,224 @@ parameters $\boldsymbol c$, $\boldsymbol c'$ such that
 \end{align*}
 The proof is similar to that of the classical Grahm-Schmidt theorem. Essentially, 
 one uses the compactness of $\dP^d(k)$. 
+
+We have 
+\[
+  \sN=\bigcup_{\boldsymbol e\text{ basis of }V} \dA_{\boldsymbol e} ,
+\]
+where 
+\[
+  \dA_{\boldsymbol e} = \{\|\cdot\|_{\boldsymbol e,\boldsymbol c}:\boldsymbol c\in \dR^d\} \simeq \dR^d .
+\]
+Fix a basis $\boldsymbol e$. We want to see a Euclidean reflection group act on 
+$\dA_{\boldsymbol e}$. This group will be 
+$S_d \ltimes \dZ^d$. If $k$ is a local field, write 
+$k^\circ$ for the valuation ring of $k$, and $v:k^\times \to \dZ$ for the 
+valuation. Then 
+\[
+  k^\circ = \{x\in k:|x|\leqslant 1\} = \{x\in k:v(x)\geqslant 0\} .
+\]
+The ring $k^\circ$ is a valuation ring, whose maximal ideal is denoted 
+$k^+$. (R\'emy writes $k^{\circ\circ}$.) Let $\kappa=k^\circ/k^+$ be the residue 
+field of $k$; since $k$ is locally compact, this is a finite field of order 
+$q=p^e$. Lastly, choose a uniformiser $\pi$ satisfying $k^+=\pi k^\circ$. If 
+$k=\dQ_p$, then $k^\circ=\dZ_p$, $\pi=p$, and $k^+=p \dZ_p$. If 
+$k=\dF_q\laurent t$, then $k^\circ=\dF_q\llbracket t\rrbracket$ and 
+$\pi=t$. 
+
+Back to $\dA_{\boldsymbol e}$. The action by $S_d$ is given by permutation of 
+the indices. For $\sigma\in S_d$, 
+$\sigma\cdot \|\cdot\|_{\boldsymbol e,\boldsymbol c} = \|\cdot\|_{\boldsymbol e, \sigma(\boldsymbol c)}$, 
+where $\sigma(\boldsymbol c) = (c_{\sigma(1)},\dots,c_{\sigma(d)})$. 
+If $\boldsymbol m\in \dZ^d$, then $\boldsymbol m$ acts by 
+$\boldsymbol m \cdot \|\cdot\|_{\boldsymbol e,\boldsymbol c} = \|\cdot\|_{\boldsymbol e,\boldsymbol c+\boldsymbol m}$.
+
+This action of $S_d\ltimes \dZ^d$ lifts to an action by 
+$N_{\boldsymbol e}$, the group of monomial matrices (i.e.\ each row and 
+column has a unique nonzero entry) where the matrix inducing an isomorphism 
+$\generallinear(V)\isomorphism \generallinear_n(k)$ is given by 
+$\boldsymbol e$. In general, the group $\generallinear(V)$ acts on 
+$\sN_V$ by precomposition, i.e. 
+\[
+  g \|\cdot\| = \|\cdot \|\circ g^{-1} .
+\]
+For this action, $N_{\boldsymbol e}$ stabilizes $\dA_{\boldsymbol e}$ and 
+gives the previous action by $S_d\ltimes \dZ^d$. 
+At last, the group $\generallinear(V)$ acts transitively on the set of 
+subspaces $\dA_{\boldsymbol e}$. 
+
+For $\boldsymbol m\in \dZ^d$, write $\pi^{\boldsymbol m}$ for the diagonal matrix 
+$(a_{i j})$ with $a_{i i} = \pi^{m_i}$. The group 
+$\pi^{\dZ^d}$ is the translation part of $S_d\times \dZ^d$. 
+
+
+\subsection{Connection with Bruhat-Tits theory}
+
+The following theorem is originally due to \cite{gi63}, but was reformulated by 
+Bruhat and Tits. 
+
+\begin{theorem}
+Assume $k$ is a local field. Then 
+the quotient space of $\sN_V$ by homothety is a Euclidean building with 
+apartments the $\dA_{\boldsymbol e}$ and Weyl 
+group $S_d\times \dZ^{d-1}$. 
+\end{theorem}
+
+For us, \emph{homothety} is the equivalence relation where two norms are identified 
+whenever they are proportional. 
+
+The identification $\dR^d\isomorphism \dA_{\boldsymbol e}$, 
+$\boldsymbol c\mapsto \|\cdot\|_{\boldsymbol e,\boldsymbol c}$ identifies 
+$\dA_{\boldsymbol e}/\sim$ with $\dR^d/\Delta$, where 
+$\Delta=\dR\cdot (1,\dots,1)$ is the diagonal. 
+
+Recall $g \|\cdot\| = \|\cdot\|\circ g^{-1}$. The action of diagonalizable matrices at 
+least ono the apartment is fixed by the basis diagonalizing the matrix. For the case 
+$d=2$, see Serre's book on trees. But be careful! In Serre's book only the vertices 
+of the building (here a tree) are taken into account. The vertices correspond 
+to homothety classes of $k^\circ$-lattices in $V$. 
+
+
+\subsection{Maximal compact subgroups of \texorpdfstring{$\generallinear(V)$}{GL(V)}}
+
+Using the Bruhat-Tits fixed point lemma (Lemma \ref{lem:cat0}), one knows that a 
+compact subgroup $K\subset \generallinear(V)$ has to fix some point in 
+$\sN_V/\sim$. Thus it is interesting to have a description of stabilizers of 
+norms. 
+
+\begin{proposition}
+We have 
+\[
+  \stabilizer_{\speciallinear(V)}(\|\cdot\|_{\boldsymbol e,\boldsymbol c}) = \{g\in \speciallinear(V): \log |g_{i j}| \leqslant c_j - c_i\} .
+\]
+where $(g_{i j})$ is the matrix of $g$ with respect to $\boldsymbol e$. 
+In particular, $\stabilizer_{\speciallinear(V)}(\|\cdot\|_{\boldsymbol e,0}) \simeq \speciallinear_d(k^\circ)$. 
+\end{proposition}
+
+[Warning: R\'emy wrote $|x|=e^{-v(x)}$ rather than 
+$|x|=(\# \kappa)^{-v(x)}$.] 
+
+Using concrete computations, one can show that a fundamental domain for the 
+$\speciallinear(V)$ action on $\sN_V/\sim$ is given 
+\[
+  \{\|\cdot\|_{\boldsymbol e,\boldsymbol c}:0\leqslant c_1 \leqslant \cdots \leqslant c_d \leqslant 1\} 
+\]
+for $\boldsymbol e$ fixed. 
+
+For $d=3$, a fundamental domain looks like an equilateral triangle. For 
+$d=2$, a fundamental domain is an edge in the tree 
+$\sN_V/\sim$. 
+
+For $d=2$, one can color the vertices with $2$ colors so that any two neighbors 
+don't have the same color (or type). The 
+$\speciallinear(V)$-action is type preserving. As a conseqence, using 
+Lemma \ref{lem:cat0}, we see that there are exactly two conjugacy classes of 
+maximal compact subgroups in $\speciallinear(V)$. (For arbitrary $V$, there are 
+$d$ conjugacy classes.) 
+
+The group $\generallinear_d(k)$ is generated by diagonal matrices and elementary 
+unipotent matrices. We have described the action of diagonal matrices on 
+$\sN_V$. What remains is to describe the action of elementary unipotent matrices 
+on $\sN_V$. First we introduce some notation. Fix a basis 
+$\boldsymbol e$ of $V$. Then $E_{i j}$ is the matrix (with respect to 
+$\boldsymbol e$) with zeros everywhere but the $(i,j)$-th component, where there 
+is a $1$. Put $\mu_{i,j}(\lambda) = 1+\lambda E_{i,j}$ for 
+$\lambda\in k$. 
+
+\begin{proposition}[``folding'' by unipotent matrices]
+The intersection 
+$\mu_{i j}(\lambda) \dA_{\boldsymbol e} \cap \dA_{\boldsymbol e}$ is the half-space 
+of $\dA_{\boldsymbol e}$ defined by 
+$c_j-c_i \geqslant \log |\lambda|$. The isometry given by 
+$\mu_{i j}(\lambda)$ fixes (pointwise) this intersection, and sends the remaining 
+(open) halfspace of $\dA_{\boldsymbol e}$ onto a disjoint complement. 
+\end{proposition}
+
+\begin{example}
+Let $d=2$. Then our matrix is $\smat{1}{\lambda}{}{1} = \mu_+(\lambda)$. 
+[\ldots stuff in terms of a picture I couldn't repeat\ldots]
+\end{example}
+
+
+
+
+
+\section{Borel-Tits' theory}
+
+For our purposes, this is the theory which describes the abstract group structure 
+of $G(k)$, for $G$ a semisimpile group and $k$ an arbitrary field; this will be done in 
+purely combinatorial terms. The final statement more or less amounts to the existence 
+of a spherical building on which $G(k)$ acts strongly transitively. 
+
+
+\subsection{Algebraic terminology and conjugacy theorems}
+
+The main references for this section are the books of Borel, Springer, and 
+Waterhouse. Let $G$ be a linear algebraic group over some field $k$. We say 
+that $g\in G(k)$ is \emph{unipotent} if in some (a posteriori, any) 
+linear representation $\rho$, its image is unipotent (i.e.\ 
+$\rho(g)-1$ is nilpotent). A group $G$ is called \emph{unipotent} if all 
+its' elements are unipotent. Alternatively, we could require that any 
+finite-dimensional representation have a non-zero fixed vector. 
+
+We say that a connected subgroup $T\subset G$ is a \emph{torus} if 
+$\bar k[T]\simeq \bar k[X^\ast(T)]$. If $T$ is defined over $k$, we say that 
+$T$ is \emph{$k$-split} if $k[T]\simeq k[X_k^\ast(T)]$. 
+
+Let $G$ be a connected linear algebraic group over $k$. The \emph{unipotent 
+radical} of $G$ is the (unique) maximal subgroup for the following properties:
+\begin{enumerate}
+  \item closed 
+  \item connected 
+  \item unipotent
+  \item normal 
+\end{enumerate}
+
+The \emph{rational unipotent radical} of $G$ is the (unique) 
+maximal unipotent of subgroup satisfying all the above properties, and 
+additionally being defined over $k$. We denote it by 
+$\sR_{u,k}(G)$. 
+
+We say that $G$ is \emph{reductive} if $\sR_u(G)=1$. We say that $G$ is 
+\emph{pseudo-reductive} if $\sR_{u,k}(G) = 1$. The \emph{radical} of $G$ 
+is defined by replacing ``unipotent'' by ``solvable'' in the above 
+definition. Let $\sR(G)$ be the radical of $G$. We say that $G$ is 
+\emph{semisimple} if $\sR(G)=1$. 
+
+It is a fact that ``a group is reductive if and only if it is geometrically 
+pseudo-reductive.'' 
+The goal in Lie theory is to extract elementary combinatorics out of 
+algebraic differential geometric situations. Here, we start with a reductive 
+group $G$ defined over $k$. At least in the split case, the outcome of our 
+method is a root system. The well-known situation is where $k=\bar k$. 
+The main tool is the adjoint representation, given by conjugation on the 
+Lie algebra. Put 
+$\lie(G)=\ker(G(k[\varepsilon]) \to G(k))$, where $k[\varepsilon]=k[X]/X^2$. 
+The action of $G$ on $\lie G$ induces a representation 
+$\adjoint:G\to \generallinear(\lie G)$. Let $T\subset G$ be a maximal 
+$k$-torus (split, given our assumptions). Then the representation 
+$\adjoint|_T$ decomposes as 
+\[
+  \lie G = \lie(G)_0 \oplus \bigoplus_{\psi\in X^\ast(T)\smallsetminus \{0\}} \lie(G)_\psi ,
+\]
+where $\lie(G)_\psi= \{v\in \lie G:\adjoint(t) v = \psi(t) v\}$. The non-zero 
+characters occuring non-trivially in this sum are called the 
+\emph{roots} and they form a root system in vector space 
+$X^\ast(T)\otimes \dR$ endowed with a $W$-invariant scalar product. Here 
+$W=N_G(T)/T$. (For all of this we assumed $k=\bar k$.) When 
+$k=\bar k$, the root system is \emph{reduced} (i.e.\ the 
+proportionality relation between two roots except opposition). 
+
+Now back to arbitrary $k$. The idea is to replace $T$ by a ``useful'' torus 
+defined over $k$ (useful in the sense that it has ``as many'' characters 
+defined over $k$ as possible so that the weight decomposition of 
+$\lie G$ will be as subtle as possible). More precisely, take $T$ to be a 
+maximal $k$-split torus. We have a decomposition 
+\[
+  \lie G=\lie(G)_0 \oplus \bigoplus_{\psi\in X_k^\ast(T)\smallsetminus \{0\}} \lie(G)_\psi.
+\]
+This is a (possibly non-reduced) root system. We claim that this decomposition 
+of the Lie algebra induces a decomposition of $G$. 
 
 
 
