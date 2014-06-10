@@ -8,6 +8,7 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 
 
@@ -16,7 +17,7 @@
 Our topic is the structure of algebraic groups (possibly non-affine) over 
 a field (possibly non-perfect). 
 
-\begin{theorem}[Chevalley, Barsotti, Rosenlicht]
+\begin{theorem}[Chevalley, Barsotti, Rosenlicht]\label{thm:A}
 Let $G$ be a connected algebraic group over a perfect field. Then there exists 
 a largest connected linear subgroup $L\subset G$. Moreover, $L$ is normal 
 in $G$ and $G/L$ is an abelian variety. 
@@ -220,6 +221,209 @@ in characteristic $2$.
 
 An open question: which group schemes occur as $\automorphism_X^\circ$ for 
 $X$ proper, normal? Over perfect fields, all connected algebraic groups occur. 
+
+\begin{example}
+Let $E$ be an elliptic curve with origin $0\in E(k)$. Let $L\to E$ be a line 
+bundle. Then $L\smallsetminus \{\text{zero section}\}$ is a $\dG_\mult$-bundle 
+on $E$. The map $\pi:L\smallsetminus0 \to E$ is in fact a (Zariski-locally 
+trivial) $\dG_\mult$-torsor. This induces a class $[L]\in \h^1(E,\dG_\mult)$. 
+We claim that if $\deg(L)=0$, then $G=L\smallsetminus 0$ has the unique structure 
+of a commutative group such that $1 \to \dG_\mult \to G \xrightarrow\pi E \to 0$ 
+is exact. This result is due to Serre. This is an example of the sequence produced 
+by Theorem \ref{thm:A}. We would like to see how this fits into Theorem 
+\ref{thm:B}. To do this, we need to compute $\sO(G)$. We compute 
+\begin{align*}
+  \sO(G) &= \h^0(G,\sO_G) \\
+    &= \h^0(E,\pi_\ast \sO_G) \\
+    &= \h^0\left(E,\bigoplus_{n\in \dZ} L^n\right) \\
+    &= \bigoplus_{n\in \dZ} \h^0(E,L^n) .
+\end{align*}
+As an exercise, show that if $M\to E$ is a line bundle of degree $0$, then 
+$\h^0(E,M)\ne 0$ if and only if $M\simeq \sO_E$. If $L$ has infinite order 
+in $\operatorname{Pic} E$, then all $L^n\not\simeq M$, so $\sO(G)=k$. If 
+$L$ has order $m$, then $\sO(G)=\simeq k[t^{\pm 1}]$, where 
+$\deg t=m$. We have obtained a morphism $G\to \dG_\mult$. We claim that this 
+fits into an exact sequence 
+\[
+  1 \to F \to G \to \dG_\mult \to 1 ,
+\]
+where $F$ is an elliptic curve. The map $\pi:G\to E$ induces an isogeny 
+$F\twoheadrightarrow E$ of degree $m$. 
+\end{example}
+
+
+
+
+
+\section{Proof of \texorpdfstring{Theorem \ref{thm:B}}{Theorem B}}
+
+\begin{lemma}
+Let $G$ be a group scheme of finite type over $k$. Then the following are 
+equivalent:
+\begin{enumerate}
+  \item $G$ is linear
+  \item $G$ is affine 
+  \item $G_{\bar k}$ is affine
+  \item $(G_{\bar k})_\reduced$ is affine
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Clearly $1 \Rightarrow 2 \Rightarrow3\Rightarrow 4$. Moreover, 
+$2\Rightarrow 1$ exactly as for algebraic groups (as in Borel's book). The 
+non-trivial part is $4\Rightarrow 3$, which holds for any scheme of finite 
+type (also noetherian). This is an exercise in Hartshorne. The implication 
+$3\Rightarrow 2$ is a type of descent. Recall that a scheme $X$ is affine if 
+and only if the functor $\h^0:\mathsf{qc}(X) \to \mathsf{Vect}_k$ is 
+exact. But $\h^0(G_{\bar k},\sF) = \h^0(G,\sF)_{\bar k}$ (just use the 
+\v Cech complex). This is exact, so we're done. 
+\end{proof}
+
+\begin{lemma}
+Let $G$ be a linear group scheme, $\pi:X\to Y$ a $G$-torsor. Then the morphism 
+$\pi$ is affine. 
+\end{lemma}
+\begin{proof}
+We know that $\pi$ is faithfully flat, $G$ acts on $X$, $\pi$ is $G$-invariant, 
+and the diagram 
+\[\xymatrix{
+  G\times X \ar[r]^-m \ar[d]^-p 
+    & X \ar[d]^-\pi \\
+  X \ar[r]^-\pi 
+    & Y
+}\]
+is Cartesian (this is what it means for $X$ to be a $G$-torsor over $Y$). 
+Let $V\subset Y$ be affine open, $U=\pi^{-1}(V)$. We need to prove that 
+$U$ is also affine. We do this by proving that $\h^0(U,-)$ is exact. But 
+this is $\h^0(V,\pi_\ast -)$. But $V$ is affine, so $\h^0(V,-)$ is 
+exact. All that remains is to prove that $(\pi|_U)_\ast$ is exact. We have a 
+cartesian diagram 
+\[\xymatrix{
+  G\times U \ar[r]^-m \ar[d]_p 
+    & U \ar[d]^-{\pi|_U} \\ 
+  U \ar[r]^-{\pi|_U} 
+    & V .
+}\]
+One has $\pi_U^\ast \pi_{U\ast} \simeq p_\ast m^\ast$. Since 
+$\pi_U^\ast$ is exact, it suffices to show that 
+$\pi_U^\ast \pi_{U\ast} = p_\ast m^\ast$ is exact. But $m^\ast$ is exact by 
+faithful flatness, and $p_\ast$ is exact because $p$ is affine. 
+\end{proof}
+
+\begin{proposition}
+Let $G$ be a group scheme of finite type, $H\subset G$ a normal subgroup 
+scheme. Then $G$ is affine if and only if $H$ and $G/H$ are affine. 
+\end{proposition}
+\begin{proof}
+We may assume $k=\bar k$. 
+
+$\Rightarrow$. Clearly closed subgroups $H\subset G$ are affine. The fact that 
+$G/H$ is affine is harder -- see \cite{b91} for a proof that 
+$G_\reduced/H_\reduced$ is affine. But we need to show that 
+$(G/H)_\reduced$ is affine. There is a map 
+$G_\reduced/H_\reduced \to (G/H)_\reduced$, which is a group homomorphism. 
+It is a bijection on $\bar k$-points. Let $K$ be its (scheme-theoretic) 
+kernel. The scheme $K$ is of finite type, and has a unique $k$-point. This 
+implies that $K$ is a finite group scheme. In \cite{m08} for a proof of the 
+fact that if $X$ is an affine group scheme, and $K$ is a finite group scheme acting 
+on $X$ then $X/K$ is affine. 
+\end{proof}
+
+Equivalently, affine groups are stable under extensions. 
+
+
+\subsection{Affinization}
+
+Let $X$ be a $k$-scheme. Then there is a universal morphism from $X$ to an affine 
+scheme -- namely $\varphi_X:X \to \spectrum \sO(X)$. One has 
+\[
+  \hom_{k\textnormal{-}\mathsf{sch}}(X,\spectrum A) = \hom_{k\textnormal{-}\mathsf{alg}}(A,\sO(X)) .
+\]
+\emph{Warning}: if $X$ is of finite type, then $\sO(X)$ may not be!
+
+\begin{example}
+Let $L\to E$ be a line bundle of infinite order as before. Let $M \to E$ be a 
+line bundle of negative degree. Consider the vector bundle 
+$X=L\oplus M$ over $E$. One has 
+\[
+  \sO(X) = \bigoplus_{m,n\geqslant 0} L^{-m} \otimes M^{-n} .
+\]
+[\ldots stuff I didn't understand\ldots]
+\end{example}
+
+Note that $\varphi_X$ commutes with products (since 
+$\sO(X\times Y) = \sO(X)\otimes_k \sO(Y)$). Thus, if $G$ is a group scheme, then 
+$\spectrum \sO(G)$ is an affine group scheme, and $\varphi_G$ is a homomorphism. 
+
+\begin{theorem}
+If $G$ is of finite type, then $H=\ker(\varphi)$ is the smallest normal subgroup 
+scheme of $G$ such that $G/H$ is affine. Moreover, $\sO(H)=k$ and 
+$\sO(G)=\sO(G/H)$. In particular, $G/H=\spectrum \sO(G$ is finitely generated. 
+\end{theorem}
+\begin{proof}
+Let $H_1\subset G$ be normal such that $G/H_1$ is affine. Then 
+$G\to G/H_1$ factors through $\varphi_X$ as in 
+\[\xymatrix{
+  G \ar[r]^-\varphi \ar[dr]_-q 
+    & \spectrum \sO(G) \ar@{.>}[d] \\
+  & G/H_1 .
+}\]
+Then $H=\varphi^{-1}(1) \subset H_1=q^{-1}(1)$. It remains to show that $G/H$ is 
+affine. Write $\sO(G)=\bigcup V_i$, where each $V_i$ is a $G$-stable finite-dimensional 
+subspace of $\sO(G)$. Then $H$ is the kernel of the right $G$-action on 
+$\sO(G)$, i.e. 
+\[
+  H = \bigcap_i \ker(G \to \generallinear(V_i)) .
+\]
+By noetherianness, $H=\ker(G\to \generallinear(V_{i_0}))$ for some $i_0$, 
+so snce $G/H \to \generallinear(V_{i_0})$ has trivial kernel, it is a 
+closed immersion by a theorem proved by Gille. 
+
+[\ldots didn't follow whole proof\ldots]
+\end{proof}
+
+\begin{theorem}[Demazure-Gabriel]
+Let $G$ be a $k$-group scheme of finite type such that $\sO(G)=k$. Then $G$ 
+is smooth, connected, and every homomorphism $G\to H$ (the latter a connected 
+group scheme) factors through the center of $H$. 
+\end{theorem}
+\begin{proof}
+Since $\sO(G_{\bar k}) = \sO(G)_{\bar k}$, we may assume $k=\bar k$. Note that 
+$\pi_0 G = G/G^\circ$ is a finite group, and 
+$\sO(G/G^\circ)\hookrightarrow \sO(G)=k$, so $G=G^\circ$. Also, 
+$G/G_\reduced$ is finite, and $\sO(G/G_\reduced)=k$, so $G$ is reduced (hence 
+smooth). We use a rigidity lemma: let $\sO(X)=k$, $Y$ be irreducible, and 
+if $f:X\times Y\to Z$ is a morphism of schemes 
+of finite type such that $f(X\times y_0)=z_0$ for some $y_0\in Y(k)$ and 
+$z_0\in Z(k)$, then $f(x,y) = f(x_0,y)$ for all $(x,y)\in X\times Y$. In the 
+literature, one often replaces ``$\sO(X)=k$'' with ``$X$ proper.'' 
+
+In our case, define $G\times H \to H$ by $(g,h)\mapsto f(g) h f(g)^{-1} h^{-1}$. 
+Note that this map is identically $=1$ if and only if our Theorem holds. But 
+$G\times 1_H\mapsto 1_H$, so our rigidity lemma gives the result. 
+\end{proof}
+In particular, $G$ itself is commutative. 
+
+\begin{proof}[Proof of rigidity lemma]
+We use infinitesimal neighborhoods. The point $y_0\in Y(k)$ can be written 
+as $y_0=\spectrum(\sO_{Y,y_0}/\fm)$. For each $n$, define 
+$y_n = \spectrum(\sO_{Y,y_0}/\fm^{n+1})$. Then $\{y_n:n\geqslant 0\}$ is 
+an increasing sequence of closed subschemes of $Y$, and the union 
+$\bigcup y_n$ is dense in $Y$. (This is a reformulation of Krull's 
+intersection theorem, which says that $\bigcap \fm^n=0$.) We claim that 
+$f:X\times y_n \to z_n$ for all $n$, where $n$ is defined in the obvious 
+way.  So $f_n(x,y) = f_n(x_0,y)$ identically. Let 
+$W\subset X\times Y$ be defined by $f(x,y) = f(x_0,y)$. If 
+$g:X\times Y\to Z\times Z$ is $(f,f(x_0,-))$, then 
+$W=g^{-1}(\Delta_Z)$, and contains $X\times y_n$ for all 
+$n$. By our density argument, $W=X\times Y$. 
+\end{proof}
+
+By our rigidity lemma, abelian varieties are commutative. Moreover, if 
+$f:A\to G$ is a morphism of schemes, $G$ is a connected algebraic group, 
+and $f(0)=1$, then $f$ is a homomorphism of group schemes. To see this, 
+consider the morphism $(x,y)\mapsto f(x+y) f(y)^{-1} f(x)^{-1}$ from 
+$A\times A$ to $G$. It sends $A\times 0$ and $0\times A$ to $1$, so it is 
+identically $1$, whence the result. 
 
 
 
