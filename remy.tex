@@ -223,7 +223,7 @@ involution.
 
 
 
-\section{Bruhat-Tits buildings for \texorpdfstring{$\generallinear(n)$}{GL(n)}}
+\section{Bruhat-Tits buildings for \texorpdfstring{$\generallinear(n)$}{GL(n)}}\label{sec:gln}
 
 The spaces for $\generallinear(n)$ were introduced by Goldman and Iwahori 
 in \cite{gi63} before the general notion of a building existed. Start with 
@@ -449,15 +449,15 @@ group $G$ defined over $k$. At least in the split case, the outcome of our
 method is a root system. The well-known situation is where $k=\bar k$. 
 The main tool is the adjoint representation, given by conjugation on the 
 Lie algebra. Put 
-$\lie(G)=\ker(G(k[\varepsilon]) \to G(k))$, where $k[\varepsilon]=k[X]/X^2$. 
+$\fg = \lie(G)=\ker(G(k[\varepsilon]) \to G(k))$, where $k[\varepsilon]=k[X]/X^2$. 
 The action of $G$ on $\lie G$ induces a representation 
-$\adjoint:G\to \generallinear(\lie G)$. Let $T\subset G$ be a maximal 
+$\adjoint:G\to \generallinear(\fg)$. Let $T\subset G$ be a maximal 
 $k$-torus (split, given our assumptions). Then the representation 
 $\adjoint|_T$ decomposes as 
 \[
-  \lie G = \lie(G)_0 \oplus \bigoplus_{\psi\in X^\ast(T)\smallsetminus \{0\}} \lie(G)_\psi ,
+  \fg = \fg_0 \oplus \bigoplus_{\psi\in X^\ast(T)\smallsetminus \{0\}} \fg_\psi ,
 \]
-where $\lie(G)_\psi= \{v\in \lie G:\adjoint(t) v = \psi(t) v\}$. The non-zero 
+where $\fg_\psi= \{v\in \fg :\adjoint(t) v = \psi(t) v\}$. The non-zero 
 characters occuring non-trivially in this sum are called the 
 \emph{roots} and they form a root system in vector space 
 $X^\ast(T)\otimes \dR$ endowed with a $W$-invariant scalar product. Here 
@@ -468,13 +468,223 @@ proportionality relation between two roots except opposition).
 Now back to arbitrary $k$. The idea is to replace $T$ by a ``useful'' torus 
 defined over $k$ (useful in the sense that it has ``as many'' characters 
 defined over $k$ as possible so that the weight decomposition of 
-$\lie G$ will be as subtle as possible). More precisely, take $T$ to be a 
+$\fg$ will be as subtle as possible). More precisely, take $T$ to be a 
 maximal $k$-split torus. We have a decomposition 
 \[
-  \lie G=\lie(G)_0 \oplus \bigoplus_{\psi\in X_k^\ast(T)\smallsetminus \{0\}} \lie(G)_\psi.
+  \fg = \fg_0 \oplus \bigoplus_{\psi\in X_k^\ast(T)\smallsetminus \{0\}} \fg_\psi.
 \]
 This is a (possibly non-reduced) root system. We claim that this decomposition 
 of the Lie algebra induces a decomposition of $G$. 
+
+[\emph{Warning}: this assumes there is a non-central $k$-split torus $T\subset G$.]
+
+The characters $\alpha\in X^\ast(T)\smallsetminus 0$ with $\fg_\alpha\ne 0$ are 
+called \emph{roots} with respect to $T$. Let $\Phi=\Phi(G,T)$ be the set of 
+roots. 
+
+The group $N_G(T)$ acts on $X_k^\ast(T)$ via conjugation on $T$, and it stabilizes 
+$\Phi$. It acts via the finite (by rigidity of tori) quotient 
+$W=N_G(T)/Z_G(T)$. The $\dR$-linear span $V=X_k^\ast(T)_\dR$ admits a $W$-invariant 
+scalar product (because $W$ is finite) for which $\Phi$ is a (possibly non-reduced) 
+root system. The Weyl group of the root system $\Phi$ is $W$. 
+
+For each root $\alpha$, we denote by $U_\alpha$ the closed connected subgroup of 
+$G$ whose Lie algebra is $\fg_\alpha$. 
+
+\begin{definition}
+Let $G$ be an abstract group. Let $T$ be a subgroup and $\Phi$ a root system. We 
+assume we are given for each $\alpha\in \Phi$ a subgroup $U_\alpha$ and a class 
+moduo $T$, say $M_\alpha$. We say that 
+$(\{U_\alpha\}_{\alpha\in \Phi},\{M_\alpha\}_{\alpha\in \Phi})$ is a 
+\emph{root group datum of type $\Phi$} if the following axioms hold:
+\begin{enumerate}
+  \item for all $\alpha\in \Phi$, $U_\alpha\ne 1$
+  \item for all $\alpha,\beta\in\Phi$, $[U_\alpha,U_\beta]\subset \langle U_\gamma:\gamma\dN\alpha+\dN\beta\rangle$
+  \item if $\alpha,2\alpha\in \Phi$, then $U_{2\alpha}\subsetneq U_\alpha$
+  \item for all $\alpha\in \Phi$, $U_{-\alpha}\smallsetminus 1 \subset U_\alpha M_\alpha U_\alpha$ 
+  \item for all $\alpha,\beta\in \Phi$, $m\in M_\alpha$, $m U_\beta m^{-1} \subset U_{r_\alpha(\beta)}$
+  \item for all choices of positive subsystems for $\Phi^+$, we have 
+    $U^+ T \cap U^-=1$, where $U^+=\langle U_\gamma:\gamma \in \pm \Phi_+\rangle$ 
+\end{enumerate}
+\end{definition}
+
+It is a good exercise to check these axioms for $\generallinear_n(F)$, where 
+$\Phi$ is of type $A_{n-1}$. 
+
+We now give an ``unfair summary'' of Borel-Tits theory. 
+
+\begin{theorem}[Borel-Tits '65]
+Let $G$ be a reductive group over $k$. We assume that $G$ contains a non-central 
+$k$-split torus, say $T$. Denote by $\{U_\alpha\}$ the corresponding root groups. 
+Then $G(k)$ admits a root group datum in which the root groups are given by the 
+$U_\alpha(k)$, and $T=Z_G(T)(k)$. 
+\end{theorem}
+
+What is this good for? 
+\begin{enumerate}
+  \item The existence of a root group datum implies the existence of a weaker 
+    combinatorial structure called a \emph{Tits system}. This provided a 
+    uniform way to prove projective simplicity for rational points of 
+    isotropic simple groups. 
+  \item The axioms imply the existence of a spherical building on which $G(k)$ 
+    acts strongly transitively. 
+\end{enumerate}
+If the group is not isotropic, things become much more difficult. 
+
+
+\subsection{Conjugacy results and anisotropic kernel}
+
+So far, the combinatorial objects we constructed have depended on the choice of 
+a maximal $k$-split torus $T$. In fact, we have the following theorem. 
+
+\begin{theorem}[Borel-Tits '65]
+Let $G$ be as above. Then 
+\begin{enumerate}
+  \item Maximal $k$-split tori are conjugate under the $G(k)$-action. 
+  \item Minimal parabolic $k$-subgroups are $G(k)$-conjugate. In fact, 
+    $G(k)$ acts transitively on inclusions $T\subset B$ of maximal $k$-split 
+    tori into minimal parabolics $B$. 
+\end{enumerate}
+\end{theorem}
+
+We introduce some terminology. Grops of the form $Z_G(T)$ are reductive anisotropic 
+over $k$. In other words, $Z_G(T)$ contains no non-central $k$-split torus. (For 
+$k$ a local field, a semisimple 
+reductive $k$-group is anisotropic if and only if $G(k)$ is compact.) The groups 
+$Z_G(T)$ are also $G(k)$-conjugate. This conjugacy class is called the 
+\emph{anisotropic kernel} of $G$. In general, semisimple groups over $k$ are 
+classified by data consisting of the anisotropic kernel, together with a 
+Galois action on the Dynkin diagram. For details, see Tit's Boulder lecture 
+notes, or Satake's book. 
+
+
+\subsection{Example of a non-reduced root system}
+
+This is in the context of real Lie groups. Let $F$ be one of $\dR,\dC$, and 
+the quaternions. Let $\overline{\cdot}$ be the conjugation (if $F$ is the 
+complex numbers or the quaternions). Let 
+$\specialunitary(n,1) = \{g\in \speciallinear_n(F):g^\ast J g=J\}$, where 
+$J$ is an anti-diagonal matrix with $-1$ everywhere along the reverse 
+diagonal. The Lie algebra $\mathfrak{su}(n,1)$ consists of matrices 
+$\smat{w}{Z^\ast}{Z}{Y}$, where $Y$ is an $n\times n$ antihermetian matrix 
+(i.e.\ $Y+Y^\ast=0$), $w\in F$, and $Z\in F^n$. 
+
+The points of a maximal $\dR$-split torus can be described as follows: let 
+\[
+  A = \left\{a_t = \begin{pmatrix} \cosh t & 0 & \sinh t \\0 & 1_{n-1} & 0\\ \sinh t & 0& \cosh t \end{pmatrix} : t\in \dR\right\} .
+\]
+The weight space decomposition for $\fg=\mathfrak{su}(n,1))$ under the action 
+of $A$ is 
+\[
+  \fg = \fg_{-2\alpha} \oplus \fg_{-\alpha} \oplus \fg_0 \oplus \fg_\alpha \oplus \fg_{2\alpha} .
+\]
+The $2\alpha$ occur if and only if $F\supsetneq \dR$. Here, 
+\[
+  \fg_0 = \left\{\begin{pmatrix} w & 0 & t \\ 0 & m'& 0 \\ t & 0 & w \end{pmatrix}:m\in \mathfrak{u}(n-1,F),t\in \dR\text{ and }w+\overline w=0\right\} .
+\]
+One has 
+\[
+  \fg_\alpha = \left\{\begin{pmatrix} 0 & z\ast & 0 \\ z & 0 & -z \\ 0 & z^\ast & 0 \end{pmatrix} :z\in F^{n-1} \right\} 
+\]
+of dimension $d(n-1$, where $d=[F:\dR]$. Finally, 
+\[
+  \fg_{2\alpha} = \left\{\begin{pmatrix} w & 0 & -w \\ 0 & 0 & 0 \\ -w & 0 & w \end{pmatrix} : w+\overline w =0\right\} ;
+\]
+this has dimension $d-1$. The anisotropic kernel $\fg_\alpha$ can be arbitrarily 
+large, even though the root system is the (non-reduced) root system of rank 
+one called $\mathrm{BC}_1$ with roots 
+$\{\pm 2\alpha,\pm \alpha\}\subset \dZ\cdot \alpha$. For 
+$F=\dC$, the groups we get are $\specialunitary(n,1)$, and for 
+$F=\mathbf H$, the groups are $\symplectic(n,1)$. 
+
+
+
+
+
+\section{Construction of Bruhat-Tits buildings}
+
+The Euclidean buildings we will construct will be obtained by gluing together 
+copies of a Euclidean tessellation attached to the affinization of the Weyl 
+group given by Borel-Tits. The gluing will be done by an equivalence relation 
+which (eventually) prescribes point stabilizers. These stabilizers are defined 
+by using a filtration on each root group, which comes from the valuation on the 
+ground field. 
+
+
+\subsection{Gluings and foldings}
+
+We need:
+\begin{enumerate}
+  \item a model for the apartments
+  \item a gluing / equivalence relation 
+\end{enumerate}
+
+Let $G$ be a semisimple grop over a local field $k$. We assume that $G$ is 
+$k$-isotropic (i.e.\ it contains a non-central $k$-split torus). So 
+$G(k)$ is noncompact. (This is due to Bruhat-Tits-Rousseau, Prasad.) 
+
+First we construct the apartment. Let $T$ be a maximal $k$-split torus and 
+$N=N_G(T)$. We denote by $\Sigma_\vect = X_{\ast,k}(T)\otimes\dR$, where 
+$X_{\ast,k}(T)=\hom_{k\textnormal{-}\mathsf{gp}}(\dG_\mult,T)$. This should 
+be seen as an analogue of $\dA_{\boldsymbol e}$. There is a (well-defined) 
+affine space $\Sigma$ under $\Sigma_\vect$ admitting an action by 
+$N(k)$, say $\nu:N(k) \to \operatorname{Aff}(\Sigma)$, such that 
+\begin{enumerate}
+  \item There exists a scalar product on $\Sigma_\vect$ such that 
+    $\nu(N) \subset \operatorname{Isom}(\Sigma)$. 
+  \item The vectorial part of $\nu(N)$ is the Weyl group of $\Phi$. 
+  \item The translation (normal) subgroup in $\nu(N)$ has compact fundamental 
+    domain. In fact, $\nu(N)$ is an affine Coxeter group. 
+\end{enumerate}
+
+This is a generalization of the action on $\dA_{\boldsymbol e}$ in 
+Section \ref{sec:gln} by the permutation matrices and the diagonal 
+matrices $\pi^{\boldsymbol m}$. There, we had 
+$\nu(N)\simeq S_d\ltimes \dZ^{d-1}$. 
+
+Now we want to define an equivalence relation in order to glue infinitely 
+many copies of $\Sigma$. The idea is to associate a compact subgroup 
+$P_x$ (a ``parahoric'' subgroup) to each point $x\in \Sigma$. This is done 
+using the filtration on the root groups $U_\alpha$ given by Borel-Tits 
+theory. 
+
+One should keep the example $\speciallinear_2(\dQ_p)$ in mind. Its 
+maximal torus $T$ consists of diagonal matrices $\smat{t}{}{}{t^{-1}}$, 
+and this give a geodesic in the tree. The subgroup 
+$\smat{1}{\fp^m}{}{1}$ fixes a ray in one direction whose ```depth'' depends 
+on $m$. A group $\smat{1}{}{\fp^\ell}{1}$ fixes a ray in the opposite 
+direction. Once the building is obtained, the filtration corresponds to the 
+size of the fixed ray. 
+
+If $G$ is split, everything is easy. For general $G$, things are more 
+difficult. The split case is easy because there exist compatible parameterizations 
+of the root groups $U_\alpha$ (all one-dimensional). One calls these 
+parameterizations \emph{pinnings} (``\'epinglages'' in French). We will 
+base-change to make our group split, then use a (2-step) descent argument. 
+
+The abstract abstract context used by Bruhat-Tits consists in formalizing the 
+existence of compatible filtrations $U_{\alpha,\bullet}$ on groups admitting 
+an abstract root group datum. This is done in \cite{bt72}, which is basically 
+just combinatorics and buildings. The existence by descent and use of integral 
+forms (over $k^\circ$) for $G$ is in \cite{bt84}. 
+
+From now on, we assume we have suitable filtrations $U_{\alpha,\bullet}$ on 
+root groups. In particular, $\bigcup_{r\in \dZ} U_{\alpha,r} = U_\alpha(k)$ 
+and $\bigcap_{r\in \dZ} U_{\alpha,r} = 1$. Choose $x\in \Sigma$. We define 
+$N_x=\stabilizer_{N(k)}(x)$ for the $\nu$-action. For all 
+$\alpha\in \Phi$, we define $U_{\alpha,x}$ to be the largest subgroup 
+$U_{\alpha,r}$ such that the positive subspace associated to the affine linear form 
+$\alpha+r$ contains $x$, i.e.\ $(\alpha+r)(x)\geqslant 0$. At last, we 
+define $P_x=\langle N_x,U_{\alpha,x}:\alpha\in \Phi\rangle$. Then, we define the 
+relation $\sim$ on $G(k)\times \Sigma$ by 
+$(g,x)\sim(h,y)$ if and only if there exists $n\in N(k)$ such that 
+$y=\nu(n)\cdot x$ and $g^{-1} h n\in P_n$. 
+
+\begin{theorem}[Bruhat-Tits]
+The relation $\sim$ is an equivalence, and the quotient space 
+$G(k)\times \Sigma/\sim$ is a building of type $\Sigma$ on which $G(k)$ acts 
+strongly transitively. 
+\end{theorem}
 
 
 
