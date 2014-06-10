@@ -2,21 +2,157 @@
 
 \usepackage{lyon-style}
 
-\title{Path model}
+\title{Path models in representation theory}
 \author{St\'ephane Gaussent}
 \date{June 9--13, 2014}
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 
 
 
 
-d
+\section{Introduction}
+
+We are interested in so-called ``saturation results.'' Good references are 
+\cite{km08}, \cite{bcgr13}, and a survey of Kumar (with an appendix by 
+Kapovich). 
+
+We start with some notation. Let $G$ be a connected algebraic semisimple group 
+over $\dC$. Let $T\subset G$ be a maximal torus, and $\Phi=\Phi(G,T)$ the 
+corresponding root system. Let $X=X^\ast(T)=\hom(T,\dG_\mult)$ and 
+$Y=X_\ast(T)=\hom(\dG_\mult,T)$. There is a perfect pairing (evaluation) 
+$Y\times X \to \hom(\dG_\mult,\dG_\mult) = \dZ$. We can create the dual 
+system $\Phi^\vee$, which corresponds to a semisimple group $G^\vee$, the 
+\emph{Langlands dual} of $G$. For example, if 
+$G=\symplectic_{2n}$, then $G^\vee=\specialorthogonal_{2n+1}$. 
+
+[Note: Gaussent writes $\{\alpha_i:i\in I\}$ for the set of roots of $G$.]
+
+Let $Y^+ = \{\nu\in Y:\alpha(\nu)\geqslant 0\text{ for all }\alpha\in \Phi\}$ 
+be the set of \emph{dominant coweights}. For $\lambda\in Y^+$, $V(\lambda)$ is 
+the irreducible representation of $G^\vee$ of highest weight $\lambda$. Let 
+$\fZ=\fZ(G,\dC\laurent t) = G(\dC\laurent t)\times \dA/\sim$ be the Bruhat-Tits 
+building associated to $G$ and $\dC\laurent t$. Here $\dA=Y_\dR$. 
+
+An integer $k$ is a \emph{saturation factor} for $G^\vee$ if for any 
+dominant coweights $\lambda,\mu,\nu$ such that 
+$\lambda+\mu+\nu\in Q^\vee = \langle \alpha^\vee:\alpha\in \Phi\rangle\subset Y$, 
+then there exists $N\geqslant 1$ such that 
+$(V(N\lambda)\otimes V(N\mu)\otimes V(N\nu))^{G^\vee}\ne 0$ implies 
+$(V(k\lambda)\otimes V(k\mu)\otimes V(k\nu))^{G^\vee}\ne 0$. 
+
+\begin{theorem}[Kapovich-Millson, Leeb]
+Let $\theta^\vee=\sum k_i \alpha_i^\vee$ be the highest coroot and 
+$k_\Phi=\operatorname{lcm}(k_i)$. Then $k_\Phi^2$ is a saturation factor for 
+$G^\vee$. 
+\end{theorem}
+
+This is not an isolated result. Knutson and Tao \cite{kt99} and 
+Derksen and Weyman \cite{dw00} proved this for $G^\vee$ of type A, using 
+combinatorics (resp.\ quivers). More recently, Belkale and 
+Kumar \cite{bk10} were able to show that if $G^\vee$ is one of 
+$\specialorthogonal_{2n+1}$ or $\symplectic_{2n}$, then $2$ is a 
+saturation factor. Also Sam [2012] was able to show that if $G^\vee$ is one 
+of $\specialorthogonal_{2n+1}$, $\symplectic_{2n}$, or 
+$\specialorthogonal_{2n}$, then $2$ is a saturation factor. 
+
+In a 2014 preprint, Hang-Shen was able to show that if $G^\vee$ is 
+$\operatorname{Spin}_{2n+1}$, then $2$ is a saturation factor. Also, 
+$72$ is a saturation factor for $F_4$. 
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+  $G^\vee$ & A & B & C & D & $E_6$ & $E_7$ & $E_8$ & $F_4$ & $G_2$ \\ \hline 
+  \cite{kt99} & 1 \\
+  \cite{dw00}, Sam & 1 & 2 & 2 & 2\\
+  \cite{bk10} & & 2 & 2 & 1 \\
+  HS & & 2 & & & & & & 72 \\
+  \cite{km08} & 1 & 4 & 4, 2 & 4, 1 & 36 & 144 & 900 & 144 & 363
+\end{tabular}
+\end{center}
+
+\begin{conjecture}[Kapovich-Millson]
+If $G^\vee$ is simply-laced, then $1$ is a saturation factor. Otherwise 
+$2$ is a saturation factor. 
+\end{conjecture}
+
+We will concentrate on the results in \cite{km08}. Here is a sketch of the 
+proof. 
+
+\paragraph{Step 1 (unfolding)}
+The fact that $(V(N\lambda)\otimes V(N\mu)\otimes V(N\nu))^{G^\vee}\ne 0$ 
+implies that there exists a geodesic triangle $T(0,A,B)$ in the building 
+$\fZ$ with side lengths $N\lambda$, $N\mu$, $N\nu$. 
+
+\paragraph{Step 2 (Gauss map)}
+We follow the geodesics in our triangle $T(0,A,B)$ off to infinity, to get 
+a configuration of weighted points $(\xi_1,N\lambda)$, $(\xi_2,N\mu)$, 
+$(\xi_3,N \nu)$ at infinity. This configuration is semistable. 
+
+\paragraph{Step 3 (invert Gauss map)}
+Semistability is stable by dilation. Then 
+$((\xi_1,\lambda),(\xi_2,\mu),(\xi_3,\nu))$ is also semistable. Invert the 
+map $\psi:T(0,A,B)\mapsto ((\xi_1,N\lambda),(\xi_2,N\mu),(\xi_3,N\nu))$. 
+This gives us $\phi:\fZ\to \fZ$. We will show that $\phi$ has a fixed point. 
+
+\paragraph{Step 4 (folding, $1^\mathrm{st}$ dilation)}
+We have a triangle $T(x_0,x_1,x_2)$ in $\fZ$. The condition 
+$\lambda+\mu+\nu\in Q^\vee$ implies that the fixed point $x_0$ is a vertex of 
+$\fZ$. Fold this triangle onto the fundamental apartment $\dA$. We get a 
+polyline $P[x_0,a_1,a_2,\dots,a_n,x_0]$ in $\dA$. Apply multiplication by 
+$k_\Phi$ in $\dA$. We get a Hecke path of shape $k_\Phi \mu$. 
+
+\paragraph{Step 5 (one-skeleton, $2^\mathrm{nd}$ dilation)}
+Use reflections, bring everything inside $C^+$. In this situation, one can 
+replace the path [drawn] in red by a LS path, up to multiplication by 
+$k_\Phi$. We can now apply a theorem of Littleman to conclude that 
+$(V( k_\Phi^2 \lambda)\otimes V(k_\Phi^2\mu)\otimes V(k_\Phi^2 \nu))^{G^\vee}\ne 0$. 
 
 
 
 
+
+\section{The path model}
+
+This is due to Littleman \cite{l94}. 
+
+
+\subsection{The standard apartment}
+
+This is the standard apartment of $\fZ$. It is denoted by $\dA$. It is an 
+Euclidean affine space denoted by $V=Y_\dR = \hom(X,\dR)$. Let 
+$C^+=\{v\in V:\alpha(v)\geqslant 0\text{ for all }\alpha\in \Phi\}$. The Weyl 
+group $W$ of $(G,T)$ acts isometrically on $\dA$, and $C^+$ is a fundamental 
+domain for this action. For any $v\in V$, there exists a unique 
+$v_0\in C^+\cap W v$. So, define a map $\operatorname{pi}_{C^+}:V\to C^+$ by 
+$v\mapsto v_0$. For any $x,y\in \dA$ we set 
+$d_{C^+}(x,y) = \operatorname{pi}_{C^+}(y-x)\in C^+$. This is not a distance: 
+$d_{C^+}(y,x) = - w_0 d_{C^+}(x,y)$, were $w_0$ is the largest element in $W$. 
+
+The walls of $\dA$ are the hyperplanes, for all $\alpha\in \Phi$, 
+$k\in \dZ$, defined by 
+\[
+  H_{\alpha,k} = \{x\in \dZ:\alpha(x)+k=0\} .
+\]
+The affine Weyl group $W^\affine=W\ltimes Q^\vee$ is generated by the 
+reflections $s_{\alpha,k}$ along $H_{\alpha,k}$. An \emph{alcove} is the 
+closure (in the Euclidean topology) of a connected component of 
+\[
+  \dA\smallsetminus \bigcup_{\substack{\alpha\in \Phi \\ k\in \dZ}} H_{\alpha,k} .
+\]
+An alcove is a fundamental domain for the action of $W^\affine$ on $\dA$. A 
+vertex of $\dA$ is a vertex of an alcove. A vertex is \emph{special} if 
+$\alpha(x)\in \dZ$ for all $\alpha\in \Phi$. 
+Dilation by $k_\Phi$ sends any vertex on a special one and it is the smallest integer 
+that does so. 
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{lyon-sources}
 
 \end{document}
