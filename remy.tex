@@ -1,20 +1,12 @@
 % !TEX root = main.tex
 
-%\documentclass{article}
-%
-%\usepackage{lyon-style}
-%
-%\title{Bruhat-Tits theory}
-%\author{Bertrand R\'emy}
-%\date{June 9--13, 2014}
-%
-%\begin{document}
-%\maketitle
-%\tableofcontents
+
+
 
 
 \section{Bruhat-Tits theory}
 \thanksauthor{Bertrand R\'emy}
+
 
 
 
@@ -695,7 +687,214 @@ strongly transitively.
 
 
 
-%\bibliographystyle{alpha}
-%\bibliography{lyon-sources}
+\subsection{Gluings and foldings}
 
-%\end{document}
+To sum up. ``Let $G$ be a group with a root group datum 
+$((U_\alpha)_{\alpha\in \Phi},(M_\alpha)_{\alpha\in \Phi})$. Assume that 
+this datum admits a compatible system of valuations. Then there exists a 
+Euclidean building on which $G$ acts strongly transitively. Moreover, the model 
+for the apartment is explicit.'' As mentioned above, this was by Bruhat and 
+Tits in their paper \cite{bt72}. This is almost a necessary and sufficient condition. 
+In other words, suitably transitive actions on buildings imply the existence of 
+a root group datum with valuation. 
+
+We briefly treat descent. Let $k$ be a local field (or possibly a more general 
+valued field). Let $G$ be a semisimple group over $k$. The point is to find a 
+Galois extension $F/k$ which splits $G$. Since $G_F$ is the base-change 
+of a Chevalley-Demazure group scheme (which are defined over $\dZ$) we 
+get a pinning, which can be used to construct the valuation on our root group 
+datum. 
+
+At this stage we have a building $\sB(X,F)$ by the previous gluing procedure. 
+We have an action of $\Gamma=\galois(F/k)$ on $G(F)$. Thanks to the connection 
+between the combinatorics of $G(F)$ and the geometry of $\sB(G,F)$, we can 
+define an action of $\Gamma$ on $\sB(G,F)$. \emph{Hint}: let $p$ be the 
+residue characteristic of $k$, and assume $G$ is simply connected. Then the 
+chamber stabilizers are the normalizers of the pro-$p$ Sylow subgroups of 
+$G(F)$. 
+
+Suitably decompose $F/k$ into two extensions so that $G(k)=G(F)^\Gamma$ admits 
+a root group datum with valuation so that the associated building is 
+$\sB(X,F)^\Gamma$. This doesn't always work. One needs some assumptions on the 
+ramification of the extension $F/k$. See \cite{bt84} for details. One may 
+need to choose an intermediate extension $k\subset F'\subset F$ so that 
+$G$ is quasi-split over $F'$ (i.e.~contains a Borel subgroup over $F'$). 
+Equivalently, the centralizer of an $F'$-split torus is a torus. Quasi-split 
+groups have no anisotropic kernel. In good cases, the extension $F/F'$ is 
+unramified, and we use integral structure (group schemes over valuation 
+rings). 
+
+\begin{theo}[Bruhat-Tits]
+Let $k$ be a complete, discretely-valued field with perfect residue field. Then 
+the group $G$ admits a Euclidean building over $k$ on which $G(k)$ acts 
+strongly transitively. 
+\end{theo}
+
+In \cite{r77}, it is proved that the building $\sB(X,-)$ behaves functorially 
+with respect to the ground field. In good cases, one has 
+$\sB(G,F)^\Gamma = \sB(G,k)$. 
+
+
+
+
+\subsection{Compact subgroups}
+
+This is closely related to integral structures for $G$, as well as decomposition 
+theorems for $G(k)$, which are used in the study of representations of $G(k)$. 
+
+As before, assume $G$ is simply connected and $k$ is local. Then the building 
+$\sB(G,k)$ is \emph{locally finite}, i.e.~given any facet $\sigma$, there are only 
+finitely many facets whose closure contains $\sigma$. For any $x\in \sB(G,k)$, the 
+stabilizer $P_x$ is compact and open in $G(k)$. If $p$ is the residue characteristic 
+of $k$, then $P_x$ is virtually pro-$p$. In other words, each $P_x$ contains a 
+pro-$p$ subgroup of finite index. 
+
+\begin{theo}
+1. For all $x\in \sB(G,k)$, there is a smooth group scheme over $k^\circ$, 
+$\sG_x$, such that $\sG_x\otimes_{k^\circ} k = G$. 
+
+2. The set of facets whose 
+closure contains $x$ is a spherical finite building $\sB_x$. 
+
+3. $\sB_x$ is the spherical building of the (semisimple quotient of) 
+$\sG_x\otimes_{k^\circ} \kappa$.  
+\end{theo}
+
+If $x\in \dA$ is a vertex, we say that $x$ is \emph{special} if 
+$\stabilizer_W(x)$ is the full vectorial part of the affine Weyl group 
+$W$. 
+
+\begin{enonce}{Complement}
+Up to passing to a huge non-archimedean extension $K/k$, any point 
+$x\in \sB(G,k)$ can be seen as a special vertex in $\sB(G,K)$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Let $x\in \sB(\speciallinear_3,\dQ_p)$ which is the barycenter of some chamber. 
+Up to a totally ramified extension $K$ of degree $3$, $x$ can be seen as a special 
+vertex in $\sB(\speciallinear_2,K)$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Here we give a vertex which is not special. The group is $\symplectic_4$. A 
+typical chamber looks like 
+\[\xymatrix{
+  \bullet \ar@{-}[d] \ar@{-}[dr] \\
+  \bullet \ar@{-}[r] 
+    & \bullet 
+}\]
+The vertices on the ends of the long edge are special, but the common vertex 
+of the short edges is not special. 
+\end{enonce}
+
+\begin{theo}
+Let $G$ be a simply connected group over a local field $k$. Then the 
+$G(k)$-conjugacy classes of maximal compact subgroups of $G(k)$ are in 
+bijection with vertices in the closure of any chamber in $\sB(G,k)$. 
+\end{theo}
+
+Note the contrast with the case of real groups, where all maximal compacts 
+are conjugate. 
+
+
+\subsection{Two decompositions}
+
+Recall the Cartan and Iwasawa decompositions. If $G$ is a real Lie group, we 
+have 
+\begin{align*}
+  G &= K \overline A K && \text{``Cartan decomposition''} \\
+  G &= K A N && \text{	``Iwasawa decomposition''}
+\end{align*}
+
+Let $\dA$ be an apartment, and let $c\subset \dA$ be a chamber. We pick a 
+vertex $o\in \overline c$. From our gluing relation, we get that walls in 
+the Euclidean tesselation $\dA$ correspond to the zero-sets of the affine 
+roots $\alpha+r$ for $\alpha\in \Phi$, $r\in \dZ$. Half-spaces bounded by 
+walls correspond to roots (at least, when $\Phi$ is reduced). The group 
+$U_{\alpha,r}$ fixes $\alpha+r$ (the latter seen as a half-space in $\dA$) 
+and folds the other half of $\dA$. 
+
+The $G(k)$-action is transitive enough on $\sB(G,k)$ to show that for any 
+$x\in \sB(G,k)$, there exists $g\in G(k)$ fixing $C$, such that 
+$g x\in \dA$. \emph{Hint}: draw a geodesic segmentfrom $c$ to $x$, and fold (by 
+finite induction) along the walls which are 
+crossed by the segments or its intermediate transforms. This is almost a proof 
+of the Cartan decomposition. 
+
+Take $K$ to be $P_0=\stabilizer_{G(k)}(o)$. Pick $g\in G(k)$. Fold $x=g\cdot o$ onto 
+$\dA$. Then $g\in P_c\subset K$. Then $k^{-1} g\cdot o\in \dA$ for some $k$. 
+Then use a translation in the maximal split torus corresponding to $\dA$. 
+
+\begin{theo}
+Let $G$, $k$ be as before. If $o$ is a special vertex, then 
+$G(k)=K \overline T^+ K$, where $\overline T^+$ is the subsemigroup of $T$ 
+(the maximal $k$-split torus corresponding to $\dA$) defined by the condition 
+that for $t\in T(k)$, we have $t\in \overline T^+$ if and only if 
+$t\cdot o$ is an element of the some fixed Weyl chamber in $\dA$. 
+\end{theo}
+
+We say that $K$ is special if the vertex defining it is. So $K$ is special if 
+and only if $K$ contains elements lifting all the elements in the spherical 
+Weyl group, i.e.\ ``$K$ contains all the non-commutative part of the affine 
+Weyl group.'' 
+
+In harmonic analysis, one looks at spaces 
+$\sH(G,K)=C_c^\infty(K\backslash G(k)/K)$ of locally constant, compactly supported, 
+$K$-bi-invariant functions. We say that $(G(k),K)$ is a \emph{Gelfand pair} if 
+convolution gives $\sH(G,K)$ the structure of a commutative ring. The Hecke 
+algebra $\sH(G,K)$ is commutative if and only if $K$ is special. 
+See Macdonald's book \cite{m71}. 
+
+There is also a $p$-adic analogue of the Iwasawa decomposition: it looks like 
+$G(k)= K T(k) U^+(k)$. It is based on the same ``folding'' idea, except that 
+here the foldings are stepwise required to fix the boundary at infinity of the Weyl 
+chamber $Q\subset \dA$ defined by $o$ and $c$. 
+
+
+
+
+\subsection{Unitary groups in three variables}
+
+Let $F/k$ be a quadratic extension of local fields. Let $V$ be a three-dimensional 
+$k$ vector space. Choose a basis $e_0,e_{\pm 1}$, and define the Hermitian form 
+\[
+  h(z_{-1},z_0,z_1) = z_{-1} \sigma(z_0) + z_0 \sigma(z_1) + z_1 \sigma(z_{-1}) ,
+\]
+where $\sigma\in \galois(F/k)\smallsetminus 1$. We want to understand the 
+group $\specialunitary(V,h) = \speciallinear(V)^\sigma$, where $\sigma$ is 
+(another involution) defined by 
+\[
+  \sigma(M) = \begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0\end{pmatrix} \prescript{\mathrm{t}}{}{M}^{-1} \begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0\end{pmatrix} .
+\]
+The apartment of $\speciallinear(V)$ defined by $\theta=(e_{-1},e_0,e_1)$ consists 
+of the homothety classes of lattices $\sum \fp^{m_i} e_i$. We have three positive 
+root groups in $\speciallinear_3$: 
+\begin{align*}
+  U_{1 2} &= \begin{pmatrix} 1 & \ast & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} \\
+  U_{1,3} &= ?\\
+  U_{2,3} &= ?
+\end{align*}
+The group $U_{1 3}$ is strongly $\sigma$-stable, and $\sigma$ interchanges 
+$U_{1 2}$ and $U_{2 3}$. 
+
+What are maximal split tori in $\specialunitary(V,h)$? Let 
+\[
+  \tau=\begin{pmatrix} \pi & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & \pi^{-1} \end{pmatrix}. 
+\]
+The Zariski closure of $\langle\tau\rangle$ is a maximal split torus. 
+According to whether $F/k$ is ramified or not we don't get the same tree. 
+For example, if $F=\dF_q\laurent X$ and $k=\dF_q\laurent{X^2}$, then for 
+$\pi=X$, we have $\sigma(X)=-\sigma$. Then 
+$\tau\not\in \specialunitary(V,H)(k)$, but $\tau^2$ is in this group. 
+If on the other hand we look at the unramified extension 
+$\dF_{q^2}\laurent X/\dF_q\laurent X$, then $\sigma(\pi)=\pi$, so 
+$\tau\in \specialunitary(V,h)(k)$. 
+Be careful with keeping or not all the intersections of walls with fixed point 
+sets as vertices in the non-split building. When $F/k$ is ramified, 
+the building is a homogeneous tree (all valences are the same). But when 
+$F/k$ is unramified, the building is only semi-homogeneous (valences 
+are $q$ or $q+1$). 
+
+
+
+
