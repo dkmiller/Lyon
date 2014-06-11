@@ -1,50 +1,56 @@
-\documentclass{article}
+% !TEX root = main.tex
 
-\usepackage{lyon-style}
+%\documentclass{article}
+%
+%\usepackage{lyon-style}
+%
+%\title{Possibly non-affine algebraic groups}
+%\author{Michel Brion}
+%\date{June 9--13, 2014}
+%
+%\begin{document}
+%\maketitle
+%\tableofcontents
+%
 
-\title{Possibly non-affine algebraic groups}
-\author{Michel Brion}
-\date{June 9--13, 2014}
-
-\begin{document}
-\maketitle
-\tableofcontents
 
 
+\section{Possibly non-affine algebraic groups}
+\thanksauthor{Michel Brion}
 
 
 
 Our topic is the structure of algebraic groups (possibly non-affine) over 
 a field (possibly non-perfect). 
 
-\begin{theorem}[Chevalley, Barsotti, Rosenlicht]\label{thm:A}
+\begin{theo}[Chevalley, Barsotti, Rosenlicht]\label{thm:A}
 Let $G$ be a connected algebraic group over a perfect field. Then there exists 
 a largest connected linear subgroup $L\subset G$. Moreover, $L$ is normal 
 in $G$ and $G/L$ is an abelian variety. 
-\end{theorem}
+\end{theo}
 
 In other words, every algebraic group is the extension of an abelian variety by 
 an affine algebraic group. 
 
-\begin{theorem}[Rosenlicht, Demazure-Gabriel]\label{thm:B}
+\begin{theo}[Rosenlicht, Demazure-Gabriel]\label{thm:B}
 Let $G$ be a group scheme of finite type over a field $k$. Then $G$ has a 
 largest linear quotient $L'$, i.e.~a smallest normal subgroup scheme $H$ such 
 that $G/H$ is linear. Moreover, $H$ is smooth, connected, commutative, and 
 $\sO(H) = \Gamma(H,\sO_H) = k$. 
-\end{theorem}
+\end{theo}
 
 These theorems are ``dual'' in some informal sense. Note that the assumptions 
 of Theorem \ref{thm:B} are much weaker. The group $H$ in Theorem \ref{thm:B} 
 is an abelian variety when $k$ is perfect. 
 A good reference is \cite{m14}. 
 
-\begin{definition}
+\begin{defi}
 A \emph{$k$-group scheme} is a scheme $G$ over $k$, equipped with morphisms 
 $m:G\times G\to G$ (multiplication), $i:G\to G$ (inverse) and 
 $e\in G(k)$ (identity) such that for all $k$-schemes $S$, these give 
 $G(S)$ the structure of a group. An \emph{algebraic group} is a smooth group 
 scheme of finite type. 
-\end{definition}
+\end{defi}
 
 \emph{Warning}: this definition is less restrictive than Gille's. 
 
@@ -107,7 +113,7 @@ perfect.
 
 
 
-\section{Homogeneous spaces and quotients}
+\subsection{Homogeneous spaces and quotients}
 
 The reference here is \cite[VI$_\mathrm{A}$ \S 3]{sga3}. Let $G$ be a $k$-group 
 scheme, locally of finite type, and $H\subset G$ a subgroup scheme. Then there is 
@@ -128,11 +134,11 @@ If $H\subset G$ is normal, then the quotient $G/H$ has the structure of
 a group scheme, uniquely characterized by the property that 
 $q:G\to G/H$ is a morphism of group schemes. 
 
-\begin{example}
+\begin{enonce}{Example}
 Let $G=\dG_\mult$ and $H=\boldsymbol\mu_n$. Then $G/H=\dG_\mult$ via the 
 $n$-th power map $x\mapsto x^n$. But the map $G(k) \to (G/H)(k)$ is usually 
 not surjective. But the map $G(\bar k) \to (G/H)(\bar k)$ is surjective. 
-\end{example}
+\end{enonce}
 
 If we worked over an arbitrary base ring $k$, we would need to pass to 
 fppf extensions in order for $G\to G/H$ to be pointwise surjective. In 
@@ -148,7 +154,7 @@ $\sO(G)^H$ consists of $H$-invariant morphisms $G\to \dA^1$.)
 
 
 
-\section{Lie algebras}
+\subsection{Lie algebras}
 
 Let $G$ be a $k$-group scheme. Let $k[\tau]=k[t]/(t^2)$. Consider the base 
 change $G_{k[\tau]}$ as a $k$-group scheme. The maps $k\rightleftarrows k[\tau]$ 
@@ -158,21 +164,21 @@ projection. Now $\pi:G_{k[\tau]}\to G$ is the ``tangent bundle'' of
 $G$, so its fiber $\pi^{-1}(g)$ for $g\in G(k)$ is the tangent space 
 $T_g G$. In particular, $\pi^{-1}(0) = \lie G$. Since $\lie G$ lives in the 
 semidirect product $G_{k[\tau]} = G\ltimes \ker(\pi)$, it has an action of 
-$G$ by conjugation. If we put $\fg=\lie G$, this gives a homomorphism 
-$\adjoint:G\to \generallinear(\fg)$. Differentiating this gives a representation 
+$G$ by conjugation. If we put $\frakg=\lie G$, this gives a homomorphism 
+$\adjoint:G\to \generallinear(\frakg)$. Differentiating this gives a representation 
 (also called the adjoint representation) 
-$\adjoint:\fg \to \lie(\generallinear\fg) = \End(\fg)$. Define 
-$[x,y] = \adjoint(x) y$; this is the usual bracket on $\fg$. 
+$\adjoint:\frakg \to \lie(\generallinear\frakg) = \End(\frakg)$. Define 
+$[x,y] = \adjoint(x) y$; this is the usual bracket on $\frakg$. 
 
 
-\section{Neutral component}
+\subsection{Neutral component}
 
 Let $G$ be a $k$-group scheme, locally of finite type. Let $G^\circ$ be the 
 connected component of $e$ in $G$. Then $G^\circ$ is a normal subgroup scheme 
 of $G$, and the quotient $G/G^\circ$ is \'etale (smooth of dimension $0$). The 
 group $G^\circ$ is of finite type, and is geometrically irreducible. 
 
-\begin{example}[automorphism group schemes]
+\begin{enonce}{Example}[automorphism group schemes]
 Let $X$ be a $k$-scheme. Define a functor $\automorphism_X$ on $k$-schemes 
 by $\automorphism_X(S) = \automorphism_{S\textnormal{-}\mathsf{sch}}(X_S)$. 
 Grothendieck proved that if $X$ is proper, then $\automorphism_X$ is represented by a 
@@ -182,7 +188,7 @@ $X$ is projective. Then to $f\in \automorphism_X(S)$, we can associate its
 graph $\Gamma_f\subset (X\times X)_S$. So the automorphisms of $X$ are 
 parameterized by an open subscheme of the Hilbert scheme of $X$. The Hilbert 
 scheme is projective, so $\automorphism_X$ is quasi-projective. 
-\end{example}
+\end{enonce}
 
 When $X$ is proper, then there is an alternative construction of 
 Matsumura-Oort using a general representability criterion. 
@@ -222,7 +228,7 @@ in characteristic $2$.
 An open question: which group schemes occur as $\automorphism_X^\circ$ for 
 $X$ proper, normal? Over perfect fields, all connected algebraic groups occur. 
 
-\begin{example}
+\begin{enonce}{Example}
 Let $E$ be an elliptic curve with origin $0\in E(k)$. Let $L\to E$ be a line 
 bundle. Then $L\smallsetminus \{\text{zero section}\}$ is a $\dG_\mult$-bundle 
 on $E$. The map $\pi:L\smallsetminus0 \to E$ is in fact a (Zariski-locally 
@@ -249,15 +255,15 @@ fits into an exact sequence
 \]
 where $F$ is an elliptic curve. The map $\pi:G\to E$ induces an isogeny 
 $F\twoheadrightarrow E$ of degree $m$. 
-\end{example}
+\end{enonce}
 
 
 
 
 
-\section{Proof of \texorpdfstring{Theorem \ref{thm:B}}{Theorem B}}
+\subsection{Proof of \texorpdfstring{Theorem \ref{thm:B}}{Theorem B}}
 
-\begin{lemma}
+\begin{lemm}
 Let $G$ be a group scheme of finite type over $k$. Then the following are 
 equivalent:
 \begin{enumerate}
@@ -266,7 +272,7 @@ equivalent:
   \item $G_{\bar k}$ is affine
   \item $(G_{\bar k})_\reduced$ is affine
 \end{enumerate}
-\end{lemma}
+\end{lemm}
 \begin{proof}
 Clearly $1 \Rightarrow 2 \Rightarrow3\Rightarrow 4$. Moreover, 
 $2\Rightarrow 1$ exactly as for algebraic groups (as in Borel's book). The 
@@ -278,10 +284,10 @@ exact. But $\h^0(G_{\bar k},\sF) = \h^0(G,\sF)_{\bar k}$ (just use the
 \v Cech complex). This is exact, so we're done. 
 \end{proof}
 
-\begin{lemma}
+\begin{lemm}
 Let $G$ be a linear group scheme, $\pi:X\to Y$ a $G$-torsor. Then the morphism 
 $\pi$ is affine. 
-\end{lemma}
+\end{lemm}
 \begin{proof}
 We know that $\pi$ is faithfully flat, $G$ acts on $X$, $\pi$ is $G$-invariant, 
 and the diagram 
@@ -309,10 +315,10 @@ $\pi_U^\ast \pi_{U\ast} = p_\ast m^\ast$ is exact. But $m^\ast$ is exact by
 faithful flatness, and $p_\ast$ is exact because $p$ is affine. 
 \end{proof}
 
-\begin{proposition}
+\begin{prop}
 Let $G$ be a group scheme of finite type, $H\subset G$ a normal subgroup 
 scheme. Then $G$ is affine if and only if $H$ and $G/H$ are affine. 
-\end{proposition}
+\end{prop}
 \begin{proof}
 We may assume $k=\bar k$. 
 
@@ -331,7 +337,7 @@ on $X$ then $X/K$ is affine.
 Equivalently, affine groups are stable under extensions. 
 
 
-\subsection{Affinization}
+\subsubsection{Affinization}
 
 Let $X$ be a $k$-scheme. Then there is a universal morphism from $X$ to an affine 
 scheme -- namely $\varphi_X:X \to \spectrum \sO(X)$. One has 
@@ -340,7 +346,7 @@ scheme -- namely $\varphi_X:X \to \spectrum \sO(X)$. One has
 \]
 \emph{Warning}: if $X$ is of finite type, then $\sO(X)$ may not be!
 
-\begin{example}
+\begin{enonce}{Example}
 Let $L\to E$ be a line bundle of infinite order as before. Let $M \to E$ be a 
 line bundle of negative degree. Consider the vector bundle 
 $X=L\oplus M$ over $E$. One has 
@@ -348,17 +354,17 @@ $X=L\oplus M$ over $E$. One has
   \sO(X) = \bigoplus_{m,n\geqslant 0} L^{-m} \otimes M^{-n} .
 \]
 [\ldots stuff I didn't understand\ldots]
-\end{example}
+\end{enonce}
 
 Note that $\varphi_X$ commutes with products (since 
 $\sO(X\times Y) = \sO(X)\otimes_k \sO(Y)$). Thus, if $G$ is a group scheme, then 
 $\spectrum \sO(G)$ is an affine group scheme, and $\varphi_G$ is a homomorphism. 
 
-\begin{theorem}
+\begin{theo}
 If $G$ is of finite type, then $H=\ker(\varphi)$ is the smallest normal subgroup 
 scheme of $G$ such that $G/H$ is affine. Moreover, $\sO(H)=k$ and 
 $\sO(G)=\sO(G/H)$. In particular, $G/H=\spectrum \sO(G$ is finitely generated. 
-\end{theorem}
+\end{theo}
 \begin{proof}
 Let $H_1\subset G$ be normal such that $G/H_1$ is affine. Then 
 $G\to G/H_1$ factors through $\varphi_X$ as in 
@@ -381,11 +387,11 @@ closed immersion by a theorem proved by Gille.
 [\ldots didn't follow whole proof\ldots]
 \end{proof}
 
-\begin{theorem}[Demazure-Gabriel]
+\begin{theo}[Demazure-Gabriel]
 Let $G$ be a $k$-group scheme of finite type such that $\sO(G)=k$. Then $G$ 
 is smooth, connected, and every homomorphism $G\to H$ (the latter a connected 
 group scheme) factors through the center of $H$. 
-\end{theorem}
+\end{theo}
 \begin{proof}
 Since $\sO(G_{\bar k}) = \sO(G)_{\bar k}$, we may assume $k=\bar k$. Note that 
 $\pi_0 G = G/G^\circ$ is a finite group, and 
@@ -429,7 +435,7 @@ identically $1$, whence the result.
 
 
 
-\bibliographystyle{alpha}
-\bibliography{lyon-sources}
+%\bibliographystyle{alpha}
+%\bibliography{lyon-sources}
 
-\end{document}
+%\end{document}

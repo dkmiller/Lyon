@@ -1,28 +1,18 @@
-\documentclass{article}
+% !TEX root = main.tex
 
-\usepackage{lyon-style}
-
-\title{Geometric representation theory}
-\author{Emmanuel Lettier}
-\date{June 2-6, 2014}
-
-\begin{document}
-\maketitle
-\tableofcontents
+\section{Geometric representation theory}
+\thanksauthor{Emmanuel Letellier}
 
 
 
 
 
-\section*{Introduction}
+\subsection{Introduction}
 
 The goal is to compute character tables for ``finite groups of Lie type.'' Let 
 $G$ be a connected reductive (linear algebraic) group over $\dF_q$. Then 
-$G(\dF_q)$ is a finite group. 
-
-\begin{problem}
-Compute the (complex) character table of $G(\dF_q)$. 
-\end{problem}
+$G(\dF_q)$ is a finite group. Our goal is to compute the (complex) character 
+table of $G(\dF_q)$. 
 
 There are two difficulties here. First, we need to classify isomorphism classes 
 of irreducible representations $\rho:G(\dF_q) \to \generallinear(V)$, where $V$ 
@@ -30,15 +20,16 @@ is a finite-dimensional $\dC$-vector space. Then, we need to compute the values
 (on conjugacy classes) of $\chi_\rho:G(\dF_q) \to \dC$ given by 
 $g\mapsto \trace(\rho(g))$. 
 \begin{center}
-\begin{tabular}{cccc}
-date & result & persons & tools \\ \hline
-1905 & $\generallinear_2(\dF_q)$, $\speciallinear_2(\dF_q)$ & Jordan and Schur \\
-\cite{g55} & $\generallinear_n(\dF_q)$ & Green & combinatorics \\
-\cite{dl76} & general $G$ & Deligne-Lusztig & $\ell$-adic cohomology \\
-1981--1990 & character-sheaf theory & Lusztig & perverse sheaves \\
-\cite{s95a}, \cite{s95b} & Lusztig conjecture if $Z=Z^\circ$ & Shoji \\
-2001 & for $\specialorthogonal_n$ and $\symplectic_{2 n}$ & Waldspurger \\
-2003 & for $\speciallinear_n$ & Bonnal\'e 
+\begin{tabular}{c|ll}
+papers & result  & tools \\ \hline
+\cite{j07} & $\generallinear_2(\dF_q)$ & combinatorics \\
+\cite{s07} & $\speciallinear_2(\dF_q)$ & combinatorics \\
+\cite{g55} & $\generallinear_n(\dF_q)$  & combinatorics \\
+\cite{dl76} & general $G$ & $\ell$-adic cohomology \\
+Lusztig 1981--1990 & character-sheaf theory & perverse sheaves \\
+\cite{s95a}, \cite{s95b} & Lusztig conjecture if $Z=Z^\circ$  \\
+\cite{w04a}, \cite{w04b} & for $\specialorthogonal_n$ and $\symplectic_{2 n}$ \\
+Bonnal\'e 2003 & for $\speciallinear_n$
 \end{tabular}
 \end{center}
 Green's computation was highly combinatorial. On the other hand, Deligne and 
@@ -53,12 +44,12 @@ $\generallinear_n$.
 
 
 
-\section{Combinatorial background}
+\subsection{Combinatorial background}
 
 A good combinatorial reference for all of this is \cite{m95}. 
 
 
-\subsection{The ring of symmetric functions}
+\subsubsection{The ring of symmetric functions}
 
 For $r\geqslant 1$, put 
 $\Lambda_r = \dZ[x_1,\dots,x_r]^{S_r} = \bigoplus_{k\geqslant 0} \Lambda_r^k$, 
@@ -81,7 +72,7 @@ $\ell(\lambda) = \max\{i:\lambda_i\ne 0\}$. Let $\cP$ be the set of all
 partitions, and $\cP_n$ the set of partitions of size $n$. 
 
 
-\subsection{Monomial symmetric functions}
+\subsubsection{Monomial symmetric functions}
 
 For $\lambda=(\lambda_1,\dots,\lambda_r,0,\dots)$, let 
 \[
@@ -89,17 +80,17 @@ For $\lambda=(\lambda_1,\dots,\lambda_r,0,\dots)$, let
 \]
 where the sum runs over all distinct permutations $(\alpha_1,\dots,\alpha_r)$ of 
 $(\lambda_1,\dots,\lambda_r)$. For example, 
-\begin{equation}\label{eq:m-poly}
+\begin{equation}\label{eq:mpoly}
   m_{(2,2,1)}(x_1,x_2,x_3) = x_1^2 x_2^2 x_3 + x_1^2 x_2 x_3^2 + x_1 x_2^2 x_3^2 .
 \end{equation}
 This defines an element $m_\lambda\in \Lambda$ such that 
-$m_\lambda(x_1,\dots,x_r)$ is the right-hand side of \eqref{eq:m-poly} if 
+$m_\lambda(x_1,\dots,x_r)$ is the right-hand side of \eqref{eq:mpoly} if 
 $\ell(\lambda)\leqslant r$, and $0$ otherwise. If $\lambda=0$, put 
 $m_\lambda=1$. Then $\{m_\lambda:\lambda\in \cP\}$ is a $\dZ$-basis for 
 $\Lambda$. 
 
 
-\subsection{Elementary symmetric functions}
+\subsubsection{Elementary symmetric functions}
 
 For each $n\geqslant 0$, define $e_n\in \Lambda$ by 
 \[
@@ -111,7 +102,7 @@ $\{e_\lambda:\lambda\in \cP\}$ is a $\dZ$-basis for $\Lambda$, and
 $\Lambda=\dZ[e_1,e_2,\dots]$. 
 
 
-\subsection{Power-sums}
+\subsubsection{Power-sums}
 
 For $n\geqslant 0$, define $p_n\in \Lambda$ by 
 \[
@@ -127,7 +118,7 @@ a $\dQ$-basis of $\Lambda_\dQ = \Lambda\otimes \dQ$. Thus
 $\Lambda_\dQ=\dQ[p_1,p_2,\dots]$. 
 
 
-\subsection{Shur functions}
+\subsubsection{Shur functions}
 
 Given $r$ variables $x_1,\dots,x_r$, put $\delta_r = (r-1,r-2,\dots,1,0)$. For 
 any $\lambda=(\lambda_1,\lambda_2,\dots)$, put 
@@ -153,7 +144,7 @@ This defines an element $S_\lambda\in \Lambda$, determined by
 Moreover, $\{S_\lambda:\lambda\in \cP\}$ is a $\dZ$-basis for $\Lambda$. 
 
 
-\subsection{Relationship with representations of the symmetric group}
+\subsubsection{Relationship with representations of the symmetric group}
 
 There is a natural bijection 
 \[
@@ -180,7 +171,7 @@ $\hom(S_n^\natural,\dC)$.
 We would like to do something similar for $\generallinear_n(\dF_q)$. 
 
 
-\subsection{Hall-Littlewood symmetric functions}
+\subsubsection{Hall-Littlewood symmetric functions}
 
 Let $t$ be an extra variable. Consider the ring 
 $\Lambda_{\dZ[t]} = \Lambda[t] = \Lambda\otimes \dZ[t]$. For $\lambda\in \cP$ 
@@ -215,13 +206,13 @@ $S_r^\lambda = \{w\in S_r:\lambda_{w(i)} = \lambda_i\text{ for }1\leqslant i\leq
 \]
 this is the \emph{Hall-Littlewood symmetric function}. 
 
-\begin{proposition}
+\begin{prop}
 1. $P_\lambda(x_1,\dots,x_r;0) = S_\lambda(x_1,\dots,x_r)$. 
 
 2. $P_\lambda(x_1,\dots,x_r;1) = m_\lambda(x_1,\dots,x_r)$. 
 
 3. $P_\lambda(x_1,\dots,x_r,0;t) = P_\lambda(x_1,\dots,x_r;t)$. 
-\end{proposition}
+\end{prop}
 
 By 3, we have a well-defined element $P_\lambda\in \Lambda[t]$. Moreover, 
 $\{P_\lambda:\lambda\in \cP\}$ is a $\dZ[t]$-basis for $\Lambda[t]$. 
@@ -232,18 +223,18 @@ the relation
   S_\lambda = \sum_\mu K_{\lambda\mu}(t) P_\mu .
 \]
 
-\begin{theorem}[Lascoux-Sch\"utzenberger, Lusztig]
+\begin{theo}[Lascoux-Sch\"utzenberger, Lusztig]
 $K_{\lambda\mu}(t)\in \dZ_{\geqslant 0}[t]$. 
-\end{theorem}
+\end{theo}
 
 
 
 
 
-\section{The character table of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
+\subsection{The character table of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
 
 
-\subsection{The conjugacy classes}
+\subsubsection{The conjugacy classes}
 
 Fix $n\geqslant 1$. Let $M=\overline{\dF_q}^\times$, considered as an abstract 
 group. Let 
@@ -270,10 +261,10 @@ of the form $\{x,x^q,\dots,x^{q^{d-1}}\}$, for the minimal $d$ with
 $x^{q^d} = x$. If $f\in \Phi$, put 
 $d(f) = \# f$ (cardinality of $f$ as an orbit set). 
 
-\begin{proposition}
+\begin{prop}
 Put $\dT_n = \{\varphi:\Phi\to \cP:\|\varphi\| = \sum_{f\in \Phi} d(f)|\varphi(f)| = n\}$. 
 Then $\generallinear_n(\dF_q)^\natural \isomorphism \dT_n$. 
-\end{proposition}
+\end{prop}
 \begin{proof}
 Write $\generallinear_n = \generallinear_n(\overline{\dF_q})$, and 
 let $F:\generallinear_n\to \generallinear_n$ be the Frobenius 
@@ -316,10 +307,10 @@ $F(g\cdot x) = F(g) \cdot F(x)$.
 In $\generallinear_n$, the stabilizers $\stabilizer_{\generallinear_n}(x)$ are 
 \emph{always} connected ($x\in \generallinear_n$). 
 
-\begin{exercise}
+\begin{enonce}[remark]{Exercise}
 Prove that $\stabilizer_{\speciallinear_2}\smat{1}{1}{}{1}$ has two connected 
 components if $2\nmid q$. 
-\end{exercise}
+\end{enonce}
 
 Each $g\in \generallinear_n(\dF_q)$ defines an $\dF_q[t]$-structure on 
 $V=(\dF_q)^n$ as follows: $t\cdot v = g(v)$ for all $v\in V$. This structure 
@@ -330,7 +321,7 @@ $\dF_q[t]$-structure on $V$. From commutative algebra, we know that
 $V_\varphi \simeq \bigoplus_{f\in \Phi} \bigoplus_{i\geqslant 1} \dF_q[t] / (P_f)^{\varphi(f)_i}$, and 
 $P_f = \prod_{i=1}^{d-1} (t-x^{q^i})$. 
 
-\begin{example}[$\generallinear_2(\dF_q)$]
+\begin{enonce}[remark]{Example}[$\generallinear_2(\dF_q)$]
 Consider the following table, in which $\varphi(f)=0$ unless it is defined to 
 be otherwise:
 \begin{center}
@@ -342,17 +333,13 @@ $\smat{a}{1}{}{a}$, $a\in \dF_q^\times$ & $\{a\}\mapsto (2,0,\dots)$ \\
 $\smat{x}{}{}{x^q}$, $x\in \dF_{q^2}\smallsetminus \dF_q^\times$ & $\{x,x^q\}\mapsto (1,0,\dots)$
 \end{tabular}
 \end{center}
-\end{example}
-
-\begin{example}[$\generallinear_3(\dF_q)$]
-Conventions here are the same. [do this]
-\end{example}
+\end{enonce}
 
 
 
 
 
-\subsection{Parabolic induction}
+\subsubsection{Parabolic induction}
 
 For any finite group $H$, write $\cC H=\dC^{H^\natural}$ for the space of 
 functions $H\to \dC$ that are constant on conjugacy classes. 
@@ -391,12 +378,12 @@ function of the associated conjugacy class $c_\varphi$. Then
 $\{\pi_\varphi\}$ is a $\dC$-basis for $A$, and $\pi_0$ is the multiplicative 
 unit of $A$. 
 
-\begin{lemma}
+\begin{lemm}
 If $\|\varphi\| = \sum \| \varphi_i\|$, then 
 $\pi_{\varphi_1}\circ \pi_{\varphi_2} \circ \cdots \circ \pi_{\varphi_r}(c_\varphi)$ 
 is the number of sequences $0=W^{(0)}\subset W^{(1)} \subset \cdots \subset W^{(r)}=V_\varphi$ 
 of submodules of $V_\varphi$ such that $W^{(i)}/W^{(i-1)} \simeq V_{\varphi_i}$. 
-\end{lemma}
+\end{lemm}
 
 Here $V_\varphi$ is the $\dF_q[t]$-structure on $(\dF_q)^n$ defined by 
 $\varphi$. 
@@ -405,7 +392,7 @@ $\varphi$.
 
 
 
-\subsection{The characteristic map}
+\subsubsection{The characteristic map}
 
 For each $f\in \Phi$, let $\{x_{1,f},x_{2,f},\dots\}$ be infinitely many 
 variables. Let $x=\{x_1,x_2,\dots\}$ be a set of infinitely many variables. 
@@ -432,7 +419,7 @@ $\pi_\varphi\mapsto \widetilde P_\varphi$, is an (isometric) isomorphism of
 graded $\dC$-algebras. 
 
 
-\subsection{Construction of the irreducible characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
+\subsubsection{Construction of the irreducible characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
 
 Let $M_n=\dF_{q^n}^\times$. Let $\widehat{M_n} = \hom(M_n,\dC^\times)$, and let 
 $L=\varinjlim_n \widehat{M_n}$ and $L_n=\image(\widehat{M_n} \to L)$. The 
@@ -461,14 +448,14 @@ Note that $\widetilde P_n(\xi)$ depends only on the $F$-orbit of $\xi$. For
 $\theta\in \Theta$, put $\widetilde P_r(\theta) = \widetilde P_{rd}(\xi)$, for 
 any $\xi\in \theta$, and $d=d(\theta)$. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 If $\xi=1\in L$ and $n=2$, then 
 \[
   \widetilde P_n(\xi) = - \sum_{\substack{f\in \Phi \\ d(f)=1}} \sum_i x_{i,f}^2 - 2 \sum_{\substack{f\in \Phi \\ d(f) = 2}} \sum_i x_{i,f} .
 \]
 Make the change of variables $\{x_{i,f}\} \to \{y_{i,\theta}\}$, such that 
 $\widetilde P_r(\theta)$ are power-sums in $\{y_{i,\theta}\}$. 
-\end{example}
+\end{enonce}
 
 For $\lambda\in \cP$, put 
 $\widetilde P_\lambda(\theta) = P_{\lambda_1}(\theta) P_{\lambda_2}(\theta) \dotsm$ and 
@@ -476,7 +463,7 @@ $S_\lambda(\theta) = \sum_\mu \frac{1}{z_\mu} \chi_\mu^{-1} \widetilde P_\mu(\th
 For $\psi:\Theta \to \cP$ with finite support, put 
 $S_\psi = \prod_{\theta\in \Theta} S_{\psi(\theta)}(\theta)$. 
 
-\begin{proposition}
+\begin{prop}
 1. $\{S_\psi\}$ is an orthornormal $\dC$-basis of $B$. 
 
 2. Assume that $|\lambda|=|\mu|$. Then 
@@ -485,13 +472,13 @@ $S_\psi = \prod_{\theta\in \Theta} S_{\psi(\theta)}(\theta)$.
 \]
 Here we are using the definition 
 $\widetilde K_{\lambda\mu}(q) = q^{n(\mu)} K_{\lambda\mu}(q^{-1})$. 
-\end{proposition}
+\end{prop}
 
 
-\begin{theorem}
+\begin{theo}
 The map $A\to B$ induces 
 $\irreducible(\generallinear_n(\dF_q)) \to\{S_\psi:\|\psi\| = n\}$. 
-\end{theorem}
+\end{theo}
 \begin{proof}
 If $\theta\in \Theta$ and $n\geqslant 0$, then $e_n(\theta)$ is the characteristic 
 function of a character of $\generallinear_{nd(\theta)}(\dF_q)$.For 
@@ -514,13 +501,13 @@ $\sX^\psi$.
 
 
 
-\section{\texorpdfstring{$\ell$}{l}-adic sheaves and perverse sheaves}
+\subsection{\texorpdfstring{$\ell$}{l}-adic sheaves and perverse sheaves}
 
 The $\widetilde K_{\lambda\mu}(q)$ can be realized as Khazdan-Lusztig polynomials 
 using perverse sheaves. 
 
 
-\subsection{Sheaves on topological spaces}
+\subsubsection{Sheaves on topological spaces}
 
 Let $X$ be a topological space. A \emph{presheaf} on $X$ is a (contravariant) 
 functor $F:\open(X) \to \cC$, where $\cC$ is the category of groups, sets, 
@@ -535,7 +522,7 @@ $\sF_x=\varinjlim_{U\ni x} \sF(U)$ for the \emph{stalk} of $\sF$ at $x$.
 [\ldots I know what sheaves are\ldots]
 
 
-\subsection{\texorpdfstring{$\ell$}{l}-adic analogue}
+\subsubsection{\texorpdfstring{$\ell$}{l}-adic analogue}
 
 If $X$ is a variety over $\dC$, we can give $X(\dC)$ the structure of a topological 
 space using the topology on $\dC$. In characteristic $p$, a variety has no natural 
@@ -550,7 +537,7 @@ define $\h^i(X_\etale, k)$ in the naive manner, we get trivial cohomology.
 [\ldots Grothendieck's insight $\to\h^i(X_\etale, \dQ_\ell)$\ldots]
 
 
-\subsection{\texorpdfstring{$\overline{\dQ_\ell}$}{barQl}-sheaves}
+\subsubsection{\texorpdfstring{$\overline{\dQ_\ell}$}{barQl}-sheaves}
 
 Let $k$ be an algebraically closed field, $X$ a $k$-variety. Let $\ell$ be 
 a prime invertible in $k$. Start with a sheaf $\sF$ of 
@@ -635,7 +622,7 @@ If $f$ is proper, then $f_\ast=f_!$, and if $f$ is an open immersion, then
 $f^\ast=f^!$. 
 
 
-\subsection{Analogy with functions}
+\subsubsection{Analogy with functions}
 
 Let $f:E\to F$ be a map of finite sets. Let $k$ be a field, and write 
 $k^E$, $k^F$ for the spaces of functions $E\to k$, $F\to k$. We have functions 
@@ -647,7 +634,7 @@ which should be thought of as analogies of our functors between derived
 categories. 
 
 
-\subsection{Connection with cohomology}
+\subsubsection{Connection with cohomology}
 
 Let $X$ be a variety over an algebraically closed field $k$. Let 
 $p:X\to \{\mathrm{pt}\}$ be the unique morphism. For $\sK\in \derived_c^b(X)$, 
@@ -668,7 +655,7 @@ More directly, one has
 \]
 
 
-\subsection{Verdier duality}
+\subsubsection{Verdier duality}
 
 We have a functor $D_X:\derived_c^b(X) \to \derived_c^b(X)$ such that 
 \begin{enumerate}
@@ -682,7 +669,7 @@ In particular, if $\sE\simeq \sE^\vee$, then
 $\h_c^i(X,\sE) \simeq \h^{2\dim X-i}(X,\sE)$. 
 
 
-\subsection{Intersection cohomology}
+\subsubsection{Intersection cohomology}
 
 Let $Y$ be an irreducible nonsingular locally closed subset of $X$. Goresky, 
 MacPherson and Deligne defined, for any local system $\sE$ on $Y$, a complex 
@@ -702,17 +689,17 @@ characterized by the following properties:
 
 If $Y$ is smooth, then $\intersectioncohomology(Y,\sE) \simeq \sE$. 
 
-\begin{exercise}
+\begin{enonce}[remark]{Exercise}
 Assume $Z$ is a nonsingular open subset of $\overline Y$. If $\sL$ is a local 
 system on $Z$ such that $\sL|_{Z\cap Y}\simeq \sE|_{Z\cap Y}$, then 
 $\intersectioncohomology(\overline Y,\sE) \simeq \intersectioncohomology(\overline Y,\sL)$. 
-\end{exercise}
+\end{enonce}{Exercise}
 
 
 
 
 
-\subsection{Perverse sheaves}
+\subsubsection{Perverse sheaves}
 
 We define $\perverse(X)$ to be the full subcategory of 
 $\sK^\bullet\in \derived_c^b(X)$ such that 
@@ -723,11 +710,11 @@ $\sK^\bullet\in \derived_c^b(X)$ such that
 Clearly $\perverse(X)$ contains all $\intersectioncohomology(\overline Y,\sE)[\dim Y]$ 
 extended by zero on $X\smallsetminus \overline Y$. 
 
-\begin{theorem}[Beilinson, Bernstein, Deligne, Gabber]
+\begin{theo}[Beilinson, Bernstein, Deligne, Gabber]
 Any simple perverse sheaf is of the form 
 $\intersectioncohomology(\overline Y,\sE)[\dim Y]$ extended by zero on 
 $X\smallsetminus \overline Y$. 
-\end{theorem}
+\end{theo}
 
 As in the classical case, $\perverse(X)$ is a semisimple abelian category in 
 which all objects have finite length. The inclusion 
@@ -739,14 +726,14 @@ one category of perverse sheaves into another (i.e.\ they do not preserve
 ``perversity''). 
 
 
-\subsection{Stratifications}
+\subsubsection{Stratifications}
 
 We say that $X=\bigsqcup X_\alpha$ is a \emph{stratification} of $X$ if it is a 
 finite partition of $X$ into equidimensional nonsingular locally closed subsets 
 of $X$, such that if $X_\beta\cap \overline{X_\alpha}$, then 
 $X_\beta\subset \overline{X_\alpha}$. 
 
-\begin{proposition}
+\begin{prop}
 Let $f:X\to Y$ be a proper surjective map with $X$ irreducible (or just 
 equidimensional), and let $X=\bigsqcup X_\alpha$ be a stratification of $X$. 
 For $y\in Y$, put $f^{-1}(y)_\alpha = f^{-1}(y)\cap X_\alpha$. Assume that 
@@ -755,21 +742,21 @@ For $y\in Y$, put $f^{-1}(y)_\alpha = f^{-1}(y)\cap X_\alpha$. Assume that
 \]
 for all $\alpha$ and $i$. Then $f_\ast:\perverse(X) \to \perverse(Y)$ is 
 well-defined. 
-\end{proposition}
+\end{prop}
 
-\begin{corollary}
+\begin{coro}
 If $f:X\to Y$ is surjective, proper, and $X$ is nonsingular irreducible, then 
 if for all $i$, 
 \begin{equation}\label{eq:semi-small}
   \dim\left\{y\in Y:\dim f^{-1}(y) \geqslant i\right\} \leqslant \dim Y- 2 i
 \end{equation}
 the functor $f_\ast:\perverse(X) \to\perverse(Y)$ is well-defined. 
-\end{corollary}
+\end{coro}
 
 A surjective proper map satisfying \eqref{eq:semi-small} is called 
 \emph{semi-small}. 
 
-\begin{exercise}
+\begin{enonce}[remark]{Exercise}
 Let $k$ be an algebraically closed field. Consider the varieties 
 \begin{align*}
   \mathfrak{gl}_2(k) &= \text{affine space over }k\\
@@ -781,19 +768,19 @@ Let
   \widetilde W = \left\{(x,g B)\in \mathfrak{gl}_2 \times \generallinear_2/B:g^{-1} x g\in \smat{}{\ast}{}{}\right\} .
 \]
 Show that the map $\widetilde W \to W$, $(x,g B)\mapsto x$ is semi-small. 
-\end{exercise}
+\end{enonce}
 
-\begin{theorem}[special case of the decomposition theorem]
+\begin{theo}[special case of the decomposition theorem]
 If $f:X\to Y$ is a proper smooth map, then 
 $f_\ast(\overline{\dQ_\ell})$ is semisimple. 
-\end{theorem}
+\end{theo}
 
-\begin{corollary}
+\begin{coro}
 If $f:X\to Y$ is semi-small, $X$ nonsingular irreducible, then 
 \[
   f_\ast(\overline{\dQ_\ell}[\dim X]) \simeq \intersectioncohomology(Y,\overline{\dQ_\ell})[\dim Y]\oplus \bigoplus_{\substack{(Z,\xi) \\ \overline Z\subsetneq Y}} V_{Z,\xi} \otimes \intersectioncohomology(\overline Z,\xi)[\dim Z] 
 \]
-\end{corollary}
+\end{coro}
 
 In terms of cohomology, this tells us that 
 \[
@@ -801,7 +788,7 @@ In terms of cohomology, this tells us that
 \]
 
 
-\subsection{\texorpdfstring{$F$}{F}-equivariance}
+\subsubsection{\texorpdfstring{$F$}{F}-equivariance}
 
 Suppose $X$ is defined over $\dF_q$ with (relative) Frobenius 
 $F:X\to X$. We have a functor $F^\ast:\derived_c^b(X) \to \derived_c^b(X)$. 
@@ -818,30 +805,30 @@ $\varphi:(\sK,\phi) \to (\sK',\phi')$ are defined via the commutative diagram
 Write $\derived_c^b(X)_F$ for the category of $F$-equivariant complexes. 
 
 
-\subsection{Characteristic function of \texorpdfstring{$(\sK,\phi)$}{(K,phi)}}
+\subsubsection{Characteristic function of \texorpdfstring{$(\sK,\phi)$}{(K,phi)}}
 
 We define $\chi_{\sK,\phi}:X^F=X(\dF_q) \to \overline{\dQ_\ell}$ by 
 \[
   x\mapsto \sum_i (-1)^i \trace\left(\phi_x^i, \sH_x^i\sK\right) .
 \]
 
-\begin{lemma}
+\begin{lemm}
 If $\sK\simeq \sK'$ are simple perverse sheaves, and if 
 $\phi:F^\ast\sK \isomorphism \sK$ and $\phi':F^\ast \sK'\isomorphism \sK'$, 
 then there is a unique $c_{\phi\phi'}\in \overline{\dQ_\ell}$ such that 
 $\chi_{\sK,\phi} = c_{\phi\phi'} \chi_{\sK',\phi'}$. If 
 $c_{\phi\phi'}=1$, then $(\sK,\phi)\simeq (\sK',\phi')$. 
-\end{lemma}
+\end{lemm}
 
 Any $\phi:F^\ast\sE\to \sE$, with $\sE$ a local system on $Y$ (an $F$-stable, 
 nonsingular, locally closed subset of $X$) induces a canonical 
 $\phi:F^\ast\intersectioncohomology(\overline Y,\sE)) \isomorphism \intersectioncohomology(\overline Y,\sE)$. 
 
-\begin{proposition}
+\begin{prop}
 If $f:X\to Y$ commutes with Frobenius $F$, then 
 $f_!:\derived_c^b(X)_F \to \derived_c^b(Y)_F$ and 
 $f^\ast:\derived_c^b(Y)_F \to \derived_c^b(X)_F$. 
-\end{proposition}
+\end{prop}
 \begin{proof}
 Let $(\sK,\phi)\in \derived_c^b(X)_F$. From 
 $\phi:F^\ast\sK \isomorphism \sK$ we get 
@@ -852,7 +839,7 @@ $\widetilde\phi:F^\ast f_! \sK \isomorphism f_! \sK$. Our functor is
 $(\sK,\phi)\mapsto (f_! \sK,\widetilde\phi)$. 
 \end{proof}
 
-\begin{theorem}[trace formula]
+\begin{theo}[trace formula]
 Assume $f:X\to Y$ commutes with $F$. This gives $f:X^F \to Y^F$ between finite 
 sets. Then 
 \begin{enumerate}
@@ -872,7 +859,7 @@ sets. Then
         & \derived_c^b(X)_F \ar[u]^-\chi 
     }\]
 \end{enumerate}
-\end{theorem}
+\end{theo}
 
 The proof uses Grothendieck's trace formula. For any 
 $(\sK,\phi)\in \derived_c^b(X)_F$, $\phi$ gives us an action of Frobenius on 
@@ -890,7 +877,7 @@ on stalks of $X^F$, then
 The website of Alberto Arabia has some great notes on all of this. The 
 following fixes an error. 
 
-\begin{proposition}
+\begin{prop}
 Let $f:X\to Y$ be a surjective proper map with $X$ irreducible, and let 
 $X=\bigsqcup X_\alpha$ be a stratification of $X$. For 
 $y\in Y$, put $f^{-1}(y)_\alpha = X_\alpha\cap f^{-1}(y)$. Assume 
@@ -900,13 +887,13 @@ $y\in Y$, put $f^{-1}(y)_\alpha = X_\alpha\cap f^{-1}(y)$. Assume
 for all $\alpha$ and $i$. Then 
 $f_\ast(\intersectioncohomology(X,\sE)[\dim X])\in \perverse(Y)$ for 
 $\sE$ a local system on $X_0$. 
-\end{proposition}
+\end{prop}
 
 Let $\sK\in \perverse(X)$ obtained as $\sK=i_\ast \sK'$ for 
 $\sK'\in \perverse(X')$, where $X'\subset X$ is closed. [\ldots stuff 
 I didn't understand\ldots] 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Let $G=\generallinear_2(\dC)$, $B\subset G$ the standard Borel, and 
 $U\subset B$ the unipotent radical. Let $N$ be the ($2$-dimensional) variety of 
 nilpotent matrices in $\mathfrak{gl}_2$. Let 
@@ -927,13 +914,13 @@ $\overline{\dQ_\ell}[2]\in \perverse(\widetilde M)$, and
 $\pi_\ast \overline{\dQ_\ell}[2] = \intersectioncohomology(W,\overline{\dQ_\ell}) \oplus \intersectioncohomology(\{0\},\overline{\dQ_\ell})$. 
 In other words, 
 $\pi_\ast(\overline{\dQ_\ell}[2])|_{\{0\}} \simeq \pi_\ast^0(\overline{\dQ_\ell}[1])[1]$. 
-\end{example}
+\end{enonce}
 
 
 
 
 
-\subsection{\texorpdfstring{$G$}{G}-equivariance}
+\subsubsection{\texorpdfstring{$G$}{G}-equivariance}
 
 Let $G$ be a connected linear algebraic group defined over $\dF_q$. Let $X$ be a 
 variety defined over $\dF_q$. Assume we are given an action of $G$ on $X$, also 
@@ -946,14 +933,14 @@ $\alpha:G\times G\to G$ be the multiplication morphism, let
 $p_2:G\times G\to G$ be projection onto the second coordinate, and let 
 $i:X\to G\times X$ be the inclusion $x\mapsto (1,x)$.  
 
-\begin{lemma}
+\begin{lemm}
 Assume $\sK\in \perverse(X)$ is $G$-equivariant. Then there is a unique 
 isomorphism $\phi:\pi^\ast \sK \isomorphism \rho^\ast \sK$ such that 
 \begin{enumerate}
   \item $i^\ast \phi = 1_\sK$ 
   \item $(\alpha\times 1_X)^\ast \phi = (1_G\times \rho)^\ast \phi \circ (p_2\times 1_X)^\ast \phi$
 \end{enumerate}
-\end{lemma}
+\end{lemm}
 
 With this under our belt, we can define the category $\perverse_G(X)$ to 
 be the subcategory of $\perverse(X)$ whose objects are $G$-equivariant 
@@ -966,11 +953,11 @@ $\psi:\sK\to \sK'$ such that the following diagram commutes:
     & \rho^\ast \sK' 
 }\]
 
-\begin{lemma}
+\begin{lemm}
 The category $\perverse_G(X)$ is a full subcategory of $\perverse(X)$. 
-\end{lemma}
+\end{lemm}
 
-\begin{proposition}
+\begin{prop}
 1. The duality functor $D_X$ induces an auto-equivalence 
 $D_X:\perverse_G(X)\isomorphism \perverse_G(X)$. 
 
@@ -979,7 +966,7 @@ $D_X:\perverse_G(X)\isomorphism \perverse_G(X)$.
 3. The simple objects of $\perverse_G(X)$ are the 
 $\intersectioncohomology(\overline Y,\sE)[\dim Y]$, for $\sE$ a $G$-equivariant 
 local system on a $G$-stable closed subset $Z\subset Y$. 
-\end{proposition}
+\end{prop}
 
 If $\sK\in \perverse_G(X)$ is $F$-stable with $\phi:F^\ast \sK\isomorphism \sK$, 
 then the characteristic function $\chi_{\sK,\phi}:X(\dF_q) \to \overline{\dQ_\ell}$ 
@@ -1008,10 +995,10 @@ $O_i^F$ is a disjoint union of $G^F$-orbits.
 
 
 
-\section{Geometric realization of the unipotent characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
+\subsection{Geometric realization of the unipotent characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
 
 
-\subsection{Parabolic induction}
+\subsubsection{Parabolic induction}
 
 Throughout, everything lives over $\overline{\dF_q}$. 
 
@@ -1085,7 +1072,7 @@ diagram commutes:
 }\]
 
 
-\subsection{Characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
+\subsubsection{Characters of \texorpdfstring{$\generallinear_n(\dF_q)$}{GLnFq}}
 
 Let $R_{(1^n)}=\sum_{\lambda\in \cP_n} \chi_{(1^n)}^{\lambda'} \sX^\lambda = R_L^G(\textnormal{id})$. Here $\sX^\lambda$ is the unipotent character of 
 $\generallinear_n(\dF_q)$ associated to $\lambda$, and $\lambda'$ is the 
@@ -1096,7 +1083,7 @@ $\{R_\mu\}$ and $\{\sX^\lambda\}$ are both bases of the same subspace of
 $\cC(G^F)$. 
 
 
-\subsection{Induction picture for \texorpdfstring{$L=T$}{L=T}}
+\subsubsection{Induction picture for \texorpdfstring{$L=T$}{L=T}}
 
 Let $T\subset G$ be the standard maximal torus. We have maps 
 \[
@@ -1105,11 +1092,11 @@ Let $T\subset G$ be the standard maximal torus. We have maps
 Note that 
 $R_L^G(\overline{\dQ_\ell}[\dim T]) = (\rho_2)_\ast \overline{\dQ_\ell}[\dim G]$. 
 
-\begin{theorem}
+\begin{theo}
 The map $\rho_2$ is semi-small (small, in fact). Moreover 
 $(\rho_2)_\ast (\overline{\dQ_\ell}[\dim G])$ is a semisimple $G$-equivariant 
 perverse sheaf on $G$. 
-\end{theorem}
+\end{theo}
 
 In fact, we can prove that 
 $(\rho_2)_\ast (\overline{\dQ_\ell}[\dim G]) \simeq \intersectioncohomology(G,\xi)[\dim G]$. 
@@ -1149,31 +1136,23 @@ $\alpha_\ast \overline{\dQ_\ell}$. For $w\in S_n$, we get
 $\theta_w:R_T^G(\overline{\dQ_\ell}) \isomorphism R_T^G(\overline{\dQ_\ell})$ 
 and $F^\ast R_T^G\overline{\dQ_\ell} \xrightarrow{\widetilde\phi} R_T^G\overline{\dQ_\ell} \rightarrow{\theta_w} R_T^G\overline{\dQ_\ell}$. 
 
-\begin{theorem}[Lusztig, 1998]
+\begin{theo}[Lusztig, 1998]
 If $w\in S_n$ is of cycle type and $\mu\in \cP_n$, then 
 \[
   (-1)^\ast X_{R_T^G(\overline{\dQ_\ell}), \theta_w\widetilde\phi} = R_\mu .
 \]
-\end{theorem}
+\end{theo}
 
-\begin{theorem}[Lusztig, 1981]
+\begin{theo}[Lusztig, 1981]
 1. $\intersectioncohomology(G, \sL_{X^\lambda})|_{G_\regular} \simeq \intersectioncohomology(\overline{C_\lambda}, \overline{\dQ_\ell})$. 
 
 2. $q^{n(\lambda)} X_{\intersectioncohomology(\overline{C_\lambda}, \overline{\dQ_\ell})}(c_\mu) = \widetilde K_{\lambda\mu}(q)$. 
 
 3. $X_{\intersectioncohomology(\overline{C_\chi},\overline{\dQ_\ell})}(c_\mu) = \sum_i \dim \sH_{c_\mu}^{2 i} \intersectioncohomology(\overline{C_\lambda}) q^i$. 
-\end{theorem}
+\end{theo}
 
 From 2 and 3, we get that $\widetilde K_{\lambda\mu}\in \dN[q]$. 
 
 [here I write $X_?$ instead of $\chi_?$ for the character associated to a sheaf 
 $?$]
 
-
-
-
-
-\bibliographystyle{alpha}
-\bibliography{lyon-sources}
-
-\end{document}

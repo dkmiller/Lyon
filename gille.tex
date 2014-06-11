@@ -1,26 +1,20 @@
-\documentclass{article}
+% !TEX root = main.tex
 
-\usepackage{lyon-style}
-
-\title{Affine groups in positive characteristic}
-\author{Philippe Gille}
-\date{June 2-6, 2014}
-
-\begin{document}
-\maketitle
-\tableofcontents
+\section{Affine groups in positive characteristic}
+\thanksauthor{Philippe Gille}
 
 
 
 
 
-\section*{Introduction}
+\subsection{Introduction}
 
-Everything to be discussed is classical, in the sense that it can (probably) be 
-found in \cite{dg80} or \cite{milneAGS}. 
+Everything to be discussed is well-known, in the sense that it can probably be 
+found in one of the texts \cite{dg80,milneAGS}. An official set of notes for 
+these lectures can be found at \url{http://math.univ-lyon1.fr/homes-www/gille/prenotes/lyon_pg2014.pdf}. 
 
 The classical theory of affine algebraic groups over $\dC$ treats such groups 
-as (Zariski-closed) subgroups of various $\generallinear_n(\dC)$. This theory 
+as Zariski-closed subgroups of $\generallinear_n(\dC)$ for varying $n$. This theory 
 is closely connected to that of compact Lie groups. For example, the torus 
 $\dG_\mult=\generallinear_1=\spectrum(\dC[t^{\pm 1}])$ corresponds to the 
 one-dimensional real torus $S^1$. Everything can be treated as varieties over 
@@ -31,12 +25,13 @@ natural approach to algebraic groups over $k$ is a ``schematic'' one, i.e.\
 using schemes. For fields of positive characteristics, there are some recent 
 improvements to the theory of algebraic groups over $k$. On the one hand, there 
 is theory of \cite{cgp10} on so-called pseudo-reductive groups, and 
-for commutative groups, there is recent work of Brion and Titano(sp?). 
+for commutative groups, there is recent work of Brion and others. 
 
-New phenomenon occur even over $k=\overline{\dF_p}$. For example, 
-$\generallinear_2$ is no longer ``linearly reductive.'' In other words, its 
+New phenomenon occur even over $k=\overline{\dF_p}$. For example, the group 
+$\generallinear(2)_k$ is not ``linearly reductive.'' 
+That is, its 
 category of representations is \emph{not} semisimple. Also, there are 
-``extensions'' of $\dG_\additive=\spectrum(k[t])$ by itself which are not 
+extensions of $\dG_{\additive,k}=\spectrum(k[t])$ by itself which are not 
 split (coming from Witt vectors). For example, one could put 
 $(x_0,x_1)+(y_0,y_1) = (x_0+y_0, x_1+y_1-S_1(x_0,y_0))$, where 
 \[
@@ -73,7 +68,7 @@ which cannot be.
 
 
 
-\section{Generalities}
+\subsection{Generalities}
 
 The theory over positive characteristic is already complicated enough to make 
 it no additional effort to work over an arbitrary commutative ring. For 
@@ -91,10 +86,10 @@ $h_X(S)=X(S)=\hom_{R\algebras}(R[X],S)$. We say that an $R$-functor $F$ is
 equivalence $h_X \isomorphism F$. The Yoneda Lemma tells us that such an $X$ is 
 unique up to unique isomorphism. Even better, 
 
-\begin{lemma}[Yoneda]
+\begin{lemm}[Yoneda]
 The map $\hom_{R\text{-}\mathsf{Fun}}(h_X,F) \to F(X)$ that sends 
 $\eta$ to $\eta_X(1_X)$ is a bijection. 
-\end{lemma}
+\end{lemm}
 
 In light of this, we will usually define group schemes via their functor of 
 points. It makes sense to speak of ``group-valued $R$-functors,'' and we can 
@@ -106,36 +101,36 @@ to be compatible with maps $S\to S'$ in the obvious way. To give $X$ the
 structure of a group scheme is equivalent to giving $R[X]$ the structure of a 
 Hopf algebra. 
 
-\begin{example}[constant groups]
+\begin{enonce}[remark]{Example}[constant groups]
 Let $\Gamma$ be a finite (abstract) group. Let 
 $G=\coprod_{\sigma\in \Gamma}\spectrum R$, with multiplication induced by 
 $\Gamma$. People sometimes write $G=\Gamma_R$, or $G=\underline\Gamma_R$. The 
 same definition works if $\Gamma$ is not finite, but $\underline\Gamma$ will no 
 longer be affine. 
-\end{example}
+\end{enonce}
 
-\begin{example}[vector groups]
+\begin{enonce}[remark]{Example}[vector groups]
 For $N$ an $R$-module, define $\dV(N)(S)=\hom_S(N\otimes_R S,S)$. This is 
 clearly a $R$-group functor, represented by 
 $\spectrum(\symmetric_R(N^\vee))$. 
-\end{example}
+\end{enonce}
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 If $M$ is an $R$-module, we put $\dW(M)(S)=M\otimes_R S$. This is not always 
 representable. If $R$ is noetherian, $\dW(M)$ is representable if and only if 
 $M$ is locally free. 
-\end{example}
+\end{enonce}
 
-\begin{example}[linear groups]
+\begin{enonce}[remark]{Example}[linear groups]
 Let $A$ be an (associative) $R$-algebra. We define 
 $\generallinear_1(A)(S) = (A\otimes_R S)^\times$. This functor is not always 
 representable. However, if $A$ is finitely-generated, locally free (as an 
 $R$-module), then $\generallinear_1(A)$ is representable. Sometimes we will 
 just write $A^\times$ for $\generallinear_1(A)$ (especially if $A$ is a 
 division ring over a field). 
-\end{example}
+\end{enonce}
 
-\begin{example}[diagonalizable groups]
+\begin{enonce}[remark]{Example}[diagonalizable groups]
 Let $M$ be an (abstract) commutative group. Let $R[M]$ be the corresponding 
 group ring. This is naturally a Hopf algebra via 
 $\Delta(m)=m\otimes m$. Put
@@ -145,20 +140,20 @@ $M=\dZ/n$, then $R[M]=R[t]/(t^n-1)$, so
 $\diagonal_R(M)=\mu_{n,R}$. A homomorphism 
 $f:M_1 \to M_2$ induces $f_\ast:R[M_1] \to R[M_2]$, hence 
 $f^\ast:\diagonal_R(M_2) \to \diagonal_R(M_1)$. 
-\end{example}
+\end{enonce}
 
-\begin{exercise}
+\begin{enonce}[remark]{Exercise}
 The functor 
 $\diagonal_R:\mathsf{Ab}^\circ \to \{\text{diagonalisable groups over }R\}$ is 
 an equivalence of categories. [See SGA 3, exp.8]
-\end{exercise}
+\end{enonce}
 
 If $D$ is a group scheme, put $\widehat D=\hom(D,\dG_\mult)$; this is the group 
 of \emph{characters} of $D$. 
 
-\begin{exercise}
+\begin{enonce}[remark]{Exercise}
 Show that $\hom(\diagonal(M), \dG_{\additive,R}) = 0$ for all $M$. 
-\end{exercise}
+\end{enonce}
 
 If $R=k$ is a field, then any closed subgroup $G\subset \diagonal(M)$ is of 
 the form $\diagonal_k(M/M')$ for some $M'\subset M$. In other words, over a 
@@ -169,22 +164,22 @@ diagonalisable.
 
 
 
-\section{Basic facts on affine groups over \texorpdfstring{$k$}{k}}
+\subsection{Basic facts on affine groups over \texorpdfstring{$k$}{k}}
 
 Throughout, let $k$ be a field. 
 
-\begin{definition}
+\begin{defi}
 An \emph{affine algebraic group over $k$} is a group scheme $G$ over $k$, such 
 that $G$ is affine of finite type. 
-\end{definition}
+\end{defi}
 
-\begin{definition}
+\begin{defi}
 An affine algebraic group over $k$ is \emph{linear} if it is also smooth. 
-\end{definition}
+\end{defi}
 
 It is a non-trivial fact that if $G$ is an affine group over $k$, then there is 
-a closed embedding $G\hookrightarrow \generallinear_n$. There is a paper by 
-[Godeles, Popov, 2003]. Supposing $k$ is infinite and $G$ is smooth, there 
+a closed embedding $G\hookrightarrow \generallinear_n$. The following result is 
+from \cite{gp03}. Supposing $k$ is infinite and $G$ is smooth, there 
 exists $G\hookrightarrow \generallinear(V)$ and 
 $f\in V^\vee\otimes_k V^\vee\otimes_k V$, such that 
 $G=\{g\in \generallinear(V):g^\vee\circ f = f\}$. Moreover, there exists a 
@@ -198,12 +193,12 @@ $(-)_\reduced$ does not commute with products. If $k$ is perfect, then
 $G_\reduced\times_k G_\reduced$, and $G_\reduced\subset G$ is a closed 
 $k$-subgroup of $G$. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Let $G=\mu_3\rtimes \dZ/2$ over $\dF_3$, the action being via inversion. Then 
 $G_\reduced=\dZ/2$ is not a normal subgroup. 
-\end{example}
+\end{enonce}
 
-\begin{lemma}
+\begin{lemm}
 Let $G$ be an affine $k$-group. Then the following are equivalent: 
 \begin{enumerate}
   \item $G$ is smooth 
@@ -211,18 +206,18 @@ Let $G$ be an affine $k$-group. Then the following are equivalent:
   \item $\sO_{G,e}\otimes \bar k$ is reduced 
   \item $G$ admits a nonempty smooth open $U\subset G$. 
 \end{enumerate}
-\end{lemma}
+\end{lemm}
 \begin{proof}
 The only nontrivial part is 4$\Rightarrow$1g. But one can base-change to 
 $\bar k$, and note that $G_{\bar k}=\bigcup_{g\in G(\bar k)} g U_{\bar k}$. 
 \end{proof}
 
-\begin{proposition}
+\begin{prop}
 Let $G$ be an affine $k$-group. Let $\{f_i:V\to G\}$ be morphisms from 
 geometrically reduced affine $k$-schemes. Then there is a unique smallest 
 closed $k$-subgroup, written $\Gamma_G(\{f_i\})$, such that the $f_i$ 
 factor through $\Gamma_G(\{f_i\})$. 
-\end{proposition}
+\end{prop}
 \begin{proof}
 First we suppose we have a single $f:H\to G$, where $H$ is a smooth group. 
 Then the schematic image $\image(f)\subset G$ works. 
@@ -236,7 +231,7 @@ $(g,h)\mapsto [g,h]$, then $\Gamma_G(f) = \sD G$, the derived subgroup of
 $G$. 
 
 
-\subsection{Maximal smooth subgroups}
+\subsubsection{Maximal smooth subgroups}
 
 Let $k$ be a field, $A$ a $k$-algebra. Recall we say that $A$ is 
 \emph{geometrically reduced} (Bourbaki says \emph{separable}) if 
@@ -273,7 +268,7 @@ Regarding 3: the inclusion $G^\dagger(k)\subset G(k)$ is obvious. Let
 $g\in G(k)$. Then $X=g G^\dagger\subset G$ is also smooth, whence 
 $g G^\dagger\subset G^\dagger$, which yields $g\in G(k)$. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Here we show that $(-)^\dagger$ does not necessarily commute with inseparable 
 base-change. Let $k=\dF_p(t)$, $G=\{x^p+t y^p=0\}\subset (\dG_{\additive,k})^2$. 
 We claim that $G^\dagger=0$, but $(G_{k'})^\dagger = \dG_{\additive, k'}$ (hence 
@@ -283,10 +278,10 @@ $(x,y)\in G(k^s)$ be nonzero. But $x^p+t y^p=0$ tells us that $t$ is a
 $p$-power in $k^s$, a contradiction. Over $k'$, the equation defining $G$ 
 is $(x+t' y)^p=0$, which clearly has maximal smooth subscheme
 $\{x+t' y=0\} \simeq \dG_{\additive,k'}$. 
-\end{example}
+\end{enonce}
 
 
-\begin{proposition}
+\begin{prop}
 Let $f:H\to G$ be a homomorphism of affine algebraic $k$-groups. Assume that 
 $G$ is reduced. Then the following are equivalent:
 \begin{enumerate}
@@ -294,14 +289,14 @@ $G$ is reduced. Then the following are equivalent:
   \item $f$ is surjective on $\bar k$-points
   \item $f$ is dominant 
 \end{enumerate}
-\end{proposition}
+\end{prop}
 
 Recall that a ring homomorphism $f:A\to B$ is \emph{flat} (or that $B$ is flat 
 over $A$) if the tensor-product functor $-\otimes_A B$ is exact. We say that $B$ 
 is \emph{faithfully flat} if it is flat over $A$, and moreover the map 
 $\spectrum B \to \spectrum A$ is surjective. 
 
-\begin{proposition}
+\begin{prop}
 Let $f:H\to G$ be a homomorphism of algebraic $k$-groups. Then the following are 
 equivalent: 
 \begin{enumerate}
@@ -310,7 +305,7 @@ equivalent:
   \item $f$ is a monomorphism (i.e.\ for all $A\in k\algebras$, the map 
     $f_\ast:H(A) \to G(A)$ is injective)
 \end{enumerate}
-\end{proposition}
+\end{prop}
 
 This fails over rings that are not fields (e.g.\ the ring $\dZ_2$ of $2$-adic 
 integers). One might ask whether injectivity on $\bar k$-points suffices. The 
@@ -324,7 +319,7 @@ $\boldsymbol\alpha_p = \spectrum(\dF_p[t]/t^p)$.
 
 
 
-\section{Using group functors}
+\subsection{Using group functors}
 
 Throughout, let $R$ be our base ring. We are given three $R$-group functors 
 $G_1$, $G_2$, $G_3$, and maps 
@@ -346,11 +341,11 @@ functor $\ker(f)$ by $\ker(f)(S)=\ker(G(S) \to H(S))$. There is an exact sequenc
 \]
 If $G$ and $H$ are (representable by) affine algebraic groups, so is $\ker(f)$. 
 
-\begin{example}[Witt vectors]
+\begin{enonce}[remark]{Example}[Witt vectors]
 Over $\dF_p$, we have seen that there is an exact sequence 
 $0 \to \dG_\additive \to W_2 \to \dG_\additive \to 0$. In fact, this sequence 
 splits on the right. 
-\end{example}
+\end{enonce}
 
 Note that if $1 \to G_1 \to G_2 \xrightarrow f G_3 \to 1$ is an exact 
 sequence of affine algebraic groups, then $f:G_2 \to G_3$ admits a section. 
@@ -358,7 +353,7 @@ To see this, just look at the surjection
 $G_2(R[G_3]) \twoheadrightarrow G_3(R[G_2])$. 
 
 
-\subsection{Semidirect products of group schemes}
+\subsubsection{Semidirect products of group schemes}
 
 Suppose $G$ and $H$ are affine $R$-group schemes, and 
 $\theta:G\to \automorphism(H)$ is a morphism of $R$-group functors. Here, 
@@ -385,13 +380,13 @@ that there is a group $\h^2(G,A)$ (second Hochschild cohomology) which does this
 
 Let's look at the special case where $A=\dV(N)$ for $N$ an $R$-module. 
 
-\begin{theorem}[Grothendieck]
+\begin{theo}[Grothendieck]
 If $G=\diagonal_R(M)$ acts on $\dV(N)$, then $\h_0^i(G,\dV(N))=0$ for all 
 $i>0$. In particular, extensions of$G$ by $\dV(N)$ are split. 
-\end{theorem}
+\end{theo}
 
 
-\subsection{Actions, centralizers, etc.}
+\subsubsection{Actions, centralizers, etc.}
 
 Let $G$ be an affine $R$-group scheme, $X$ an affine $R$-scheme. An 
 \emph{action} of $G$ on $X$ is a homomorphism 
@@ -421,17 +416,17 @@ define various functors:
   \centralizer_G(X_1) &= \{g\in G(S):\theta(g) = 1\text{ on }X_{1,S}\} .
 \end{align*}
 
-\begin{theorem}[Grothendieck]
+\begin{theo}[Grothendieck]
 Let $R=k$ be a field, $X$ an affine scheme, $G$ an affine algebraic $k$-group 
 acting on $X$, and $X_1,X_2\subset X$ closed $k$-subschemes. Then all the above 
 functors are representable by closed $k$-subschemes of $G$. 
-\end{theorem}
+\end{theo}
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Consider the action of $G$ on itself by inner automorphisms. We see that if 
 $H\subset G$ is a $k$-subgroup, then 
 $\normalizer_G(H)$ and $\centralizer_G(H)$ exist as subgroup schemes of $G$. 
-\end{example}
+\end{enonce}
 
 The functors we have defined are the \emph{schematic} transporter, normalizer, 
 \ldots. These can be different from the classical objects of the same name. 
@@ -440,7 +435,7 @@ Let $G$ be a reductive group, $P\subset G$ a parabolic subgroup, and
 $U\subset P$ its unipotent radical. Classically, one says that 
 $P=N_G(U)$. This is true in the language of reduced varieties. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Let $k$ be a field of characteristic $2$ ($\overline{\dF_2}$ for example). 
 Let $G=\projectivegenerallinear(2)_k$, $B\subset G$ the standard Borel, and 
 $U\subset B$ the unipotent radical. We claim that 
@@ -452,10 +447,10 @@ if $x^2=0$, then
   \smat{1}{}{x}{1} \smat{1}{b}{}{1} \smat{1}{}{x}{1} = \smat{1+b x}{b}{}{1+b x} = \smat{1}{b(1+x)}{}{1} 
 \]
 within $\projectivegenerallinear(2)$. 
-\end{example}
+\end{enonce}
 
 
-\subsection{Weil restriction}
+\subsubsection{Weil restriction}
 
 Recall the extension $\dC/\dR$ given by adding a root of $z^2=2+i$. 
 Writing $(x+i y)^2 = 2+i$, we get two equations with coefficients in $\dR$. 
@@ -470,17 +465,17 @@ $\Pi_{S/R} F$ by
 If $F$ is representable, it is natural ask under what conditions the 
 restriction of scalars $\Pi_{S/R} F$ is representable. 
 
-\begin{theorem}
+\begin{theo}
 Assume $R\to S$ is finite and locally free. Let $Y$ be an affine $S$-scheme. 
 Then $\Pi_{S/R} Y$ is representable by an affine $R$-scheme. Moreoveer, if 
 $Y$ is of finite presentation, so is $\prod_{S/R} Y$. 
-\end{theorem}
+\end{theo}
 
-\begin{example}[vector groups]
+\begin{enonce}[remark]{Example}[vector groups]
 If $N$ is an $S$-module, then recall $\dV(N)(T) = \hom(N\otimes_S T,T)$. Let 
 $M$ be the ``scalar restriction'' of $N$ to $R$ (i.e.\ $N$ considered as an 
 $R$-module). Then $\Pi_{S/R} \dV(N) = \dV(M)$. 
-\end{example}
+\end{enonce}
 
 If $S=\overbrace{R\times \cdots \times R}^d$, then an $S$-scheme $Y$ is just a 
 $d$-tuple of $R$-schemes $Y_1,\dots,Y_d$. One has 
@@ -512,13 +507,13 @@ commutative diagram
 }\]
 The first vertical arrow is not surjective. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Let $p=2$, and let $k'=k(\sqrt a)$ be a purely inseparable extension. 
 Then $k'\otimes_k k'\simeq k'[t]/(t^2)$. Write $A=k[t]/t^2$. Then for 
 $X/k$ affine, $Y=\Pi_{A/k} X_A$ is the tangent bundle of $X$. 
 
 [\ldots more that I didn't understand\ldots ]
-\end{example}
+\end{enonce}
 
 Again, let $k'/k$ be a purely inseparable extension. The functor 
 $\Pi_{k'/k}$ transforms affine covers into affine covers. Moreover, 
@@ -533,14 +528,14 @@ base-change $G_{k'}$ contains a unipotent part $\dG_{a,k'}$.
 
 
 
-\section{Descent and quotients}
+\subsection{Descent and quotients}
 
 Throughout, we will use faithfully flat descent as a kind of ``black box'' to 
-prove certain results. Vistoli's notes are a fantastic reference to this 
-topic. 
+prove certain results. Vistoli's notes \cite{vo05} are a fantastic reference for 
+this topic. 
 
 
-\subsection{Embedded descent}
+\subsubsection{Embedded descent}
 
 Let $k$ be a field, $K/k$ a field extension. Let $X_0$ be an affine $k$-scheme 
 of finite type. Write $X=X_0\times_k K$. We are given a closed subscheme 
@@ -553,7 +548,7 @@ in $k[X_0]$ such that $I_{Z_0}\otimes_k K=I_{Z_0'}\otimes_k K$. This implies
 $I_{Z_0} = I_{Z_0'}$ (special case of faithfully flat descent). 
 
 
-\subsection{The Galois case}
+\subsubsection{The Galois case}
 
 Suppose $K/k$ is a (possibly infinite) Galois extension. Then $Z$ descends to 
 $k$ if and only if for all $\gamma\in \galois(K/k)$, we have 
@@ -561,16 +556,16 @@ $^\gamma(I_Z) = I_Z$ in $K[X_0] = K\otimes_k k[X_0]$. One direction is easy,
 and for the other one uses Galois descent (via Speiser's lemma). Define 
 $I_0=\h^0(k, I_Z)$. Speiser's lemma tells us that $K\otimes_k I_0 = I_Z$. 
 
-\begin{corollary}[Galois case]
+\begin{coro}[Galois case]
 There exists a minimal ``field of definition'' of $Z$.
-\end{corollary}
+\end{coro}
 \begin{proof}
 The field of definition $F$ is by definition the field $F\subset K$ for which 
 $\galois(K/F)=\{\gamma\in \galois(K/k):\gamma(I_Z)=I_Z\}$. 
 \end{proof}
 
-In [EGA 4, \S 4.8] there is a section called ``field of definition.'' It 
-depends on Bourbaki's Algebra II.8. Let $V_0$ be a $k$-vector space, 
+In \cite[4.8]{ega4} there is a section called ``field of definition.'' It 
+depends on \cite[II.8]{b03}. Let $V_0$ be a $k$-vector space, 
 $V=K\otimes V_0$. Let $W\subset V$ be a $K$-vector space. Then there is a 
 minimal field of definition for $W$. The proof is an exercise in linear 
 algebra. 
@@ -583,7 +578,7 @@ If $K^p\subset k\subset K$ (i.e.~$K$ is a height $\leqslant 1$ extension of
 $k$) there are some tools, due to Cartan and Jacobson, to replace Galois theory. 
 
 
-\subsection{Flat sheaves}
+\subsubsection{Flat sheaves}
 
 The notion of ``exact sequence of algebraic groups'' that we defined earlier is 
 too restrictive to be very useful. The correct context is that of flat 
@@ -609,18 +604,18 @@ $F:R\algebras\to \mathsf{Set}$ is an \emph{fppf sheaf} if
 Zariski covers (and \'etale covers as well) are fppf. Write 
 $\sheaf(R_\fppf)$ for the category of fppf sheaves over $R$. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Our groups $\dV(N)$ are fppf sheaves. More generally, for any affine $R$-scheme 
 $X$, the representable functor $h_X$ is fppf due to the following result. 
-\end{example}
+\end{enonce}
 
-\begin{proposition}[Grothendieck]
+\begin{prop}[Grothendieck]
 If $R\to S$ is faithfully flat, then the sequence 
 \[
   0 \to R \to S \to S\otimes_R S \to S\otimes_R S \otimes_R S \to \cdots
 \]
 is exact. 
-\end{proposition}
+\end{prop}
 
 Just as with sheaves on topological spaces, there is an operation of 
 ``fppf sheafification'' for $R$-functors. It is a functor 
@@ -647,12 +642,12 @@ if
 Instead of property 2 we could have required that the natural map 
 $\image(F_2\to F_3) \to F_3$ be an isomorphism. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 The sequence $1 \to \boldsymbol\mu_n \to \dG_m \xrightarrow n \dG_m \to 1$ is 
 not an exact sequence of $R$-functors for any $R$. However, it is fppf-exact. 
 This is easily seen via lifting over the fppf cover 
 $S\to S[\sqrt[n] s]$ for $s\in S^\times$. 
-\end{example}
+\end{enonce}
 
 In other words, we have an ``equality of fppf sheaves'' 
 $\dG_m = \dG_m/\boldsymbol\mu_n$. 
@@ -662,10 +657,10 @@ sheafification, we can talk about $Q=G/H$. This is, \emph{a priori}, simply
 an fppf sheaf. Is it representable by an $R$-scheme? Unfortunately, this is 
 rarely the case. See \cite{r70} for a counterexample. 
 
-\begin{theorem}
+\begin{theo}
 Let $k$ be a field. If $H\subset G$ are affine algebraic groups over $k$, then 
 the fppf sheaf $G/H$ is representable by a quasi-projective $k$-scheme. 
-\end{theorem}
+\end{theo}
 
 Note that $(G/H)\times_k R$ will be an fppf quotient for each $R/k$. 
 
@@ -679,14 +674,14 @@ $S\to \bar k$. Moreover, one has
 \]
 If $k$ is perfect, then $X(K)=(G(k^s)/H(k^s))^{G_k}$. 
 
-\begin{proposition}
+\begin{prop}
 Let $G$ be an affine algebraic group over $k$. Suppose $G$ acts on a separated 
 $k$-scheme $X$ of finite type. For $x\in X(k)$, let 
 $G_x=\centralizer_G(x)\subset G$ be the scheme-theoretic centralizer. Then the 
 fppf quotient $G/G_x$ is representable by a quasi-projective $k$-scheme, and 
 the orbit map $G\to X$, $g\mapsto g\cdot x$, induces an immersion 
 $G/G_x\hookrightarrow X$. 
-\end{proposition}
+\end{prop}
 
 That this proposition implies the theorem comes from the Chevalley construction. 
 Given $H\subset G$, Chevalley shows that there is a representation 
@@ -698,7 +693,7 @@ There is a generalization to the ring case by Grothendieck-Murre. This is
 despite the fact that there is no Chevalley theorem over general base rings. 
 
 
-\subsection{Some properties}
+\subsubsection{Some properties}
 
 Let $X=G/H$. Then $X\times_X H_X\to G\times_X G$ is an isomorphism. In other 
 words, $G\to G/H$ is an $H$-torsor. If $G$ is smooth, so is $G/H$. Finally, 
@@ -722,7 +717,7 @@ $f$ is epic.
 $k$-subgroup. It is \emph{false} that $G$ connected implies $G^\dagger$ connected. 
 
 
-\subsection{Frobenius kernels and quotients}
+\subsubsection{Frobenius kernels and quotients}
 
 Let $k$ be a field of characteristic $p>0$. Let $F:k\to k$ be the Frobenius 
 $x\mapsto x^p$. If $X$ is a $k$-scheme, we can define 
@@ -743,7 +738,7 @@ smooth.
 
 
 
-\section{Unipotent radicals and Levi subgroups}
+\subsection{Unipotent radicals and Levi subgroups}
 
 Let $k$ be a field, $k^s$ (resp.\ $\bar k$) a choice of separable (resp.\ algebraic) 
 closure. 
@@ -762,19 +757,19 @@ In the definition of a unipotent group, we could have equivalently required that
 over $\bar k$, each successive quotient in the composition series to be one of 
 $\dG_{\additive,\bar k}$, $\dZ/p$, or $\boldsymbol\alpha_p$. 
 
-\begin{lemma}
+\begin{lemm}
 1. An extension of a unipotent group is unipotent. 
 
 2. Subgroups and quotients of unipotent groups are unipotent. 
 
 3. If $U$ is unipotent, then $\hom_{k\textnormal{-}\mathsf{gp}}(U,\dG_\mult) = 0$. 
-\end{lemma}
+\end{lemm}
 
 If $k$ has characteristic $p$, then commutative unipotent $k$-groups are 
 actually quite interestin (e.g.\ Witt vectors of finite length). Classifying 
 these groups is essentially impossible. 
 
-\begin{proposition}
+\begin{prop}
 Let $G$ be an affine algebraic $k$-group. Then the following are equivalent: 
 \begin{enumerate}
   \item $G$ is unipotent 
@@ -788,7 +783,7 @@ Moreover, if $G$ is smoooth over $k$, then the following are equivalent:
   \item $G$ admits a central composition series with successive quotients 
     $k$-forms of $\dG_\additive$. 
 \end{enumerate}
-\end{proposition}
+\end{prop}
 
 In general, we say that $G_0$ is a \emph{$k$-form} of $G$ if 
 $G_0\times_k \bar k\simeq G\times_k \bar k$. If $k$ is perfect, we know that 
@@ -798,17 +793,17 @@ Let $T\subset B\subset G$ be the ``standard setup'' with a reductive
 $k$-group. Then not every unipotent subgroup of $G$ can be conjugated into 
 the unipotent radical $U\subset B$. 
 
-\begin{example}
+\begin{enonce}[remark]{Example}
 Let $k$ be a field of characteristic $2$. Let $k'=k(\sqrt a)$ be a nontrivial 
 extension. Let $u=\smat{}{a}{1}{}\in \projectivegenerallinear_2(k)$. Then 
 $u$ generates a subgroup $\dZ/2\hookrightarrow \projectivegenerallinear(2)$. But 
 this does not fit into any Borel subgroup. 
-\end{example}
+\end{enonce}
 
-\begin{corollary}
+\begin{coro}
 If $k$ is perfect and $G$ is smooth connected unipotent, then $G$ admits a 
 central decomposition series such that $G_{1+i}/G_i \simeq \dG_\additive^{m_i}$. 
-\end{corollary}
+\end{coro}
 
 We say that $G$ is a \emph{$k$-split unipotent group} if it has a filtration 
 such that $G_{i+1}/G_i\simeq \dG_\additive$. An extension of $k$-split 
@@ -816,21 +811,21 @@ unipotent groups is $k$-split. Quotients (but not kernels) of $k$-split
 unipotent groups are $k$-split. 
 
 
-\subsection{Commutative affine $k$-groups}
+\subsubsection{Commutative affine $k$-groups}
 
 We say that an affine algebraic $k$-group $G$ is of \emph{multipliative type} 
 if $G\times_k \bar k\simeq \diagonal_{\bar k}(M)$ for $M$ some abelian 
 group. We say that $G$ is a \emph{torus} if it is multiplicative type, and also 
 connected. 
 
-\begin{theorem}
+\begin{theo}
 Let $G$ be a commutative affine algebraic $k$-group. 
 \begin{enumerate}
   \item $G$ is of multiplicative type if and only if $\hom_{k\textnormal{-}\mathsf{gp}}(G,\dG_\additive)=0$ 
   \item $G$ admits a largest $k$-subgroup of multiplicative type $G^\mult$, and 
     the quotient $G/G^\mult$ is unipotent, 
 \end{enumerate}
-\end{theorem}
+\end{theo}
 
 So every commutative $k$-group $G$ fits into a canonical exact sequence 
 \[
@@ -843,24 +838,24 @@ is split, the above sequence splits isn a canonical way.
 We can deduce 2 from 1 in the above theorem by setting 
 $G^\mult=\bigcap \ker(G\to \text{unipotent})$. 
 
-\begin{exercise}
+\begin{enonce}[remark]{Exercise}
 Let $K=k(\sqrt[p] a)$ be a purely inseparable exxtension. Let 
 $G=\Pi_{K/k}\dG_\mult$. Show that $G^\mult = \dG_\mult \hookrightarrow \Pi_{K/k} \dG_\mult$. However, show that $G\to G/G^\mult$ does not split. 
-\end{exercise}
+\end{enonce}
 
 To see this, assume $1 \to G^\mult \to G \to U=G/G^\mult\to 1$ splits. Then 
 \[
   \hom_{k\textnormal{-}\mathsf{gp}}(U,\Pi_{K/k} \dG_\mult) \simeq \hom_{K\textnormal{-}\mathsf{gp}} U_K, \dG_{\mult,K}) = 0. 
 \]
 
-\begin{lemma}[unipotent radical]
+\begin{lemm}[unipotent radical]
 Let $G$ be a smooth affine connected $k$-group. Then 
 \begin{enumerate}
   \item $G$ admits a largest smooth connected unipotent normal $k$-subgroup 
   \item $G$ admits a largest smooth connected unipotent normal $k$-split 
     subgroup 
 \end{enumerate}
-\end{lemma}
+\end{lemm}
 
 Denote by $R_u(G)$ and $R_{u s}(G)$ the groups given by the Lemma. Clearly 
 $R_{us} G\subset R_u G$. One calls $R_u G$ the \emph{unipotent radical} of 
@@ -879,17 +874,17 @@ us that $U_1=U_2=U$.
 
 A corollary of our proof is that $R_u(G/R_u G)=1$. 
 
-\begin{lemma}
+\begin{lemm}
 The formation of $R_u G$ and $R_{u s} G$ commute with separable field extensions. 
 In particular, the ``geometric unipotent radical'' $R_u(G_{\bar k})$ is defined 
 over $k^{p^{-\infty}}$. 
-\end{lemma}
+\end{lemm}
 
-\begin{example}\label{eg:pseudo-red}
+\begin{enonce}[remark]{Example}\label{eg:pseudo-red}
 Let $K=k(\sqrt[p] a)$ be a purely inseparable field extension. Let 
 $G=\Pi_{K/k} \dG_\mult$. Then the field of definition of 
 $R_u G_{\bar k}$ is $K$, i.e.\ $R_u (G_{\bar k})$ is not defined over $k$. 
-\end{example}
+\end{enonce}
 
 Let $G$ be a smooth connected affine $k$-group. We say that $G$ is 
 \emph{reductive} if $R_u(G_{\bar k})=1$. We say that $G$ is 
@@ -902,7 +897,7 @@ extension and $G$ is a reductive $K$-group, then the Weil restriction
 $\Pi_{K/k} G$ is pseudo-reductive (but not necessarily reductive). 
 
 
-\subsection{Levi subgroups}
+\subsubsection{Levi subgroups}
 
 Let $G$ be a smooth connected affine $k$-group. We say that a closed 
 $k$-subgroup $L\subset G$ is a \emph{Levi subgroup} if the composite 
@@ -910,26 +905,26 @@ $L_{\bar k} \to G_{\bar k} \to G_{\bar k}/R_u(G_{\bar k})$ is an
 isomorphism. Equivalently, 
 $R_u(G_{\bar k})\rtimes L\isomorphism G_{\bar k}$. 
 
-\begin{theorem}[Mostow]
+\begin{theo}[Mostow]
 Suppose $k$ has characteristic zero. Then Levi subgroups exist and are 
 $(R_uG)(k)$-conjugate. 
-\end{theorem}
+\end{theo}
 
-This has a recent proof by Demarche which is very nice. 
+The following theorem has a recent proof in \cite{demarche} which is very nice. 
 
-\begin{theorem}[SGA 3]
+\begin{theo}[SGA 3]
 An extension $1 \to U \to E\to T\to 1$ with $U$ smooth connected unipotent and 
 $T$ a $k$-torus is split. 
-\end{theorem}
+\end{theo}
 
 In other words, $\h^1(T,U)=0$ for such $U$ and $T$. We are interested in the 
 special case where $G=G_0\times_k K$ for a field extension $K/k$. 
 One has $G_0\hookrightarrow \Pi_{K/k} G_{0,K}$. 
 
-\begin{exercise}
+\begin{enonce}[remark]{Exercise}
 If $G$ is reductive over $k$, then $G_0\hookrightarrow \Pi_{K/k} G_{0,K}$ is a 
 Levi subgroup. 
-\end{exercise}
+\end{enonce}
 
 
 Existence of Levi subgroups (in the general case) is a hard questions. Recent 
@@ -946,7 +941,7 @@ but this sequence has no section on the right. For example, with
 $k=\dF_p$, the map $\speciallinear_2(\dZ/p^2) \to \speciallinear_2(\dF_p)$ has 
 no section. 
 
-\subsection{Structure theorems}
+\subsubsection{Structure theorems}
 
 There are structure theorems (due to Tits) for smooth connected unipotent 
 $k$-groups. We have seen the ``split'' (``d\'eploy\'e'' in French) case with 
@@ -954,7 +949,7 @@ each subquotient $\dG_\additive$. The ``ploy\'e'' case is when
 $\hom(\dG_\additive,G)=1$. This notion is insensitive to separable field 
 extensions. [$k$-wand here (sp?)]
 
-\begin{theorem}[Tits]
+\begin{theo}[Tits]
 Let $G$ be a smooth unipotent connected $k$-group. Then 
 \begin{enumerate}
   \item $G$ admits a largest normal $k$-wand unipotent subgroup $G_w$ 
@@ -963,13 +958,13 @@ Let $G$ be a smooth unipotent connected $k$-group. Then
     $G_0=1\subset G_1\subset \cdots \subset G_n=G$ such that 
       $G_{i+1}/G_i$ is $k$-wand, and ``$k$-fou'' of $\dG_\additive^{n_i}$. 
 \end{enumerate}
-\end{theorem}
+\end{theo}
 
 
 
 
 
-\bibliographystyle{alpha}
-\bibliography{lyon-sources}
+%\bibliographystyle{alpha}
+%\bibliography{lyon-sources}
 
-\end{document}
+%\end{document}

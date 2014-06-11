@@ -1,32 +1,37 @@
-\documentclass{article}
+% !TEX root = main.tex
 
-\usepackage{lyon-style}
+%\documentclass{article}
+%
+%\usepackage{lyon-style}
+%
+%\title{Bruhat-Tits theory}
+%\author{Bertrand R\'emy}
+%\date{June 9--13, 2014}
+%
+%\begin{document}
+%\maketitle
+%\tableofcontents
 
-\title{Bruhat-Tits theory}
-\author{Bertrand R\'emy}
-\date{June 9--13, 2014}
 
-\begin{document}
-\maketitle
-\tableofcontents
+\section{Bruhat-Tits theory}
+\thanksauthor{Bertrand R\'emy}
 
 
 
 
-
-\section*{Introduction}
+\subsection{Introduction}
 
 Bruhat-Tits theory is the non-archimedean analogue of the theory of symmetric 
 spaces for semisimple real Lie groups 
 
-\begin{example}
+\begin{enonce}{Example}
 Put $G=\speciallinear_2(\dR)$. This is a semisimple Lie group. To understand the 
 structure of $G$, it is useful to use the $G$-action on its symmetric space 
 $X=G/K$, where $K$ is a maximal compact subgroup. The symmetric space $X$ is 
 naturally a $C^\infty$ Riemannian manifold with nice metric properties. In 
 fact, it is non other than the well-known upper-half plane 
 $\{z\in \dC:\Im z>0\}$. 
-\end{example}
+\end{enonce}
 
 The starting point for Bruhat-Tits theory is a non-archimedean valued field $k$ 
 (instead of the \emph{archimedean} valued field $\dR$) and $G$, a semisimple 
@@ -48,13 +53,13 @@ a nice metric space with $G(k)$-action to $G$.
 
 
 
-\section{Euclidean buildings}
+\subsection{Euclidean buildings}
 
 
-\subsection{Simplicial definition}
+\subsubsection{Simplicial definition}
 
-This definition is due to Jacques Tits, from the late 1950s. See Bourbaki's 
-exercises for [Lie IV]. A good general reference is the [A..., Brown]. 
+This definition is due to Jacques Tits, from the late 1950s. See the exercises 
+in \cite[IV]{b02}. A good general reference is \cite{ab08}. 
 
 Roughly speaking, a Euclidean building is a simplicial complex covered by 
 subcomplexes isomorphic to a given Coxeter tiling, with some incidence 
@@ -66,21 +71,21 @@ complex (product of simplicial complexes) $\Sigma$, on the maximal
 cells of which $W$ acts freely and transitively. As an ordered set, 
 $\Sigma=\{w W_I:I\subset S,W_I=\langle I\rangle, w\in W\}$. 
 
-\begin{example}
+\begin{enonce}{Example}
 Let $W=D_\infty$, $S=\{s_0,s_1\}$ (reflections about $0$ and $1$). Then 
 $\Sigma$ is the real line tessellated by the integers. 
-\end{example}
+\end{enonce}
 
-\begin{example}
+\begin{enonce}{Example}
 This is the $\widetilde A_2$ case. Here $\Sigma$ is $\dR^2$, tiled by regular 
 triangles. 
-\end{example}
+\end{enonce}
 
 The complex $\Sigma$ can also be a spherical tiling (e.g.\ a tiling of the 
 circle by similar segments) or a hyperbolic tiling. Here, we will only be 
 interested in Euclidean tilings, and maybe spherical ones. 
 
-\begin{definition}
+\begin{defi}
 Let $(W,S)$ be a Euclidean reflection group (i.e.\ an affine Coxeter group) with 
 Coxeter tiling $\Sigma\subset \dR^r$). Then $X$ is said to be a Euclidean 
 building of type $(W,S)$ if it is a polysimplicial complex covered by copies of 
@@ -90,18 +95,18 @@ $\Sigma$ (called the \emph{apartments}) so that
   \item Given any two apartments $\dA$, $\dA'$, there is a simplicial 
     automorphism $\dA\simeq \dA'$ fixing $\dA\cap \dA'$. 
 \end{enumerate}
-\end{definition}
+\end{defi}
 
-\begin{example}
+\begin{enonce}{Example}
 Buildings of type $D_\infty$ correspond to trees in which all vertices have
 valence $\geqslant 2$. In other words, these are graphs without loops or 
 leaves. Apartments are bi-infinite geodesics in the tree. 
-\end{example}
+\end{enonce}
 
-\begin{example}
+\begin{enonce}{Example}
 For $\widetilde A_2$, we now have the tiling of $\dR^2$ by regular hexagons. 
 Imagine gluings of half-tilings along codimension-$1$ walls. 
-\end{example}
+\end{enonce}
 
 We will see that the group $\speciallinear_3(\dQ_p)$ acts on an 
 $\widetilde A_2$-tiling strongly transitively (i.e.\ the group action is 
@@ -116,7 +121,7 @@ $X$ on which $G(k)$ acts strongly transitively.'' (This is the so-called
 investigates models for $G$ over the valuation ring of $k$.) 
 
 
-\subsection{Non-simplicial version of Euclidean buildings}
+\subsubsection{Non-simplicial version of Euclidean buildings}
 
 As a general convention, a \emph{local field} is a locally compact 
 topological field, endowed with a non-archimedean absolute value. Such 
@@ -144,7 +149,7 @@ Why should we care about the case where $k$ is not discretely valued?
 \end{enumerate}
 
 
-\subsection{Metric properties of buildings}
+\subsubsection{Metric properties of buildings}
 
 We would like to motivate the axioms SEB1 and SEB2. Essentially, they 
 exist in order for us to be able to define a metric on the whole building. We 
@@ -156,10 +161,10 @@ $x,x'\in X$, choose an apartment $\dA\ni x,x'$. We can define the distance
 between $x$ and $x'$ from the metric on $\dA$. This is well-defined by the second 
 axiom (after some work). 
 
-\begin{theorem}[Bruhat-Tits]
+\begin{theo}[Bruhat-Tits]
 Any Euclidean building $X$ admits a distance $d$ such that $(X,d)$ is a 
 complete, $\cat(0)$ metric space. 
-\end{theorem}
+\end{theo}
 
 The property ``$\cat(0)$'' essentially captures ``non-positively curved and 
 simply connected.'' More precisely, a metric space $(X,d)$ is said to be 
@@ -176,10 +181,10 @@ $\cat(0)$ if
 
 The notion of a $\cat(0)$ space is due to Gromov. 
 
-\begin{lemma}[Bruhat-Tits fixed point]\label{lem:cat0}
+\begin{lemm}[Bruhat-Tits fixed point]\label{lem:cat0}
 Let $G$ act by isometries on a complete $\cat(0)$ metric space. If $G$ has a 
 bounded orbit, then it has a fixed point. 
-\end{lemma}
+\end{lemm}
 \begin{proof}[Proof (Serre)]
 Any nonempty bounded subset in $X$ admits a \emph{unique} metrically characterized 
 barycenter. 
@@ -223,7 +228,7 @@ involution.
 
 
 
-\section{Bruhat-Tits buildings for \texorpdfstring{$\generallinear(n)$}{GL(n)}}\label{sec:gln}
+\subsection{Bruhat-Tits buildings for \texorpdfstring{$\generallinear(n)$}{GL(n)}}\label{sec:gln}
 
 The spaces for $\generallinear(n)$ were introduced by Goldman and Iwahori 
 in \cite{gi63} before the general notion of a building existed. Start with 
@@ -235,7 +240,7 @@ $\sN=\sN_V$ be the space of non-archimedean norms on $V$. Our goal is to
 show that $\sN$ is a Bruhat-Tits building. 
 
 
-\subsection{Examples of norms}
+\subsubsection{Examples of norms}
 
 If we are willing to make choices, this is easy. Choose an ordered basis 
 $\boldsymbol e=(e_1,\dots,e_d)$ for $V$. Let $\boldsymbol c=(c_1,\dots,c_d)$ be 
@@ -308,17 +313,17 @@ $(a_{i j})$ with $a_{i i} = \pi^{m_i}$. The group
 $\pi^{\dZ^d}$ is the translation part of $S_d\times \dZ^d$. 
 
 
-\subsection{Connection with Bruhat-Tits theory}
+\subsubsection{Connection with Bruhat-Tits theory}
 
 The following theorem is originally due to \cite{gi63}, but was reformulated by 
 Bruhat and Tits. 
 
-\begin{theorem}
+\begin{theo}
 Assume $k$ is a local field. Then 
 the quotient space of $\sN_V$ by homothety is a Euclidean building with 
 apartments the $\dA_{\boldsymbol e}$ and Weyl 
 group $S_d\times \dZ^{d-1}$. 
-\end{theorem}
+\end{theo}
 
 For us, \emph{homothety} is the equivalence relation where two norms are identified 
 whenever they are proportional. 
@@ -335,21 +340,21 @@ of the building (here a tree) are taken into account. The vertices correspond
 to homothety classes of $k^\circ$-lattices in $V$. 
 
 
-\subsection{Maximal compact subgroups of \texorpdfstring{$\generallinear(V)$}{GL(V)}}
+\subsubsection{Maximal compact subgroups of \texorpdfstring{$\generallinear(V)$}{GL(V)}}
 
 Using the Bruhat-Tits fixed point lemma (Lemma \ref{lem:cat0}), one knows that a 
 compact subgroup $K\subset \generallinear(V)$ has to fix some point in 
 $\sN_V/\sim$. Thus it is interesting to have a description of stabilizers of 
 norms. 
 
-\begin{proposition}
+\begin{prop}
 We have 
 \[
   \stabilizer_{\speciallinear(V)}(\|\cdot\|_{\boldsymbol e,\boldsymbol c}) = \{g\in \speciallinear(V): \log |g_{i j}| \leqslant c_j - c_i\} .
 \]
 where $(g_{i j})$ is the matrix of $g$ with respect to $\boldsymbol e$. 
 In particular, $\stabilizer_{\speciallinear(V)}(\|\cdot\|_{\boldsymbol e,0}) \simeq \speciallinear_d(k^\circ)$. 
-\end{proposition}
+\end{prop}
 
 [Warning: R\'emy wrote $|x|=e^{-v(x)}$ rather than 
 $|x|=(\# \kappa)^{-v(x)}$.] 
@@ -381,25 +386,25 @@ $\boldsymbol e$) with zeros everywhere but the $(i,j)$-th component, where there
 is a $1$. Put $\mu_{i,j}(\lambda) = 1+\lambda E_{i,j}$ for 
 $\lambda\in k$. 
 
-\begin{proposition}[``folding'' by unipotent matrices]
+\begin{prop}[``folding'' by unipotent matrices]
 The intersection 
 $\mu_{i j}(\lambda) \dA_{\boldsymbol e} \cap \dA_{\boldsymbol e}$ is the half-space 
 of $\dA_{\boldsymbol e}$ defined by 
 $c_j-c_i \geqslant \log |\lambda|$. The isometry given by 
 $\mu_{i j}(\lambda)$ fixes (pointwise) this intersection, and sends the remaining 
 (open) halfspace of $\dA_{\boldsymbol e}$ onto a disjoint complement. 
-\end{proposition}
+\end{prop}
 
-\begin{example}
+\begin{enonce}{Example}
 Let $d=2$. Then our matrix is $\smat{1}{\lambda}{}{1} = \mu_+(\lambda)$. 
 [\ldots stuff in terms of a picture I couldn't repeat\ldots]
-\end{example}
+\end{enonce}
 
 
 
 
 
-\section{Borel-Tits' theory}
+\subsection{Borel-Tits' theory}
 
 For our purposes, this is the theory which describes the abstract group structure 
 of $G(k)$, for $G$ a semisimpile group and $k$ an arbitrary field; this will be done in 
@@ -407,7 +412,7 @@ purely combinatorial terms. The final statement more or less amounts to the exis
 of a spherical building on which $G(k)$ acts strongly transitively. 
 
 
-\subsection{Algebraic terminology and conjugacy theorems}
+\subsubsection{Algebraic terminology and conjugacy theorems}
 
 The main references for this section are the books of Borel, Springer, and 
 Waterhouse. Let $G$ be a linear algebraic group over some field $k$. We say 
@@ -449,15 +454,15 @@ group $G$ defined over $k$. At least in the split case, the outcome of our
 method is a root system. The well-known situation is where $k=\bar k$. 
 The main tool is the adjoint representation, given by conjugation on the 
 Lie algebra. Put 
-$\fg = \lie(G)=\ker(G(k[\varepsilon]) \to G(k))$, where $k[\varepsilon]=k[X]/X^2$. 
+$\frakg = \lie(G)=\ker(G(k[\varepsilon]) \to G(k))$, where $k[\varepsilon]=k[X]/X^2$. 
 The action of $G$ on $\lie G$ induces a representation 
-$\adjoint:G\to \generallinear(\fg)$. Let $T\subset G$ be a maximal 
+$\adjoint:G\to \generallinear(\frakg)$. Let $T\subset G$ be a maximal 
 $k$-torus (split, given our assumptions). Then the representation 
 $\adjoint|_T$ decomposes as 
 \[
-  \fg = \fg_0 \oplus \bigoplus_{\psi\in X^\ast(T)\smallsetminus \{0\}} \fg_\psi ,
+  \frakg = \frakg_0 \oplus \bigoplus_{\psi\in X^\ast(T)\smallsetminus \{0\}} \frakg_\psi ,
 \]
-where $\fg_\psi= \{v\in \fg :\adjoint(t) v = \psi(t) v\}$. The non-zero 
+where $\frakg_\psi= \{v\in \frakg :\adjoint(t) v = \psi(t) v\}$. The non-zero 
 characters occuring non-trivially in this sum are called the 
 \emph{roots} and they form a root system in vector space 
 $X^\ast(T)\otimes \dR$ endowed with a $W$-invariant scalar product. Here 
@@ -468,17 +473,17 @@ proportionality relation between two roots except opposition).
 Now back to arbitrary $k$. The idea is to replace $T$ by a ``useful'' torus 
 defined over $k$ (useful in the sense that it has ``as many'' characters 
 defined over $k$ as possible so that the weight decomposition of 
-$\fg$ will be as subtle as possible). More precisely, take $T$ to be a 
+$\frakg$ will be as subtle as possible). More precisely, take $T$ to be a 
 maximal $k$-split torus. We have a decomposition 
 \[
-  \fg = \fg_0 \oplus \bigoplus_{\psi\in X_k^\ast(T)\smallsetminus \{0\}} \fg_\psi.
+  \frakg = \frakg_0 \oplus \bigoplus_{\psi\in X_k^\ast(T)\smallsetminus \{0\}} \frakg_\psi.
 \]
 This is a (possibly non-reduced) root system. We claim that this decomposition 
 of the Lie algebra induces a decomposition of $G$. 
 
 [\emph{Warning}: this assumes there is a non-central $k$-split torus $T\subset G$.]
 
-The characters $\alpha\in X^\ast(T)\smallsetminus 0$ with $\fg_\alpha\ne 0$ are 
+The characters $\alpha\in X^\ast(T)\smallsetminus 0$ with $\frakg_\alpha\ne 0$ are 
 called \emph{roots} with respect to $T$. Let $\Phi=\Phi(G,T)$ be the set of 
 roots. 
 
@@ -489,9 +494,9 @@ scalar product (because $W$ is finite) for which $\Phi$ is a (possibly non-reduc
 root system. The Weyl group of the root system $\Phi$ is $W$. 
 
 For each root $\alpha$, we denote by $U_\alpha$ the closed connected subgroup of 
-$G$ whose Lie algebra is $\fg_\alpha$. 
+$G$ whose Lie algebra is $\frakg_\alpha$. 
 
-\begin{definition}
+\begin{defi}
 Let $G$ be an abstract group. Let $T$ be a subgroup and $\Phi$ a root system. We 
 assume we are given for each $\alpha\in \Phi$ a subgroup $U_\alpha$ and a class 
 moduo $T$, say $M_\alpha$. We say that 
@@ -506,19 +511,19 @@ $(\{U_\alpha\}_{\alpha\in \Phi},\{M_\alpha\}_{\alpha\in \Phi})$ is a
   \item for all choices of positive subsystems for $\Phi^+$, we have 
     $U^+ T \cap U^-=1$, where $U^+=\langle U_\gamma:\gamma \in \pm \Phi_+\rangle$ 
 \end{enumerate}
-\end{definition}
+\end{defi}
 
 It is a good exercise to check these axioms for $\generallinear_n(F)$, where 
 $\Phi$ is of type $A_{n-1}$. 
 
 We now give an ``unfair summary'' of Borel-Tits theory. 
 
-\begin{theorem}[Borel-Tits '65]
+\begin{theo}[Borel-Tits '65]
 Let $G$ be a reductive group over $k$. We assume that $G$ contains a non-central 
 $k$-split torus, say $T$. Denote by $\{U_\alpha\}$ the corresponding root groups. 
 Then $G(k)$ admits a root group datum in which the root groups are given by the 
 $U_\alpha(k)$, and $T=Z_G(T)(k)$. 
-\end{theorem}
+\end{theo}
 
 What is this good for? 
 \begin{enumerate}
@@ -532,12 +537,12 @@ What is this good for?
 If the group is not isotropic, things become much more difficult. 
 
 
-\subsection{Conjugacy results and anisotropic kernel}
+\subsubsection{Conjugacy results and anisotropic kernel}
 
 So far, the combinatorial objects we constructed have depended on the choice of 
 a maximal $k$-split torus $T$. In fact, we have the following theorem. 
 
-\begin{theorem}[Borel-Tits '65]
+\begin{theo}[Borel-Tits '65]
 Let $G$ be as above. Then 
 \begin{enumerate}
   \item Maximal $k$-split tori are conjugate under the $G(k)$-action. 
@@ -545,7 +550,7 @@ Let $G$ be as above. Then
     $G(k)$ acts transitively on inclusions $T\subset B$ of maximal $k$-split 
     tori into minimal parabolics $B$. 
 \end{enumerate}
-\end{theorem}
+\end{theo}
 
 We introduce some terminology. Grops of the form $Z_G(T)$ are reductive anisotropic 
 over $k$. In other words, $Z_G(T)$ contains no non-central $k$-split torus. (For 
@@ -558,7 +563,7 @@ Galois action on the Dynkin diagram. For details, see Tit's Boulder lecture
 notes, or Satake's book. 
 
 
-\subsection{Example of a non-reduced root system}
+\subsubsection{Example of a non-reduced root system}
 
 This is in the context of real Lie groups. Let $F$ be one of $\dR,\dC$, and 
 the quaternions. Let $\overline{\cdot}$ be the conjugation (if $F$ is the 
@@ -573,24 +578,24 @@ The points of a maximal $\dR$-split torus can be described as follows: let
 \[
   A = \left\{a_t = \begin{pmatrix} \cosh t & 0 & \sinh t \\0 & 1_{n-1} & 0\\ \sinh t & 0& \cosh t \end{pmatrix} : t\in \dR\right\} .
 \]
-The weight space decomposition for $\fg=\mathfrak{su}(n,1))$ under the action 
+The weight space decomposition for $\frakg=\mathfrak{su}(n,1))$ under the action 
 of $A$ is 
 \[
-  \fg = \fg_{-2\alpha} \oplus \fg_{-\alpha} \oplus \fg_0 \oplus \fg_\alpha \oplus \fg_{2\alpha} .
+  \frakg = \frakg_{-2\alpha} \oplus \frakg_{-\alpha} \oplus \frakg_0 \oplus \frakg_\alpha \oplus \frakg_{2\alpha} .
 \]
 The $2\alpha$ occur if and only if $F\supsetneq \dR$. Here, 
 \[
-  \fg_0 = \left\{\begin{pmatrix} w & 0 & t \\ 0 & m'& 0 \\ t & 0 & w \end{pmatrix}:m\in \mathfrak{u}(n-1,F),t\in \dR\text{ and }w+\overline w=0\right\} .
+  \frakg_0 = \left\{\begin{pmatrix} w & 0 & t \\ 0 & m'& 0 \\ t & 0 & w \end{pmatrix}:m\in \mathfrak{u}(n-1,F),t\in \dR\text{ and }w+\overline w=0\right\} .
 \]
 One has 
 \[
-  \fg_\alpha = \left\{\begin{pmatrix} 0 & z\ast & 0 \\ z & 0 & -z \\ 0 & z^\ast & 0 \end{pmatrix} :z\in F^{n-1} \right\} 
+  \frakg_\alpha = \left\{\begin{pmatrix} 0 & z\ast & 0 \\ z & 0 & -z \\ 0 & z^\ast & 0 \end{pmatrix} :z\in F^{n-1} \right\} 
 \]
 of dimension $d(n-1$, where $d=[F:\dR]$. Finally, 
 \[
-  \fg_{2\alpha} = \left\{\begin{pmatrix} w & 0 & -w \\ 0 & 0 & 0 \\ -w & 0 & w \end{pmatrix} : w+\overline w =0\right\} ;
+  \frakg_{2\alpha} = \left\{\begin{pmatrix} w & 0 & -w \\ 0 & 0 & 0 \\ -w & 0 & w \end{pmatrix} : w+\overline w =0\right\} ;
 \]
-this has dimension $d-1$. The anisotropic kernel $\fg_\alpha$ can be arbitrarily 
+this has dimension $d-1$. The anisotropic kernel $\frakg_\alpha$ can be arbitrarily 
 large, even though the root system is the (non-reduced) root system of rank 
 one called $\mathrm{BC}_1$ with roots 
 $\{\pm 2\alpha,\pm \alpha\}\subset \dZ\cdot \alpha$. For 
@@ -601,7 +606,7 @@ $F=\mathbf H$, the groups are $\symplectic(n,1)$.
 
 
 
-\section{Construction of Bruhat-Tits buildings}
+\subsection{Construction of Bruhat-Tits buildings}
 
 The Euclidean buildings we will construct will be obtained by gluing together 
 copies of a Euclidean tessellation attached to the affinization of the Weyl 
@@ -611,7 +616,7 @@ by using a filtration on each root group, which comes from the valuation on the
 ground field. 
 
 
-\subsection{Gluings and foldings}
+\subsubsection{Gluings and foldings}
 
 We need:
 \begin{enumerate}
@@ -680,17 +685,17 @@ relation $\sim$ on $G(k)\times \Sigma$ by
 $(g,x)\sim(h,y)$ if and only if there exists $n\in N(k)$ such that 
 $y=\nu(n)\cdot x$ and $g^{-1} h n\in P_n$. 
 
-\begin{theorem}[Bruhat-Tits]
+\begin{theo}[Bruhat-Tits]
 The relation $\sim$ is an equivalence, and the quotient space 
 $G(k)\times \Sigma/\sim$ is a building of type $\Sigma$ on which $G(k)$ acts 
 strongly transitively. 
-\end{theorem}
+\end{theo}
 
 
 
 
 
-\bibliographystyle{alpha}
-\bibliography{lyon-sources}
+%\bibliographystyle{alpha}
+%\bibliography{lyon-sources}
 
-\end{document}
+%\end{document}
