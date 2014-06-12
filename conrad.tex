@@ -1,0 +1,488 @@
+% !TEX root = main.tex
+
+
+\section{Pseudo-reductive groups}
+\thanksauthor{Brian Conrad}
+
+
+
+
+
+\subsection{Motiviation and examples}
+
+Suppose we have some problem concerning a ``general'' affine algebraic group over 
+a field $k$. If $k$ is not perfect, it becomes quite difficult to reduce problems 
+to the reductive case. 
+
+\begin{enonce}[remark]{Example}
+Let $G=\generallinear_n$. Let $X$ be the variety of non-degenerate quadratic forms 
+on $k^n$. We assume the action of $G(\bar k)$ on $X(\bar k)$ is transitive. Then 
+$X$ is a ``homogeneous space'' for $G$. So any choice of $x\in X(\bar k)$ induces 
+$G/\stabilizer_{G_{\bar k}}(x) \isomorphism X_{\bar k}$. Now choose 
+$x_0\in X(\bar k)$. Assume $k$ is a global field, $S$ is a finite set of places of 
+$k$, and $x\in X(k)$. We want 
+\[
+  \# G(k)\backslash \{x\in X(k):x\in G(k_v)\cdot x_0\text{ for all }x\notin S\} < \infty .
+\]
+To study this set, introduce the transporter scheme $T_x=\transporter(x_0,x)$ for 
+$x\in X(\bar k)$. Our set above injects into 
+$\sha_S^1(k, G_{x_0})$. So the question is: is $\sha_S^1(k,G)$ finite for all affine 
+algebraic $k$-groups $G$?
+\end{enonce}
+
+If $G$ is finite \'etale, finiteness of $\sha_S^1(k,G)$ follows from the 
+\v Cebotarev Density Theorem. This can be applied to $G/G^\circ$ in general. 
+If $G$ is connected reductive, Borel-Serre (in characteristic zero) and 
+Harder / Borel-Prasad (in positive characteristic) have shown that these 
+Tate-Shavarevich sets are finite. 
+
+In characteristic $p$, we have the problem that $G_\reduced$ is often not a 
+subgroup scheme of $G$, and even when it is, it may not be smooth. By a trick, 
+using the fact that the extensions $k_v/k$ are separable, we can still replace 
+$G$ with its maximal smooth subgroup. So we can reduce to the case where $G$ is 
+smooth and connected. How far is such a $G$ from being reductive? For perfect 
+$k$, not too far. Over perfect fields, $\sR_u(G_{\bar k})\subset G_{\bar k}$ 
+descends to $U\subset G$. The unipotent group $U$ has a canonical filtration 
+with successive quotients isomorphic to $\dG_\additive$. So we have an 
+exact sequence 
+\[
+  1 \to U \to G \to G/U \to 1
+\]
+where the group on the left is ``manageable'' and the group on the right is 
+reductive. 
+
+If $k$ is imperfect, such $k$-descent of $\sR_u(G_{\bar k})$ may not exist 
+in $G$. 
+
+\begin{defi}
+$\sR_{u,k}(G)$ is the maximal smooth connected unipotent normal $k$-subgroup of 
+$G$. Similarly $\sR_k(G)$ is the maximal smooth connected solvable normal 
+$k$-subgroup of $G$. 
+\end{defi}
+
+If $K/k$ is an extension, then $\sR_{u,k}(G)\subset \sR_{u,K}(G_K)$ and 
+$\sR_k(G)_k\subset \sR_K(G_K)$. If $K/k$ is separable (e.g~$k^s/k$, 
+$k(V)/k$ for smooth $V$, or $k_v/k$ for global $k$) then we have equalities, 
+i.e.\ formation of radical commutes with separable field extension. This uses 
+a ``smooth specialization'' argument. 
+
+\begin{defi}
+Say $G$ is \emph{pseudo-reductive} if $\sR_{u,k}(G)=1$. Say $G$ is 
+\emph{pseudo-semisimple} if $\sR_{u,k}(G)=1$ and $G=\sD G$. 
+\end{defi}
+We will see later that pseudo-semisimple groups have $\sR_k G=1$, but the 
+converse fails. We can make examples of commutative pseudo-reductive groups 
+$C$ with $C(k^s)[p]\ne 1$. These are very ``far'' from being tori, and there 
+is no nice classification (akin to Galois lattices) for such groups. 
+
+Note that for general smooth connected affine $G$, in the following exact sequence:
+\[
+  1 \to \sR_{u,k}(G) \to G \to G/\sR_{u,k}(G) \to 1
+\]
+the group on the right is pseudo-reductive. The unipotent group 
+$\sR_{u,k} G$ can be pretty horrible. Tits developed useful filtrations for 
+them. See Appendix B in \cite{cgp10} for details. 
+
+We will develop a structure theory for pseudo-reductive groups. This can 
+be used to show that $\sha_S^1(k,G)$ is finite for function fields. 
+
+
+
+
+
+\subsection{Weil restriction}
+
+Let $k$ be a field, and $k'$ a finite $k$-algebra, i.e.~$\dim_k k'<\infty$. Let 
+$X'$ be an affine algebraic $k'$-scheme. Note that the algebra $k'$ is a finite 
+product of local artinian $k$-algebras. We define the \emph{Weil restriction} 
+of $X'$, $X=R_{k'/k}(X')$ as ``$X$ viewed as a $k$-scheme using the $k$-basis of 
+$k'$ to make coordinates.'' So if $X'$ is smooth of pure dimension $d$ over a 
+field $k'$, then $X$ should be $k$-smooth of dimension $d[k':k]$. The 
+functor of points of $X$ is 
+\[
+  X(A) = X'(k'\otimes_k A) .
+\]
+This should be viewed as analogous to viewing a $d$-dimensional complex 
+manifold as a $2d$-dimensional real manifold. 
+
+Some people write $\Pi_{k'/k}$ instead of $R_{k'/k}$ for Weil restriction. 
+
+\begin{enonce}[remark]{Example}
+$R_{k'/k} \dA_{k'}^n = \dA_k^{n[k':k]}$ via a $k$-basis of $k'$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Note that $R_{k'/k}(\speciallinear_n)(A)=\speciallinear_n(k'\otimes_k A)$. 
+This is given by ``$\det=1$'' on $M_n(k'\otimes_k A) \subset M_{n[k':k]}(A)$. 
+This group can be pretty messy. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Suppose $k=\prod k_i'$. Then $\spectrum(k')=\coprod \spectrum(k_i')$, so 
+$X'=\coprod X_i'$ for $k_i'$-schemes $X_i'$. One has 
+$X=R_{k'/k}=\prod_i R_{k_i'/k}(X_i')$. Checking this is a good exercise. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Let $G'$ be a smooth algebraic $k'$-group, $\frakg'=\lie G'$. Then 
+$\lie G$ is $\frakg'$ viewed as a ($p$-) Lie algebra over $k$. See 
+\cite[A.7.6, A.7.13]{cgp10} for details. 
+\end{enonce}
+
+Why should we care about Weil restriction? Suppose $k'/k$ is a (finite) 
+field extension, and $K/k$ is a ``big'' field extension (e.g.~$K=k^s$). 
+Then $K'=k'\otimes_k K$ will be a finite $K$-algebra. If $k'/k$ is a 
+separable extension, $K'$ will be a product of fields. If $k'/k$ is 
+inseparable, $K'$ may have nilpotents. One always has 
+$R_{k'/k}(X')_K = R_{K'/K}(X_{K'}')$. This is easily checked by looking 
+at the functors of points on $K'$-algebras.
+
+\begin{enonce}[remark]{Example}
+Let $k'/k$ be a separable field extension. Then let 
+$A=\prod_{k'\hookrightarrow k^s} k^s$. We have 
+\[
+  R_{k'/k}(X)_{k^s} = \prod_{A/k^s} (X'\otimes_{k'} A) = \prod_\sigma \sigma^\ast X' .
+\]
+This explains the $\prod$ notation for Weil restriction. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Suppose $k'=k(\sqrt[p] a)$ for $a\in k\smallsetminus k^p$. Consider 
+$R_{k'/k}(X')_{\bar k} = R_{(k'\otimes \bar k)/\bar k}(X'\otimes_{k'} \bar k)$. 
+This lives over the (non-reduced) ring $\bar k[t]/t^p$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Let $k'/k$ be a non-separable extension. Then the group 
+$R_{k'/k}(\generallinear_n)$ is \emph{never} reductive, but is always 
+pseudo-reductive. For $\bar k$-points, 
+$\generallinear_n(\bar k\otimes k') = \generallinear_n(\bar k[t]/t^p)$, 
+which has a ``huge $p^\infty$-torsion'' subgroup. In general, for 
+connected reductive $G'\ne 1$ over $k'$, the Weil restriction 
+$R_{k'/k}(G')$ is never reductive, but always pseudo-reductive. (Again, 
+$k'/k$ is non-separable here.)
+\end{enonce}
+
+\begin{theo}[Borel-Tits IHES 27, 6.21iii]
+Let $G$ be a connected, semisimple, simply-connected $k$-group. Then there 
+exists (unique up to unique isomorphism) a pair $(k'/k,G')$ where $k'$ is a finite 
+\'etale $k$-algebra, $G'=\coprod G_i'$, where the $G_i'$ are absolutely 
+simple, simply connected semisimple groups over the $k_i'$ such that 
+$G\simeq R_{k'/k} G$. 
+\end{theo}
+
+The uniqueness in this theorem means the following. If $(k'',G'')$ is another 
+such pair, then any $k$-isomorphism $R_{k'/k}(G')\simeq R_{k''/k} (G'')$ 
+arises from a unique compatible pair 
+$(\varphi:k'\isomorphism k'',\alpha:G'\isomorphism G'')$
+
+\begin{proof}
+By Galois descent, we can assume $k=k^s$. Then $k'=\prod k^s$, so the theorem 
+just says that $G$ is a product of simple factors, and that isomorphisms between 
+such products arise from bijections of their index sets, and compatible 
+group isomorphisms. 
+\end{proof}
+
+\begin{lemm}
+1. Suppose $k'$ is a field, and $X'$ is smooth over $k'$. Then $X$ is smooth over $k$. 
+
+2. If $X'$ is geometrically connected and smooth over $k'$, then the same are true 
+for $X$ over $k$. 
+\end{lemm}
+\begin{proof}
+1. Use the infinitesimal criterion. It's enough to use finite algebras. 
+
+2. In the group setting: the key case is $k=k^s$, $k'$ a field. We'll look at 
+$k=\dF_p(t,u)$ and $k'=k(\sqrt[p] t)$. Then 
+$G(\bar k)=G'(k'\otimes \bar k)\xrightarrow q G'(\bar k)$. The kernel of $q$ 
+has a filtration by $U_i=\{g\equiv 1 \mod \fm^i\}$; these are normal in 
+$G_{\bar k}$, and $U_i/U_{i+1} \simeq \frakg'\otimes_{\bar k} \fm^i/\fm^{i+1}$. 
+So ``we can conclude'' that $G_{\bar k}$ has a composition series with 
+connected successive quotients. 
+\end{proof}
+
+Part 2 is false without the smoothness assumption! You can make examples of a 
+geometrically integral curve $X'\subset \dA_{k'}^2$, smooth away from one point, 
+regular at the missing point, such that $X$ has two connected components. 
+
+\begin{prop}
+Let $k'/k$ be a non-zero finite reduced $k$-algebra, $G'$ a pseudo-reductive 
+$k'$-group with connected fibers. Then $G=R_{k'/k} (G')$ is a pseudo-reductive 
+$k$-group. 
+\end{prop}
+\begin{proof}
+Without loss of generality, $k=k^s$ and $k'$ is a field. 
+We know that $G$ is smooth and connected. We need to show that it has no 
+nontrivial smooth connected unipotent normal $k$-subgroups. Let 
+$U\subset G$ be such a subgroup; we want to show $U=1$. The definition 
+of Weil restriction means that $U\hookrightarrow G$ corresponds to a map 
+$f:U_{k'} \to G'$ over $k'$. This map is equivariant for the 
+$G(k)=G'(k')$-action, and $G(k)\subset G$ is Zariski-dense (since $G$ is smooth 
+and $k=k^s$). Thus $f(U_{k'})$ is normal in $G_{k'}$, so $f=1$. Thus the 
+map $U\hookrightarrow G$ is trivial, so $U=1$. 
+\end{proof}
+
+
+
+
+
+\subsection{Some disorienting examples}
+
+\begin{enonce}[remark]{Example}
+Let $k'=k(\sqrt[p] a)$ for $a\in k\smallsetminus k^p$ and $k$ of characteristic 
+$p>0$. Consider the fppf-exact sequence 
+\[
+  1 \to \boldsymbol\mu_p \to \dG_\mult \to \dG_\mult \to 1 
+\]
+over $k'$. Restrict to $k$ (and note that Weil restriction is left exact): 
+\[\xymatrix{
+  1 \ar[r] 
+    & R_{k'/k}(\boldsymbol\mu_p) \ar[r] \ar@{.>}[dr] 
+    & R_{k'/k}(\dG_\mult) \\
+  & & \dG_\mult \ar@{^{(}->}[u] 
+}\]
+We get a fppf-exact sequence 
+\[
+  1 \to R_{k'/k}(\boldsymbol\mu_p) \to R_{k'/k} \dG_\mult \to \dG_\mult \to 1 
+\]
+where $R_{k'/k}(\boldsymbol\mu_p)$ has dimension $p-1$. However 
+$R_{k'/k}(\boldsymbol\mu_p)$ has no $k^s$-points. Moreover, 
+$R_{k'/k}(\dG_\mult)/\dG_\mult$ is killed by $p$. (We can check this on 
+$k^s$-points, because $(H_1/H_2)(k^s)=H_1(k^s)/H_2(k^s)$ if 
+$H_2$ is smooth) 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Consider 
+$1 \to \boldsymbol\mu_p \to \speciallinear_p \xrightarrow f \projectivegenerallinear_p \to 1$ 
+over $k'$ and Weil restrict: 
+\[
+  1 \to R_{k'/k}(\boldsymbol\mu_p) \to R_{k'/k}(\speciallinear_p) \to R_{k'k}(\projectivegenerallinear_p) \to 1. 
+\]
+It turns out that 
+\[
+  R_{k'/k}(\speciallinear_p)/R_{k'/k}(\boldsymbol\mu_p) \hookrightarrow R_{k'/k}(\projectivegenerallinear_p) 
+\]
+is normal with abelian (unipotent) cokernel of dimension $p-1$. Look at an open 
+cell: $U^-\times \widetilde T\times U^+ \xrightarrow f U^- \times T \times U^+$. 
+On tori (in suitable coordinates) $f$ looks like $(t_1,\dots,t_{p-1})\mapsto (t_1^p,t_2,\dots,t_{p-1})$. 
+On Weil restriction, we can write down the image directly to get that the cokernel 
+is $R_{k'/k} (\dG_\mult)/\dG_\mult$. 
+\end{enonce}
+
+Using $\widetilde T=\dG_\mult^{\Delta^\vee}$, we can prove the following theorem: 
+
+\begin{theo}
+The Weil restriction of a simply connected group is perfect. 
+\end{theo}
+
+One reduces to $\speciallinear_2$ via open cells. 
+
+[Note: the map Michel constructed can be seen as the composite 
+\[
+  X \hookrightarrow R_{K/k}(X_K) \isomorphism R_{K/k}(G_K) \xrightarrow{trace} G
+\]
+Also, think of Weil restriction as pushforward of fppf sheaves. 
+]
+
+
+
+
+
+\subsection{Elementary properties of pseudo-reductive groups and examples}
+
+\begin{lemm}
+If $G$ is pseudo-reductive, every smooth connected normal $k$-subgroup 
+$N\subset G$ is pseudo-reductive. 
+\end{lemm}
+\begin{proof}
+We can assume $k$ is separably closed. We claim that $\sR_{u,k}(N)$ is also normal 
+in $G$, hence $\sR_{u,k}(N)=1$. It suffices to check that $\sR_{u,k}(N)$ is 
+stable under $G(k)$-conjugation (because $G(k)\subset G$ is Zariski-dense, which 
+works because $k=k^s$ and $G$ is smooth). But $G(k)$-conjugation preserves $N$, 
+so it certainly preserves $\sR_{u,k}(N)$, because it's stable under all 
+$k$-automorphisms of $N$. 
+\end{proof}
+
+So, for example the derived subgroup $\sD G$ is pseudo-reductive. We've already 
+seen that this fails for quotients. 
+
+\begin{enonce}[remark]{Example}
+Let $k'/k$ be a finite field extension. Let $G'$ be a connected, simply connected 
+semisimple group over $k'$. Let $\widetilde G' \to G'$ be the simply-connected 
+cover, and $\boldsymbol\mu=\ker(\widetilde G' \to G')$; this is of multiplicative 
+type, because a maximal torus $\widetilde T'\subset \widetilde G'$ is its own 
+centralizer, hence it contains all central subgroups. In fact, 
+$\boldsymbol\mu\subset \widetilde T'[n]$ for some $n\geqslant 1$. Let 
+$G=R_{k'/k}(\widetilde G')/R_{k'/k}(\boldsymbol\mu)\hookrightarrow R_{k'/k}(G')$. 
+This injection has commutative cokernel (because this cokernel lives inside 
+$\mathsf R_\mathrm{fppf}^1 f_\ast \boldsymbol\mu$, where 
+$f:\spectrum k' \to \spectrum k$). The group $G$ is perfect! We see that 
+$G=\sD(R_{k'/k} G)$, so $G$ is pseudo-reductive. By open cell consideration, 
+$(R_{k'/k}(G')/G)_{k^s}$ can be described in terms of ``Weil-restricted $\dG_\mult$ 
+modulo $\dG_\mult$,'' which is unipotent. Precisely, it is 
+$\coker(R_{k'/k}(\widetilde T') \to R_{k'/k}(T'))$. If $k'/k$ is purely 
+inseparable, the cokernel has no nontrivial tori, so it's unipotent. 
+\end{enonce}
+
+\emph{Warning}: over every imperfect $k$, there exists pseudo-semisimple $G$ 
+and normal pseudo-semisimple $N\subset G$ such that $G/N$ is \emph{not} 
+pseudo-reductive. 
+
+Suppose a pseudo-reductive group $G$ is \emph{pseudo-split} if it has a split 
+maximal $k$-torus. Does $G$ have a pseudo-split $k^s$-form? (i.e.\ does there 
+exist pseudo-split $H/k$ such that $G_{k^s}\simeq H_{k^s}$) This fails even 
+if $k$ is perfect! When such a Chevalley group exists, it is unique. 
+
+The good news is that there is a good structure theory of (high-dimensional) 
+root groups, root system (which could be non-reduced), open-cell, Bruhat 
+decomposition on rational points, \ldots for pseudo-reductive groups. Also, 
+Cartan subgroups are commutative (i.e.\ if $T\subset G$ is a maximal torus, 
+then $Z_G(T)$ is commutative and pseudo-reductive). Also, 
+$\sD(\sD G)=\sD G$. 
+
+\begin{enonce}{Magic Lemma}
+Let $G$ be a pseudo-reductive $k$-group, and $X\subset G$ a geometrically 
+integral closed subscheme that meets $1$. If $X_{\bar k}\subset R_u(G_{\bar k})$, 
+then $X=1$. 
+\end{enonce}
+\begin{proof}
+Without loss of generality, $k=k^s$. Let $H\subset G$ be the $k$-subgroup 
+normally generated by $X$ (so $H$ is the Zariski-closure of the smallest normal 
+subgroup of $G(k)$ containing by $X(k)$). It is a basic fact that $H$ is 
+smooth connected normal. Also, formation of $H$ commutes with arbitrary 
+extension of the ground field. But $X_{\bar k}\subset \sR_u(G_{\bar k})$, so 
+$H_{\bar k}\subset \sR_u(G_{\bar k})$. It follows that $H\subset \sR_u(G)$, so 
+$H=1$, whence $X=1$. 
+\end{proof}
+
+\begin{coro}
+1. If $G$ is pseudo-semisimple, then $\sR_k(G)=1$. 
+
+2. If $f_1,f_2:G\twoheadrightarrow H$ are morphisms between pseudo-reductive 
+groups such that $f_{1,\bar k}=f_{2,\bar k}$. Then $f_1=f_2$. 
+\end{coro}
+\begin{proof}
+1. Let $X=\sR_k(G)$. Then 
+$X_{\bar k}\subset R_{\bar k}(G_{\bar k}) = \sR_{\bar k}(G_{\bar k})$. Apply the 
+magic lemma. 
+
+2. Let $X$ be the Zariski-closure of the map $g\mapsto f_1(g) f_2(g)^{-1}$. Note 
+that $X=1$ if and only if $f_1=f_2$. But 
+$X_{\bar k}\subset \sR_{\bar k}(H_{\bar k})$, so apply the magic lemma. 
+\end{proof}
+
+\emph{Warning}: the converse to 1 is false!
+
+\begin{theo}
+Suppose $G$ is pseudo-reductive over $k$. 
+
+1. If $G$ is solvable, then it is commutative. 
+
+2. $\sD G$ is perfect (i.e.\ pseudo-semisimple). 
+
+3. If $S\subset G$ is a $k$-torus, then $Z_G(S)$ is pseudo-reductive. 
+
+4. If $T\subset G$ is a maximal $k$-torus, then $Z_G(T)$ is commutative. 
+\end{theo}
+\begin{proof}
+1. Let $X=\sD G$. Note that $G_{\bar k}^\reduced$ is solvable and reductive, 
+hence commutative. So $\sD(G_{\bar k}^\reduced)=1$. But 
+$\sD(G)_{\bar k} \to G_{\bar k}^\reduced$ has image in $\sD(G_{\bar k}^\reduced)=1$. 
+But $X_{\bar k}=\sD(G)_{\bar k} = \sD(G_{\bar k})$, so we can apply the 
+magic lemma. 
+
+2. This is much trickier. 
+
+3-4. [\ldots didn't write down proof\ldots]
+\end{proof}
+
+Later on, we will work with root groups over $k$. We will show that if 
+$N'\subset N\subset G$ are all smooth connected normal (in the next), then 
+$N'\subset G$ is normal. (So normality is transitive for pseudo-reductive 
+groups.) The first step in the proof is to pass to derived groups. A 
+reference for this is \cite[1.2.7,3.1.10]{cgp10}. 
+
+
+
+
+
+\subsection{Standard construction}
+
+Let's start with motivation via reductive groups built from standard semisimple 
+groups. If $G$ is connected reductive, then $G=\sD G\cdot Z$, where $Z$ is a 
+maximal $k$-torus and $Z\cap \sD G$ is finite central. So 
+$G=(Z\times \sD G)/\boldsymbol\mu$. 
+
+Let $T\subset G$ be a maximal $k$-torus. Then $S=T\cap \sD G$ is a maximal 
+$k$-torus of $\sD G$ (this is valid with $\sD G$ replaced by any smooth 
+connected normal $k$-subgroup). Moreover, $T = Z S$ is an almost direct product. 
+We have a commutative diagram 
+\[\xymatrix{
+  1 \ar[r] 
+    & \boldsymbol\mu \ar[r] \ar@{^{(}->}[d] 
+    & \sD G\times Z \ar[r] \ar@{^{(}->}[d] 
+    & G \ar[r] \ar@{=}[d] 
+    & 1 \\
+  1 \ar[r] 
+    & S \ar[r] 
+    & \sD G\rtimes T \ar[r] 
+    & G \ar[r] 
+    & 1
+}\]
+The square on the left is a central pushout. We can write 
+$G=(\sD G\times T)/S$. This is better because Weil restriction commutes with 
+quotients by \emph{smooth} subgroups. 
+
+[\ldots more stuff I didn't understand\ldots stopped taking notes\ldots]
+
+Suppose $G$ is a pseudo-reductive group over $k$. We have 
+$\sR_u(G_{\bar k})\subset G_{\bar k}$. By Galois descent, this comes from 
+$U\subset G_{k^\mathrm{perf}}$. This descends to some $U_0\subset G_K$, for a 
+finite purely inseparable extension $K/k$. 
+
+\begin{enonce}{Fact}
+If $K/k$ is a field extension and $X$ is a $k$-scheme, then any closed 
+$Z\subset X_K$ desends to $Z_0\subset X_0$, for a unique 
+$k_0\subset K$ and $X_0$ over $k_0$. 
+\end{enonce}
+This is \cite[4.2]{ega4}. 
+
+In the discussion above, take $K/k$ minimal such that $\sR_{u,K}(G_K)$ is a 
+$K$-descent of $\sR_u(G_{\bar k})$. We can form 
+$G'=G_K^\reduced$. This corresponds to 
+$i_G:G\to R_{K/k}(G')$. Unfortunately, $i_G$ is very far from being an isomorphism. 
+First problem: if we pass to $G_{\bar k} \twoheadrightarrow G_{\bar k}^\reduced \twoheadrightarrow G_{\bar k}^\mathrm{ad} = \prod G_i$, where the $G_i$ are adjoint 
+semisimple. The kernel of $G\to G_i$ has a minimal field of definition 
+$k_i'/k$. But $K$ lumps together all the $k_i'$. 
+
+Now we can outline the construction. Let $k'$ be a finite reduced $k$-algebra. 
+Let $G'=\coprod G_i'$ be a reductive $k'$-group with each fiber 
+$G_i'$ connected. The main case we're interested in is when all $G_i'$ are 
+absolutely simple and simply connected semisimple. Let 
+$T=\coprod T_i'$ be a maximal $k'$-torus in $G'$. The Weil restriction 
+$R_{k'/k}(T') \subset R_{k'/k} G'$ is a Cartan subgroup -- see 
+\cite[A.5.15(i)]{cgp10}. Consider a factorization 
+$R_{k'/k}(T')\xrightarrow\phi C \to R_{k''/k}(\overline T') \hookrightarrow R_{k'/k}(G^\mathrm{ad})$, where $C$ is commutative pseudo-reductive. Let 
+\[
+  G=\frac{R_{k'/k}(G')\rtimes C}{R_{k'/k}(T')}. 
+\]
+The natural map $C\to G$ turns out to be an inclusion, and it makes $C$ a 
+Cartan subgroup of $G$. 
+
+\begin{theo}
+1. $G$ is pseudo-reductive. 
+
+2. If $G$ is not commutative, then for any maximal torus $\sT\subset G$ and 
+$\sC=Z_G(\sT)$, we can find a four-tuple $(G'',k'',T'',C'')$ such that 
+\begin{itemize}
+  \item $C''=\sC$
+  \item all fibers $G''_j$ over factor fields $k_j''$ are absolutely simple, simply-connected, semisimple. 
+\end{itemize}
+3. This ``better 4-tuple'' is unique up to unique isomorphism 
+\end{theo}
+We call the $G$ as in 2 ``standard.'' 
+
+
+
+
