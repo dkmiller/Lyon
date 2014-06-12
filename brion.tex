@@ -1,20 +1,5 @@
 % !TEX root = main.tex
 
-%\documentclass{article}
-%
-%\usepackage{lyon-style}
-%
-%\title{Possibly non-affine algebraic groups}
-%\author{Michel Brion}
-%\date{June 9--13, 2014}
-%
-%\begin{document}
-%\maketitle
-%\tableofcontents
-%
-
-
-
 \section{Possibly non-affine algebraic groups}
 \thanksauthor{Michel Brion}
 
@@ -435,7 +420,226 @@ identically $1$, whence the result.
 
 
 
-%\bibliographystyle{alpha}
-%\bibliography{lyon-sources}
+\subsection{Proof of ``theorem B''}
 
-%\end{document}
+We are trying to prove: 
+
+\begin{theo}
+Let $G$ be a conneced algebraic group over a perfect field $k$. Then there is a 
+exact sequence $1 \to L \to G \to A \to 1$, where $L$ is connected linear and 
+$A$ is an abelian variety. 
+\end{theo}
+
+First we need some preliminaries on abelian varieties. If $A$ is an abelian 
+variety, we will denote the group law on $A$ by $+$ and the neutral element 
+by $0$. We have shown that every morphism (of $k$-schemes) $A\to G$ which 
+preserves neutral elements is a homomorphism with central image. It is also 
+true that (scheme-theoretic) morphisms from affine groups to abelian varieties 
+are morphisms 
+
+\begin{prop}
+An abelian variety contains no rational curve. 
+\end{prop}
+\begin{proof}
+We need to prove that morphisms $f:\dP_k^1 \to A$ are constant. Let $C$ be 
+the image of $f$ in $A$. We have $k(C)\subset k(\dP^1)$, so 
+$\widetilde C\simeq \dP^1$. We may assume $f$ is generically smooth on its 
+image. We have 
+$d f:T_{\dP^1} = \sO_{\dP^1}(2) \to f^\ast T_A = \sO_{\dP^1}\otimes \lie A$, 
+non-zero by our assumption. This cannot happen: twist both sides by $-1$ and 
+we get $\sO_{\dP^1}(1)$ (which has sections) embedding into 
+$\sO_{\dP^1}(-1)$ (which has none). 
+\end{proof}
+
+\begin{theo}[Weil extension]
+Let $f:X\to A$ be a rational map, where $X$ is a smooth variety and $A$ is an 
+abelian variety. Then $f$ is a morphism. 
+\end{theo}
+
+[BLR] has a proof. 
+
+\begin{proof}
+Our rational map may be factored via $p_2=f\circ p_1$, where $p_1$ is 
+birational and proper. We do this via the graph of $f$:
+\[
+  \Gamma_f = \text{Zar. cl.}\{(x,f(x)):f\text{ is defined at }x\}\subset X\times A .
+\]
+Then $\Gamma_f \to X$ is birational and proper. There is a rational curve 
+$C|subset Y=\Gamma_f$ contracted by $p_1$ [O. Debarre: Higher-dimensional 
+algebraic geometry, 1.4.3]. Thus $C\subset x\times A$, a contradiction. 
+\end{proof}
+
+\begin{prop}
+Let $f:X\times Y\to A$ be a morphism. Let $x_0\in X(k)$, $y_0\in Y(k)$ be 
+smooth. Then $f(x,y)=f(x_0,y) + f(x,y_0) - f(x_0,y_0)$. 
+\end{prop}
+\begin{proof}
+We want to reduce things to a rigidity lemma from earlier. Without loss of 
+generality, $X$ and $Y$ are smooth. Let 
+$X\hookrightarrow \overline X$ be a Nagata compactification, and let 
+$\overline{X}_\mathrm{sm}$ be its smooth locus (in positive characteristic, 
+we only know $\overline X$ is normal). We have 
+$\sO(\overline X_\mathrm{sm}) = \sO(\overline X)=k$. We can extend $f$ to a 
+morphism $\overline X_\mathrm{sm} \times Y \to A$. Let 
+$g(x,y) = f(x,y)-f(x_0,y)-f(x,y_0) + f(x_0,y_0)$. One has 
+$g(X,y_0) = 0$, so the rigidity lemma tells us that $g$ only depends on $y$. 
+But setting $x=x_0$, we see that $g=0$. 
+\end{proof}
+
+\begin{coro}
+Let $G$ be a connected algebraic group, $f:G\to A$ a morphim of varieties 
+preserving neutral elements. Then $G$ is a homomorphism. 
+\end{coro}
+\begin{proof}
+Consider $G\times G\to A$, $(x,y)\mapsto f(x y)$ and apply the previous 
+proposition. 
+\end{proof}
+
+\begin{theo}[Rosenlicht]
+Let $G$ be a connected algebraic group, $A\subset G$ an abelian subvariety. Then 
+there is normal connected subgroup scheme $H\subset G$ such that 
+$G=A\cdot H$ and $A\cap H$ is finite. If $k$ is perfect, we may take $H$ 
+reduced. 
+\end{theo}
+
+\begin{prop}[Weil, Rosenlicht]
+Let $G$ be a connected commutative algebraic group, and let $X$ be a (fppf-) 
+$G$-torsor over $k$. Then there exists a morphism 
+$\varphi:X\to G$ such that $\varphi(g\cdot x)=\varphi(x)+n g$ for some 
+$n\in \dZ\smallsetminus 0$. 
+\end{prop}
+\begin{proof}
+If $X(k) \ni x_1$, then $G\to X,g\mapsto g\cdot x_1$ is an isomorphism. In 
+general, we can find $x_1\in X(K)$, where $K/k$ is finite Galois. Let 
+$\Gamma=\galois(K/k)$. Let $x_1,\dots,x_n$ be the Galois conjugates of $x_1$. 
+For $x\in X(\bar k)$, we can write $x=g_i x_i$ for some $g_i\in G(\bar k)$. 
+Define $\varphi:X_{\bar k} \to G_{\bar k}$ by $x\mapsto \sum g_i$. This is 
+defined over $K$, is $\Gamma$-equivariant, and 
+$\varphi(g\cdot x)=n g+ \varphi(x)$. This descends to the desired $\varphi$. 
+\end{proof}
+
+If we use Galois cohomology, things become easy. We know that isomorphism 
+classes of $G$-torsors over $K$ are classified by the commutative group 
+$\h^1(k,G)$. The group operation corresponds to 
+$X_1+X_2 = (X_1\times X_2)/(g,-g)$. The set of isomorphism classes of 
+$G$-torsors trivial over $K$ is the kernel of 
+$\h^1(k,G) \to \h^1(K,G)$, traditionally denoted $\h^1(\Gamma,G(K))$. This is 
+killed by $\# \Gamma$. 
+
+\begin{proof}[Proof of ``main theorem'']
+If $k$ is perfect, we may take $H$ reduced. Let $q:G\to G/A$ be the quotient 
+map. Then $q$ is an $A$-torsor over the generic point of $G/A$. Thus there 
+exists $\varphi:G_{k(G/A)} \to A_{k(G/A)}$, hence a rational map 
+$G\to A$, such that $\varphi(a g)=\varphi(g)+n a$ when defined. By Weil's 
+extension theorem, $\varphi$ is a morphism. Also, we may assume $1_G \mapsto 0$. 
+It turns out that $\varphi$ is a homomorphism. Let $H=(\ker\varphi)^\circ$. Then 
+$A\cap H\subset \ker(\varphi|_A) = \ker(n_A)$. The last group is finite. 
+Also, $\varphi|_A$ is surjective. Thse facts easily imply that 
+$G=A\cdot \ker(\varphi) = A\cdot H$. 
+\end{proof}
+
+We used the fact that $n_A:A\to A$ is an isogeny for $n\in \dZ\smallsetminus 0$. 
+If $n$ is invertible in $k$, things are easy. One has 
+$\lie(\prescript{}{n}{A}) = \ker(n:\lie A\to \lie A)$, and this is zero if 
+$n\in k^\times$. So $n_A$ is \'etale at $0$, hence everywhere by translation. 
+By dimension considerations, $n_A$ is finite and surjective. For the general 
+case, see \cite{m08}. 
+
+\begin{coro}[Poincar\'e reducibility]
+Let $G$ be an abelian variety, $A\subset G$ an abelian subvariety. Then 
+$G=A + B$, where $B$ is an abelian variety with $A\cap B$ finite. 
+\end{coro}
+\begin{proof}
+We have a commutative diagram:
+\[\xymatrix{
+  0 \ar[r] 
+    & A \ar[r] \ar@{=}[d] 
+    & A' \ar[r] \ar[d] 
+    & G/A \ar[r] \ar[d] \ar@{.>}[dl] 
+    & 0 \\
+  0 \ar[r] 
+    & A \ar[r] 
+    & G \ar[r]^-q 
+    & G/A \ar[r] 
+    & 0 
+}\]
+The square on the right is Cartesian, and $\varphi$ yields the dotted map, 
+whence $G'\simeq A\times G/A$.   
+\end{proof}
+
+\begin{enonce}[remark]{Example}
+This example is due to Raynaud, in \cite[XVIII.A3]{sga3}. Let $k$ be an 
+imperfect field, $k\subsetneq K$ a purely inseparable field extension. Let 
+$H$ be a connected algebraic group over $K$. Consider 
+$G=R_{K/k}(H)$. If $H$ is quasi-projective, this exists \cite[A]{cgp10}. There 
+is an exat sequence $1 \to U \to G_K\to H \to 1$, where $U$ is connected 
+unipotent. If $U\subset V_K$ for some subgroup scheme $V\subset G$, then $V=G$. 
+If $H$ is a nontrivial abelian variety, then $G_K$ satisfies theorem 
+\ref{thm:A} but not $G$. 
+\end{enonce}
+
+It follows from this example that Theorem \ref{thm:A} fails over any 
+imperfect field. If $H=A_K$ for an abelian $k$-variety $A$, we have a map 
+$A\to R_{K/k}(A_K)=G$. This is the inclusion of a closed subgroup. But the 
+image of $A\to G$ has no quasi-complement $L$, because otherwise 
+$G/L=A/(A\cap L)$, an abelian variety. This cannot be. 
+
+\begin{proof}[Proof of Theorem A]
+We follow Rosenlicht '56, except in modern language. Let $G$ be a connected 
+algebraic group. Then $G$ has a largest connected linear \emph{normal} subgroup 
+$L(G)$. Indeed, let $L\subset G$ be connected linear normal maximal, and let 
+$L_1\subset G$ satisfy the same properties. Then 
+$L\cdot L_1 /L\simeq L-1/(L_1\cap L)$, a linear group. So $L\cdot L_1$ is linear. 
+By maximality, $L_1\subset L$. 
+
+It is easy to see that $L(G/L(G))=1$. So we may assume that $G$ has no 
+nontrivial connected linear normal subgroups. Such groups are called 
+\emph{pseudo-abelian varieties}, after Totaro. We need to show that 
+$G$ is proper, i.e.\ pseudo-abelian varieties are abelian. We assume $k=\bar k$. 
+See [Totaro, 2013, Ann. ENS] for details. Consider 
+$1 \to H \to G \to L' \to 1$, where $L'$ is linear and $\sO(H)=k$. If $H$ is 
+proper, we are done by the existence of a quasi-complement: 
+$G=H\cdot L''$, where $H\cap L''$ is finite. The map $L'' \to L$ is surjective 
+with finite kernel. Since $L''$ is an extension of a linear group by a finite 
+one, it is linear. So $G/L''=H/(H\cap L')$ is an abelian variety. 
+
+If $H$ is not proper, we use the following 
+
+\begin{lemm}[Rosenlicht]
+Any non-proper connected algebraic group contains a nontrivial linear subgroup. 
+\end{lemm}
+\begin{proof}[Idea of proof]
+If a group scheme acts faithfully on a variety $X$, then 
+$\stabilizer_G(x)$ is linear for any $x\in X(k)$. Indeed, $\stabilizer_G(x)$ 
+acts on $X_n=\spectrum(\sO_{X,x}/\fm^{n+1})$ for all $n$. There must be a 
+faithful action of $\stabilizer_G(x)$ on some $X_n$. But $X_n$ is affine, 
+so $\stabilizer_G(x)$ acts faithfully on the finite-dimensional $k$-vector 
+space $\sO(X_n)$. Let $G\hookrightarrow X$ be a normal completion so that 
+$D=X\smallsetminus G$ is a Cartier divisor. Then $G$ acts rationally on 
+$X$ by left multiplication. if $x\in D$ and 
+$g\cdot x$ is defined, then $g\cdot x\in D$. Since 
+$\dim D=\dim G-1$, all points in $D$ have  
+isotropy groups of positive dimension. After positively modifying $D$, we 
+assume $G$ acts rationlly on some irreducible component $E$. 
+
+[\ldots didn't understand the end\ldots]
+\end{proof}
+\end{proof}
+
+Rosenlicht's proof has been rewritten by [Samuel-Uma 2013]. Also, Milne 
+has a proof on arXiv. 
+
+\begin{coro}
+Every algebraic group is a quasi-projective variety. 
+\end{coro}
+\begin{proof}
+Work over $\bar k$: use $1 \to L\to  G \xrightarrow\pi A \to 1$. The map 
+$\pi$ is an affine morphism, and we know that $A$ is projective. Let $\sL$ 
+be an ample line bndle on $A$; then $\pi^\ast\sL$ is ample on $G$. The 
+bundle $\pi^\ast\sL$ is defined over some finite extension $K/k$. Then 
+$N_{K/k}(\pi^\ast \sL)$ is also ample (and defined over $k$). 
+\end{proof}
+
+
+
+
