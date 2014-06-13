@@ -708,3 +708,185 @@ formula
 
 
 
+
+
+\subsection{Dynamic method, root groups, and exotic constructions}
+
+We start by giving some examples of non-standard absolutely pseudo-simple 
+groups in characteristics $2$ and $3$. This can happen for several reasons:
+
+Multiple edges in Dynkin diagrams of $G_2$, $B_n$, $C_n$, $F_2$, and $A_1$. In 
+characteristic $3$, $G_2$ and in characteristic $2$, the other guys don't work 
+correctly because of some extra triviality in the commutation relations within 
+$\frakg$. So $\frakg$ as a $G$-module has ``extra'' subrepresentations. More 
+specifically, let $G$ be connected of one of these types. Then there is a 
+unique $G$-subrepresentation $\fn\subset \frakg$, defined by 
+$\fn=\ft_<+\frakg_<$, where $\ft_<$ is the span of the short roots and $\frakg_<$ is 
+the span of the short root space. This is a $p$-Lie subalgebra. We can define  
+$N=\exp(\fn)\subset \ker(F_{G/k}:G\to G^{(p)})$, a normal $k$-subgroup scheme. 
+So the Frobenius $F_{G/k}:G\to G^{(p)}$ factors through 
+$\pi_G:G\to \overline G=G/N$. It turns out that $\overline G$ is simply connected 
+of dual type, and we call $\pi_G$ the \emph{very special isogeny}. 
+The map $\pi_G$ carries short root groups to long ones via $x\mapsto x^p$, and 
+it carries long root groups onto short ones via $x\mapsto x$. 
+
+\begin{enonce}[remark]{Example}
+Let $(V,q)$ be a non-degenerate, odd-dimensional quadratic space in characteristic 
+$2$. We have an exact sequence 
+\[
+  \spin(q) \to \specialorthogonal(q) \to \symplectic(V/V^\bot,\overline B_q) .
+\]
+The composite is an isogeny $B_n \to C_n$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Basic exotic construction}
+Let $k\subsetneq k'\subset k^{1/p}$ for $p\in \{2,3\}$. Let 
+$G'$ be a simply connected absolutely simple of type $G_2$ in characteristic $3$, 
+or $F_4,B_n,C_n$ if $p=2$.
+[\ldots didn't understand\ldots]
+\end{enonce}
+
+\begin{theo}
+In characteristic $3$, and in characteristic $2$ with $[k:k^2]=2$, the above 
+[left out] give ``all'' non-standard examples. 
+\end{theo}
+
+
+When $[k:k^2]>2$, things are even more complicated. 
+
+If $[k:k^p]=p$, then $k'=k^{1/p}$. So in the above constructions, a miracle 
+happens: $\xi_G:G(k) \to G'(k')$ is bijective on $k^s\otimes k_s'$-points. 
+
+Recall our basis puzzle: $G$ is a pseudo-simple group over a separably closed 
+field $k$. We want to show that  
+$\xi_G:G\to R_{K/k}(\widetilde G')/R_{K/k}(\boldsymbol\mu)$ is surjective with 
+central kernel. We will concentrate on surjectivity. For this we need a 
+satisfactory theory of root groups. 
+
+Let's start by recalling a dynamic definition of parabolic subgroups. Let $G$ 
+be a connected reductive group over a field $k$, $P\subset G$ a parabolic 
+subgroup. Then $P$ arises from $\lambda:\dG_\mult \to G$ over $k$ in the 
+following sense. Put (informally): 
+\[
+  P_G(\lambda) = \left\{g\in G:\text{the value }\lim_{t\to 0} \lambda(t) g \lambda(t)^{-1}\text{ exists}\right\} .
+\]
+More precisely, for $g\in G(R)$, we have $\dG_{\mult,R} \to G_R$ via the 
+action above. If this extends to $\dA_R^1$, we say the limit exists, and call 
+the image of $0$ the limit. 
+
+\begin{enonce}[remark]{Example}
+Let $G=\speciallinear_3$. Then 
+\[
+  \lambda(t) = \begin{pmatrix} t^{13} \\ & t^{13} \\ & & t^{13} \end{pmatrix}  \Rightarrow P_G(\lambda) = \begin{pmatrix}\ast & \ast & \ast \\ \ast & \ast & \ast \\ & & \ast \end{pmatrix} .
+\]
+\end{enonce}
+
+It is a nontrivial that such $P_G(\lambda)$ are parabolic $k$-subgroups, and 
+that this construction gives all $k$-parabolics. We will use this construction to 
+\emph{define} the notion of a parabolic subgroup of a pseudo-reductive group. 
+If $G'/P'$ is a complete variety over a purely inseparable $k'/k$, then 
+$R_{k'/k}(G'/P')$ is \emph{never} complete. So completeness of the quotient is 
+the wrong notion of parabolicity in the pseudo-reductive case. The unipotent 
+radical $U_G(\lambda)=\sR_\unipotent(P_G(\lambda))$ also has a dynamic description: 
+\[
+  U_G(\lambda) = \left\{g\in G:\lim_{t\to 0} \lambda(t) g \lambda(t)^{-1} = 1\right\} .
+\]
+If we put $Z_G(\lambda) = Z_G(\lambda(\dG_\mult))$, then 
+$P_G(\lambda)=Z_G(\lambda)\ltimes U_G(\lambda)$. The group $Z_G(\lambda)$ is a 
+Levi subgroup of $P_G(\lambda)$. 
+
+\begin{theo}
+Let $G$ be an affine algebraic $k$-group scheme. Let $\lambda:\dG_\mult \to G$ be 
+a $k$-homomorphism. Put $t\cdot g=\lambda(t) g \lambda(t)^{-1}$. Define 
+$ P_G(\lambda)=\{g\in G:\exists \lim t\cdot g\}$ and 
+$ U_G(\lambda)=\ker( P_G(\lambda) \to G)$, and 
+$ Z_G(\lambda)=Z_G(\lambda) = P_G(\lambda)\cap P_G(-\lambda)$. Then 
+\begin{enumerate}
+  \item These are represented by closed $k$-subgroup schemes of $G$. 
+  \item $\lie(P_G(\lambda)) = \frakg_{\lambda\geqslant 0}$, $\lie(U_G(\lambda0)) = \frakg_{\lambda>0}$. 
+  \item $P_G(\lambda)\simeq Z_G(\lambda)\ltimes U_G(\lambda)$. 
+  \item $U_G(-\lambda)\times P_G(\lambda) \to G$ is an open immersion. 
+  \item In the smooth case, $U_G(\lambda)$ is split unipotent. 
+\end{enumerate}
+\end{theo}
+\begin{proof}
+This is \cite[2.1.8]{cgp10}. If $\dG_\mult$ acts on $G$, then $\dG_\mult$ 
+acts on $k[G]$, so we get a $\dZ$-grading on $k[G]$. Check that $k[G]_{<0}$ is 
+an ideal which cuts out a quotient of $k[G]$ representing $P_G(\lambda)$. For 
+part 4, $G\hookrightarrow \generallinear_n$. Then 
+$P_G(\lambda)=G\cap P_{\generallinear_n}(\lambda)$, 
+$U_G(\lambda)=G\cap U_{\generallinear_n}(\lambda)$, \ldots. We know that 
+$U_{\generallinear_n}(-\lambda)\times P_{\generallinear_n}(\lambda)\to \generallinear_n$ 
+is an open immersion. Roughly speaking, we intersect this immersion with $G$ on 
+both sides. 
+\end{proof}
+
+It follows that if $G$ is smooth connected, then so are $P_G(\lambda)$, 
+$U_G(\lambda)$, and $Z_G(\lambda)$. 
+
+\begin{defi}
+Let $G$ be a smooth connected affine $k$-group. A \emph{pseudo-parabolic 
+subgroup} $H\subset G$ is a $k$-subgroup of the form 
+$P_G(\lambda)\cdot \sR_{\unipotent,k}(G)$ for some $\lambda:\dG_\mult \to G$ 
+over $k$. 
+\end{defi}
+
+\begin{enonce}[remark]{Example}
+Suppose $G\twoheadrightarrow G'$, $\lambda\in X_\ast(G)$, and 
+$\lambda'=\dG_\mult\xrightarrow\lambda G \to G'$. Then we get morphisms 
+\begin{align*}
+  P_G(\lambda) &\to P_{G'}(\lambda') \\
+  U_G(\lambda) &\to U_{G'}(\lambda') \\
+  Z_G(\lambda) &\to Z_{G'}(\lambda') .
+\end{align*}
+We claim these are all surjections. Why? Consider the following diagram:
+\[\xymatrix{
+  U_G(-\lambda)\times Z_G(\lambda)\times U(\lambda) \ar@{^{(}->}[r] \ar[d] 
+    & G \ar@{->>}[d] \\
+  U(-\lambda')\times Z(\lambda')\times U(\lambda') \ar@{^{(}->}[r] 
+    & G' 
+}\]
+in which the horizontal arrows are open immersions. The group on the lower 
+left has closed and dense image hence it's surjective on each factor! 
+\end{enonce}
+
+If $G$ is pseudo-reductive, then each $Z_G(\lambda)$ is also pseudo-reductive. 
+
+Let $G$ be a pseudo-reductive $k$-group, $T\subset G$ a split maximal 
+$k$-torus, and $\Phi=\Phi(G,T)$ the induced set of roots. For 
+$a\in \Phi$, let $T_a=(\ker a)^\circ_\reduced\subset T$ be the codimension-$1$ 
+torus killed by $a$. Consider $\lambda_a:\dG_\mult \to T\subset Z_G(T_a)$ 
+such that $\langle a,\lambda_a\rangle > 0$. Put 
+$U_{(a)}=U_{Z_G(\lambda)}(\lambda_a)$. 
+
+\begin{prop}
+$U_{(a)}$ is independent of the choice of $\lambda_a$. 
+\end{prop}
+
+We call $U_{(a)}$ the \emph{root group} for $a$. The group 
+$\lie(U_{(a)})$ is the direct sum of weight spaces for $\dQ_{>0} a\cap \Phi$ 
+inside $X(T)_\dQ$. 
+
+\begin{prop}
+$U_{(a)}$ is commutative, $p$-torsion in characteristic $p>0$, and even a vector group. 
+Moreover, it has a $T$-equivariant linear structure. 
+\end{prop}
+\begin{proof}
+Use the magic lemma. 
+\end{proof}
+
+\begin{theo}
+If $k$ does not have characteristic $2$, then $\Phi\subset X(T)=X(T_{\bar k})$ 
+is $\Phi(G_{\bar k}^\reduced,T_{\bar k})$. Moreover, 
+$(U_{(a)})_{\bar k} \twoheadrightarrow U_a\subset G_{\bar k}^\reduced$. 
+\end{theo}
+\begin{proof}
+This is \cite[2.3.10]{cgp10}. 
+\end{proof}
+
+[\ldots didn't get the end\ldots]
+
+
+
+
+
