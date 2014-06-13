@@ -246,7 +246,7 @@ $F\twoheadrightarrow E$ of degree $m$.
 
 
 
-\subsection{Proof of \texorpdfstring{Theorem \ref{thm:B}}{Theorem B}}
+\subsection{Proof of ``Theorem B''}
 
 \begin{lemm}
 Let $G$ be a group scheme of finite type over $k$. Then the following are 
@@ -419,9 +419,6 @@ identically $1$, whence the result.
 
 
 
-
-\subsection{Proof of ``theorem B''}
-
 We are trying to prove: 
 
 \begin{theo}
@@ -545,6 +542,11 @@ $n\in k^\times$. So $n_A$ is \'etale at $0$, hence everywhere by translation.
 By dimension considerations, $n_A$ is finite and surjective. For the general 
 case, see \cite{m08}. 
 
+
+
+
+\subsection{Applications}
+
 \begin{coro}[Poincar\'e reducibility]
 Let $G$ be an abelian variety, $A\subset G$ an abelian subvariety. Then 
 $G=A + B$, where $B$ is an abelian variety with $A\cap B$ finite. 
@@ -585,7 +587,7 @@ image of $A\to G$ has no quasi-complement $L$, because otherwise
 $G/L=A/(A\cap L)$, an abelian variety. This cannot be. 
 
 \begin{proof}[Proof of Theorem A]
-We follow Rosenlicht '56, except in modern language. Let $G$ be a connected 
+We follow \cite{r56}, except in modern language. Let $G$ be a connected 
 algebraic group. Then $G$ has a largest connected linear \emph{normal} subgroup 
 $L(G)$. Indeed, let $L\subset G$ be connected linear normal maximal, and let 
 $L_1\subset G$ satisfy the same properties. Then 
@@ -626,8 +628,8 @@ assume $G$ acts rationlly on some irreducible component $E$.
 \end{proof}
 \end{proof}
 
-Rosenlicht's proof has been rewritten by [Samuel-Uma 2013]. Also, Milne 
-has a proof on arXiv. 
+Rosenlicht's proof has been rewritten in \cite{bsu13}. Also, see 
+\cite{m14}. 
 
 \begin{coro}
 Every algebraic group is a quasi-projective variety. 
@@ -639,6 +641,238 @@ be an ample line bndle on $A$; then $\pi^\ast\sL$ is ample on $G$. The
 bundle $\pi^\ast\sL$ is defined over some finite extension $K/k$. Then 
 $N_{K/k}(\pi^\ast \sL)$ is also ample (and defined over $k$). 
 \end{proof}
+
+Let $G$ be a connected algebraic group over a perfect field $k$. Then we 
+have an exact sequence 
+\[
+  1 \to L=G_\mathrm{aff} \to G \xrightarrow\pi A \to 1 ,
+\]
+where $L$ is affine and $A$ is an abelian variety. 
+
+\begin{prop}
+1. $G_\mathrm{aff}$ is the largest connected affine subgroup of $G$. 
+
+2. $\pi$ is the universal morphism (of varieties) to an abelian variety. 
+\end{prop}
+\begin{proof}
+1. Let $H\subset G$ be connected affine. Then $H\to A$ is constant. 
+
+2. Let $f:G\to B$ be a morphism of varieties sending $1$ to $0$. Then 
+$f:G_\mathrm{aff} \to B$ is constant, and 
+$(G_\mathrm{aff})_{\bar k} \to B_{\bar k}$ has no rational curve. But 
+$(G_\mathrm{aff})_{\bar k}$ is rational by general theory. 
+\end{proof}
+
+We also have an exact sequence 
+\[
+  1 \to H \to G \xrightarrow\varphi L' =\spectrum\sO(G) \to 1 ,
+\]
+where $\sO(H)=k$. We call a group scheme $H$ with 
+$\sO(H)=k$ \emph{anti-affine}. We write $H=G_\mathrm{ant}$. It is easy to 
+see that $G_\mathrm{ant}$ is the largest anti-affine subgroup of $G$. 
+
+\begin{prop}[Rosenlicht]
+$G=G_\mathrm{aff}\cdot G_\mathrm{ant}$ and 
+$G_\mathrm{aff}\cap G_\mathrm{ant}\supset (G_\mathrm{ant})_\mathrm{aff}$ with 
+finite quotient. 
+\end{prop}
+
+We can reformulate this theorem. There is an exact sequence 
+\[\xymatrix{
+  1 \ar[r] 
+    & \frac{G_\mathrm{ant}\cap G_\mathrm{aff}}{(G_\mathrm{ant})_\mathrm{aff}} \ar[r] 
+    & \frac{G_\mathrm{aff}\times G_\mathrm{ant}}{(G_\mathrm{ant})_\mathrm{aff}} \ar[r] 
+    & G \ar[r] 
+    & 1 .
+}\]
+The group on the left is finite. The group $G_\mathrm{aff}$ is connected 
+linear, $G_\mathrm{ant}$ can be completely described, and 
+$(G_\mathrm{ant})_\mathrm{aff}$ is either a torus in characteristic $p>0$, or 
+of the form $T\times \dG_\additive^n$ ($T$ a torus) in characteristic zero. 
+
+\begin{prop}
+Let $G$ be an anti-affine group over any field $k$ of characteristic $p>0$. 
+Then $G$ is a \emph{semi-abelian variety}, i.e.\ an extension of an abelian 
+variety by a torus. 
+\end{prop}
+\begin{proof}[Proof (Rosenlicht)]
+If $k=\bar k$, we can apply Chevalley's theorem to get 
+\[
+  0 \to T\times U \to G \to A \to 0 ,
+\]
+where $T$ is a torus and $U$ is connected commutative unipotent. We want to 
+prove that $U=0$. Mod out by $T$ to get 
+\[
+  0 \to U \to G/T \to A \to 0 ,
+\]
+where $G/T$ is still anti-affine because $\sO(G/T)=\sO(G)^T$. We have 
+$p^n U=0$ for $n\gg 0$, and $p_A^n$ is an isogeny. Thus 
+$\ker(p^n_{G/T})$ is an extension of a finite group scheme by $U$. Thus 
+$p^n (G/T)\subset G/T$ is an abelian variety, so we can write 
+$G/T=(p^n G/T)\cdot H$ for a quasi-complement $H$. But then 
+$G/T\twoheadrightarrow H/(H\cap p^n G/T)$, and $H$ is linear (isogenous to 
+$U$). This can only happen if $H/(H\cap p^n G/T)=1$, whence the result. 
+
+For arbitrary $k$, the maximal torus $T_{\bar k}\subset G_{\bar k}$ descends to 
+a maximal torus of $G$. This follows from a very general theorem of 
+Grothendieck on tori. In $T(\bar k)$, we may find $g$ such that 
+$\overline{\langle g\rangle} = T_{\bar k}$ (unless $k$ is finite). Then 
+$g^{p^n}$ is regular for all $n$. We may assume $g\in T(k^s)$. The rest is 
+easy. 
+\end{proof}
+
+\begin{defi}
+A \emph{pseudo-abelian variety} is a connected algebraic group without 
+nontrivial connected linear subgroups. 
+\end{defi}
+
+
+If $k$ is perfect, then Chevalley's theorem tells us that pseudo-abelian 
+varieties are abelian. If $k$ is not perfect, these definitions do not 
+coincide (see an earlier example of Raynaud). One starts with an abelian 
+variety of $A$ over $k$, and puts $G=R_{K/k}(A_K)$ for $K/k$ purely 
+inseparable. Basic properties of Weil restriction give us an exact sequence 
+\[
+  0 \to A \to G \to U \to 0 ,
+\]
+where $U$ is unipotent. If $A$ is simple, then $G$ is pseudo-abelian. 
+
+\begin{theo}[Totaro]
+Any pseudo-abelian variety $G$ is part of an extension 
+\[
+  0 \to A \to G \to U \to 0 
+\]
+with $A$ abelian and $U$ connected unipotent. Moreover, $G$ is commutative. 
+\end{theo}
+\begin{proof}
+[\ldots didn't write down\ldots]
+\end{proof}
+
+Any connected unipotent $U$ with $p U=0$ occurs in such an extension. 
+
+
+
+
+
+\subsection{Structure theory for semi-abelian varieties}
+
+Fix a torus $T$ and an abelian variety $A$. We study extensions 
+$0 \to T \to G \to A \to 0$. Start with the case $T=\dG_\mult$. Such an 
+extension will be a $\dG_\mult$-torsor ($=$ line bundle) over $A$. So 
+$\extensions^1(A,\dG_\mult)\hookrightarrow \h^1(A,\dG_\mult)=\picard(A)$. It 
+turns out that the image lies in $\picard^\circ(A)$, the subgroup of 
+$\picard(A)$ consisting of algebraically trivial line bundles. Recall that 
+$L\in\picard(A)$ is \emph{algebraically trivial} if there exists a line bundle 
+$\sL$ on $X\times S$ for $S$ a connected variety, such that 
+$\sL_{s_1}\simeq L$ for some $s_1\in S(k)$ and $\sL_{s_0}\simeq \sO_A$ for 
+some other $s_0\in S(k)$. 
+
+\begin{enonce}{Exercise}
+If $A$ is an elliptic curve, then a line bundle is algebraically trivial if and 
+only if it has degree zero. 
+\end{enonce}
+
+\begin{theo}[Weil, Barsotti]
+The map $\extensions^1(A,\dG_\mult) \to \picard^\circ(A)$ is an isomorphism. 
+Moreover, $\picard^\circ(A)$ is naturally the group of $k$-rational points of 
+an abelian variety $A^\vee$. 
+\end{theo}
+
+If we define $\extensions^1(A,\dG_\mult)$ as a functor by 
+$\extensions^1(A,\dG_\mult)(S)=\extensions_S^1(A_S,\dG_{\mult,S})$, then 
+$\extensions^1(A,\dG_\mult)=A^\vee$. The functor $(-)^\vee$ is an 
+anti-equivalence from the category of abelian varieties to itself. 
+
+Let's see how things work. From our exact sequence 
+$0 \to \dG_\mult \to G \xrightarrow\pi \to A \to 0$, the sheaf 
+$\pi_\ast \sO_G$ is a sheaf of $\sO_A$-algebras with $\dG_\mult$-action, i.e.\ 
+$\pi_\ast \sO_G=\bigoplus_{n\in\dZ} L^n$, where $L\in \picard^\circ(A)$ is the 
+image of $\extensions^1(A,\dG_\mult)\to \picard^\circ(A)$. 
+
+Next we'll look at extensions of split tori $T\simeq \dG_\mult^n$. More 
+invariantly, $T=\hom(\widehat T,\dG_\mult)$. We get 
+$\extensions^1(A,T) = \hom(\widehat T,A^\vee(k))$. If we think of things in 
+terms of functors, $\extensions^1(A,T)=\hom(\widehat T,A^\vee)$. We get 
+$\pi_\ast \sO_G=\bigoplus_{\chi\in \widehat T} L_{c(\chi)}$, where 
+$c:\widehat T\to A^\vee(k)$. From this, we get that $G$ is anti-affine 
+if and only if $c$ is injective. Indeed, 
+$\sO(G)=\bigoplus_{\chi \in \widehat T} \h^0(A,L_{c(\chi)})$ and for 
+$L\in \picard^\circ(A)$, $\h^0(A,L)\ne 0$ if and only if $L$ is trivial. 
+
+For arbitrary torus $T$, since $T$ splits over $k^s$, we have 
+\[
+  \extensions^1(A,T) \isomorphism \hom(\widehat T(k^s),A^\vee(k^s))^\Gamma ,
+\]
+where $\Gamma=\galois(k^s/k)$. 
+
+\begin{coro}
+In characteristic $p>0$, anti-affine groups with abelian part $A$ are 
+classified by $\Gamma$-stable lattices in $A^\vee(k^s)$. 
+\end{coro}
+
+If $k=\dF_q$ or $\overline{\dF_q}$, then $k=k^s$, and 
+$A^\vee(k^s)=\bigcup A^\vee(\dF_{q^{n m}})$, a torsion group. So there are 
+no anti-affine groups over finite fields other than abelian varieties: 
+
+\begin{coro}[Arima '61]
+Every connected algebraic group $G$ over a finite field is isogenous to 
+$G_\mathrm{aff}\times A$, where $G_\mathrm{aff}$ is linear and $A$ is abelian. 
+\end{coro}
+
+The kernel of $G_\mathrm{aff}\times A \times A\to G$ is a finite group scheme, 
+but there are few other restrictions. 
+
+
+
+
+
+Let's study anti-affine groups in characteristic zero. 
+By considering the exact sequence $0 \to T\times U \to G\to A \to 0$, we get 
+that $G$ is anti-affine if and only if both $G/T$ and $G/U$ are. The group 
+$G/U$ is a semi-abelian variety. Since we are in characteristic zero, $U$ is a 
+vector group, so $G/T$ is a vector extension of $A$. 
+
+[\ldots didn't record proof of this\ldots]
+
+Any abelian variety has a universal vector extension:
+\[
+  0 \to \h^1(A,\sO_A)^\vee \to E(A) \to A \to 0 .
+\]
+It is a nontrivial result that 
+$\extensions^1(A,\dG_\additive) \isomorphism \h^1(A,\sO)$. This is a theorem of 
+Rosenlicht and Serre. 
+
+\begin{prop}
+Suppose the base field has characteristic zero. Then $E(A)$ is anti-affine, 
+and the anti-affine vector extensions of $A$ are exactly the quotients of 
+$E(A)$. 
+\end{prop}
+
+In other words, any extension fits into a commutative diagram with pushout on 
+the left: 
+\[\xymatrix{
+  0 \ar[r] 
+    & \h^1(A,\sO)^\vee \ar[r] \ar[d] 
+    & E(A) \ar[r] \ar[d] 
+    & A \ar[r] \ar@{=}[d] 
+    & 0 \\
+  0 \ar[r] 
+    & U \ar[r] 
+    & G \ar[r] 
+    & A \ar[r] 
+    & 0 .
+}\]
+
+Future problems are to find analogues of this theory over discrete valuation rings. 
+There is a version of the affinization theorem by Raynaud, 
+\cite[VI]{sga3}. There is no clear analogue of Chevalley's ``theorem A.'' 
+A powerful result is Grothendieck's semistable reduction theorem. 
+
+If $G$ is a connected algebraic group acting on a smooth variety $X$ over a 
+perfect eidl $k$, let $\pi:G\to A$ be the universal morphism to the abelian 
+part of $G$. Then there exists 
+$\varphi:X\to A$ such that $\varphi(g x) = \varphi(x)+n g$ for some fixed 
+$n\in\dZ\smallsetminus 0$. 
 
 
 
