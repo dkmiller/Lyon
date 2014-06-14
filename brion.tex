@@ -8,26 +8,30 @@
 Our topic is the structure of algebraic groups (possibly non-affine) over 
 a field (possibly non-perfect). 
 
-\begin{theo}[Chevalley, Barsotti, Rosenlicht]\label{thm:A}
+
+
+
+\subsection{Introduction}
+
+\begin{enonce}{Theorem A}[Chevalley, Barsotti, Rosenlicht]
 Let $G$ be a connected algebraic group over a perfect field. Then there exists 
 a largest connected linear subgroup $L\subset G$. Moreover, $L$ is normal 
 in $G$ and $G/L$ is an abelian variety. 
-\end{theo}
+\end{enonce}
 
 In other words, every algebraic group is the extension of an abelian variety by 
 an affine algebraic group. 
 
-\begin{theo}[Rosenlicht, Demazure-Gabriel]\label{thm:B}
+\begin{enonce}{Theorem B}[Rosenlicht, Demazure-Gabriel]
 Let $G$ be a group scheme of finite type over a field $k$. Then $G$ has a 
 largest linear quotient $L'$, i.e.~a smallest normal subgroup scheme $H$ such 
 that $G/H$ is linear. Moreover, $H$ is smooth, connected, commutative, and 
 $\sO(H) = \Gamma(H,\sO_H) = k$. 
-\end{theo}
+\end{enonce}
 
 These theorems are ``dual'' in some informal sense. Note that the assumptions 
-of Theorem \ref{thm:B} are much weaker. The group $H$ in Theorem \ref{thm:B} 
-is an abelian variety when $k$ is perfect. 
-A good reference is \cite{m14}. 
+of Theorem A are much weaker. The group $H$ in Theorem B is an abelian variety 
+when $k$ is perfect. A good reference is \cite{m14}. 
 
 \begin{defi}
 A \emph{$k$-group scheme} is a scheme $G$ over $k$, equipped with morphisms 
@@ -163,7 +167,7 @@ connected component of $e$ in $G$. Then $G^\circ$ is a normal subgroup scheme
 of $G$, and the quotient $G/G^\circ$ is \'etale (smooth of dimension $0$). The 
 group $G^\circ$ is of finite type, and is geometrically irreducible. 
 
-\begin{enonce}{Example}[automorphism group schemes]
+\begin{enonce}[remark]{Example}[automorphism group schemes]
 Let $X$ be a $k$-scheme. Define a functor $\automorphism_X$ on $k$-schemes 
 by $\automorphism_X(S) = \automorphism_{S\textnormal{-}\mathsf{sch}}(X_S)$. 
 Grothendieck proved that if $X$ is proper, then $\automorphism_X$ is represented by a 
@@ -213,7 +217,7 @@ in characteristic $2$.
 An open question: which group schemes occur as $\automorphism_X^\circ$ for 
 $X$ proper, normal? Over perfect fields, all connected algebraic groups occur. 
 
-\begin{enonce}{Example}
+\begin{enonce}[remark]{Example}
 Let $E$ be an elliptic curve with origin $0\in E(k)$. Let $L\to E$ be a line 
 bundle. Then $L\smallsetminus \{\text{zero section}\}$ is a $\dG_\mult$-bundle 
 on $E$. The map $\pi:L\smallsetminus0 \to E$ is in fact a (Zariski-locally 
@@ -221,8 +225,8 @@ trivial) $\dG_\mult$-torsor. This induces a class $[L]\in \h^1(E,\dG_\mult)$.
 We claim that if $\deg(L)=0$, then $G=L\smallsetminus 0$ has the unique structure 
 of a commutative group such that $1 \to \dG_\mult \to G \xrightarrow\pi E \to 0$ 
 is exact. This result is due to Serre. This is an example of the sequence produced 
-by Theorem \ref{thm:A}. We would like to see how this fits into Theorem 
-\ref{thm:B}. To do this, we need to compute $\sO(G)$. We compute 
+by Theorem A. We would like to see how this fits into Theorem B. To do this, we 
+need to compute $\sO(G)$. We compute 
 \begin{align*}
   \sO(G) &= \h^0(G,\sO_G) \\
     &= \h^0(E,\pi_\ast \sO_G) \\
@@ -576,11 +580,11 @@ $H$ be a connected algebraic group over $K$. Consider
 $G=R_{K/k}(H)$. If $H$ is quasi-projective, this exists \cite[A]{cgp10}. There 
 is an exat sequence $1 \to U \to G_K\to H \to 1$, where $U$ is connected 
 unipotent. If $U\subset V_K$ for some subgroup scheme $V\subset G$, then $V=G$. 
-If $H$ is a nontrivial abelian variety, then $G_K$ satisfies theorem 
-\ref{thm:A} but not $G$. 
+If $H$ is a nontrivial abelian variety, then $G_K$ satisfies Theorem A, but 
+not $G$. 
 \end{enonce}
 
-It follows from this example that Theorem \ref{thm:A} fails over any 
+It follows from this example that Theorem A fails over any 
 imperfect field. If $H=A_K$ for an abelian $k$-variety $A$, we have a map 
 $A\to R_{K/k}(A_K)=G$. This is the inclusion of a closed subgroup. But the 
 image of $A\to G$ has no quasi-complement $L$, because otherwise 
@@ -867,12 +871,6 @@ Future problems are to find analogues of this theory over discrete valuation rin
 There is a version of the affinization theorem by Raynaud, 
 \cite[VI]{sga3}. There is no clear analogue of Chevalley's ``theorem A.'' 
 A powerful result is Grothendieck's semistable reduction theorem. 
-
-If $G$ is a connected algebraic group acting on a smooth variety $X$ over a 
-perfect eidl $k$, let $\pi:G\to A$ be the universal morphism to the abelian 
-part of $G$. Then there exists 
-$\varphi:X\to A$ such that $\varphi(g x) = \varphi(x)+n g$ for some fixed 
-$n\in\dZ\smallsetminus 0$. 
 
 
 

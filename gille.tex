@@ -511,7 +511,6 @@ The first vertical arrow is not surjective.
 Let $p=2$, and let $k'=k(\sqrt a)$ be a purely inseparable extension. 
 Then $k'\otimes_k k'\simeq k'[t]/(t^2)$. Write $A=k[t]/t^2$. Then for 
 $X/k$ affine, $Y=\Pi_{A/k} X_A$ is the tangent bundle of $X$. 
-
 [\ldots more that I didn't understand\ldots ]
 \end{enonce}
 
@@ -857,9 +856,9 @@ Let $G$ be a smooth affine connected $k$-group. Then
 \end{enumerate}
 \end{lemm}
 
-Denote by $R_u(G)$ and $R_{u s}(G)$ the groups given by the Lemma. Clearly 
-$R_{us} G\subset R_u G$. One calls $R_u G$ the \emph{unipotent radical} of 
-$G$ and $R_{us} G$ the \emph{$k$-split unipotent radical} of $G$. 
+Denote by $\sR_\unipotent (G)$ and $\sR_{\unipotent, s}(G)$ the groups given by the Lemma. Clearly 
+$\sR_{\unipotent,s} G\subset \sR_\unipotent  G$. One calls $\sR_\unipotent  G$ the \emph{unipotent radical} of 
+$G$ and $\sR_{\unipotent,s} G$ the \emph{$k$-split unipotent radical} of $G$. 
 
 \begin{proof}
 We prove only part 1. Let $U_1,U_2$ be two maximal connected unipotent normal $k$-subgroups of 
@@ -867,28 +866,28 @@ $G$. Consider the sequence $1 \to U_1 \to G \to G/U_1\to 1$. We claim that
 $G/U_1$ has no normal unipotent subgroup. For if 
 $U_0\subset G/U_1$ was such a subgroup, then its preimage in 
 $G$ would be a unipotent normal $k$-subgroup strictly containing $U_1$. 
-This cannot be, so $R_u (G/U_1) = 1$. The group $U_1/(U_1\cap U_2)\subset G/U_1$ 
+This cannot be, so $\sR_\unipotent  (G/U_1) = 1$. The group $U_1/(U_1\cap U_2)\subset G/U_1$ 
 is smooth (being the quotient of a smooth group) and must be trivial. This tells 
 us that $U_1=U_2=U$. 
 \end{proof}
 
-A corollary of our proof is that $R_u(G/R_u G)=1$. 
+A corollary of our proof is that $\sR_\unipotent (G/\sR_\unipotent  G)=1$. 
 
 \begin{lemm}
-The formation of $R_u G$ and $R_{u s} G$ commute with separable field extensions. 
-In particular, the ``geometric unipotent radical'' $R_u(G_{\bar k})$ is defined 
+The formation of $\sR_\unipotent  G$ and $\sR_{\unipotent, s} G$ commute with separable field extensions. 
+In particular, the ``geometric unipotent radical'' $\sR_\unipotent (G_{\bar k})$ is defined 
 over $k^{p^{-\infty}}$. 
 \end{lemm}
 
 \begin{enonce}[remark]{Example}\label{eg:pseudo-red}
 Let $K=k(\sqrt[p] a)$ be a purely inseparable field extension. Let 
 $G=\Pi_{K/k} \dG_\mult$. Then the field of definition of 
-$R_u G_{\bar k}$ is $K$, i.e.\ $R_u (G_{\bar k})$ is not defined over $k$. 
+$\sR_\unipotent  G_{\bar k}$ is $K$, i.e.\ $\sR_\unipotent  (G_{\bar k})$ is not defined over $k$. 
 \end{enonce}
 
 Let $G$ be a smooth connected affine $k$-group. We say that $G$ is 
-\emph{reductive} if $R_u(G_{\bar k})=1$. We say that $G$ is 
-\emph{pseudo-reductive} if $R_u G=1$. 
+\emph{reductive} if $\sR_\unipotent (G_{\bar k})=1$. We say that $G$ is 
+\emph{pseudo-reductive} if $\sR_\unipotent  G=1$. 
 
 Clearly reductive groups are pseudo-reductive. The converse holds over 
 perfect fields, but fails in general, as is witnessed by 
@@ -901,13 +900,13 @@ $\Pi_{K/k} G$ is pseudo-reductive (but not necessarily reductive).
 
 Let $G$ be a smooth connected affine $k$-group. We say that a closed 
 $k$-subgroup $L\subset G$ is a \emph{Levi subgroup} if the composite 
-$L_{\bar k} \to G_{\bar k} \to G_{\bar k}/R_u(G_{\bar k})$ is an 
+$L_{\bar k} \to G_{\bar k} \to G_{\bar k}/\sR_\unipotent (G_{\bar k})$ is an 
 isomorphism. Equivalently, 
-$R_u(G_{\bar k})\rtimes L\isomorphism G_{\bar k}$. 
+$\sR_\unipotent (G_{\bar k})\rtimes L\isomorphism G_{\bar k}$. 
 
 \begin{theo}[Mostow]
 Suppose $k$ has characteristic zero. Then Levi subgroups exist and are 
-$(R_uG)(k)$-conjugate. 
+$(\sR_\unipotent G)(k)$-conjugate. 
 \end{theo}
 
 The following theorem has a recent proof in \cite{demarche} which is very nice. 
@@ -935,7 +934,7 @@ restriction called the \emph{Greenberg functor}. There is $G/k$ such that
 $G(k)=\speciallinear_2(W_2(k))$. The exact sequence 
 $0 \to k \to W_2(k) \to k$ gives us an exact sequence 
 \[
-  1 \to R_u G \to G \to \speciallinear_2 \to 1 ,
+  1 \to \sR_\unipotent  G \to G \to \speciallinear_2 \to 1 ,
 \]
 but this sequence has no section on the right. For example, with 
 $k=\dF_p$, the map $\speciallinear_2(\dZ/p^2) \to \speciallinear_2(\dF_p)$ has 
@@ -963,8 +962,3 @@ Let $G$ be a smooth unipotent connected $k$-group. Then
 
 
 
-
-%\bibliographystyle{alpha}
-%\bibliography{lyon-sources}
-
-%\end{document}
